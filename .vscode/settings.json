@@ -1,0 +1,7 @@
+{
+    "workbench.preferredHighContrastColorTheme": "Default Dark+",
+    "workbench.preferredLightColorTheme": "Default Dark+",
+    "window.autoDetectColorScheme": true,
+    "editor.fontSize": 12,
+    "editor.fontWeight": "800"
+}

@@ -1,11 +1,10 @@
 #include "Cube3d.h"
 
-t_array_list *new_array_list(t_array_list *this, size_t first_size, size_t __sizeofit, size_t data_type)
+t_array_list *new_array_list(t_array_list *this, size_t first_size, size_t __sizeofit)
 {
     this->arr = (void *)malloc ( first_size * __sizeofit);
     if (this->arr != NULL)
     {
-        this->data_type = data_type;
         this->index = 0;
         this->length = first_size;
         this->size_of_object = __sizeofit;
@@ -17,9 +16,10 @@ t_array_list *new_array_list(t_array_list *this, size_t first_size, size_t __siz
         this->foreach = &foreach;
         this->delete_if = &delete_if;
         this->sort = &sort;
-        this->_free = &_free;
+        this->free = &_free;
         this->update_at = &update_at;   
         this->swap = &ft_swap;
+        this->pull = &pull;
         return this;
     }
     return NULL;
@@ -54,7 +54,7 @@ t_bool push(t_array_list *this, void *value, size_t size_of_item)
 
 void *get(t_array_list *this, size_t index)
 {
-    if (this->index >= index)
+    if (this->index > index && index >= 0)
         return  this->arr[index];
     return NULL;
 }
@@ -141,16 +141,13 @@ void delete_if(t_array_list *this, t_bool(*cond)(void *item), void (*fe)(void *i
             while (x < this->index)
             {
                 if(!cond(this->arr[x]))
-                {
-                    
+                {  
                     this->swap(&(this->arr[i]), &(this->arr[x]));
                     break;
                 }
                 x++;
             }
-            
         }
-
         i++;
     }
     i = 0;
@@ -169,10 +166,11 @@ void delete_if(t_array_list *this, t_bool(*cond)(void *item), void (*fe)(void *i
         ixx++;
     }
 }
+
 int  partition (t_array_list *this, int  low, int  high, int (*cond)(void *item1, void *item2)) 
 { 
     void *pivot = this->arr[high];    
-   int i;
+    int i;
     int  j;
     i = (low - 1) ;  
     j = low ;
@@ -217,7 +215,7 @@ void _free(t_array_list *this, void (*fe)(void *item))
 {
     if (this != NULL && fe != NULL)
         this->foreach(this, fe); 
-    int i = 0;
+    this->index = 0;
    
     free(this->arr);     
 }
@@ -229,4 +227,23 @@ void ft_swap(void **a, void **b)
     *a = *b;
     *b = temp;
 }
- 
+
+void *pull(t_array_list *this)
+{
+    void  *ptr;
+    int i;
+    
+    i = 0;
+    ptr = NULL;
+    if (this->index > 0)
+    {
+        ptr = this->get(this,0);
+        while (i  < this->index - 1)
+        {
+            this->update_at(this, this->get(this ,i + 1), i);
+            i++;
+        }
+        this->index--;
+    }
+    return ptr;
+}
