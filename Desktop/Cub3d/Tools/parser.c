@@ -150,12 +150,12 @@ void get_w(void *item)
 {
     char *l;
     int i;
-    float wsize;
+    double wsize;
 
     l = (char *) item;
 //     if(ft_strlen(l ) <= 0)
 //         return;
-//     wsize = (float ) game->width / (float) (ft_strlen(l) + 1);
+//     wsize = (double ) game->width / (double) (ft_strlen(l) + 1);
 //      if (wsize > game->wvalue)
 //       game->wvalue = wsize;
 //
@@ -223,7 +223,12 @@ void    get_walls(t_parser *this)
             {
                 if (l[(int)real_pos.x] == '1')
                      push_wall(this, real_pos);
-               // if (l[(int)real_pos.x] == 's')
+                if(l[(int)real_pos.x] == 'N' || l[(int)real_pos.x] == 'S' || l[(int)real_pos.x] == 'E' || l[(int)real_pos.x] == 'W')
+                {
+                 game =   this->g_p;
+                  new_player(&(game->player), new_vector_pointer(real_pos.x *game->wvalue + (0.5 * game->wvalue ), real_pos.y * game->hvalue + (0.5 *game->hvalue)) ,l[(int)real_pos.x]);
+                }
+                   // if (l[(int)real_pos.x] == 's')
                  //    push_door(this, real_pos);
                 real_pos.x += 1;
             }
@@ -270,7 +275,7 @@ void   parser_do_final(t_parser *this)
         }
         if (!create_map(this))
         {
-            this->g_p->errors.push(&(this->g_p->errors),ft_strdup("valid file"),sizeof(char *));
+            //this->g_p->errors.push(&(this->g_p->errors),ft_strdup("valid file"),sizeof(char *));
             return;
         }
     }

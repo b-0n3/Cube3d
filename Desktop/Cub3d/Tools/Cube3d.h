@@ -17,14 +17,15 @@ typedef int  t_bool;
 
 
 typedef struct s_vector{
-    float x;
-    float y;
-    float len;
+    double x;
+    double y;
+    double len;
 
-    float (*length)(struct s_vector *this);
+    double (*length)(struct s_vector *this);
     void (*add)(struct s_vector *this , struct s_vector *o);
     void (*sub)(struct s_vector *this, struct s_vector *o);
     int (*compare_to)(void  *this , void *o);
+    struct s_vector *(*get_dir_angle)(struct s_vector *this , double angle);
     void (*to_string)(void *item);
 }              t_vector;
 
@@ -53,9 +54,13 @@ typedef struct s_array_list{
 
 typedef struct s_player{
     t_vector    *pos;
-    float       rotaion_angle;
-    float       fov;
-    struct s_game *g;
+    double       rotaion_angle;
+    double       fov;
+    double      rotation_speed;
+    double      mov_speed;
+    int         w_dir;
+    int         t_dir;
+
     t_array_list wall_rays;
     t_array_list sprit_rays;
     void (*update)(struct s_player *this);
@@ -68,6 +73,16 @@ typedef struct s_player{
 
 
 // }       t_image;
+typedef struct s_ray{
+        t_vector *pos;
+        t_vector *dir;
+        double   len;
+        int     kind;
+        double   angle;
+        void    (*cast)(void *ray);
+        void    (*render)(struct s_ray *this);
+}       t_ray;
+
 typedef struct s_wall{
         t_vector  *pos;
         t_vector  *dir;
@@ -89,8 +104,8 @@ typedef struct s_window {
 typedef struct s_game{
         t_window window;
         
-        float     hvalue;
-        float     wvalue;
+        double     hvalue;
+        double     wvalue;
         int     heigth;
         int     width;
 
@@ -118,14 +133,16 @@ typedef struct s_parser{
 
 
 /*  Vector  functions */
-t_vector new_vector(t_vector *this,  float x, float y);
-t_vector *new_vector_pointer(float x, float y);
-float length(t_vector *this);
+t_vector new_vector(t_vector *this,  double x, double y);
+t_vector *new_vector_pointer(double x, double y);
+t_vector *dir_from_angle(t_vector *this, double angle);
+double length(t_vector *this);
 void add(t_vector *this , t_vector *o);
 void sub(t_vector *this, t_vector *o);
 int compare_to(void  *this , void *o);
 void vector_to_string(void *item);
 
+double  normelize_angel(double angle);
 /*   arraylist functions */
 t_array_list *new_array_list(t_array_list *this, size_t first_size, size_t __sizeofit);
 t_bool push(t_array_list *this, void *value, size_t size_of_item);
@@ -164,4 +181,14 @@ void new_player(t_player *this , t_vector *pos, char ch);
 void update_player(t_player *this);
 void render_player(t_player *this);
 
+
+/* ray  function*/
+t_ray *new_ray(t_vector *pos, double angle);
+void    cast_ray(void *ray);
+void    render_ray(t_ray *this);
+
+
+/*  graphics function */
+void  draw_line(t_window wi ,t_vector *pos , t_vector *dir , int color);
+void draw_rec(t_window wi ,t_vector pos , int size , int color);
 # endif
