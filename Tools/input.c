@@ -21,6 +21,10 @@ int  key_pressed(int k_code , void *ptr)
     {
         game->player.t_dir = 1;
     }
+     if (k_code == EXIT_KEY)
+    {
+        game->exit(game, NULL);
+    }
     return 0;
 }
 

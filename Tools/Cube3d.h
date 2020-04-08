@@ -60,11 +60,12 @@ typedef struct s_player{
     double      mov_speed;
     int         w_dir;
     int         t_dir;
-
+        t_array_list collision;
     t_array_list wall_rays;
     t_array_list sprit_rays;
     void (*update)(struct s_player *this);
     void (*render)(struct s_player *this);
+    void (*free)(void *item);
 }       t_player;
 
 
@@ -75,22 +76,43 @@ typedef struct s_ray{
         double   len;
         int     kind;
         double   angle;
-        void (*update)(struct s_ray *this, double angle);
+        int index;
+        int coli;
+        void (*update)(struct s_ray *this, double angle, int i);
         void    (*cast)(void *ray);
         void    (*render)(struct s_ray *this);
         double (*length)(struct s_ray *this);
+        void (*free)(void *item);
 }       t_ray;
 
+typedef struct s_ray_sp{
+        t_vector *pos;
+        t_vector *dir;
+        double   len;
+        int     kind;
+        double   angle;
+        int index;
+        double dist;
+        void    (*cast)(void *ray);
+        void    (*render)(struct s_ray *this);
+}t_ray_sp;
 typedef struct s_wall{
         t_vector  *pos;
         t_vector  *dir;
-        double     angle;
+        int     kind;
 }               t_wall;
 
 // typedef struct s_input{
 // 	t_player *player;
 //         void (*update)(struct s_input *this);
 // }	t_input;
+
+typedef struct s_sptites{
+        t_vector *pos;
+        double    rad;
+        int kind;
+        void (*free)(void *item);
+}       t_sprites;
 
 typedef struct s_window {
             void *mlx;
@@ -118,7 +140,7 @@ typedef struct s_game{
         double     wvalue;
         int     heigth;
         int     width;
-
+        int     bi;
         t_player  player;
 
         t_array_list errors;
@@ -184,31 +206,47 @@ char *game_to_string(struct s_game *this);
 void free_game(void *this);
 
 /* wall function */
-t_wall *new_wall(t_vector *pos, t_vector *dir,double angle);
+t_wall *new_wall(t_vector *pos , t_vector *dir, int angle);
+void free_wall(void  * item);
 
 /* player functin */
 void new_player(t_player *this , t_vector *pos, char ch);
 void update_player(t_player *this);
 void render_player(t_player *this);
+void free_player(void *item);
 
 
 /* ray  function*/
-t_ray *new_ray(t_vector *pos, double angle);
+t_ray *new_ray(t_vector *pos, double angle, int i);
 void    cast_ray(void *ray);
 void    render_ray(t_ray *this);
-void update_ray(t_ray *this, double angle);
-
+void update_ray(t_ray *this, double angle, int i);
+void free_ray(void *item);
 
 /*  graphics function */
 void  draw_line(t_window wi ,t_vector *pos , t_vector *dir , int color);
 void draw_rec(t_window wi ,t_vector pos , int size , int color);
-void    ft_line(float x, float y, int size ,float angle);
+void    ft_line(float x, float y, int size ,float angle, int color);
 void    init_image(t_image *this,t_window win);
 void clear_screen( t_window s_win);
 void show_image(t_window s_win);
 void image_put_pixel(t_window v , int x, int y, int color);
+void rec(int  x ,int  y, int  sizex ,int sizey, int color);
+int		shadow(int color, double distance);
+void	circle(t_vector a, int radius, int color);
+void	line(int x0, int y0, int x1, int y1, int color);
+
 
 /*          input    */
 int key_pressed(int k_code , void *ptr);
 int key_relased(int k_code , void *ptr);
+
+
+
+/*     sprites functions*/
+t_sprites *new_sprite(t_vector *pos, double rad , int kind);
+void free_sprite(void *item);
+t_ray *new_ray_with_dir(t_vector *pos,t_vector *dir,  double angle, int i);
+void    cast_sprite(t_vector *pos, t_sprites *sp, t_ray **ray_sp , double r_len, double angle, int index);
+void free_ray_sp(void *item);
 # endif

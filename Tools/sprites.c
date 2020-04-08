@@ -1,0 +1,127 @@
+#include "Cube3d.h"
+
+t_vector *get_sprite_inter(t_vector *pos, t_vector *dir , t_vector *c_pos, double rad)
+{
+     double baX = dir->x - pos->x;
+        double baY = dir->y - pos->y;
+        double caX = c_pos->x - pos->x;
+        double caY = c_pos->y - pos->y;
+
+        double a = baX * baX + baY * baY;
+        double bBy2 = baX * caX + baY * caY;
+        double c = caX * caX + caY * caY - rad * rad;
+
+        double pBy2 = bBy2 / a;
+        double q = c / a;
+
+        double disc = pBy2 * pBy2 - q;
+        if (disc < 0) {
+           return NULL;
+        }
+        
+        double tmpSqrt = sqrt(disc);
+        double abScalingFactor1 = -pBy2 + tmpSqrt;
+        double abScalingFactor2 = -pBy2 - tmpSqrt;
+        if (abScalingFactor1 <= 0)
+        {
+         t_vector *p1 = new_vector_pointer(pos->x - baX * abScalingFactor1,
+         pos->y - baY * abScalingFactor1);
+        //if (p1->x <= dir->x )
+            return p1;
+        }
+        // t_vector *p2 = new_vector_pointer (pos->x - baX * abScalingFactor2, pos->y
+        //         - baY * abScalingFactor2);
+        // t_vector sub1;
+        // t_vector sub2;
+        // new_vector(&sub1, p1->x - pos->x , p1->y - pos->y);
+        // new_vector(&sub1, p2->x - pos->x , p2->y - pos->y);
+        // if(sub2.len < sub1.len)
+        //     return p2;
+        return NULL;
+}
+
+
+void    cast_sprite(t_vector *pos, t_sprites *sp, t_ray **ray_sp , double r_len, double angle, int index)
+{
+    t_vector *in;
+    t_vector sub;
+    double splen ;
+    t_vector *dir;
+   dir =  new_vector_pointer(pos->x + r_len * cos(angle) , pos->y + r_len *sin(angle));
+   
+    in = get_sprite_inter(pos, dir , sp->pos, sp->rad);
+   free(dir);
+    if(in != NULL)
+    {
+        new_vector(&sub , pos->x - in->x, pos->y - in->y);
+        splen = sub.length(&sub);
+        if(splen < r_len)
+        {
+            if(*ray_sp == NULL)
+            {
+                *ray_sp = new_ray_with_dir(pos, in , angle , index);
+            }
+            else   if(splen < (*ray_sp)->length(*ray_sp))
+            {
+                free((*ray_sp)->dir);
+                (*ray_sp)->dir = new_vector_pointer(in->x, in->y);
+            }
+            
+        }
+      
+                free(in);
+    }
+    free(pos);
+}
+
+t_sprites *new_sprite(t_vector *pos, double rad, int kind)
+{
+    t_sprites *sp = (t_sprites *) malloc (sizeof(t_sprites));
+    sp->pos = pos;
+    sp->rad = rad;
+    sp->kind = kind;
+    sp->free = &free_sprite;
+}
+
+void free_sprite(void *item)
+{
+    t_sprites *sp = (t_sprites *) item;
+    if (sp != NULL)
+    {
+        free(sp->pos);
+        free(sp);
+    }
+}
+
+void free_wall(void  * item)
+{
+    t_wall *wall;
+    wall = (t_wall *) item;
+    if(wall != NULL)
+    {
+        if (wall->dir != NULL)
+            free(wall->dir);
+        if(wall->pos != NULL)
+            free(wall->pos);
+        free(wall);
+    }
+}
+
+void free_ray_sp(void *item)
+{
+    t_ray *ray;
+    ray  = (t_ray  *) item;
+    if(ray != NULL)
+    {
+        if(ray->dir != NULL)
+        {
+           free(ray->dir);
+           
+        }
+        if(ray->pos != NULL)
+            free(ray->pos);
+        free(ray);
+    }
+
+
+}

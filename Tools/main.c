@@ -1,12 +1,13 @@
 
 #include "Cube3d.h"
 #include <sys/time.h>
-#define FRAME_CAP 50000.0
+#define FRAME_CAP 8000.0
 long  SECOND  =1000000000L;
 
 void drawmap(t_game *game)
 {
-    t_vector *pos = new_vector_pointer(0,0);
+   t_vector pos;
+     new_vector(&pos, 0,0);
     for(int y = 0 ; y < game->parser->lines.index; y++)
     {
         char *line = game->parser->lines.get(&(game->parser->lines),y);
@@ -15,9 +16,9 @@ void drawmap(t_game *game)
             
             if (line[x] == '1')
             {
-                pos->x = x *game->wvalue;
-                pos->y = y * game->hvalue;
-            draw_rec(game->window ,*pos,(int) game->hvalue - 3 ,0xeb4d55);
+                pos.x = x * (game->wvalue  );
+                pos.y = y * (game->hvalue);
+            draw_rec(game->window ,pos, (int) (game->hvalue - 3 ),0xeb4d55);
             }
         }
     }
@@ -25,16 +26,17 @@ void drawmap(t_game *game)
 
 void drawborder(t_game *game)
 {
-    t_vector *pos = new_vector_pointer(0,0);
+    t_vector pos;
+     new_vector(&pos, 0,0);
     for(int y = 0 ; y < game->parser->lines.index; y++)
     {
         char *line = game->parser->lines.get(&(game->parser->lines),y);
         for (int x = 0; x < ft_strlen(line); x++)
         {
-            
-                pos->x = x *game->wvalue;
-                pos->y = y * game->hvalue;
-            draw_rec(game->window ,*pos,(int) game->hvalue - 3 ,0xfaf5e4);
+                pos.x = x * (game->wvalue );
+                pos.y = y * (game->hvalue);
+     //           printf("drawnt");
+            draw_rec(game->window ,pos,(int) (game->hvalue - 3 ),0xfaf5e4);
             
         }
     }
@@ -51,14 +53,14 @@ long long  get_current_time()
 
 void    render()
 {
-     drawborder(g);
-        drawmap(g);
+   // drawborder(g);
+    //  drawmap(g);
      g->player.render(&(g->player));
     g->window.img->show(g->window);
 }
 
 long long  lastTime;
-double   frame_time = 1.0 / 5000.0;
+double   frame_time = 1.0 / FRAME_CAP;
 double  unprocessed = 0;
 
 int update(int key)
@@ -77,8 +79,6 @@ int update(int key)
         unprocessed -= frame_time;
        
         g->player.update(&g->player);
-       
-        
     }
     if(rend == 1)
     {
@@ -87,7 +87,7 @@ int update(int key)
     }
     else
     {
-        system("sleep 0.001");
+        system("sleep 0.01");
 
     }
    // printf("fdsfsdf sd fsdf %d", rend);
@@ -101,8 +101,7 @@ void startgame( t_game *game)
 {
     
     
-   //drawborder(game);
-   // drawmap(game);
+ 
     g = game;
     //mlx_do_key_autorepeatoff(g->window.mlx);
     
@@ -118,12 +117,12 @@ void printVer(void *item)
     printf("%s\n", (char *) item);
 }
 
-int main(void)
+int main(int argc , char **paths)
 {
     
     t_game game;
 
-    new_game(&game, "/home/b0n3/Desktop/Cube3d/Desktop/Cub3d/map.cub");
+    new_game(&game, paths[1]);
     lastTime = get_current_time();
     startgame(&game);
 

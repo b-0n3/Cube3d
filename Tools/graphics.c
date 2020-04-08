@@ -6,9 +6,9 @@ extern t_game *game;
 void draw_rec(t_window wi ,t_vector pos , int size , int color)
 {
     int x = pos.x ;
-    int x2 = pos.x + size;
+    int x2 = pos.x + (size );
     int y1 = pos.y ;
-    int y2 = pos.y + size ;
+    int y2 = pos.y + (size ) ;
 
 while (y1 < y2)
   {
@@ -24,29 +24,65 @@ while (y1 < y2)
   }
 }
 
-// void	line(int x0, int y0, int x1, int y1, int color)
-// {
-// 	int		dx;
-// 	int		dy;
-// 	float		steps;
-// 	float	xinc;
-// 	float	yinc;
-// 	int		i;
+void	circle(t_vector a, int radius, int color)
+{
+	int		col;
+	float	angle;
+	float	step;
 
-// 	dx = x1 - x0;
-// 	dy = y1 - y0;
-// 	steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
-//  // steps = fmax(dx, dy);
-//   xinc = dx / (float)steps;
-// 	yinc = dy / (float)steps;
-// 	i = -1;
-// 	while (++i <= steps)
-// 	{
-// 	windo.mlx , windo.win, (int) x0 ,(int) y0, color);
-// 		x0 += xinc;
-// 		y0 += yinc;
-// 	}
-// }
+	col = 0;
+	angle =  0;
+	step = (M_PI / 180);
+	while (angle <= (2 * M_PI))
+	{
+    
+		ft_line(a.x, a.y, radius , angle, color);
+		angle += step;
+		col++;
+	}
+}
+
+void rec(int  x ,int  y, int  sizex ,int sizey, int color)
+{
+  int x2 = x + sizex;
+  int y2 = y+ sizey;
+  int vx =  x;
+  while (y < y2)
+  {
+    vx = x;
+      while (vx < x2)
+        {
+          game->window.img->put_pixel(game->window ,  vx, y ,color);
+          vx++;
+        }
+        y += 1;
+  }
+
+}
+
+void	line(int x0, int y0, int x1, int y1, int color)
+{
+	int		dx;
+	int		dy;
+	float		steps;
+	float	xinc;
+	float	yinc;
+	int		i;
+
+	dx = x1 - x0;
+	dy = y1 - y0;
+	steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
+ // steps = fmax(dx, dy);
+  xinc = dx / (float)steps;
+	yinc = dy / (float)steps;
+	i = -1;
+	while (++i <= steps)
+	{
+    image_put_pixel(game->window, x0, y0, color);
+		x0 += xinc;
+		y0 += yinc;
+	}
+}
 
 // void  draw_line(t_window wi ,t_vector *pos , t_vector *dir , int color)
 // {
@@ -85,7 +121,7 @@ while (y1 < y2)
 //   //  } 
 //   //  ft_swap( (void **)&pos,(void **) &dir);
 // }
-void    ft_line(float x, float y, int size ,float angle)
+void    ft_line(float x, float y, int size ,float angle, int color)
 {
     int r = 0;
     float or_x = x;
@@ -94,7 +130,7 @@ void    ft_line(float x, float y, int size ,float angle)
     {
         x = or_x + (r * cos(angle));
         y = or_y + (r * sin(angle));
-        game->window.img->put_pixel(game->window , (int) x, (int)y ,0x9c5518);
+        game->window.img->put_pixel(game->window , (int) x, (int)y ,color);
         r++;
     }
 }
@@ -111,25 +147,32 @@ void    init_image(t_image *this,t_window win)
 
   }
 }
+int rgb_to_int(int r, int g, int b)
+{
+int c = r;
+  c = (c << 8) | g;
+  c = (c << 8) | b;
+  return c;
+}
 
-// int		shadow(int color, double distance)
-// {
-// 	int		r;
-// 	int		g;
-// 	int		b;
-// 	float	fact;
+int		shadow(int color, double distance)
+{
+	int		r;
+	int		g;
+	int		b;
+	float	fact;
 
-// 	fact = 100 / distance;
-// 	b = (color & 0xff) * fact;
-// 	b = b > (color & 0xff) ? (color & 0xff) : b;
-// 	color = color >> 8;
-// 	g = (color & 0xff) * fact;
-// 	g = g > (color & 0xff) ? (color & 0xff) : g;
-// 	color = color >> 8;
-// 	r = (color & 0xff) * fact;
-// 	r = r > (color & 0xff) ? (color & 0xff) : r;
-// 	return (rgb_to_int(r, g, b));
-
+	fact = 100 / distance;
+	b = (color & 0xff) * fact;
+	b = b > (color & 0xff) ? (color & 0xff) : b;
+	color = color >> 8;
+	g = (color & 0xff) * fact;
+	g = g > (color & 0xff) ? (color & 0xff) : g;
+	color = color >> 8;
+	r = (color & 0xff) * fact;
+	r = r > (color & 0xff) ? (color & 0xff) : r;
+	return (rgb_to_int(r, g, b));
+}
 
  
 void image_put_pixel(t_window v , int x, int y, int color)

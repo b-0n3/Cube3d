@@ -42,9 +42,12 @@ int get_fd(char *filename)
 }
 
 
-void   free_parser(void *this)
+void   free_parser(void *th)
 {
-
+    t_parser *this;
+    this = (t_parser *) th;
+    this->lines.free(&this->lines ,&free);
+    free(this);
 }
 
 void fill_res(t_game *g_p , char *aftersplit)
@@ -63,8 +66,8 @@ void fill_res(t_game *g_p , char *aftersplit)
     // }
     //else
     //{
-       g_p->width = 1000;
-       g_p->heigth = 600;
+       g_p->width = 1020;
+       g_p->heigth = 610;
     //}
 
 }
@@ -146,62 +149,15 @@ void get_w(void *item)
     double wsize;
 
     l = (char *) item;
-//     if(ft_strlen(l ) <= 0)
-//         return;
-//     wsize = (double ) game->width / (double) (ft_strlen(l) + 1);
-//      if (wsize > game->wvalue)
-//       game->wvalue = wsize;
-//
-    game->wvalue = 22;
+    if(ft_strlen(l ) <= 0)
+        return;
+    wsize = (double ) game->width / (double) (ft_strlen(l) + 1);
+     if (wsize > game->bi)
+      game->bi =(int) wsize;
+
+    game->wvalue = 30;
  }
 
-// void push_wall(t_parser *this, t_vector r_p)
-// {
-//     t_array_list *lines;
-//     char *up_l;
-//     char *do_l;
-//     char *l;
-//     int l_size;
-//     int up_size;
-//     int do_size;
-
-//     lines = &(this->lines);
-//     l = lines->get(lines , r_p.y);
-//     up_l = lines->get(lines, r_p.y -1);
-//     do_l = lines->get(lines, r_p.y + 1);
-//     if (l != NULL)
-//     {
-//         l_size = ft_strlen(l);
-//         if (r_p.x > 0)
-//         {
-//             if(l[(int )r_p.x -1] != '1' && l[(int )r_p.x -1] != ' ')
-//                 game->walls.push(&(game->walls),new_wall(new_vector_pointer(game->wvalue * (r_p.x ), game->hvalue * (r_p.y )),new_vector_pointer(game->wvalue * (r_p.x ) , game->hvalue * (r_p.y  + 1))), sizeof(t_wall *));
-//         }
-//         if (r_p.x < l_size)
-//         {
-//             if(l[(int )r_p.x +1] != '1' && l[(int )r_p.x +1] != ' ')
-//                 game->walls.push(&(game->walls),new_wall(new_vector_pointer(game->wvalue * (r_p.x  + 1), game->hvalue * (r_p.y )),new_vector_pointer(game->wvalue * (r_p.x + 1), game->hvalue * (r_p.y  + 1))), sizeof(t_wall *));
-//         }
-//         if (up_l != NULL)
-//         {
-//             up_size = ft_strlen ( up_l);
-//             if (r_p.x < up_size)
-//         {
-//             if(up_l[(int )r_p.x ]!= '1' && up_l[(int )r_p.x ] != ' ')
-//                 game->walls.push(&(game->walls),new_wall(new_vector_pointer(game->wvalue * (r_p.x), game->hvalue * (r_p.y )),new_vector_pointer(game->wvalue * (r_p.x + 1), game->hvalue * (r_p.y  ))), sizeof(t_wall *));
-//         }
-//         }
-//         if (do_l != NULL)
-//         {
-//             do_size = ft_strlen ( do_l);
-//             if (r_p.x < do_size)
-//             {
-//                 if(do_l[(int )r_p.x ] != '1' && do_l[(int )r_p.x ] != ' ')
-//                     game->walls.push(&(game->walls),new_wall(new_vector_pointer(game->wvalue * (r_p.x), game->hvalue * (r_p.y + 1)),new_vector_pointer(game->wvalue * (r_p.x + 1), game->hvalue * (r_p.y + 1 ))), sizeof(t_wall *));
-//             }
-//         }
-//     }
-// }
 void push_n_walls(t_parser *this,char *l ,t_vector r_p)
 {
     char *l_d = this->lines.get(&(this->lines),r_p.y + 1);
@@ -212,16 +168,22 @@ void push_n_walls(t_parser *this,char *l ,t_vector r_p)
     if (l_d != NULL)
      while (l[(int)r_p.x] != '\0' )
      {
-                while (l[(int) r_p.x] == '1' && l_d[(int)r_p.x]!='1' && l[(int) r_p.x] != '\0' && l_d[(int)r_p.x] != '\0')
+                while (l[(int) r_p.x] == '1' && l_d[(int)r_p.x]!='1' )
+                {
+                    if ( l[(int) r_p.x] == '\0' || l_d[(int)r_p.x] == '\0')
+                        break;
                     r_p.x += 1;
+                }
                 if (start.x < r_p.x)
                 {
-                   int xx= game->walls.push(&(game->walls),new_wall(new_vector_pointer(start.x * game->wvalue, (start.y + 1)*game->hvalue),new_vector_pointer((r_p.x )* game->wvalue ,(r_p.y + 1)*game->hvalue),0), sizeof(t_wall));
+                    game->walls.push(&(game->walls),new_wall(new_vector_pointer(start.x * game->wvalue, (start.y + 1)*game->hvalue),new_vector_pointer((r_p.x )* game->wvalue ,(r_p.y + 1)*game->hvalue),0), sizeof(t_wall));
                    // printf("this is xx %d",xx);
                 }
                  if(l[(int)r_p.x] == 'N' || l[(int)r_p.x] == 'S' || l[(int)r_p.x] == 'E' || l[(int)r_p.x] == 'W')
                 {
+                    
                   new_player(&(game->player), new_vector_pointer(r_p.x *game->wvalue + (0.5 * game->wvalue ), r_p.y * game->hvalue + (0.5 *game->hvalue)) ,l[(int)r_p.x]);
+                    l[(int) r_p.x] = '0';
                 }
                  r_p.x += 1;
                  start.x = r_p.x;
@@ -229,6 +191,7 @@ void push_n_walls(t_parser *this,char *l ,t_vector r_p)
                 
     }
 }
+
 void push_s_walls(t_parser *this,char *l ,t_vector r_p)
 {
     char *l_u = this->lines.get(&(this->lines),r_p.y - 1);
@@ -243,13 +206,82 @@ void push_s_walls(t_parser *this,char *l ,t_vector r_p)
                     r_p.x += 1;
                 if (start.x < r_p.x)
                 {
-                   int xx= game->walls.push(&(game->walls),new_wall(new_vector_pointer(start.x * game->wvalue, (start.y )*game->hvalue),new_vector_pointer((r_p.x )* game->wvalue ,(r_p.y )*game->hvalue),0), sizeof(t_wall));
+                   int xx= game->walls.push(&(game->walls),new_wall(new_vector_pointer(start.x * game->wvalue, (start.y )*game->hvalue),new_vector_pointer((r_p.x )* game->wvalue ,(r_p.y )*game->hvalue),2), sizeof(t_wall));
                  //   printf("this is xx %d",xx);
                 }
                  r_p.x += 1;
                  start.x = r_p.x;
                  start.y = r_p.y;
                 
+    }
+}
+
+void push_e_walls(t_vector p)
+{
+    char *l = game->parser->lines.get(&game->parser->lines, p.y);
+    t_vector start;
+    new_vector(&start , p.x, p.y);
+    int len;
+    while (l != NULL && p.y < game->parser->lines.index)
+    {
+         l = game->parser->lines.get(&game->parser->lines, p.y);
+        while (l[(int)p.x] == '1' && l[(int)p.x + 1] != '1')
+        {
+            p.y += 1;
+            l = game->parser->lines.get(&game->parser->lines, p.y);
+            if (l != NULL)
+            {
+                len = ft_strlen(l);
+                if (p.x >= len)
+                    break;
+            }
+            else 
+                break;
+        }
+
+            if (start.y < p.y)
+                {
+                   int xx= game->walls.push(&(game->walls),new_wall(new_vector_pointer((start.x +1 ) * game->wvalue, (start.y )*game->hvalue),new_vector_pointer((p.x + 1)* game->wvalue ,(p.y )*game->hvalue),3), sizeof(t_wall));
+                 //   printf("this is xx %d",xx);
+                }
+                 p.y += 1;
+                 start.x = p.x;
+                 start.y = p.y;
+    }
+}
+
+
+void push_w_walls(t_vector p)
+{
+char *l = game->parser->lines.get(&game->parser->lines, p.y);
+    t_vector start;
+    new_vector(&start , p.x, p.y);
+    int len;
+    while (l != NULL && p.y < game->parser->lines.index)
+    {
+         l = game->parser->lines.get(&game->parser->lines, p.y );
+        while (l[(int)p.x] == '1' && l[(int)p.x - 1] != '1')
+        {
+            p.y += 1;
+            l = game->parser->lines.get(&game->parser->lines, p.y);
+            if (l != NULL)
+            {
+                len = ft_strlen(l);
+                if (p.x >= len)
+                    break;
+            }
+            else 
+                break;
+        }
+
+            if (start.y < p.y)
+                {
+                   int xx= game->walls.push(&(game->walls),new_wall(new_vector_pointer((start.x ) * game->wvalue, (start.y )*game->hvalue),new_vector_pointer((p.x)* game->wvalue ,(p.y )*game->hvalue),1), sizeof(t_wall));
+                 //   printf("this is xx %d",xx);
+                }
+                 p.y += 1;
+                 start.x = p.x;
+                 start.y = p.y;
     }
 }
 
@@ -266,8 +298,35 @@ void    get_walls(t_parser *this)
            push_s_walls(this, l ,real_pos);
             real_pos.y += 1.0;
     }
-    new_vector(&real_pos, 0,0);
-
+   real_pos.x  =0;
+   real_pos.y = 0;
+   while (real_pos.x < game->bi)
+   {
+       push_e_walls(real_pos);
+       if(real_pos.x > 0)
+           push_w_walls(real_pos);
+       real_pos.x += 1;
+   }
+}
+void get_sprites(t_parser *this)
+{
+    int x;
+    int y =0;
+    char *l;
+    while (y < this->lines.index)
+    {
+        x = 0;
+        l = this->lines.get(&this->lines , y);
+        while (l[x] != '\0')
+        {
+            if (l[x] != '1' && l[x] != '0'  && l[x] != ' ')
+            {
+                game->sprites.push(&game->sprites, new_sprite(new_vector_pointer((x + 0.5) * game->wvalue, (y + 0.5) * game->hvalue), game->hvalue * 0.3, l[x]),sizeof(t_sprites) );
+            }
+            x++;
+        }
+        y++;
+    }
 }
 
 t_bool create_map(t_parser *this)
@@ -282,10 +341,11 @@ t_bool create_map(t_parser *this)
     }
     game = this->g_p;
     //game->hvalue = game->heigth /(nb_lines + 1);
-    game->hvalue = 22;
+    game->hvalue = 30;
     this->lines.foreach(&(this->lines),&get_w);
+    game->wvalue = 30;
     get_walls(this);
-    //get_sprites(this);
+    get_sprites(this);
     //get_doors(this);
 }
 
@@ -305,7 +365,7 @@ void   parser_do_final(t_parser *this)
             }
             if (line[0] != '\0')
                 parse_line(this->g_p, line);
-          //  free(line);
+            free(line);
         }
         if (!create_map(this))
         {
