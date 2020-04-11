@@ -1,4 +1,5 @@
 #include "Cube3d.h"
+extern int nb_rays;
 
 t_vector *get_sprite_inter(t_vector *pos, t_vector *dir , t_vector *c_pos, double rad)
 {
@@ -41,7 +42,7 @@ t_vector *get_sprite_inter(t_vector *pos, t_vector *dir , t_vector *c_pos, doubl
 }
 
 
-void    cast_sprite(t_vector *pos, t_sprites *sp, t_ray **ray_sp , double r_len, double angle, int index)
+void    cast_sprite(t_vector *pos, t_sprites *sp, t_ray_sp **ray_sp , double r_len, double angle, int index)
 {
     t_vector *in;
     t_vector sub;
@@ -59,12 +60,12 @@ void    cast_sprite(t_vector *pos, t_sprites *sp, t_ray **ray_sp , double r_len,
         {
             if(*ray_sp == NULL)
             {
-                *ray_sp = new_ray_with_dir(pos, in , angle , index);
+                *ray_sp = new_sp_ray(pos, in , angle , index, sp);
+                 
             }
             else   if(splen < (*ray_sp)->length(*ray_sp))
             {
-                free((*ray_sp)->dir);
-                (*ray_sp)->dir = new_vector_pointer(in->x, in->y);
+                (*ray_sp)->update(*ray_sp , in, sp);
             }
             
         }
@@ -73,14 +74,28 @@ void    cast_sprite(t_vector *pos, t_sprites *sp, t_ray **ray_sp , double r_len,
     }
     free(pos);
 }
+double get_angle (double x ,double y)
+{
+    double res;
+    if (y < 0 || x < 0)
+        return 0;
+    res = x / y;
+    return atan(res);
+}
 
 t_sprites *new_sprite(t_vector *pos, double rad, int kind)
 {
+    double angle;
+
     t_sprites *sp = (t_sprites *) malloc (sizeof(t_sprites));
     sp->pos = pos;
     sp->rad = rad;
     sp->kind = kind;
     sp->free = &free_sprite;
+    sp->d_a = get_angle(sp->pos->x , sp->pos->y + rad);
+    sp->u_a = get_angle (sp->pos->x , sp->pos->y - rad);
+    angle  = sp->u_a - sp->d_a;
+    sp->a_p_r = angle / nb_rays;
 }
 
 void free_sprite(void *item)

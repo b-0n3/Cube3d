@@ -10,6 +10,13 @@ double      ray_len(t_ray *ray)
     return (sub.length(&sub));
 }
 
+double      ray_sp_len(t_ray_sp *ray)
+{
+    t_vector sub;
+
+    new_vector(&sub, ray->pos->x - ray->dir->x , ray->pos->y - ray->dir->y);
+    return (sub.length(&sub));
+}
 t_ray *new_ray(t_vector *pos, double angle, int i)
 {
     t_ray *ray;
@@ -32,23 +39,33 @@ t_ray *new_ray(t_vector *pos, double angle, int i)
     return ray;
 }
 
-t_ray *new_ray_with_dir(t_vector *pos, t_vector *dir,  double angle, int i)
+void update_sp_ray(t_ray_sp *this, t_vector *dir, t_sprites *sp)
 {
-    t_ray *ray;
-    ray = (t_ray *)malloc(sizeof (t_ray));
+    double diff_an;
+    if (dir == NULL || sp == NULL)
+         return ;
+    if(this->dir != NULL)
+        free(this->dir);
+    this->dir = new_vector_pointer(dir->x, dir->y);
+    this ->sp = sp;
+    diff_an  = sp->u_a - this->angle;
+    this->offset = diff_an / sp->a_p_r;
+}
+t_ray_sp *new_sp_ray(t_vector *pos, t_vector *dir,  double angle, int i, t_sprites *sp)
+{
+    t_ray_sp *ray;
+    ray = (t_ray_sp *)malloc(sizeof (t_ray_sp));
     if (ray != NULL)
     {
-        
         ray->pos = new_vector_pointer(pos->x, pos->y);
-
-       ray->update = &update_ray;
-        ray->render = &render_ray;
         ray->cast = &cast_ray;
-        ray->length = &ray_len;
-        ray->free = &free_ray;
-        ray->dir = new_vector_pointer(dir->x, dir->y);
+        ray->length = &ray_sp_len;
+        ray->free = &free_ray_sp;
+        ray->update = &update_sp_ray;
+        ray->dir = NULL;
         ray->angle = angle;
         ray->index = i;
+        ray->update(ray, dir, sp);
     }
 
     return ray;
@@ -144,8 +161,7 @@ void    cast_ray(void *r)
     if(ray->index != -10)
     {
         index = 0;
-        t_ray   *sp = NULL;
-
+        t_ray_sp   *sp = NULL;
         while (index < game->sprites.index)
         {
             t_sprites *spp = game->sprites.get(&game->sprites, index);
@@ -229,7 +245,6 @@ void free_ray(void *item)
         if(ray->dir != NULL)
         {
            free(ray->dir);
-           
         }
         free(ray);
     }

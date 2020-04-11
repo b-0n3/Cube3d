@@ -1,10 +1,9 @@
 #include "Cube3d.h"
 
 extern t_game *game;
- int nb_rays;
- extern int coli;
- int spsin = 0;
- int splin = 0; 
+int nb_rays;
+
+
 void new_player(t_player *this , t_vector *pos, char ch)
 {
    
@@ -149,7 +148,7 @@ void draw_ray(void *item)
 void draw_sprit(void *item)
 {
  //t_vector sub;
-     t_ray *this = (t_ray *) item;
+     t_ray_sp *this = (t_ray_sp *) item;
 //     new_vector(&sub,this->pos->x - this->dir->x   ,this->pos->y - this->dir->y );
 //     double color;
 //      color =  shadow(0xf8b400 , this->length(this));
@@ -170,7 +169,7 @@ void draw_sprit(void *item)
            dispro = (game->width /2) * tan(game->player.fov /2);
            wallHei = (game->wvalue / correctdis) * dispro;
            
-
+        printf ( "thsi is the offset  %d  \n ", this->offset);
            start = this->index ;
            end = ((game->heigth /2));
            ysize = wallHei  * 0.7 ;
@@ -240,8 +239,7 @@ void render_player(t_player *this)
    
    //game->sprites.foreach(&game->sprites , &draw_sprites);
    //this->sprit_rays.foreach(&this->sprit_rays , &draw_sprit);
-    //spsin = ((t_ray *)(this->sprit_rays.get(&this->sprit_rays ,0)))->index; 
-    splin = this->sprit_rays.index;
+   
     do{
         t_ray *spray = (t_ray *)this->sprit_rays.pull(&this->sprit_rays);
         if(spray != NULL)
@@ -251,8 +249,7 @@ void render_player(t_player *this)
             
         }
         } while  (this->sprit_rays.index > 0 );
-        spsin = 0;
-        splin = 0;    
+          
    // game->walls.foreach(&(game->walls), &drawwall);
     // printf("walls nb %ld",game->walls.index);
 
