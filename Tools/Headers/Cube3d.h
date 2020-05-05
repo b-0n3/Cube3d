@@ -34,11 +34,9 @@ typedef struct s_sptites{
 
 
 
-
 /* wall function */
 t_wall *new_wall(t_vector *pos , t_vector *dir, int angle);
 void free_wall(void  * item);
-
 
 
 

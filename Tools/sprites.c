@@ -3,7 +3,7 @@ extern int nb_rays;
 
 t_vector *get_sprite_inter(t_vector *pos, t_vector *dir , t_vector *c_pos, double rad)
 {
-     double baX = dir->x - pos->x;
+        double baX = dir->x - pos->x;
         double baY = dir->y - pos->y;
         double caX = c_pos->x - pos->x;
         double caY = c_pos->y - pos->y;
@@ -16,10 +16,10 @@ t_vector *get_sprite_inter(t_vector *pos, t_vector *dir , t_vector *c_pos, doubl
         double q = c / a;
 
         double disc = pBy2 * pBy2 - q;
+
         if (disc < 0) {
            return NULL;
         }
-        
         double tmpSqrt = sqrt(disc);
         double abScalingFactor1 = -pBy2 + tmpSqrt;
         double abScalingFactor2 = -pBy2 - tmpSqrt;
@@ -27,7 +27,6 @@ t_vector *get_sprite_inter(t_vector *pos, t_vector *dir , t_vector *c_pos, doubl
         {
          t_vector *p1 = new_vector_pointer(pos->x - baX * abScalingFactor1,
          pos->y - baY * abScalingFactor1);
-        //if (p1->x <= dir->x )
             return p1;
         }
         // t_vector *p2 = new_vector_pointer (pos->x - baX * abScalingFactor2, pos->y
@@ -36,7 +35,7 @@ t_vector *get_sprite_inter(t_vector *pos, t_vector *dir , t_vector *c_pos, doubl
         // t_vector sub2;
         // new_vector(&sub1, p1->x - pos->x , p1->y - pos->y);
         // new_vector(&sub1, p2->x - pos->x , p2->y - pos->y);
-        // if(sub2.len < sub1.len)
+        // if(sub2.len P< sub1.len)
         //     return p2;
         return NULL;
 }
@@ -61,7 +60,6 @@ void    cast_sprite(t_vector *pos, t_sprites *sp, t_ray_sp **ray_sp , double r_l
             if(*ray_sp == NULL)
             {
                 *ray_sp = new_sp_ray(pos, in , angle , index, sp);
-                 
             }
             else   if(splen < (*ray_sp)->length(*ray_sp))
             {
@@ -74,6 +72,7 @@ void    cast_sprite(t_vector *pos, t_sprites *sp, t_ray_sp **ray_sp , double r_l
     }
     free(pos);
 }
+
 double get_angle (double x ,double y)
 {
     double res;
@@ -94,6 +93,7 @@ t_sprites *new_sprite(t_vector *pos, double rad, int kind)
     sp->free = &free_sprite;
     sp->d_a = get_angle(sp->pos->x , sp->pos->y + rad);
     sp->u_a = get_angle (sp->pos->x , sp->pos->y - rad);
+    
     angle  = sp->u_a - sp->d_a;
     sp->a_p_r = angle / nb_rays;
 }
@@ -137,6 +137,4 @@ void free_ray_sp(void *item)
             free(ray->pos);
         free(ray);
     }
-
-
 }

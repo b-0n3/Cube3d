@@ -3,10 +3,10 @@
 extern t_game *game;
 int nb_rays;
 
-
+t_sp_texture *tsp ;
 void new_player(t_player *this , t_vector *pos, char ch)
 {
-   
+   tsp = new_sp_texture("/media/b0n3/fbc084e2-cd4e-4843-a572-f64a2fc084c4/b0n3/Desktop/Cub3d/texture/barrel.xpm", 1);
     double ray_angle;
 
     this->fov = 70 * (M_PI / 180);
@@ -19,9 +19,9 @@ void new_player(t_player *this , t_vector *pos, char ch)
     this->t_dir = 0;
     this->free = &free_player;
     nb_rays = game->width - 2;
-    if (ch == 'N')
+    if (ch == 'S')
         this->rotaion_angle =  (M_PI_2);
-    else if (ch == 'S')
+    else if (ch == 'N')
         this->rotaion_angle =  (3 * M_PI_2);
     else if (ch == 'W')
         this->rotaion_angle = M_PI;
@@ -143,16 +143,97 @@ void draw_ray(void *item)
         ray->render(ray);
         //printf("this is kind %d \n" , ray->kind);
     }
+}        
+
+typedef struct s_line {
+    t_vector *pos;
+    t_vector *dir;
+}   t_line ;
+
+double get_offset( t_line tang, t_ray_sp *ray)
+{
+    double newx;
+    double newy;
+    double new_len;
+    float t = 0;
+    float u = 0;
+      double x3= ray->pos->x;
+    double x4 = ray->dir->x;
+
+    double x1 = tang.pos->x;
+    double x2 = tang.dir->x;
+   
+    double y3 = ray->pos->y;
+    double y4 = ray->dir->y;
+    
+    double y1 = tang.pos->y;
+    double y2 = tang.dir->y;
+
+    //new_vector(&sub , ray->pos->x, ray->pos->y);
+    double den = (x1 - x2)*(y3 - y4) - (y1 -y2) * (x3-x4);
+    free(tang.dir);
+   if (den != 0)
+   {
+    t = ((x1 -x3) *(y3- y4 ) - (y1 - y3) *( x3 - x4))/ den;
+    u = -((x1 -x2) * (y1 -y3) - (y1 - y2)*(x1 - x3))/den;
+    //   printf ("%f \n ", t);
+    return t * ray->sp->rad ;
+    }
+    return 0;
+}
+double get_line_distance(t_ray_sp *ray)
+{
+    t_line tang;
+    double angle;
+    double x_size;
+    tang.pos = ray->sp->pos;
+
+    angle = normelize_angel(atan2(ray->pos->y - tang.pos->y , 
+         ray->pos->x - tang.pos->x))  + M_PI_2;
+    
+    angle = normelize_angel(angle);
+    tang.dir = new_vector_pointer(tang.pos->x + (ray->sp->rad * cos(angle)), 
+        tang.pos->y + (ray->sp->rad * sin (angle )));
+    return get_offset( tang, ray);
 }
 
-void draw_sprit(void *item)
+	void   render_sprite_texture( double start , double end , double wallHei ,t_sp_texture *tex , double dis)
 {
- //t_vector sub;
+      int color;
+      t_vector pos;
+      int y2 = end  + wallHei;
+      float index;
+       
+      index = 0;
+      float step = tex->height /wallHei;
+      // if (step < 1)
+      //   step = 1;
+      new_vector(&pos, start,end);
+      while (pos.y < y2)
+      {
+          
+          color = tex->data[(int)tex->offset   + (int) index * (int)tex->width];
+          if(color > 0)
+          {
+            //image_put_pixel(game->window ,start , pos.y, color);
+            rec(start, pos.y, 10, 10 ,color);
+          }
+          pos.y += 1;
+          index += step;
+         // index = fmod(index, tex->height);
+      }
+      
+     
+}
+ 
+void  draw_sprit(void *item)
+{
+// t_vector sub;
      t_ray_sp *this = (t_ray_sp *) item;
-//     new_vector(&sub,this->pos->x - this->dir->x   ,this->pos->y - this->dir->y );
-//     double color;
-//      color =  shadow(0xf8b400 , this->length(this));
-//      ft_line(this->pos->x, this->pos->y , floor(sub.len),this->angle, color);
+   //  new_vector(&sub,this->pos->x - this->dir->x   ,this->pos->y - this->dir->y );
+   
+   //   color =  shadow(0xf8b400 , this->length(this));
+   //  ft_line(this->pos->x, this->pos->y , floor(sub.len),this->angle, color);
    double dispro;
     double wallHei;
     double correctdis;
@@ -162,25 +243,107 @@ void draw_sprit(void *item)
      double xsize;
      double ysize;
     double color;
-       
+
+
         if(this->pos != NULL )
         {
-           correctdis = this->length(this) * cos (game->player.rotaion_angle - this->angle);
-           dispro = (game->width /2) * tan(game->player.fov /2);
+           correctdis = this->length(this) * cos(this->angle -game->player.rotaion_angle  );
+           dispro = (game->width / 2) * tan(game->player.fov /2);
            wallHei = (game->wvalue / correctdis) * dispro;
            
-        printf ( "thsi is the offset  %d  \n ", this->offset);
-           start = this->index ;
+       // printf ( "thsi is the offset  %d  \n ", this->offset);
+           start = this->index;
            end = ((game->heigth /2));
-           ysize = wallHei  * 0.7 ;
+           
            xsize = 1;
-            color =  shadow(0xff7272, correctdis) ;
-            rec(start,end, xsize, ysize ,color);
-        }
+              //  printf ("%f \n " , get_line_distance(this));
+    t_line tang;
+    double angle;
+    double x_size;
+     // this->sp->rad = tsp->width / 2;
+    tang.pos = this->sp->pos;
 
+ 
+     angle = normelize_angel(atan2(this->pos->y - tang.pos->y , 
+         this->pos->x - tang.pos->x))  + M_PI_2;
+    
+    angle = normelize_angel(angle);
+    tang.dir = new_vector_pointer(tang.pos->x + (this->sp->rad * cos(angle)), 
+        tang.pos->y + (this->sp->rad * sin (angle )));
+        //  new_vector(&sub,tang.pos->x - tang.dir->x   ,tang.pos->y - tang.dir->y );
+             
+   // ft_line(tang.pos->x, tang.pos->y , floor(sub.len), angle, color);
+                //printf ("%f \n" , dist);
+           
+             
+            double dist =  get_line_distance(this) ;
+            dist += this->sp->rad;
+             //end = game->heigth /2 - tsp->height / 2;
+            
+            //  ysize = (game->hvalue / correctdis) * dispro;
+          
+            start = this->index ;
+            end = ((game->heigth /2));
+            
+            ysize = wallHei   ;
+           // ysize = fmod(ysize, game->heigth);
+            xsize = 1;
+           
+            double nof = (dist / (2 * this->sp->rad)) * tsp->width;
+            
+            tsp->offset = nof;
+            tsp->offset = abs(tsp->offset);
+           // while ()
+            render_sprite_texture(start, end, ysize, tsp, correctdis);
+            //printf("start %f  end  %f  size %f \n", start , end ,ysize );
+            //color =  shadow(0xff7272,  dist);
+
+            //rec(start,end, xsize, ysize ,color);
+        
+        }
 
     free_ray_sp(this);
 }
+
+
+
+// void draw_sprit(void *item)
+// {
+//  //t_vector sub;
+//      t_ray_sp *this = (t_ray_sp *) item;
+// //     new_vector(&sub,this->pos->x - this->dir->x   ,this->pos->y - this->dir->y );
+// //     double color;
+// //      color =  shadow(0xf8b400 , this->length(this));
+// //      ft_line(this->pos->x, this->pos->y , floor(sub.len),this->angle, color);
+//    double dispro;
+//     double wallHei;
+//     double correctdis;
+   
+//      double start;
+//      double end;
+//      double xsize;
+//      double ysize;
+//     double color;
+       
+//         if(this->pos != NULL )
+//         {
+//            correctdis = this->length(this) * cos (game->player.rotaion_angle - this->angle);
+//            dispro = (game->width /2) * tan(game->player.fov /2);
+//            wallHei = (game->wvalue / correctdis) * dispro;
+           
+//         //printf ( "thsi is the offset  %d  \n ", this->offset);
+//            start = this->index ;
+//            end = ((game->heigth /2));
+//            ysize = wallHei  * 0.7 ;
+//            xsize = 1;
+//             color =  shadow(0xff7272, correctdis) ;
+//             rec(start,end, xsize, ysize ,color);
+//         }
+
+
+//     free_ray_sp(this);
+// }
+
 
 // void draw_sprites(void *item)
 // {
@@ -218,6 +381,7 @@ void draw_sprit(void *item)
 // //         }
  
 // t_sprites *sp = (t_sprites *) item;
+
 // circle(*sp->pos, sp->rad ,0xff7272 );
 
 //    // ft_line(wall->pos->x, wall->pos->y, floor(sub.length(&sub)),wall->angle);
@@ -237,18 +401,18 @@ void render_player(t_player *this)
     //game->window.img->put_pixel(game->window,direction->dir->x, direction->dir->y, 0xff9d76);
     this->wall_rays.foreach(&this->wall_rays, &draw_ray);
    
-   //game->sprites.foreach(&game->sprites , &draw_sprites);
-   //this->sprit_rays.foreach(&this->sprit_rays , &draw_sprit);
+//   game->sprites.foreach(&game->sprites , &draw_sprites);
+  // this->sprit_rays.foreach(&this->sprit_rays , &draw_sprit);
    
     do{
-        t_ray *spray = (t_ray *)this->sprit_rays.pull(&this->sprit_rays);
+        t_ray_sp *spray = (t_ray_sp *)this->sprit_rays.pull(&this->sprit_rays);
         if(spray != NULL)
         {
-            draw_sprit((void *)spray);
+            draw_sprit(spray);
              
             
         }
-        } while  (this->sprit_rays.index > 0 );
+      } while  (this->sprit_rays.index > 0 );
           
    // game->walls.foreach(&(game->walls), &drawwall);
     // printf("walls nb %ld",game->walls.index);

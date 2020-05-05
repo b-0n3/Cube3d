@@ -8,18 +8,16 @@ void draw_rec(t_window wi ,t_vector pos , int size , int color)
     int x = pos.x ;
     int x2 = pos.x + (size );
     int y1 = pos.y ;
-    int y2 = pos.y + (size ) ;
+    int y2 = pos.y + (size );
 
 while (y1 < y2)
   {
-    int x1 = x;
-  while ( x1 < x2)
-  { 
-   
-       game->window.img->put_pixel(game->window ,  x1, y1 ,color);
-    x1++;
-     
-  }
+     int x1 = x;
+     while ( x1 < x2)
+    { 
+         game->window.img->put_pixel(game->window ,  x1, y1 ,color);
+       x1++;
+   }
   y1++;
   }
 }
@@ -182,10 +180,7 @@ void image_put_pixel(t_window v , int x, int y, int color)
   if (x < 0 || y < 0  || x > game->width || y > game->heigth)
       return;
   i = x * v.img->bpp / 8 + y * v.img->size_line;
-
- 
- 
-    v.img->img_data[i] = color & 0xFF; // Blue
+  v.img->img_data[i] = color & 0xFF; // Blue
   v.img->img_data[i + 1] = (color & 0xFF00) >> 8; // Green
   v.img->img_data[i + 2] = (color & 0xFF0000) >> 16; 
 

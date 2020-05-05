@@ -53,9 +53,9 @@ long long  get_current_time()
 
 void    render()
 {
-   // drawborder(g);
-    //  drawmap(g);
-     g->player.render(&(g->player));
+  //  drawborder(g);
+  //    drawmap(g);
+    g->player.render(&(g->player));
     g->window.img->show(g->window);
 }
 

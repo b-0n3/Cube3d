@@ -19,17 +19,43 @@ typedef struct s_image
         void (*show)(t_window s_win);
         void (*put_pixel)(t_window v, int x, int y , int color);
 }       t_image;
+typedef struct s_sp_texture
+{
+	int		*data;
+	int	    width;
+	int		height;
+  int  kind;
+  float   offset;
+  t_image img;
+  
+}  t_sp_texture;
+
+typedef	struct		s_texture
+{
+  float offset;
+	int		*data;
+t_image img;  
+
+	int	        width;
+	int		height;
+
+}			t_texture;
+
 
 typedef struct s_game{
         t_window window;
-        
+        t_texture *so_texture;
+        t_texture *ea_texture;
+        t_texture *n_texture;
+        t_texture *we_texture;
+        t_sp_texture *sprite_tex;
+        int  color[6];
         double     hvalue;
         double     wvalue;
         int     heigth;
         int     width;
         int     bi;
         t_player  player;
-
         t_array_list errors;
         t_array_list walls;
         t_array_list sprites;
@@ -45,4 +71,15 @@ void __exit_(struct s_game *this , char *err_msg);
 char *game_to_string(struct s_game *this);
 void free_game(void *this);
 
+
+void  split_that(t_array_list *words , char *line , char ch);
+
+
+/** texture functions  */
+t_texture *new_texture(char *link);
+t_sp_texture *new_sp_texture(char *link, int kind);
+void set_no_tex(t_game *g_p , char *line);
+void set_so_tex(t_game *g_p , char *line);
+void set_we_tex(t_game *g_p , char *line);
+void set_ea_tex(t_game *g_p , char *line);
 #endif 

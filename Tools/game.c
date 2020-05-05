@@ -14,13 +14,22 @@ void new_game(t_game *this, char *file_name)
     this->to_string = &game_to_string;
     this->free = &free_game;
     this->parser->do_final(this->parser);
-    this->window.mlx = mlx_init();
-    this->window.win =  mlx_new_window(this->window.mlx, (int) this->width, (int) this->heigth , "game");
-    this->window.img = (t_image *) malloc (sizeof(t_image));
-    init_image(this->window.img, this->window);
+    
+    if (this->errors.index > 0)
+      this->exit(this, NULL);
     //this->parser->free(this->parser);
 
     //free(this->parser);
+}
+void  print_errors(void *item)
+{
+    char *str;
+
+    str =(char *) item;
+  if (str != NULL)
+  {
+    write(2, str , ft_strlen(str));
+  }
 }
 
 void __exit_(struct s_game *this , char *err_msg)
@@ -28,11 +37,15 @@ void __exit_(struct s_game *this , char *err_msg)
     int ret = 1;
     if (err_msg != NULL)
     {
-        perror(err_msg);
-        
-        free(err_msg);
-        ret = 0;
+       perror(err_msg);
+      free(err_msg);
+      ret = 0;
     }
+    else if (this->errors.index > 0)
+    {
+      this->errors.foreach(&this->errors , &print_errors);
+    }
+      
     this->free(this);
     exit(ret);
 }

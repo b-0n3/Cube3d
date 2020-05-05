@@ -2,6 +2,24 @@
 
 t_game *game;
 
+/* 
+  @autor b0ne@1337 
+  
+  this file is for parser function
+  ToDo:
+    create fallowing functions:
+      new_parser:
+        this function should allocate and return a new  parser pointer
+      do_final:
+        this function should be the parsing entry point.
+      ......
+    continue setting up the parsin colors functions
+    and create sprite texture function on another file 
+    split this fucking file into files with five function each 
+    to help with the  42 fucking norm d zeb 
+
+      
+*/
 void new_parser(t_parser *this, char *filename, t_game *g_p)
 {
     new_array_list(&(this->lines), 7, sizeof(char *));
@@ -22,7 +40,7 @@ void get_lines(t_parser *this)
     {
         while ((result = get_next_line(this->fd, &line)) > 0)
         {
-            if (this->lines.push(&(this->lines),(void *) ft_strdup(line), sizeof(line)) != TRUE) 
+            if (this->lines.push(&(this->lines), ft_strdup(line), sizeof(line)) != TRUE) 
                 this->lines.free(&(this->lines), &free);
             free(line);
         }
@@ -49,81 +67,127 @@ void   free_parser(void *th)
     this->lines.free(&this->lines ,&free);
     free(this);
 }
+t_bool check_res(t_array_list words)
+{
+  t_bool valid;
+  int i;
+  int r;
+  char *line;
 
-void fill_res(t_game *g_p , char *aftersplit)
+  i = 0;
+  r = 0;
+  valid = FALSE;
+  if (words.index  == 4)
+  {
+    if (!ft_memcmp(words.get(&words , 0), "R",
+     ft_strlen((char *)words.get(&words , 0))))  
+    {
+      while(++r <words.index)
+      {
+        i = 0;
+        if ((line =  words.get(&words, r)) != NULL)
+        {
+           while (line[i] != '\0')
+           {
+                if(!ft_isdigit((int) line[i]))
+                    return FALSE;
+              i++;
+           }
+        }
+        else
+          return FALSE;
+      }
+        return TRUE;
+    }
+  }
+  return (FALSE);
+}
+
+void fill_res(t_game *g_p , char *line)
 {
     int h;
     int w;
+    t_array_list word;
 
-    
-    // if(aftersplit != NULL)
-    // {
-       
-    //         w = ft_atoi_p(&aftersplit);
-    //         h = ft_atoi_p(&aftersplit);
-    //          g_p->width = (w > 0 && w <= 1000) ? w : 1000;
-    //          g_p->heigth = (h > 0 &&  h <= 600) ? h : 600;
-    // }
-    //else
-    //{
-       g_p->width = 1020;
-       g_p->heigth = 610;
-    //}
-
-}
-void set_no_tex(t_game *g_p , char **aftersplit)
-{
-
-}
-void set_so_tex(t_game *g_p , char **aftersplit)
-{
-
-}
-void set_we_tex(t_game *g_p , char **aftersplit)
-{
-
-}
-void set_ea_tex(t_game *g_p , char **aftersplit)
-{
-
+    h = 0;
+    w = 0;
+    new_array_list(&word , 3, sizeof(char *));
+    split_that(&word, line , ' ');
+    if ( !check_res(word))
+    {
+      game->errors.push(&game->errors ,ft_strdup("invalid resulotion"),
+      sizeof(char *));
+    }
+    else
+    {
+      h = ft_atoi((char*)word.get(&word ,2));
+      w = ft_atoi((char *) word.get(&word, 1));
+    }
+    g_p->heigth = h < 600 ? h > 0 ? h :600 : 600;
+    g_p->width =   w < 900 ? w > 0 ? w :900 : 900;
+    g_p->window.mlx = mlx_init();
+    g_p->window.win =  mlx_new_window(g_p->window.mlx, (int) g_p->width, (int) g_p->heigth , "game");
+    g_p->window.img = (t_image *) malloc (sizeof(t_image));
+    init_image(g_p->window.img, g_p->window);
+    word.free(&word , &free);
 }
 
-void set_colors(t_game *g_p , char **aftersplit, char kind)
-{
 
+t_bool check_digit(char *line)
+{
+  int i;
+
+  i = 0;
+  while (line[i++] != '\0')
+    if (!ft_isdigit(line[i]))
+        return FALSE;
+  
+  return i > 0 ? TRUE : FALSE;
+}
+
+void set_colors(t_game *g_p , char *line, char kind)
+{
+    t_array_list word;
+    t_array_list colors;
+
+    new_array_list(&word , 3, sizeof(char *));
+    new_array_list(&colors, 3, sizeof(char *));
+    split_that(&word ,line,  ' ');
+    if (word.index == 2)
+    {
+      split_that(&colors ,word.get(&word, 1), ',');
+      // if (colors.index == 3)
+      //   if (check_digit(colors.get(&colors, 0)) && 
+      //   check_digit(colors.get(&colors, 1)) && check_digit(colors.get(&colors, 2)))
+      //    
+         }
+    game->errors.push(&game->errors , ft_strdup("invalid colors"),
+     sizeof (char *));
+    word.free(&word, &free);
+    colors.free(&colors,&free);
 }
 
 void parse_line(t_game *g_p, char *line)
 {
-  //  char **aftersplit;
-    int i;
-
-    i = 0;
-   // aftersplit = NULL;
-    //aftersplit = ft_split(line , ' ');
-   // if (aftersplit!= NULL)
-   // {
-        //if (ft_memcmp((const void *)aftersplit[0], (const void *)"R", 1) ==0)
-        if(line[0] == 'R')
+   if (line!= NULL)
+   {
+        if(ft_strncmp(line,"R", 1) == 0)
             fill_res(g_p ,line);
-        // if (ft_memcmp((const void *)aftersplit[0], (const void *)"NO", 2) == 0)
-        //     set_no_tex(g_p , aftersplit);
-        // if (ft_memcmp((const void *)aftersplit[0], (const void *)"SO", 2) == 0)
-        //     set_so_tex(g_p , aftersplit);
-        // if (ft_memcmp((const void *)aftersplit[0], (const void *)"WE", 2) == 0)
-        //     set_we_tex(g_p , aftersplit);
-        // if (ft_memcmp((const void *)aftersplit[0], (const void *)"EA", 2) == 0 )
-        //     set_ea_tex(g_p , aftersplit);
-        // if (ft_memcmp((const void *)aftersplit[0], (const void *)"S", 1))
-        //     set_colors(g_p , aftersplit, 'S');
-        // if (ft_memcmp((const void *)aftersplit[0], (const void *)"F", 1))
-        //     set_colors(g_p , aftersplit, 'f');
-        // if (ft_memcmp((const void *)aftersplit[0], (const void *)"C", 1))
-        //     set_colors(g_p , aftersplit, 'c');
-  //  }
-   // while (aftersplit[i])
-      //  free(aftersplit[i++]);
-   // free(aftersplit);
+        else if (ft_strncmp(line,"NO", 2) == 0)
+            set_no_tex(g_p , line);
+        else if (ft_strncmp(line, "SO", 2) == 0)
+            set_so_tex(g_p , line);
+        else if (ft_strncmp(line, "WE", 2) == 0)
+            set_we_tex(g_p , line);
+        else if (ft_strncmp(line, "EA", 2) == 0 )
+            set_ea_tex(g_p , line);
+        else if (ft_strncmp(line, "S", 1))
+            set_colors(g_p , line, 'S');
+        else if (ft_strncmp(line, "F", 1))
+            set_colors(g_p , line, 'f');
+         else if (ft_strncmp(line, "C", 1))
+            set_colors(g_p , line, 'c');
+    }
 }
 
 t_bool check_mapline(char *line)
@@ -346,13 +410,117 @@ t_bool create_map(t_parser *this)
     game->wvalue = 30;
     get_walls(this);
     get_sprites(this);
+    return TRUE;
     //get_doors(this);
 }
 
+int nb_texture()
+{
+  int i;
+
+  i = 0;
+  if (game->n_texture != NULL)
+    i++;
+  if (game->ea_texture != NULL)
+    i++;
+  if (game->we_texture != NULL)
+    i++;
+  if (game->so_texture != NULL)
+    i++;
+  return i;
+}
+
+void on_one_texture()
+{
+  t_texture *tex;
+
+  tex = NULL;
+  if(game->ea_texture != NULL)
+    tex = game->ea_texture;
+  else if(game->n_texture != NULL)
+    tex  =game->n_texture;
+  else if (game->we_texture != NULL)
+    tex = game->we_texture;
+  else if (game->so_texture != NULL)
+    tex = game->we_texture;
+  if(tex != NULL)
+  {
+    game->ea_texture = tex;
+    game->n_texture = tex;
+    game->we_texture = tex;
+    game->so_texture = tex;
+  }
+}
+
+/* 
+    ea  -> we;
+    so -> no;
+ */
+
+void on_two_texture(){
+  if (game->n_texture != NULL && game->so_texture == NULL)
+    game->so_texture = game->n_texture;
+  else if (game->n_texture == NULL && game->so_texture != NULL)
+    game->n_texture = game->so_texture;
+  if (game->we_texture != NULL && game->ea_texture == NULL)
+    game->ea_texture = game->we_texture;
+  else if (game->ea_texture != NULL && game->we_texture == NULL)
+    game->we_texture = game->ea_texture;
+  if (game->n_texture == NULL && game->so_texture == NULL)
+  {
+    game->so_texture = game->we_texture;
+    game->n_texture = game->ea_texture;
+  }
+  else if (game->we_texture == NULL && game->ea_texture == NULL)
+  {
+    game->ea_texture = game->n_texture;
+    game->we_texture = game->so_texture;
+  }
+}
+void on_tree_texture()
+{
+  if(game->ea_texture == NULL)
+    game->ea_texture = game->we_texture;
+  else if(game->n_texture == NULL)
+    game->n_texture = game->so_texture;
+  else if (game->we_texture == NULL)
+   game->we_texture = game->ea_texture;
+  else if (game->so_texture == NULL)
+   game->we_texture = game->n_texture;
+} 
+
+void check_tex()
+{
+  int nb_tex;
+  nb_tex = nb_texture();
+  if( nb_tex == 1)
+    on_one_texture();
+  else if( nb_tex == 2)
+    on_two_texture();
+  else if( nb_tex == 3)
+    on_tree_texture();
+}
+
+void init_tex()
+{
+  game->ea_texture = NULL;
+  game->n_texture = NULL;
+  game->so_texture = NULL;
+  game->we_texture = NULL;
+  game->color[0] = 0xf8b400;
+  game->color[1] = 0x2c786c;
+  game->color[2] = 0xbb3b0e;
+  game->color[3] = 0xdd7631;
+  game->color[4] = 0xfaf5e4;
+  game->color[5] = 0x004445;  
+}
 void   parser_do_final(t_parser *this)
 {
     char *line;
+
+    game = this->g_p;
     this->get_lines(this);
+      init_tex();
     if (this->lines.index > 0)
     {
         while (!check_mapline(this->lines.get(&(this->lines),0)))
@@ -367,9 +535,9 @@ void   parser_do_final(t_parser *this)
                 parse_line(this->g_p, line);
             free(line);
         }
-        if (!create_map(this))
+        if (create_map(this))
         {
-            //this->g_p->errors.push(&(this->g_p->errors),ft_strdup("valid file"),sizeof(char *));
+          check_tex();
             return;
         }
     }

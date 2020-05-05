@@ -39,18 +39,23 @@ t_ray *new_ray(t_vector *pos, double angle, int i)
     return ray;
 }
 
+
+
+
+
 void update_sp_ray(t_ray_sp *this, t_vector *dir, t_sprites *sp)
 {
+
+
     double diff_an;
     if (dir == NULL || sp == NULL)
          return ;
     if(this->dir != NULL)
         free(this->dir);
     this->dir = new_vector_pointer(dir->x, dir->y);
-    this ->sp = sp;
-    diff_an  = sp->u_a - this->angle;
-    this->offset = diff_an / sp->a_p_r;
+    this->sp = sp;
 }
+
 t_ray_sp *new_sp_ray(t_vector *pos, t_vector *dir,  double angle, int i, t_sprites *sp)
 {
     t_ray_sp *ray;
@@ -173,31 +178,102 @@ void    cast_ray(void *r)
     }
  }
 
+int pick_color(int kind, double correctdis)
+{
+  int color;
+
+            if (kind == 0 )
+            color = shadow(game->color[0] , correctdis);
+            else  if (kind == 1)
+            color = shadow(game->color[1] , correctdis) ;
+            else  if (kind == 2)
+            color = shadow(game->color[2] , correctdis) ;
+            else    if (kind == 3)         
+            color = shadow(game->color[3] , correctdis);
+    return color;
+}
+
+t_texture *pick_texture(int kind)
+{
+  t_texture *tex;
+
+  tex = NULL;
+
+  if (kind == 0 )
+  {
+      if (game->n_texture != NULL)
+        tex = game->n_texture;
+  }
+  else  if (kind == 1)
+  {
+      if (game->so_texture != NULL)
+        tex = game->so_texture;
+  } 
+  else  if (kind == 2)
+  {
+      if (game->ea_texture != NULL)
+        tex = game->ea_texture;
+  }
+  else if (kind == 3)            
+  {
+      if (game->we_texture != NULL)
+        tex = game->we_texture;
+  } 
+  return tex;
+}
 
 
+void   render_wall_texture( double start , double end , double wallHei ,t_texture *tex , double dis)
+{
+      int color;
+      t_vector pos;
+      int y2 = end  + wallHei;
+      float index;
+       
+      index = 0;
+      float step = tex->height / wallHei;
+      // if (step < 1)
+      //   step = 1;
+      //printf(" ---- %f -- \n", step);
+      new_vector(&pos, start,end);
+      while (pos.y < y2)
+      {
+          
+          color = tex->data[(int)tex->offset   + (int) index * (int)tex->width];
+          image_put_pixel(game->window ,start , pos.y, color);
+          pos.y += 1;
+          index += step;
+         // index = fmod(index, tex->height);
+      }
+      
+     
+}
 
 void    render_ray(t_ray *this)
 {
     this->cast(this);
+
     double dispro;
     double wallHei;
     double correctdis;
    //this->pos->to_string(this->pos);
 
     //this->dir->to_string(this->dir);
-    //t_vector sub;
+//     t_vector sub;
 
-   // new_vector(&sub,this->pos->x - this->dir->x   ,this->pos->y - this->dir->y );
+//    new_vector(&sub,this->pos->x - this->dir->x   ,this->pos->y - this->dir->y );
   // printf("\nnew one __________________________________________ \n");
    // if ((this->angle > M_PI_2 && this->angle < 3 *M_PI_2 ))
             //draw_line(game->window ,this->pos, this->dir, 0x2c786c);
    //else
        // draw_line(game->window ,this->dir,this->pos, 0x2c786c);
+
      double start;
      double end;
      double xsize;
      double ysize;
-     double color;
+      int color;
+      t_texture *tex;
         if(this->kind >= 0)
        {
            correctdis = this->length(this) * cos(this->angle - game->player.rotaion_angle);
@@ -205,24 +281,32 @@ void    render_ray(t_ray *this)
            wallHei = (game->wvalue / correctdis) * dispro;
            //printf("dispro : %f     walhei : %f", dispro, wallHei);
            start = this->index ;
-           end = ((game->heigth / 2) - (wallHei /2));
+           end = ((game->heigth / 2) - (wallHei / 2));
            ysize = wallHei;
            xsize = 1;
-            if (this->kind == 0 )
-            color = shadow(0xf8b400 , correctdis);
-            else  if (this->kind == 1)
-            color = shadow(0xfaf5e4, correctdis) ;
-            else  if (this->kind == 2)
-            color = shadow(0x2c786c, correctdis) ;
-            else             
-               color = shadow( 0xeb4559, correctdis) ;
-            rec(start,end, xsize, ysize ,color);
-
-            rec(start, end + wallHei , xsize,  game->heigth - end, 0x231903);
-             rec(start,0 , xsize,  game->heigth - end- wallHei, 0x363636);
-        }
-       // ft_line(this->pos->x, this->pos->y , floor(sub.length(&sub)),this->angle, color);
-    //ft_line(this->dir->x, this->dir->y, 1, this->angle);
+            
+        
+              tex = pick_texture(this->kind);
+               if (tex == NULL)
+              {
+                 color = pick_color(this->kind , correctdis); 
+                 rec(start,end, xsize, ysize ,color);
+              }
+               else
+               {
+                 t_bool i_h = this->kind == 0 || this->kind == 2? TRUE : FALSE;
+                        tex->offset = i_h == 1 ? fmod(this->dir->x ,game->wvalue)
+                        :fmod(this->dir->y ,game->wvalue);
+                        tex->offset = (tex->offset / game->wvalue) * tex->width;
+                  render_wall_texture(start , end , wallHei , tex ,correctdis);
+                }
+      }
+            rec(start, end + wallHei , xsize,  game->heigth - end, game->color[4]);
+             rec(start,0 , xsize,  game->heigth - end- wallHei, game->color[5]);
+ //       }
+    // color = 0x2c786c;
+    //     ft_line(this->pos->x, this->pos->y , floor(sub.length(&sub)),this->angle, color);
+    // //ft_line(this->dir->x, this->dir->y, 1, this->angle);
     
 }
 void update_ray(t_ray *this, double angle, int i)
