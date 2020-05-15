@@ -31,7 +31,7 @@ t_texture  *new_texture(char *link)
           sizeof(char *));
         tex->data = (int *) mlx_get_data_addr(tex->img.img_ptr , &(tex->img.bpp) 
           ,&tex->img.size_line , &(tex->img.endian));
-          
+          game->allocated_tex.push(&game->allocated_tex, tex, sizeof(t_texture));
          // printf("%s : heigth %d  : width : %d" , link, tex->height , tex->width);
       }
     
@@ -39,9 +39,31 @@ t_texture  *new_texture(char *link)
     return tex;
 }
 
+t_sp_texture *get_sp_tex(int kind)
+{
+  t_sp_texture *tex;
+   t_sp_texture *ntex;
+  int i;
+  
+  tex = NULL;
+  ntex = NULL;
+  i = 0;
+  while (i < game->allocated_sp_tex.index)
+  {
+    ntex = game->allocated_sp_tex.get(&game->allocated_sp_tex, i);
+    if (ntex != NULL)
+      if (ntex->kind == kind)
+      {
+        tex = ntex;
+        break;
+      }
+    i++;
+  }
+  return tex;
+}
 t_sp_texture *new_sp_texture(char *link, int kind)
 {
- t_sp_texture *tex;
+    t_sp_texture *tex;
 
     if (link != NULL)
     {

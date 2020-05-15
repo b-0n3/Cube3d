@@ -27,13 +27,14 @@ void  split_that(t_array_list *words , char *line , char ch)
         ft_strlcpy(str , line + firstptr , i - firstptr + 1);
         words->push(words, str, sizeof (str));
         firstptr =  skip(line, i , ch) ;
-        i = firstptr ;
+        i = firstptr -1;
     }
     i++;
   }
 
 
 }
+
 void set_no_tex(t_game *g_p , char *line)
 {
     t_array_list words;

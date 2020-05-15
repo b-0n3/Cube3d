@@ -51,10 +51,43 @@ long long  get_current_time()
     return nano;
 }
 
+
+// void draw_floor()
+// {
+//       int x ;
+//       int y = g->heigth / 2 - g->player.offset;
+//       int color;
+//       int xx = 0;
+//       int yy = 0;
+//       double offset = g->hvalue *cos(fmod(g->player.rotaion_angle, M_PI));
+//       if (g->floor != NULL)
+//       {
+//         while (y < g->heigth)
+//         {
+//           x = offset;
+//           xx =offset ;
+//           while (x < g->width)
+//           {
+//               yy = yy % g->floor->height;
+//               xx = xx % g->floor->width;
+//               color = g->floor->data[xx + yy * g->floor->width];
+//              // color = shadow(color , g->heigth - y);
+//               image_put_pixel(g->window, x, y , color);
+//               xx++;
+//             x+=10;
+//           }
+//           offset--;
+//           yy++;
+//           y++;
+//         }
+//       }
+// }
+
 void    render()
 {
   //  drawborder(g);
   //    drawmap(g);
+ //draw_floor();
     g->player.render(&(g->player));
     g->window.img->show(g->window);
 }
@@ -79,6 +112,7 @@ int update(int key)
         unprocessed -= frame_time;
        
         g->player.update(&g->player);
+        //g->player.t_dir =0;
     }
     if(rend == 1)
     {
@@ -105,10 +139,15 @@ void startgame( t_game *game)
     g = game;
     //mlx_do_key_autorepeatoff(g->window.mlx);
     
+    mlx_hook( g->window.win, 5,(1L<<3), mouse_relased, (void*)0);
 
+
+    mlx_mouse_hook (g->window.win, mouse_pressed, (void*) 0 );
+    
     mlx_hook(g->window.win ,2,(1L << 0),key_pressed ,(void *) 0);
-    mlx_hook(g->window.win , 3,(2L << 0)  , key_relased , (void *) 0);
+    mlx_hook(g->window.win , 3,(2L << 0), key_relased , (void *) 0);
      mlx_loop_hook(g->window.mlx, update, (void *) 0);
+    
     mlx_loop(game->window.mlx);
 }
 

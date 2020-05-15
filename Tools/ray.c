@@ -167,14 +167,29 @@ void    cast_ray(void *r)
     {
         index = 0;
         t_ray_sp   *sp = NULL;
+        t_sprites *spp;
         while (index < game->sprites.index)
         {
-            t_sprites *spp = game->sprites.get(&game->sprites, index);
-            cast_sprite(new_vector_pointer(ray->pos->x, ray->pos->y), spp, &sp , ray->length(ray),ray->angle , ray->index);
+            spp = game->sprites.get(&game->sprites, index);
+            cast_sprite(new_vector_pointer(ray->pos->x, ray->pos->y), spp,
+             &sp , ray->length(ray),ray->angle , ray->index);
             index++;
         }
         if(sp != NULL)
             game->player.sprit_rays.push(&(game->player.sprit_rays), sp , sizeof(t_ray));
+        index = 0;
+        sp = NULL;
+        while (index < game->lights.index)
+        {
+          
+             spp = game->lights.get(&game->lights, index);
+            cast_sprite(new_vector_pointer(ray->pos->x, ray->pos->y), spp,
+             &sp , ray->length(ray),ray->angle , ray->index);
+            index++;
+        }
+        if(sp != NULL)
+            game->player.light_rays.push(&(game->player.light_rays), sp , sizeof(t_ray_sp));
+        
     }
  }
 
@@ -204,12 +219,12 @@ t_texture *pick_texture(int kind)
       if (game->n_texture != NULL)
         tex = game->n_texture;
   }
-  else  if (kind == 1)
+  else  if (kind == 2)
   {
       if (game->so_texture != NULL)
         tex = game->so_texture;
   } 
-  else  if (kind == 2)
+  else  if (kind == 1)
   {
       if (game->ea_texture != NULL)
         tex = game->ea_texture;
@@ -231,6 +246,7 @@ void   render_wall_texture( double start , double end , double wallHei ,t_textur
       float index;
        
       index = 0;
+     
       float step = tex->height / wallHei;
       // if (step < 1)
       //   step = 1;
@@ -240,6 +256,7 @@ void   render_wall_texture( double start , double end , double wallHei ,t_textur
       {
           
           color = tex->data[(int)tex->offset   + (int) index * (int)tex->width];
+          color = shadow (color , dis);
           image_put_pixel(game->window ,start , pos.y, color);
           pos.y += 1;
           index += step;
@@ -248,10 +265,11 @@ void   render_wall_texture( double start , double end , double wallHei ,t_textur
       
      
 }
+void   render_sprite_texture( double start , double end , double wallHei ,t_sp_texture *tex , double dis);
 
 void    render_ray(t_ray *this)
 {
-    this->cast(this);
+    //this->cast(this);
 
     double dispro;
     double wallHei;
@@ -276,16 +294,68 @@ void    render_ray(t_ray *this)
       t_texture *tex;
         if(this->kind >= 0)
        {
+         
            correctdis = this->length(this) * cos(this->angle - game->player.rotaion_angle);
            dispro = (game->width /2) * tan(game->player.fov /2);
            wallHei = (game->wvalue / correctdis) * dispro;
            //printf("dispro : %f     walhei : %f", dispro, wallHei);
            start = this->index ;
+           
            end = ((game->heigth / 2) - (wallHei / 2));
+           
            ysize = wallHei;
            xsize = 1;
+           t_bool i_h = this->kind == 0 || this->kind == 2? TRUE : FALSE;
+
+           t_bool isu = this->kind == 0 ? TRUE : FALSE;
+           t_bool  isl = this->kind == 3 ? TRUE : FALSE;
+           int y = this->dir->y /  game->hvalue -  1;
+            if (this->kind == 2)
+              y +=1;
+            char *line = (char *)game->parser->lines.get(
+              &game->parser->lines, 
+            y);
+           double offset;
             
-        
+                       offset = i_h == 1 ? fmod(this->dir->x ,game->wvalue)
+                        :fmod(this->dir->y ,game->wvalue);
+
+            if (game->floor == NULL) 
+              rec(start, end + wallHei + game->player.offset, xsize,  
+              game->heigth /2 - game->player.offset,
+               game->color[4] );
+             
+            // rec(start,0 , xsize,  game->heigth - end - wallHei + game->player.offset, game->color[5]);
+           //if(start < game->width /4 || start > 3 * game->width /4)
+            end += game->player.offset;
+            int x = (this->dir->x /  game->hvalue) -1;
+            if (this->kind == 1)
+              x++;
+             //printf("%s\n", line);
+              t_sp_texture *text = NULL;
+               if (line[x] == '2')
+            {
+              //printf("%s\n", line);
+              text = get_sp_tex(this->kind + 1);
+            }
+            if(text != NULL)
+            {
+              double valu = text->width ;
+              valu = game->hvalue/valu;
+                text->offset = offset +  valu;
+                
+                
+                text->offset = fmod(text->offset ,game->hvalue);
+                text->offset = abs(text->offset);
+              //  text->offset += valu;
+               render_sprite_texture(start ,  end , wallHei ,
+                text , correctdis);
+            }
+          else
+          {
+            
+          
+           
               tex = pick_texture(this->kind);
                if (tex == NULL)
               {
@@ -294,15 +364,13 @@ void    render_ray(t_ray *this)
               }
                else
                {
-                 t_bool i_h = this->kind == 0 || this->kind == 2? TRUE : FALSE;
-                        tex->offset = i_h == 1 ? fmod(this->dir->x ,game->wvalue)
-                        :fmod(this->dir->y ,game->wvalue);
+                    tex->offset = offset;
                         tex->offset = (tex->offset / game->wvalue) * tex->width;
                   render_wall_texture(start , end , wallHei , tex ,correctdis);
                 }
+          }
       }
-            rec(start, end + wallHei , xsize,  game->heigth - end, game->color[4]);
-             rec(start,0 , xsize,  game->heigth - end- wallHei, game->color[5]);
+            
  //       }
     // color = 0x2c786c;
     //     ft_line(this->pos->x, this->pos->y , floor(sub.length(&sub)),this->angle, color);

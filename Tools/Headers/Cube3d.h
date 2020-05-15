@@ -57,8 +57,10 @@ void	line(int x0, int y0, int x1, int y1, int color);
 /*          input    */
 int key_pressed(int k_code , void *ptr);
 int key_relased(int k_code , void *ptr);
+//int mouse_pressed(int x, int y);
+int mouse_pressed(int button, int x, int y, void *param);
 
-
+int mouse_relased(int button, int x, int y, void *param);
 
 /*     sprites functions*/
 t_sprites *new_sprite(t_vector *pos, double rad , int kind);

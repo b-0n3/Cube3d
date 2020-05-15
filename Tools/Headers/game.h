@@ -19,6 +19,7 @@ typedef struct s_image
         void (*show)(t_window s_win);
         void (*put_pixel)(t_window v, int x, int y , int color);
 }       t_image;
+
 typedef struct s_sp_texture
 {
 	int		*data;
@@ -26,6 +27,9 @@ typedef struct s_sp_texture
 	int		height;
   int  kind;
   float   offset;
+  int borders[4];
+  float hsize;
+  float wsize;
   t_image img;
   
 }  t_sp_texture;
@@ -34,13 +38,19 @@ typedef	struct		s_texture
 {
   float offset;
 	int		*data;
-t_image img;  
-
+  t_image img;
 	int	        width;
 	int		height;
 
 }			t_texture;
 
+typedef struct s_door
+{
+      t_vector *pos;
+      t_sp_texture *tex;
+      double    offset;
+      t_bool isopen;
+}       t_door;
 
 typedef struct s_game{
         t_window window;
@@ -48,7 +58,8 @@ typedef struct s_game{
         t_texture *ea_texture;
         t_texture *n_texture;
         t_texture *we_texture;
-        t_sp_texture *sprite_tex;
+        t_sp_texture *floor;
+        t_sp_texture *ceil;
         int  color[6];
         double     hvalue;
         double     wvalue;
@@ -56,6 +67,9 @@ typedef struct s_game{
         int     width;
         int     bi;
         t_player  player;
+        t_array_list lights;
+        t_array_list allocated_sp_tex;
+        t_array_list allocated_tex;
         t_array_list errors;
         t_array_list walls;
         t_array_list sprites;
@@ -82,4 +96,5 @@ void set_no_tex(t_game *g_p , char *line);
 void set_so_tex(t_game *g_p , char *line);
 void set_we_tex(t_game *g_p , char *line);
 void set_ea_tex(t_game *g_p , char *line);
+t_sp_texture *get_sp_tex(int kind);
 #endif 

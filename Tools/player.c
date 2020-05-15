@@ -1,22 +1,42 @@
 #include "Cube3d.h"
-
+/* 
+11111211111111111121111211111
+180000800sss00090000000507081
+10120000011190050000700000002
+10010505050505005050700500181
+10110000012100000000000000002
+10000000001100000110000500081
+112101s11s1111011100000000002
+111101s11s1111011190000500001
+110000001s0101011100000000002
+19006000600000001100000500001
+10000060000000000s0N000000101
+11000000112101011111011110001
+11118121111101011111011119081
+1111s111111111111111111111111
+ */
 extern t_game *game;
 int nb_rays;
 
-t_sp_texture *tsp ;
+
 void new_player(t_player *this , t_vector *pos, char ch)
 {
-   tsp = new_sp_texture("/media/b0n3/fbc084e2-cd4e-4843-a572-f64a2fc084c4/b0n3/Desktop/Cub3d/texture/barrel.xpm", 1);
+  // tsp = new_sp_texture("/media/b0n3/fbc084e2-cd4e-4843-a572-f64a2fc084c4/b0n3/Desktop/Cub3d/texture/redbrick.xpm", 1);
     double ray_angle;
 
     this->fov = 70 * (M_PI / 180);
     this->render= &render_player;
     this->pos = pos;
-    this->mov_speed =8;
+    this->vpos = new_vector_pointer(pos->x, pos->y);
+    this->mov_speed = game->hvalue / 6;
     this->update = &update_player;
-    this->rotation_speed = 5 * 0.0174533;
+    this->rotation_speed = this->mov_speed  * 0.0174533;
     this->w_dir = 0;
     this->t_dir = 0;
+    this->offset = 0;
+    this->planx = 0;
+    this->plany = 0.66;
+    
     this->free = &free_player;
     nb_rays = game->width - 2;
     if (ch == 'S')
@@ -27,9 +47,12 @@ void new_player(t_player *this , t_vector *pos, char ch)
         this->rotaion_angle = M_PI;
     else
         this->rotaion_angle = 0.0f;
+    this->dir = new_vector_pointer(-1, 0);
     new_array_list(&(this->collision), 1, sizeof(t_ray));
     new_array_list(&(this->wall_rays) ,nb_rays, sizeof (t_ray));
     new_array_list(&(this->sprit_rays) ,14, sizeof (t_ray));
+    new_array_list(&(this->light_rays) ,14, sizeof (t_ray_sp));
+    
     ray_angle = this->rotaion_angle - (this->fov / 2);
     this->collision.push(&(this->collision),new_ray(this->pos , this->rotaion_angle , -10 ) , sizeof(t_ray));
 
@@ -50,6 +73,151 @@ double  normelize_angel(double angle)
         angle += ((360  * M_PI) / 180); 
     return angle;
 }
+/* 
+   1100
+   PS00
+   1100
+ */
+void s_player_right(t_vector *pos,int newx , int newy)
+{
+char *line;
+  int i;
+
+  i = newx;
+  line = (char *)game->parser->lines.get(&game->parser->lines, newy);
+  if (line != NULL)
+  {
+    while (line[i] == 's')
+      i++;
+      if (line[i] == '0')
+      {
+        pos->y = (newy + 0.5) * game->hvalue;
+          pos->x = (i + 0.5) * game->hvalue;
+      }
+  }
+}
+/* 
+   1110
+   sP00
+   1111
+ */
+void s_player_left(t_vector *pos, int  newx , int newy)
+{
+  char *line;
+  int i;
+
+  i = newx;
+  line = (char *)game->parser->lines.get(&game->parser->lines, newy);
+  if (line != NULL)
+  {
+    while (i > 0 && line[i] == 's')
+      i--;
+      if (line[i] == '0')
+      {
+        pos->y = (newy + 0.5) * game->hvalue;
+          pos->x = (i + 0.5) * game->hvalue;
+      }
+  }
+}
+
+/*
+  10001
+  10P01
+  11s11
+*/
+
+void s_player_down(t_vector *pos,int  newx , int newy)
+{
+  char *line;
+  int i;
+  t_bool comp;
+
+  comp = FALSE;
+  i = newy;
+  while (!comp)
+  {
+    line = (char *)game->parser->lines.get(&game->parser->lines, i);
+    
+    if (line != NULL)
+    {
+      if (check_empty_line(line) || newx > ft_strlen(line))
+        break;
+        if (ft_strchr("s0", line[newx]) == NULL)
+          break;
+        if (line[newx] == '0')
+        {
+          pos->y = (i + 0.5) * game->hvalue;
+          pos->x = (newx + 0.5) * game->hvalue;
+          comp = TRUE;
+        }
+        i++;
+    }
+    else
+      break;
+  }
+}
+/* 
+  11s11
+  10P01
+  10001
+*/
+
+void s_player_up(t_vector *pos,int  newx , int newy)
+{
+  char *line;
+  int i;
+  t_bool comp;
+
+  comp = FALSE;
+  i = newy;
+  while (!comp)
+  {
+    line = (char *)game->parser->lines.get(&game->parser->lines, i);
+    
+    if (line != NULL)
+    {
+      if (check_empty_line(line) || newx > ft_strlen(line))
+        break;
+        if (ft_strchr("s0", line[newx]) == NULL)
+          break;
+        if (line[newx] == '0')
+        {
+          
+          pos->y = (i + 0.5) * game->hvalue;
+          pos->x = (newx + 0.5) * game->hvalue;
+          comp = TRUE;
+        }
+        i--;
+    }
+    else
+      break;
+  }
+}
+
+
+void update_secretdor_pos(t_vector *pos , int newx, int newy)
+{
+  t_bool door_l;
+  t_bool door_u;
+  t_bool door_d;
+  t_bool door_r;
+  int posx;
+  int posy;
+  posx =  pos->x / game->hvalue;
+  posy = pos->y / game->hvalue;
+  door_d = posy < newy ?TRUE :FALSE;
+  door_u = posy > newy ?TRUE :FALSE;
+  door_r = posx < newx ?TRUE :FALSE;
+  door_l = posx > newx?TRUE :FALSE;
+  if (door_u )
+    s_player_up(pos, newx , newy);
+  else if(door_d)
+    s_player_down(pos, newx , newy);
+  else if(door_r)
+  s_player_right(pos, newx , newy);
+  else if(door_l)
+    s_player_left(pos, newx , newy);
+}
 
 t_bool check_collision(t_player *player , double newx ,double newy)
 {
@@ -59,8 +227,7 @@ t_bool check_collision(t_player *player , double newx ,double newy)
     double newAngle;
     double ffangle;
     static int to;
-    if (to < -1 || to >1 || to== 0)
-        to = 1;
+    char *line;
     newAngle = player->rotaion_angle; 
     newAngle += player->w_dir == -1 ? M_PI: 0;
    newAngle += player->t_dir * player->rotation_speed;
@@ -71,20 +238,44 @@ t_bool check_collision(t_player *player , double newx ,double newy)
         free(ray->dir);
         ray->dir = ray->pos->get_dir_angle(ray->pos , ray->angle);
         ray->cast(ray);
-        if(ray->coli == 1 || ((char *)game->parser->lines.get(&game->parser->lines, (int)newy))[(int) newx] != '0')
+      if (to == 0)
+        to = 1;
+        line = ((char *)game->parser->lines.get(&game->parser->lines, (int)newy));
+        if(ray->coli == 1 || ft_strchr("50",line [(int) newx])==NULL)
         {
+           newx = player->pos->x + (cos(player->rotaion_angle)* player->mov_speed);
+           // newy = player->pos->y +(sin(player->rotaion_angle) *player->mov_speed);
             if (player->t_dir != 0)
                 to = player->t_dir;
+            if(line[(int) newx] != 's')
+            {
             player->rotaion_angle = ffangle;
          //  if(player->t_dir == 0)
          //  {
-                player->rotaion_angle += player->rotation_speed * to;
-         //   }
+              player->rotaion_angle += player->rotation_speed * to;
+            }
             ray->coli = 0;
+           
+            newx /= game->hvalue;
+           // newy /= game->hvalue;
+            line = (char *)game->parser->lines.get(
+              &game->parser->lines, 
+            (int)newy);
+              if(line != NULL)
+                if (newx > 0 && newx < ft_strlen(line))
+                {
+              
+                  if ( line [(int) newx] == 's')
+                  {
+                    update_secretdor_pos(player->pos , (int )newx,(int) newy);
+                  }
+                }
             return TRUE;
         }
         else
         {
+             player->vpos->x += player->dir->x * player->mov_speed * player->w_dir;
+          player->vpos->y += player->dir->y * player->mov_speed * player->w_dir;
             player->pos->x = newx * game->wvalue;
             player->pos->y = newy * game->hvalue;
             player->rotaion_angle = ffangle;
@@ -113,6 +304,22 @@ void update_player(t_player *this)
         check_collision(this ,next_x / game->wvalue , next_y / game->hvalue);
         int index = 0;
         ray_angle = this->rotaion_angle - (this->fov / 2);
+        
+        if(this->t_dir != 0)
+        {
+          float lastplanx = this->planx;
+        this->planx = this->planx * cos(this->rotation_speed * this->t_dir)
+         - this->plany * sin(this->rotation_speed * this->t_dir);
+
+         this->plany = lastplanx * sin(this->rotation_speed * this->t_dir) 
+        + this->plany * cos(this->rotation_speed * this->t_dir);
+
+        double oldDirX = this->dir->x;
+       this->dir->x = this->dir->x * cos(this->rotation_speed * this->t_dir) - this->dir->y * sin(this->rotation_speed * this->t_dir);
+        this->dir->y = oldDirX * sin(this->rotation_speed * this->t_dir) + this->dir->y * cos(this->rotation_speed * this->t_dir);
+        }
+       
+       
         t_ray *ray;
         while (index < this->wall_rays.index)
         {
@@ -145,10 +352,7 @@ void draw_ray(void *item)
     }
 }        
 
-typedef struct s_line {
-    t_vector *pos;
-    t_vector *dir;
-}   t_line ;
+
 
 double get_offset( t_line tang, t_ray_sp *ray)
 {
@@ -205,19 +409,27 @@ double get_line_distance(t_ray_sp *ray)
       float index;
        
       index = 0;
-      float step = tex->height /wallHei;
-      // if (step < 1)
-      //   step = 1;
+      float step = tex->height / wallHei;
       new_vector(&pos, start,end);
+      //float ss = tex->width / tex->wsize;
+      
+      //index += tex->borders[0];
       while (pos.y < y2)
       {
-          
-          color = tex->data[(int)tex->offset   + (int) index * (int)tex->width];
+  
+          color = tex->data[(int)(tex->offset )   + (int) index * (int)tex->width];
           if(color > 0)
           {
-            //image_put_pixel(game->window ,start , pos.y, color);
-            rec(start, pos.y, 10, 10 ,color);
+            
+            if (!(tex->kind == '5' - 48 && color == tex->data[0]))
+            {
+                if (tex->kind != '5' -48 && tex->kind != 10)
+                     color = shadow(color , dis);
+              image_put_pixel(game->window ,start , pos.y, color);
+            }
+            //rec(start + ss, pos.y + ss, (int) ss, (int)ss ,color);
           }
+
           pos.y += 1;
           index += step;
          // index = fmod(index, tex->height);
@@ -243,18 +455,27 @@ void  draw_sprit(void *item)
      double xsize;
      double ysize;
     double color;
-
+  t_sp_texture *tsp;
 
         if(this->pos != NULL )
         {
+          tsp = get_sp_tex(this->sp->kind);
            correctdis = this->length(this) * cos(this->angle -game->player.rotaion_angle  );
            dispro = (game->width / 2) * tan(game->player.fov /2);
            wallHei = (game->wvalue / correctdis) * dispro;
            
        // printf ( "thsi is the offset  %d  \n ", this->offset);
+       //tsp->kind == ('5' - 48) || tsp->kind == ('9' - 48)
+            // if (tsp->height <= wallHei)
+            //       end = ((game->heigth /2));
+            // else
+                end = game->heigth /2  - wallHei / 2;
            start = this->index;
-           end = ((game->heigth /2));
            
+             
+            // if(tsp->borders[0] > 10)
+            
+            end += game->player.offset;
            xsize = 1;
               //  printf ("%f \n " , get_line_distance(this));
     t_line tang;
@@ -282,113 +503,121 @@ void  draw_sprit(void *item)
             
             //  ysize = (game->hvalue / correctdis) * dispro;
           
-            start = this->index ;
-            end = ((game->heigth /2));
-            
-            ysize = wallHei   ;
+            if (tsp != NULL)
+            {
+              ysize = wallHei;
            // ysize = fmod(ysize, game->heigth);
-            xsize = 1;
-           
-            double nof = (dist / (2 * this->sp->rad)) * tsp->width;
-            
-            tsp->offset = nof;
-            tsp->offset = abs(tsp->offset);
-           // while ()
-            render_sprite_texture(start, end, ysize, tsp, correctdis);
-            //printf("start %f  end  %f  size %f \n", start , end ,ysize );
-            //color =  shadow(0xff7272,  dist);
 
-            //rec(start,end, xsize, ysize ,color);
-        
+              xsize = 1;
+           
+              double nof = (dist / (2 * this->sp->rad)) * tsp->wsize;
+            
+             tsp->offset = nof + tsp->borders[2];
+              // if (tsp->kind == '5' -48)
+              //   tsp->offset += (tsp->wsize / 4);
+              tsp->offset = abs(tsp->offset);
+           // while ()
+              render_sprite_texture(start, end, ysize, tsp, correctdis);
+            }
+            else
+            {
+            //printf("start %f  end  %f  size %f \n", start , end ,ysize );
+            color =  shadow(0xff7272,  dist);
+
+            rec(start,end, xsize, ysize ,color);
+            }
         }
 
     free_ray_sp(this);
 }
+     
 
 
 
-// void draw_sprit(void *item)
-// {
-//  //t_vector sub;
-//      t_ray_sp *this = (t_ray_sp *) item;
-// //     new_vector(&sub,this->pos->x - this->dir->x   ,this->pos->y - this->dir->y );
-// //     double color;
-// //      color =  shadow(0xf8b400 , this->length(this));
-// //      ft_line(this->pos->x, this->pos->y , floor(sub.len),this->angle, color);
-//    double dispro;
-//     double wallHei;
-//     double correctdis;
-   
-//      double start;
-//      double end;
-//      double xsize;
-//      double ysize;
-//     double color;
+ void cast_draw_floor(t_player *this)
+ {
+   t_ray *f_ray;
+   t_ray *l_ray;
+      float r_dirx0;
+      float r_diry0;
+      float r_dirx1;
+      float r_diry1;
+  
+  
+   //double diff =  game->width / game->heigth;
+  for(int y = 0; y < game->heigth; y++)
+    {
+      
+       r_dirx0 = this->dir->x - this->planx;
+       r_diry0 = this->dir->y - this->plany;
+       r_dirx1 = this->dir->x + this->planx;
+       r_diry1 = this->dir->y + this->plany;
+
+       double  p = y - (game->heigth / 2) ;
+      
+      // Vertical position of the camera.
+      float posZ = 0.5 * game->heigth ;
+        posZ -= this->offset;
+      // Horizontal distance from the camera to the floor for the current row.
+      // 0.5 is the z position exactly in the middle between floor and ceiling.
+      float rowDistance = posZ / p;
+
+      // calculate the real world step vector we have to add for each x (parallel to camera plane)
+      // adding step by step avoids multiplications with a weight in the inner loop
+      float floorStepX = (rowDistance * (r_dirx1 - r_dirx0 ))/ game->width;
+      float floorStepY = (rowDistance * (r_diry1 - r_diry0) )/ game->width;
+
+      // real world coordinates of the leftmost column. This will be updated as we step to the right.
+      float floorX =  this->vpos->x + rowDistance * r_dirx0;
+      float floorY =  this->vpos->y + rowDistance * r_diry0;
+       for(int x = 0; x < game->width; ++x)
+      {
+        // the cell coord is simply got from the integer parts of floorX and floorY
+        double cellX =  floorX - floor(floorX);
+        double  cellY = floorY - floor(floorY);
+
+        // get the texture coordinate from the fractional part
+        
+        int tx = ( int)(game->floor->width  * (cellX) ) & ( game->floor->width -1 );
+        int ty = (int)(game->floor->height  * (cellY) ) & (game->floor->height -1);
+
+        
+        floorX += floorStepX;
+        floorY += floorStepY;
+        // choose texture and draw the pixel
+        
+        int  color;
+
+  
+         color = game->floor->data[game->floor->width * ty + tx];
+        color = (color >> 1) & 8355711; // make a bit darker
+        if (y > game->heigth /2  +  this->offset)
+        image_put_pixel(game->window , x,y ,color);
+      //color = game->floor->data[game->floor->width * ty + tx];      
+        //ceiling (symmetrical, at screenHeight - y - 1 instead of y)
+        // color = texture[ceilingTexture][texWidth * ty + tx];
+        if (game->ceil != NULL){
+        color = game->ceil->data[game->ceil->width * ty + tx];
+         color = (color >> 1) & 8355711; // make a bit darker
+         if (y < game->heigth  /2  + this->offset)
+        image_put_pixel(game->window , x, y ,color);
+        }
+        // buffer[screenHeight - y - 1][x] = color;
+       // x+=diff;
+      }
        
-//         if(this->pos != NULL )
-//         {
-//            correctdis = this->length(this) * cos (game->player.rotaion_angle - this->angle);
-//            dispro = (game->width /2) * tan(game->player.fov /2);
-//            wallHei = (game->wvalue / correctdis) * dispro;
-           
-//         //printf ( "thsi is the offset  %d  \n ", this->offset);
-//            start = this->index ;
-//            end = ((game->heigth /2));
-//            ysize = wallHei  * 0.7 ;
-//            xsize = 1;
-//             color =  shadow(0xff7272, correctdis) ;
-//             rec(start,end, xsize, ysize ,color);
-//         }
+    }
+ }
+void cast_rays(void *item)
+{
+  t_ray *ray;
 
-
-//     free_ray_sp(this);
-// }
-
-
-// void draw_sprites(void *item)
-// {
-// //    double dispro;
-// //     double wallHei;
-// //     double correctdis;
-// //    //this->pos->to_string(this->pos);
-
-// //     //this->dir->to_string(this->dir);
-// //     t_vector sub;
-// //     t_ray *this = (t_ray *) item;
-// //     //new_vector(&sub,this->pos->x - this->dir->x   ,this->pos->y - this->dir->y );
-// //   // printf("\nnew one __________________________________________ \n");
-// //    // if ((this->angle > M_PI_2 && this->angle < 3 *M_PI_2 ))
-// //             //draw_line(game->window ,this->pos, this->dir, 0x2c786c);
-// //    //else
-// //        // draw_line(game->window ,this->dir,this->pos, 0x2c786c);
-// //      double start;
-// //      double end;
-// //      double xsize;
-// //      double ysize;
-// //     double color;
-// //         color = 0xff7272;
-// //         if(this->pos != NULL )
-// //         {
-// //            correctdis = this->length(this) * cos(this->angle - game->player.rotaion_angle);
-// //            dispro = (game->width /2) * tan(game->player.fov /2);
-// //            wallHei = (game->wvalue / correctdis) * dispro;
-// //            //printf("dispro : %f     walhei : %f", dispro, wallHei);
-// //            start = this->index ;
-// //            end = ((game->heigth / 2) - (wallHei));
-// //            ysize = wallHei / 2;
-// //            xsize = 1;
-// //             rec(start,end, xsize, ysize ,color);
-// //         }
- 
-// t_sprites *sp = (t_sprites *) item;
-
-// circle(*sp->pos, sp->rad ,0xff7272 );
-
-//    // ft_line(wall->pos->x, wall->pos->y, floor(sub.length(&sub)),wall->angle);
-//     //draw_line(game->window,wall->pos, wall->dir , 0xf8b400);
-//    // wall->dir->to_string(wall->dir);
-//     //wall->pos->to_string(wall->pos);
-// }
+  ray = (t_ray *) item;
+  if (ray != NULL)
+  {
+    ray->cast(ray);
+  }
+}
 
 void render_player(t_player *this)
 {
@@ -399,11 +628,23 @@ void render_player(t_player *this)
   //  direction = new_ray(this->pos, this->rotaion_angle);
    // draw_rec(game->window ,vu_pos ,12,  0xf6e1e1);
     //game->window.img->put_pixel(game->window,direction->dir->x, direction->dir->y, 0xff9d76);
+   this->wall_rays.foreach(&this->wall_rays, &cast_rays);
+   if (game->floor != NULL)
+      cast_draw_floor(this);
+    
     this->wall_rays.foreach(&this->wall_rays, &draw_ray);
    
 //   game->sprites.foreach(&game->sprites , &draw_sprites);
   // this->sprit_rays.foreach(&this->sprit_rays , &draw_sprit);
-   
+   do{
+        t_ray_sp *spray = (t_ray_sp *)this->light_rays.pull(&this->light_rays);
+        if(spray != NULL)
+        {
+            draw_sprit(spray);
+             
+            
+        }
+      } while  (this->light_rays.index > 0 );
     do{
         t_ray_sp *spray = (t_ray_sp *)this->sprit_rays.pull(&this->sprit_rays);
         if(spray != NULL)
@@ -413,6 +654,9 @@ void render_player(t_player *this)
             
         }
       } while  (this->sprit_rays.index > 0 );
+
+
+    
           
    // game->walls.foreach(&(game->walls), &drawwall);
     // printf("walls nb %ld",game->walls.index);

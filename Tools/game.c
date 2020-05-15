@@ -9,6 +9,9 @@ void new_game(t_game *this, char *file_name)
     new_array_list(&(this->errors), 10, sizeof(char *));
     new_array_list(&(this->walls), 10, sizeof(t_wall));
     new_array_list(&(this->sprites), 10, sizeof(t_sprites));
+    new_array_list(&(this->lights), 10, sizeof(t_sprites));
+    new_array_list(&this->allocated_sp_tex, 2, sizeof(t_sp_texture));
+    new_array_list(&this->allocated_tex, 4, sizeof(t_texture));
     new_parser(this->parser, file_name , this);
     this->exit = &__exit_;
     this->to_string = &game_to_string;
@@ -17,8 +20,7 @@ void new_game(t_game *this, char *file_name)
     
     if (this->errors.index > 0)
       this->exit(this, NULL);
-    //this->parser->free(this->parser);
-
+    //this->parser->free(this->parser);pl
     //free(this->parser);
 }
 void  print_errors(void *item)
@@ -29,6 +31,7 @@ void  print_errors(void *item)
   if (str != NULL)
   {
     write(2, str , ft_strlen(str));
+    write(2, "\n" , 1);
   }
 }
 
