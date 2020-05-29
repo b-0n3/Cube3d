@@ -11,21 +11,23 @@ NO ./texture/bluestone.xpm
       
     
      
- C ./texture/bluestone.xpm
+ C ./texture/MineShaft00.XPM
  
  WE ./texture/mossy.xpm
   
 SO ./texture/old_stones.xpm
  
   
-F ./texture/greystone.xpm
+F ./texture/eagle.xpm
  
  
 EA ./texture/redbrick.xpm
 
-3 |8 ./texture/wor.xpm | 5 ./texture/lamp.xpm|   2 ./texture/eagle.xpm  
+3 |8 ./texture/wor.xpm | 5 ./texture/lamp.xpm|   2 ./texture/eagle.xpm 
+
 3 | 6   ./texture/barrel.xpm | 7 ./texture/barrel.xpm | 9 ./texture/table.xpm
-3 | 1 ./texture/lmorpho.xpm | 3 ./texture/llm_1_.xpm | 4 ./texture/barrel2.xpm 
+
+3 | 1 ./texture/WoodenWallWithPoster0.xpm | 3 ./texture/WoodenWallWithStand0.xpm | 4 ./texture/WoodenWallWithStand1.xpm 
  
         R 1920 1080
 

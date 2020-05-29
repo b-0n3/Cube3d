@@ -244,7 +244,7 @@ t_bool check_collision(t_player *player , double newx ,double newy)
         if(ray->coli == 1 || ft_strchr("50",line [(int) newx])==NULL)
         {
            newx = player->pos->x + (cos(player->rotaion_angle)* player->mov_speed);
-           // newy = player->pos->y +(sin(player->rotaion_angle) *player->mov_speed);
+         //  newy = player->pos->y +(sin(player->rotaion_angle) *player->mov_speed);
             if (player->t_dir != 0)
                 to = player->t_dir;
             if(line[(int) newx] != 's')
@@ -253,6 +253,8 @@ t_bool check_collision(t_player *player , double newx ,double newy)
          //  if(player->t_dir == 0)
          //  {
               player->rotaion_angle += player->rotation_speed * to;
+               // player->vpos->y += player->dir->y * player->mov_speed * player->w_dir;
+            
             }
             ray->coli = 0;
            
@@ -264,21 +266,22 @@ t_bool check_collision(t_player *player , double newx ,double newy)
               if(line != NULL)
                 if (newx > 0 && newx < ft_strlen(line))
                 {
-              
                   if ( line [(int) newx] == 's')
                   {
                     update_secretdor_pos(player->pos , (int )newx,(int) newy);
+                  
                   }
                 }
             return TRUE;
         }
         else
         {
-             player->vpos->x += player->dir->x * player->mov_speed * player->w_dir;
-          player->vpos->y += player->dir->y * player->mov_speed * player->w_dir;
             player->pos->x = newx * game->wvalue;
             player->pos->y = newy * game->hvalue;
             player->rotaion_angle = ffangle;
+          
+       
+       
         }   
     
     return FALSE;
@@ -305,18 +308,22 @@ void update_player(t_player *this)
         int index = 0;
         ray_angle = this->rotaion_angle - (this->fov / 2);
         
-        if(this->t_dir != 0)
+             this->vpos->x += this->dir->x * this->mov_speed * this->w_dir /2;
+          this->vpos->y += this->dir->y * this->mov_speed * this->w_dir /2 ;
+        if (this->t_dir != 0)
         {
           float lastplanx = this->planx;
-        this->planx = this->planx * cos(this->rotation_speed * this->t_dir)
-         - this->plany * sin(this->rotation_speed * this->t_dir);
+        this->planx = this->planx * cos(this->rotation_speed * this->t_dir/2)
+         - this->plany * sin(this->rotation_speed * this->t_dir/2);
 
-         this->plany = lastplanx * sin(this->rotation_speed * this->t_dir) 
-        + this->plany * cos(this->rotation_speed * this->t_dir);
+         this->plany = lastplanx * sin(this->rotation_speed * this->t_dir/2) 
+        + this->plany * cos(this->rotation_speed * this->t_dir /2);
 
         double oldDirX = this->dir->x;
-       this->dir->x = this->dir->x * cos(this->rotation_speed * this->t_dir) - this->dir->y * sin(this->rotation_speed * this->t_dir);
-        this->dir->y = oldDirX * sin(this->rotation_speed * this->t_dir) + this->dir->y * cos(this->rotation_speed * this->t_dir);
+       this->dir->x = this->dir->x * cos(this->rotation_speed * this->t_dir / 2)
+        - this->dir->y * sin(this->rotation_speed * this->t_dir /2);
+        this->dir->y = oldDirX * sin(this->rotation_speed * this->t_dir /2 )
+         + this->dir->y * cos(this->rotation_speed * this->t_dir /2 );
         }
        
        
@@ -330,6 +337,7 @@ void update_player(t_player *this)
                 ray->update(ray , ray_angle, index);
                 ray_angle = ray_angle + (this->fov / nb_rays);
             }
+
             
             index++;
         }
@@ -522,7 +530,7 @@ void  draw_sprit(void *item)
             else
             {
             //printf("start %f  end  %f  size %f \n", start , end ,ysize );
-            color =  shadow(0xff7272,  dist);
+               color =  shadow(0xff7272,  dist);
 
             rec(start,end, xsize, ysize ,color);
             }
@@ -554,18 +562,19 @@ void  draw_sprit(void *item)
        r_diry1 = this->dir->y + this->plany;
 
        double  p = y - (game->heigth / 2) ;
-      
+        p -= this->offset;
+
       // Vertical position of the camera.
       float posZ = 0.5 * game->heigth ;
         posZ -= this->offset;
       // Horizontal distance from the camera to the floor for the current row.
       // 0.5 is the z position exactly in the middle between floor and ceiling.
       float rowDistance = posZ / p;
-
+      
       // calculate the real world step vector we have to add for each x (parallel to camera plane)
       // adding step by step avoids multiplications with a weight in the inner loop
       float floorStepX = (rowDistance * (r_dirx1 - r_dirx0 ))/ game->width;
-      float floorStepY = (rowDistance * (r_diry1 - r_diry0) )/ game->width;
+      float floorStepY = (rowDistance * (r_diry1 - r_diry0) )/ game->heigth;
 
       // real world coordinates of the leftmost column. This will be updated as we step to the right.
       float floorX =  this->vpos->x + rowDistance * r_dirx0;
@@ -578,8 +587,8 @@ void  draw_sprit(void *item)
 
         // get the texture coordinate from the fractional part
         
-        int tx = ( int)(game->floor->width  * (cellX) ) & ( game->floor->width -1 );
-        int ty = (int)(game->floor->height  * (cellY) ) & (game->floor->height -1);
+        int tx = ( int)(game->floor->width /2 * (cellX) ) & ( game->floor->width -1 );
+        int ty = (int)(game->floor->height /2  * (cellY) ) & (game->floor->height -1);
 
         
         floorX += floorStepX;
@@ -590,24 +599,25 @@ void  draw_sprit(void *item)
 
   
          color = game->floor->data[game->floor->width * ty + tx];
-        color = (color >> 1) & 8355711; // make a bit darker
+         color = shadow(color , game->heigth  - y);
+      //  color = (color >> 1) & 8355711; // make a bit darker
         if (y > game->heigth /2  +  this->offset)
         image_put_pixel(game->window , x,y ,color);
       //color = game->floor->data[game->floor->width * ty + tx];      
         //ceiling (symmetrical, at screenHeight - y - 1 instead of y)
         // color = texture[ceilingTexture][texWidth * ty + tx];
-        if (game->ceil != NULL){
-        color = game->ceil->data[game->ceil->width * ty + tx];
-         color = (color >> 1) & 8355711; // make a bit darker
-         if (y < game->heigth  /2  + this->offset)
-        image_put_pixel(game->window , x, y ,color);
+        // if (game->ceil != NULL){
+        // color = game->ceil->data[game->ceil->width * ty + tx];
+        //  color = shadow(color ,  y  );
+        //  if (y < game->heigth  /2  + this->offset)
+        // image_put_pixel(game->window , x, y ,color);
         }
         // buffer[screenHeight - y - 1][x] = color;
        // x+=diff;
       }
        
-    }
- }
+   }
+ 
 void cast_rays(void *item)
 {
   t_ray *ray;

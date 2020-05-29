@@ -267,6 +267,42 @@ void   render_wall_texture( double start , double end , double wallHei ,t_textur
 }
 void   render_sprite_texture( double start , double end , double wallHei ,t_sp_texture *tex , double dis);
 
+// void render_floor(double drawEnd ,double distWall,double floorXWall,double floorYWall)
+// {
+
+
+//   double  distPlayer, currentDist;
+
+     
+//       distPlayer = 0.0;
+//   if (drawEnd < 0) drawEnd = game->heigth; //becomes < 0 when the integer overflows
+
+//       //draw the floor from drawEnd to the bottom of the screen
+//       for(int y = drawEnd + 1; y < game->heigth; y++)
+//       {
+//         currentDist = game->heigth / (2.0 * y - game->heigth); //you could make a small lookup table for this instead
+
+//         double weight = (currentDist - distPlayer) / (distWall - distPlayer);
+
+//         double currentFloorX = weight * floorXWall + (1.0 - weight) * game->player.pos->x;
+//         double currentFloorY = weight * floorYWall + (1.0 - weight) * game->player.pos->x;
+
+//         int floorTexX, floorTexY;
+//         floorTexX = (int)(currentFloorX * game->floor->width) %  game->floor->width;
+//         floorTexY = (int)(currentFloorY *  game->floor->height) % game->floor->height;
+
+//         //floor
+//        // buffer[y][x] = (texture[3][texWidth * floorTexY + floorTexX] >> 1) & 8355711;
+//         //ceiling (symmetrical!)
+//        // buffer[h - y][x] = texture[6][texWidth * floorTexY + floorTexX];
+//            int     color = game->floor->data[game->floor->width * floorTexX + floorTexY];
+//          color = shadow(color , game->heigth  - y);
+//       //  color = (color >> 1) & 8355711; // make a bit darker
+        
+//         image_put_pixel(game->window ,(int) floorXWall,y ,color);
+//       }
+// }
+
 void    render_ray(t_ray *this)
 {
     //this->cast(this);
@@ -324,8 +360,11 @@ void    render_ray(t_ray *this)
               rec(start, end + wallHei + game->player.offset, xsize,  
               game->heigth /2 - game->player.offset,
                game->color[4] );
+              // else
+              // render_floor(end + wallHei + game->player.offset ,correctdis,this->index,end + wallHei + game->player.offset);
+               
              
-            // rec(start,0 , xsize,  game->heigth - end - wallHei + game->player.offset, game->color[5]);
+          rec(start,0 , xsize,  game->heigth - end - wallHei + game->player.offset, game->color[5]);
            //if(start < game->width /4 || start > 3 * game->width /4)
             end += game->player.offset;
             int x = (this->dir->x /  game->hvalue) -1;

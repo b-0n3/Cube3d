@@ -296,7 +296,7 @@ void get_w(void *item)
       if(ft_strlen(l) > game->bi)
       game->bi = ft_strlen(l);
 
-    game->wvalue = 64;
+    game->wvalue = 30;
  }
 
 void push_n_walls(t_parser *this,char *l ,t_vector r_p)
