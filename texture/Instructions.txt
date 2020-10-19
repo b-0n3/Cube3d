@@ -1,0 +1,29 @@
+I need a WIX installer that can oneclick install an application for our customer.
+The entire installer will include the installation of SQL Server Express 2019, SQL Server Management Studio,
+a C# Application and a Windows Service.
+
+That would all be to much for one first order therefore your part will be to start with
+Part 1 a,b,c and 2
+
+
+
+Part 1. 
+
+1   SQL Server Express 2019
+	a.) Restore a Database bak file (= run skript)
+	b.) Create a user
+	c.) Installationoptions
+		i.Instancename "SmartInventory"
+		ii SQL Browser Service install/start (otherwise no acces on instances allowed)
+	d.) Acces Via TCP/IP (not part of this order but perhaps a followup order if this order goes well)
+	e.) FirewallPort Acces (SQL Browser Instance) (not part of this order but perhaps a followup order if this order goes well)
+	
+2	Installation of SQL Server Management Studio
+	If possible accesible via remote maintenance
+	
+Note: I will send you the bak file once you accept the offer.
+
+References that might help:
+https://wixtoolset.org/
+getting started with wix: https://www.youtube.com/watch?v=6Yf-eDsRrnM&t=2022s
+Google Search Results for: wix sql server express install

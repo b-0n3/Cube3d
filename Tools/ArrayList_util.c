@@ -232,7 +232,7 @@ void *pull(t_array_list *this)
 {
 		void  *ptr;
 		int i;
-		
+
 		i = 0;
 		ptr = NULL;
 		if (this->index > 0)

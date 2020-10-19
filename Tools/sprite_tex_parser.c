@@ -2,7 +2,6 @@
 
 /* 
   @autor : b0n3
-
     info :
       this file contains function that handle the sprite texture 
       and handle errors thought.

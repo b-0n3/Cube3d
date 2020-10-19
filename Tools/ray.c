@@ -10,6 +10,7 @@ double      ray_len(t_ray *ray)
     return (sub.length(&sub));
 }
 
+
 double      ray_sp_len(t_ray_sp *ray)
 {
     t_vector sub;
@@ -17,6 +18,7 @@ double      ray_sp_len(t_ray_sp *ray)
     new_vector(&sub, ray->pos->x - ray->dir->x , ray->pos->y - ray->dir->y);
     return (sub.length(&sub));
 }
+
 t_ray *new_ray(t_vector *pos, double angle, int i)
 {
     t_ray *ray;
@@ -265,6 +267,7 @@ void   render_wall_texture( double start , double end , double wallHei ,t_textur
       
      
 }
+
 void   render_sprite_texture( double start , double end , double wallHei ,t_sp_texture *tex , double dis);
 
 // void render_floor(double drawEnd ,double distWall,double floorXWall,double floorYWall)
@@ -392,9 +395,6 @@ void    render_ray(t_ray *this)
             }
           else
           {
-            
-          
-           
               tex = pick_texture(this->kind);
                if (tex == NULL)
               {

@@ -156,6 +156,7 @@ void s_player_down(t_vector *pos,int  newx , int newy)
       break;
   }
 }
+
 /* 
   11s11
   10P01
@@ -203,13 +204,14 @@ void update_secretdor_pos(t_vector *pos , int newx, int newy)
   t_bool door_r;
   int posx;
   int posy;
+
   posx =  pos->x / game->hvalue;
   posy = pos->y / game->hvalue;
-  door_d = posy < newy ?TRUE :FALSE;
-  door_u = posy > newy ?TRUE :FALSE;
-  door_r = posx < newx ?TRUE :FALSE;
-  door_l = posx > newx?TRUE :FALSE;
-  if (door_u )
+  door_d = posy < newy ? TRUE : FALSE;
+  door_u = posy > newy ? TRUE : FALSE;
+  door_r = posx < newx ? TRUE : FALSE;
+  door_l = posx > newx ? TRUE : FALSE;
+  if (door_u)
     s_player_up(pos, newx , newy);
   else if(door_d)
     s_player_down(pos, newx , newy);
@@ -230,7 +232,7 @@ t_bool check_collision(t_player *player , double newx ,double newy)
     char *line;
     newAngle = player->rotaion_angle; 
     newAngle += player->w_dir == -1 ? M_PI: 0;
-   newAngle += player->t_dir * player->rotation_speed;
+    newAngle += player->t_dir * player->rotation_speed;
     ffangle = player->rotaion_angle + player->t_dir * player->rotation_speed;
             normelize_angel(newAngle);
         ray = player->collision.get( &player->collision ,0);
@@ -241,7 +243,7 @@ t_bool check_collision(t_player *player , double newx ,double newy)
       if (to == 0)
         to = 1;
         line = ((char *)game->parser->lines.get(&game->parser->lines, (int)newy));
-        if(ray->coli == 1 || ft_strchr("50",line [(int) newx])==NULL)
+        if(ray->coli == 1 || ft_strchr("50",line [(int) newx]) == NULL)
         {
            newx = player->pos->x + (cos(player->rotaion_angle)* player->mov_speed);
          //  newy = player->pos->y +(sin(player->rotaion_angle) *player->mov_speed);
@@ -603,6 +605,9 @@ void  draw_sprit(void *item)
       //  color = (color >> 1) & 8355711; // make a bit darker
         if (y > game->heigth /2  +  this->offset)
         image_put_pixel(game->window , x,y ,color);
+          
+
+
       //color = game->floor->data[game->floor->width * ty + tx];      
         //ceiling (symmetrical, at screenHeight - y - 1 instead of y)
         // color = texture[ceilingTexture][texWidth * ty + tx];

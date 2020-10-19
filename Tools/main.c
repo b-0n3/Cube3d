@@ -16,7 +16,7 @@ void drawmap(t_game *game)
             
             if (line[x] == '1')
             {
-                pos.x = x * (game->wvalue  );
+                pos.x = x * (game->wvalue);
                 pos.y = y * (game->hvalue);
             draw_rec(game->window ,pos, (int) (game->hvalue - 3 ),0xeb4d55);
             }

@@ -1,0 +1,51 @@
+# Tor state file last generated on 2020-07-28 05:01:17 local time
+# Other times below are in UTC
+# You *do not* need to edit this file.
+
+CircuitBuildTimeBin 375 1
+CircuitBuildTimeBin 425 3
+CircuitBuildTimeBin 475 9
+CircuitBuildTimeBin 525 18
+CircuitBuildTimeBin 575 16
+CircuitBuildTimeBin 625 13
+CircuitBuildTimeBin 675 6
+CircuitBuildTimeBin 725 13
+CircuitBuildTimeBin 775 4
+CircuitBuildTimeBin 825 8
+CircuitBuildTimeBin 875 10
+CircuitBuildTimeBin 925 4
+CircuitBuildTimeBin 975 3
+CircuitBuildTimeBin 1025 11
+CircuitBuildTimeBin 1075 2
+CircuitBuildTimeBin 1125 4
+CircuitBuildTimeBin 1175 1
+CircuitBuildTimeBin 1275 2
+CircuitBuildTimeBin 1325 1
+CircuitBuildTimeBin 1375 2
+CircuitBuildTimeBin 1525 1
+CircuitBuildTimeBin 1575 2
+CircuitBuildTimeBin 1925 1
+Dormant 0
+Guard in=default rsa_id=D5C6F62A5D1B3C711CA5E6F9D3772A432E96F6C2 nickname=skosh sampled_on=2020-07-19T10:58:17 sampled_by=0.4.3.5 listed=1
+Guard in=default rsa_id=6B7ABD237CF25E5F787F365AF5FC4C86F0213A9F nickname=torpidsDEhetzner2 sampled_on=2020-07-22T22:58:27 sampled_by=0.4.3.5 listed=1
+Guard in=default rsa_id=ADE92B0150C933FFE00683E7492F1D930AFABB6D nickname=CanterSecure03 sampled_on=2020-07-18T03:06:22 sampled_by=0.4.3.5 listed=1
+Guard in=default rsa_id=6A2676DACAFDBD00C5B94BD343690957A12BB758 nickname=neurodump sampled_on=2020-07-20T01:00:41 sampled_by=0.4.3.5 listed=1
+Guard in=default rsa_id=69122296D37FC7D338753E3EC19BC666A10566A1 nickname=URKIGOM sampled_on=2020-07-17T08:47:46 sampled_by=0.4.3.5 listed=1
+Guard in=default rsa_id=58FAB58A7DC8E99B9313F6E488E2140D4BE28416 nickname=jaimalator sampled_on=2020-07-20T22:47:49 sampled_by=0.4.3.5 listed=1
+Guard in=default rsa_id=53134D9637D9FBE565FA1E3AF82B23CC964C56D6 nickname=Fission08 sampled_on=2020-07-19T10:54:50 sampled_by=0.4.3.5 listed=1
+Guard in=default rsa_id=7A3E534C033E3836BD5AF223B642853C502AB33A nickname=Unnamed sampled_on=2020-07-24T02:49:46 sampled_by=0.4.3.5 listed=1
+Guard in=default rsa_id=D6670FB54B21818CE7C13524AA003258B8E35D38 nickname=drogo sampled_on=2020-07-25T07:23:00 sampled_by=0.4.3.5 listed=1
+Guard in=default rsa_id=6315278A91710062D90B288199EFA06E4AAA9E8F nickname=unnamed314 sampled_on=2020-07-18T01:20:59 sampled_by=0.4.3.5 listed=1 confirmed_on=2020-07-18T06:09:45 confirmed_idx=1
+Guard in=default rsa_id=4DB0490A0420809A8149E778BBAC8F1E9349D9EC nickname=Demogorgon sampled_on=2020-07-26T14:35:31 sampled_by=0.4.3.5 listed=1
+Guard in=default rsa_id=DEF8C760A79FEF2358E03AE5A1950086ABEB953E nickname=FalkensteinTor01 sampled_on=2020-07-20T16:33:18 sampled_by=0.4.3.5 listed=1
+Guard in=default rsa_id=401A66747713038CEEF6ED28C8AFEB70570EEBCC nickname=rinderwahnRelay24L sampled_on=2020-07-19T23:14:38 sampled_by=0.4.3.5 listed=1
+Guard in=default rsa_id=201A38EB5484A1407436125753A316C81EF50678 nickname=freiundwunderbar sampled_on=2020-07-26T18:23:34 sampled_by=0.4.3.5 listed=1
+Guard in=default rsa_id=F6EC46933CE8D4FAD5CCDAA8B1C5A377685FC521 nickname=JPsi2 sampled_on=2020-07-17T15:50:20 sampled_by=0.4.3.5 listed=1
+Guard in=default rsa_id=9413E5D74EFDCA7C36FCA9664B98C48C93FE33C7 nickname=bsdtor02 sampled_on=2020-07-23T11:42:06 sampled_by=0.4.3.5 listed=1 confirmed_on=2020-07-22T05:08:33 confirmed_idx=0 pb_use_attempts=63.000000 pb_use_successes=63.000000 pb_circ_attempts=133.000000 pb_circ_successes=132.000000 pb_successful_circuits_closed=132.000000 pb_timeouts=1.000000
+Guard in=default rsa_id=5368AB8D9033A357729D3578617A6493AB5DA3A8 nickname=berders sampled_on=2020-07-16T07:07:18 sampled_by=0.4.3.5 listed=1 confirmed_on=2020-07-26T02:19:59 confirmed_idx=2
+Guard in=default rsa_id=6ED3BE22B2261258017B3F0584706265985D7AE9 nickname=swlt1 sampled_on=2020-07-24T14:42:02 sampled_by=0.4.3.5 listed=1
+Guard in=default rsa_id=482A687F14182974926CE0B3ACFFC8D6247ED7DF nickname=ULayerKiriakou sampled_on=2020-07-22T21:51:25 sampled_by=0.4.3.5 listed=1
+Guard in=default rsa_id=725BDB38752AB86CC9F204AC9857C29306BBE2D6 nickname=ANormalDay sampled_on=2020-07-24T02:06:54 sampled_by=0.4.3.5 listed=1
+LastWritten 2020-07-28 05:01:17
+TorVersion Tor 0.4.3.5 (git-5ceb60e5ca61fec9)
+TotalBuildTimes 135
