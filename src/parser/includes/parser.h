@@ -36,5 +36,5 @@ void fill_res(t_game *g_p , char *line);
 t_bool find_res(t_game *g_p,t_array_list array);
 t_bool check_digit(char *line);
 void put_error(t_game *g_p, char *message);
-void  split_that(t_array_list *words , char *line , char ch)
+
 #endif

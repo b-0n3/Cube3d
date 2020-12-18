@@ -40,12 +40,20 @@ void put_error(t_game *g_p, char *message)
 void parse_colors(t_array_list word, t_game *g_p)
 {
     t_array_list colors;
-    
+
     if ( word.length != 2)
-        put_error(g_p,ft_strdup("invalid color"));
+        put_error(g_p,ft_strdup("invalid colors"));
     else
     {
-    
+        new_array_list(&colors , 3, sizeof(char *));
+       split_that(&colors ,word.get(&word,1),  ',');
+       if(colors.length != 3)
+        put_error(g_p , ft_strdup("invalid colors"));
+        else
+        {
+            split_that();
+        }
+        
     }
     
 }

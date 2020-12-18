@@ -1,3 +1,6 @@
+
+#include "libft.h"
+
 void  split_that(t_array_list *words , char *line , char ch)
 {
   int firstptr;

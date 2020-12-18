@@ -1,3 +1,6 @@
+
+#include "libft.h"
+
 int skip(char *line , int index, char ch)
 {
   if (line == NULL || index < 0)
