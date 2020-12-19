@@ -7,6 +7,7 @@ double      ray_len(t_ray *ray)
     t_vector sub;
 
     new_vector(&sub, ray->pos->x - ray->dir->x , ray->pos->y - ray->dir->y);
+    
     return (sub.length(&sub));
 }
 

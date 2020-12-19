@@ -3,6 +3,9 @@
 #define FT_PLAYER_H
 
 # include "array_list.h"
+# include "vector.h"
+# include "ft_line.h"
+
 
 typedef struct s_player{
     t_vector    *pos;
@@ -27,10 +30,7 @@ typedef struct s_player{
     void (*free)(void *item);
 }       t_player;
 
-typedef struct s_line {
-    t_vector *pos;
-    t_vector *dir;
-}   t_line ;
+
 
 void  new_player(t_player *this , t_vector *pos, char ch);
 void  update_player(t_player *this);

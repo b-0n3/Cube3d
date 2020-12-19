@@ -616,21 +616,13 @@ void cast_rays(void *item)
 
 void render_player(t_player *this)
 {
-    // t_ray *direction;
-    // t_vector vu_pos;
-
-    // new_vector(&vu_pos , this->pos->x - 6, this->pos->y - 6);
-  //  direction = new_ray(this->pos, this->rotaion_angle);
-   // draw_rec(game->window ,vu_pos ,12,  0xf6e1e1);
-    //game->window.img->put_pixel(game->window,direction->dir->x, direction->dir->y, 0xff9d76);
+    
    this->wall_rays.foreach(&this->wall_rays, &cast_rays);
    if (game->floor != NULL)
       cast_draw_floor(this);
     
     this->wall_rays.foreach(&this->wall_rays, &draw_ray);
-   
-//   game->sprites.foreach(&game->sprites , &draw_sprites);
-  // this->sprit_rays.foreach(&this->sprit_rays , &draw_sprit);
+
    do{
         t_ray_sp *spray = (t_ray_sp *)this->light_rays.pull(&this->light_rays);
         if(spray != NULL)
