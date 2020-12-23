@@ -1,14 +1,15 @@
 #include "array_list.h"
+/*
+	@autor b0n3@1337
+*/
 t_bool update_at(t_array_list *this, void *value, size_t index)
 {
-	if(this != NULL)
-	{
+	
 		if(index <= this->index)
 		{
 			this->arr[index] = value;
 			return TRUE;
 		}
-	}
 	return FALSE;
 }
 

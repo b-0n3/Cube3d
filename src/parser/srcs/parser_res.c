@@ -2,14 +2,12 @@
 
 t_bool check_res(t_array_list words)
 {
-  t_bool valid;
   int i;
   int r;
   char *line;
 
   i = 0;
   r = 0;
-  valid = FALSE;
   if (words.index  == 3)
     if (!ft_memcmp(words.get(&words , 0), "R",
      ft_strlen((char *)words.get(&words , 0))))  
@@ -68,7 +66,7 @@ t_bool find_res(t_game *g_p,t_array_list array)
   if (res_founded == TRUE && g_p->errors.index != 0)
       res_founded = FALSE;
   else if (res_founded == FALSE)
-    g_p->errors.push(&g_p->errors ,ft_strdup("define resulotion please : "),
+    g_p->errors.push(&g_p->errors ,ft_strdup("define resulotion please !"),
         sizeof(char *));
   return res_founded;
 }

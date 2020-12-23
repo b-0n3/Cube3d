@@ -1,15 +1,14 @@
 #ifndef FT_PARSER_H
 #define FT_PARSER_H
 
-#ifndef FT_LIBFT_H
+
 #include "libft.h"
-# endif
-#ifndef FT_ARRAY_LIST_H
+
+
 # include "array_list.h"
-#endif
-#ifndef FT_GAME_H
+
 # include "game.h" 
-#endif
+
 
 typedef struct s_parser{
         t_array_list lines;

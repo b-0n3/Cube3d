@@ -1,4 +1,9 @@
 #include "array_list.h"
+
+
+/*
+	@autor b0n3@1337
+*/
 t_bool push(t_array_list *this, void *value, size_t size_of_item)
 {
 	if (this != NULL)
@@ -67,6 +72,7 @@ t_bool new_array_double_size(t_array_list *this)
 	return FALSE;
 }
 
+
 void *pull(t_array_list *this)
 {
 	void  *ptr;
@@ -84,5 +90,32 @@ void *pull(t_array_list *this)
 		}
 		this->index--;
 	}
+	return ptr;
+}
+/*
+	@author b0n3@1337
+ *	this{ 1,1,2,3,4,5,5,6,7}
+	    i      /
+	[1,1,2,4,5,5,6,7]
+	this function  return item with the index  i and delete it from the array List 
+	@param this (pointer to this arrayList ) / index item index	
+	@return this[i]
+ */
+
+void *pull_index(t_array_list *this , size_t index)
+{
+	void *ptr;
+	size_t i;
+
+	ptr = NULL;
+	if (this->index > index)
+	{
+		ptr = this->get(this, index);
+		i = index;
+		while (i++ < this->index )
+			this->update_at(this,this->get(this, i + 1), i);
+		this->index--;
+	}
+
 	return ptr;
 }

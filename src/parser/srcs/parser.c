@@ -13,7 +13,7 @@ t_game *game;
       do_final:
         this function should be the parsing entry point.
       ......
-    continue setting up the parsin colors functions
+    continue setting up the parsing colors functions
     and create sprite texture function on another file 
     split this fucking file into files with five function each 
     to help with the  42 fucking norm d zeb 
@@ -123,65 +123,9 @@ void get_w(void *item)
 
 
 
-void push_s_walls(t_parser *this,char *l ,t_vector r_p)
-{
-    char *l_u = this->lines.get(&(this->lines),r_p.y - 1);
-    t_vector start;
 
-    game = this->g_p;
-    new_vector(&start , r_p.x , r_p.y);
-    if (l_u != NULL)
-      while (l[(int)r_p.x] != '\0' && l_u[(int)r_p.x] != '\0')
-     {
-                while ((l[(int) r_p.x] == '1' ||l[(int) r_p.x] == 's'||l[(int) r_p.x] == '2' )&& l_u[(int)r_p.x] !='1' && l[(int) r_p.x] != '\0' && l_u[(int)r_p.x] != '\0')
-                    r_p.x += 1;
-                if (start.x < r_p.x)
-                {
-                   int xx= game->walls.push(&(game->walls),new_wall(new_vector_pointer(start.x * game->wvalue, (start.y )*game->hvalue),new_vector_pointer((r_p.x )* game->wvalue ,(r_p.y )*game->hvalue),2), sizeof(t_wall));
-                 //   printf("this is xx %d",xx);
-                }
-                 r_p.x += 1;
-                 start.x = r_p.x;
-                 start.y = r_p.y;
-                
-    }
-}
 
-void push_e_walls(t_vector p)
-{
-    char *l = game->parser->lines.get(&game->parser->lines, p.y);
-    t_vector start;
-    new_vector(&start , p.x, p.y);
-    int len;
-    double y = p.y;
-    while (l != NULL && p.y < game->parser->lines.index)
-    {
-         l = game->parser->lines.get(&game->parser->lines, p.y);
-        while ((l[(int)p.x] == '1' || l[(int)p.x] == 's'|| l[(int)p.x] == '2')
-         && l[(int)p.x + 1] != '1' && l[(int)p.x + 1] != '2')
-        {
-            p.y += 1;
-            l = game->parser->lines.get(&game->parser->lines, p.y);
-            if (l != NULL)
-            {
-                len = ft_strlen(l);
-                if (p.x >= len)
-                    break;
-            }
-            else 
-                break;
-        }
 
-            if (start.y < p.y)
-                {
-                   int xx= game->walls.push(&(game->walls),new_wall(new_vector_pointer((start.x +1 ) * game->wvalue, (start.y )*game->hvalue),new_vector_pointer((p.x + 1)* game->wvalue ,(p.y )*game->hvalue),3), sizeof(t_wall));
-                 //   printf("this is xx %d",xx);
-                }
-                 p.y += 1;
-                 start.x = p.x;
-                 start.y = p.y;
-    }
-}
 
 
 void push_w_walls(t_vector p)

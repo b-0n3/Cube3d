@@ -20,7 +20,7 @@ void push_n_walls(t_parser *this,char *l ,t_vector r_p)
                      += 1;
                 }
                 if (start.x < r_p.x)
-                            insert_wall(start.x,start.y,r_p.x,r_y);
+                            insert_nb_wall(start.x,start.y,r_p.x,r_p.y);
                  if(l[(int)r_p.x] == 'N' || l[(int)r_p.x] == 'S' 
                  || l[(int)r_p.x] == 'E' || l[(int)r_p.x] == 'W')
                 {
@@ -32,7 +32,8 @@ void push_n_walls(t_parser *this,char *l ,t_vector r_p)
                  start.y = r_p.y;         
         }
 }
-void insert_wall(double s_x,double s_y,double e_x,double e_y){
+
+void insert_n_wall(double s_x,double s_y,double e_x,double e_y){
     game->walls.push(&(game->walls),
     new_wall(
         new_vector_pointer(s_x * game->wvalue, 
@@ -41,6 +42,7 @@ void insert_wall(double s_x,double s_y,double e_x,double e_y){
                         (e_y + 1)*game->hvalue),0),
                         sizeof(t_wall));
 }
+
 void insert_player(double x,double y){
     new_player(&(game->player),
                    new_vector_pointer(x *game->wvalue + (0.5 * game->wvalue ),

@@ -20,6 +20,7 @@ t_array_list *new_array_list(t_array_list *this, size_t first_size, size_t __siz
 		this->update_at = &update_at;   
 		this->swap = &ft_swap;
 		this->pull = &pull;
+		this->pull_i=&pull_index;
 		return this;
 	}
 	return NULL;
