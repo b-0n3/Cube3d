@@ -25,8 +25,6 @@ t_bool check_res(t_array_list words)
     }
   return (FALSE);
 }
-
-void fill_res(t_game *g_p , char *line)
 {
     int h;
     int w;
@@ -95,7 +93,6 @@ t_bool find_res_loop(t_array_list array)
             break;
         }
       }
-      
       i++;
     }
 

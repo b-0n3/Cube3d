@@ -1,3 +1,5 @@
+#include "parser.h"
+
 void new_parser(t_parser *this, char *filename, t_game *g_p)
 {
     new_array_list(&(this->lines), 7, sizeof(char *));

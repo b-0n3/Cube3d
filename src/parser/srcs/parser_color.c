@@ -1,7 +1,7 @@
 # include "parser.h"
 
 
-void set_colors(t_game *g_p , char *line, char kind)
+void set_colors(t_game *g_p , char *line)
 {
     t_array_list word;
     t_array_list colors;
@@ -20,6 +20,8 @@ void set_colors(t_game *g_p , char *line, char kind)
 
 void parse_fl_ci_tex(t_array_list word, t_game *g_p)
 {
+    char kind;
+    
      if (word.index == 2)
     {
       if (kind == 'f')

@@ -1,3 +1,4 @@
+#include "parser.h"
 t_game *game;
 
 void push_s_walls(t_parser *this,char *l ,t_vector r_p)

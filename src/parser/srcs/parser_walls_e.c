@@ -22,15 +22,13 @@ void push_e_walls(t_vector p)
         }
 
             if (start.y < p.y)
-               
+               insert_e_wall(start , p);
                  p.y += 1;
                  start.x = p.x;
                  start.y = p.y;
     }
 }
-void insert_e_wall(
-
-)
+void insert_e_wall(t_vector start, t_vector p)
 {
         game->walls.push(&(game->walls),
         new_wall(new_vector_pointer((start.x +1 ) * game->wvalue,

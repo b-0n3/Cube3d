@@ -12,6 +12,12 @@
 
 #include "libft.h"
 
+/*
+***	   ! disclaimer do not free whatever
+*** returned from this function
+*** ! this function does not alocate
+*/
+
 char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 {
 	unsigned int	i;

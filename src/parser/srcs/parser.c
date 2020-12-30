@@ -360,10 +360,10 @@ void   parser_do_final(t_parser *this)
 {
     char *line;
 
+
     game = this->g_p;
     this->get_lines(this);
-
-      init_tex();
+    init_tex();
     if (this->lines.index > 0)
     {
       if ( (this->g_p , this->lines))
