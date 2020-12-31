@@ -2,12 +2,13 @@
 #define FT_PARSER_H
 
 
+#include "util.h"
 #include "libft.h"
 
-
+# include "game.h" 
 # include "array_list.h"
 
-# include "game.h" 
+
 
 
 typedef struct s_parser{
@@ -34,6 +35,6 @@ t_bool check_res(t_array_list words);
 void fill_res(t_game *g_p , char *line);
 t_bool find_res(t_game *g_p,t_array_list array);
 t_bool check_digit(char *line);
-void put_error(t_game *g_p, char *message);
+
 
 #endif

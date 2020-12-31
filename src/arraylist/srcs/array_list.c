@@ -1,5 +1,11 @@
 #include "array_list.h"
 
+/*
+*** @param first_size : array initial size 
+*** @param __sizeofit : sizeof element
+*** @ param this :  ! please make sure the pointer you passing is already
+***               allocated or take  your bus error
+*/
 t_array_list *new_array_list(t_array_list *this, size_t first_size, size_t __sizeofit)
 {
 	this->arr = (void *)malloc ( first_size * __sizeofit);

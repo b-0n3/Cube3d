@@ -31,8 +31,6 @@ typedef struct s_array_list{
         void (*swap)(void **a, void **b);
         void *(*pull)(struct s_array_list *this);
         void *(*pull_i)(struct s_array_list *this , size_t index);
-
-
 }               t_array_list;
 
 

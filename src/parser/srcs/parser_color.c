@@ -3,19 +3,22 @@
 
 void set_colors(t_game *g_p , char *line)
 {
-    t_array_list word;
-    t_array_list colors;
+    t_array_list *word;
 
-    new_array_list(&word , 3, sizeof(char *));
-    new_array_list(&colors, 3, sizeof(char *));
-    split_that(&word ,line,  ' ');
+    word = (t_array_list *) malloc(sizeof(t_array_list));
+    if(word == NULL)
+    {
+        put_error(g_p , ft_strdup("memory error"));
+        return;
+    }
+    word = ft_split_property(line);
 #ifdef BONUS
    parse_fl_ci_tex(word, g_p);
 #else
     parse_colors(word, g_p);
 #endif
     word.free(&word, &free);
-    colors.free(&colors,&free);
+    free(word);
 }
 
 void parse_fl_ci_tex(t_array_list word, t_game *g_p)
@@ -33,11 +36,7 @@ void parse_fl_ci_tex(t_array_list word, t_game *g_p)
       put_error(g_p,ft_strdup("invalid floor / ceiling texture"));
 }
 
-void put_error(t_game *g_p, char *message)
-{
-    g_p->errors.push(&g_p->errors , message,
-     sizeof (char *));
-}
+
 
 void parse_colors(t_array_list word, t_game *g_p)
 {

@@ -17,7 +17,7 @@
 # include <stdlib.h>
 
 #ifndef FT_ARRAY_LIST_H
-# include "array_list.h"
+ # include "../arraylist/includes/array_list.h"
 #endif
 
 typedef unsigned char	t_byte;
