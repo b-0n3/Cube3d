@@ -1,11 +1,10 @@
-# for wall tex NO WE SO EA  || D S (doors) || 0123 for wall pics
+ # for wall tex NO WE SO EA  || D S (doors) || 0123 for wall pics
 # F C 
-# sprites 4 - 9
-# 5 is for lights
-# M sounds comes with the sp number or 1 for the main music
-# G gun  tex 10
-
-#D ./texture/barrel.xpm
+ # sprites 4 - 9
+   # 5 is for lights
+    # M sounds comes with the sp number or 1 for the main music
+  # G gun  tex 10
+ #D ./texture/barrel.xpm
 
 NO ./texture/bluestone.xpm
       
@@ -23,7 +22,7 @@ F ./texture/mossy.xpm
  
 EA ./texture/redbrick.xpm
 
-4 |8 ./texture/wor.xpm | 5 ./texture/lamp.xpm|   2 ./texture/eagle.xpm | 7 ./texture/barrel.xpm
+4 | 8 ./texture/wor.xpm | 5 ./texture/lamp.xpm|   2 ./texture/eagle.xpm | 7 ./texture/barrel.xpm
 
 3 | 6   ./texture/barrel.xpm | 7 ./texture/barrel.xpm | 9 ./texture/table.xpm
 

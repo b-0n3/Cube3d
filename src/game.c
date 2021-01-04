@@ -70,6 +70,7 @@ void free_game(void *t)
     mlx_clear_window(this->window.mlx, this->window.win);
     mlx_destroy_image(this->window.mlx, this->window.img->img_ptr);
     mlx_destroy_window(this->window.mlx, this->window.win);
+    //this->exit(this);
 }
 
 t_wall *new_wall(t_vector *pos , t_vector *dir, int angle)

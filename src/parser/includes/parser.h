@@ -9,14 +9,20 @@
 # include "array_list.h"
 
 
-
+typedef struct s_token{
+        char *token;
+        t_array_list values;
+        void (*free)(struct s_token *this);
+}               t_token;
 
 typedef struct s_parser{
         t_array_list lines;
+        t_array_list tokens;
         int             fd;
-        struct s_game          *g_p;
+        struct s_game          *g;
         void (*get_lines)(struct s_parser *this);
         int (*get_fd)(char *filename);
+        void (*parse_file)(struct s_parser *this);
         void  (*do_final)( struct s_parser *this);
         void (*free)(void *this);
 }           t_parser;
@@ -35,6 +41,13 @@ t_bool check_res(t_array_list words);
 void fill_res(t_game *g_p , char *line);
 t_bool find_res(t_game *g_p,t_array_list array);
 t_bool check_digit(char *line);
+t_token *get_token_by_key(t_parser *this, char *key);
+/*
+ *** token 
+*/
+void new_token(t_token *this, t_array_list list);
+t_bool token_push_values(t_token *this,t_array_list list);
+t_bool token_push_value(t_token *this,char *line);
 
 
 #endif

@@ -11,7 +11,7 @@ void set_colors(t_game *g_p , char *line)
         put_error(g_p , ft_strdup("memory error"));
         return;
     }
-    word = ft_split_property(line);
+    word = ft_split_property(line); 
 #ifdef BONUS
    parse_fl_ci_tex(word, g_p);
 #else
