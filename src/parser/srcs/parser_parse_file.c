@@ -94,9 +94,16 @@ t_bool is_map_line(char *line)
 }
 t_bool is_map_character(char ch)
 {
+    char *arr;
+
+#ifdef BONUS
+    arr = "0123456789SNWEs";
+#else
+    arr = "012SNWE";
+#endif
     if(ch == '\0')
         return (FALSE);
-    if (ft_strchr("0123456789SNWEs",ch) != NULL)
+    if (ft_strchr(arr,ch) != NULL)
         return (TRUE);
     return (FALSE);
 }
