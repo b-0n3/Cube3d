@@ -12,6 +12,7 @@ void parser_parse_file(t_parser *this)
         new_array_list(keywods,1 ,sizeof(char *));
         init_properties(keywords);
         this->lines.foreach(&(this->lines), &parse_token);
+        verify_map(parser);
         keywords->free(keywords,&free);
     }
 }
@@ -48,7 +49,9 @@ void parse_token(void *item)
     if (item != NULL && parser != NULL)
     {
         line = (char *) item;
-        if (!map_created() && !is_empty_or_comment(line) && !create_map(line))
+        if (is_map_line(line))
+            create_map(line);
+        else if (!is_empty_or_comment(line))
         {
             word = ft_split_property(line);
             if (word != NULL && word->index >1)
@@ -61,22 +64,28 @@ void parse_token(void *item)
                 put_error(parser->g,ft_strjoin("invalid line :\n", line));
                  word.free(&word, &free);
         }
-    }else 
-        put_error(parser->g,ft_strjoin("propeties after map line :\n", line));
+        else if(map_created())
+            put_error(parser->g,ft_strjoin("propeties after map line :\n", line));
     }
 }
 
 t_bool create_map(char *line)
 {
-    t_bool is_map_l;
-    int i;
-
-    i = 0;
-    is_map_l = TRUE;
+    t_token *token;
     if (line == NULL)
         return FALSE;
-    
-    return  is_map_line;
+    if(!map_created())
+        token = get_token_by_key(parser , "MAP");
+    else
+    {
+        token = new_empty_token(token,ft_strdup("MAP"));
+        if(token != NULL)
+            parser->tokens.push(&(parser->tokens),token,sizeof(t_token *));
+    }
+    if(token == NULL)
+        return (FALSE);
+    token_push_value(token , line);
+    return  (TRUE);
 }
 
 t_bool is_map_line(char *line)
@@ -110,18 +119,12 @@ t_bool is_map_character(char ch)
     return (FALSE);
 }
 t_bool map_created(){
-    size_t i;
     t_token *token;
-    i = 0;
-    while ( i < this->tokens.index)
-    {
-        token = this->tokens.get(&(this->tokens), i);
-        if (ft_strncmp(token->token , "MAP", 3) == 0)
-         return (TRUE);
-        i++;
-    }
-    return (FALSE);
+    
+    token = get_token_by_key(parser ,"MAP");
+    return (token == NULL ? FALSE :TRUE);
 }
+
 t_bool is_empty_or_comment(char *line){
     int i;
     int len;
