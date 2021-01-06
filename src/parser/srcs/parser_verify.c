@@ -13,15 +13,14 @@ void verify_map(t_parser *this){
        put_error(this->g,ft_strdup("no map!"));
     else
     {
-        while (i++ <token->values.index)
-        {
-            j = 0;
-            line = token->values.get(&(token->values),i);
-            len = ft_stlen(line);
-            while (j++ < len)
-            {
-                if (line[j] == ' ' || line[j] == '0')
-            }
-        }
+        
     }
+}
+
+void verify_map_lines(t_parser *this,t_array_list list)
+{
+    char *line;
+    size_t i;
+    size_t j;
+
 }

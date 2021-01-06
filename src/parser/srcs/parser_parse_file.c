@@ -108,9 +108,9 @@ t_bool is_map_character(char ch)
     char *arr;
 
 #ifdef BONUS
-    arr = "0123456789SNWEs";
+    arr = "0123456789 SNWEs";
 #else
-    arr = "012SNWE";
+    arr = "012 SNWE";
 #endif
     if(ch == '\0')
         return (FALSE);
