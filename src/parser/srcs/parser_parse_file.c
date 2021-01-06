@@ -7,6 +7,8 @@ void parser_parse_file(t_parser *this)
     if(this != NULL && this->lines.arr != NULL && this->tokens.arr != NULL)
     {
         parser = this;
+
+        
         new_array_list(keywods,1 ,sizeof(char *));
         init_properties(keywords);
         this->lines.foreach(&(this->lines), &parse_token);
