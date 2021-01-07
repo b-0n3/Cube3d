@@ -2,25 +2,28 @@
 
 void verify_map(t_parser *this){
     t_token *token;
-    int i;
-    int j;
-    char *line;
-    size_t len;
+    t_vector pos;
 
-    i = 0;
     token = get_token_by_key(this, "MAP");
     if(token == NULL || token->values.arr == NULL || token->values.index == 0)
        put_error(this->g,ft_strdup("no map!"));
     else
     {
-        
+        new_vector(&pos, 0, 0);
+        verify_map_lines(this, token->values,pos);
     }
 }
 
-void verify_map_lines(t_parser *this,t_array_list list)
+void verify_map_lines(t_parser *this,t_array_list list,t_vector pos)
 {
     char *line;
-    size_t i;
-    size_t j;
+    size_t len;
+
+    if (pos.x >= list.index || pos.x <0)
+        return;    
+    line  = list.get(&(list),pos.x);
+    if (line == NULL)
+        return;
+
 
 }

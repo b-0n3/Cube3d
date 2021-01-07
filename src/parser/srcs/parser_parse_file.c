@@ -26,11 +26,24 @@ void init_properties(t_array_list *words)
         words->push(words,ft_strdup("SO"),sizeof(char *));
         words->push(words,ft_strdup("WE"),sizeof(char *));
         words->push(words,ft_strdup("EA"),sizeof(char *));
-        words->push(words,ft_strdup("S"),sizeof(char *));
+        
         words->push(words,ft_strdup("F"),sizeof(char *));
         words->push(words,ft_strdup("C"),sizeof(char *));
         words->push(words,ft_strdup("MAP"),sizeof(char *));
+        #ifdef BONUS
+        push_bonus_sprites_properties(words);
+        #else
+        words->push(words,ft_strdup("S"),sizeof(char *));
+        #endif
     }
+}
+void push_bonus_sprites_properties(t_array_list *words)
+{
+    int i;
+
+    i = 1;
+    while (i++ <= 9)
+        words->push(words, ft_itoa(i), sizeof(char *));
 }
 void put_token(t_parser *p , t_array_list word)
 {
