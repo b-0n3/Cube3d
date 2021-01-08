@@ -26,7 +26,6 @@ void init_properties(t_array_list *words)
         words->push(words,ft_strdup("SO"),sizeof(char *));
         words->push(words,ft_strdup("WE"),sizeof(char *));
         words->push(words,ft_strdup("EA"),sizeof(char *));
-        
         words->push(words,ft_strdup("F"),sizeof(char *));
         words->push(words,ft_strdup("C"),sizeof(char *));
         words->push(words,ft_strdup("MAP"),sizeof(char *));

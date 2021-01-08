@@ -1,3 +1,5 @@
+#include "parser.h"
+
 void get_lines(t_parser *this)
 {
     char *line;
@@ -15,6 +17,8 @@ void get_lines(t_parser *this)
             this->lines.free(&(this->lines), &free);
         free(line);
     }
+    else
+    put
     close(this->fd);
 }
 

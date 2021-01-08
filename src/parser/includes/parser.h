@@ -42,6 +42,17 @@ void fill_res(t_game *g_p , char *line);
 t_bool find_res(t_game *g_p,t_array_list array);
 t_bool check_digit(char *line);
 t_token *get_token_by_key(t_parser *this, char *key);
+void parser_parse_file(t_parser *this);
+void init_properties(t_array_list *words);
+void push_bonus_sprites_properties(t_array_list *words);
+void put_token(t_parser *p , t_array_list word);
+void parse_token(void *item);
+t_bool create_map(char *line);
+t_bool is_map_line(char *line);
+t_bool is_map_character(char ch);
+t_bool map_created();
+t_bool is_empty_or_comment(char *line);
+t_bool check_properties(char *token);
 /*
  *** token 
 */

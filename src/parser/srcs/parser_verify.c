@@ -10,7 +10,7 @@ void verify_map(t_parser *this){
     else
     {
         new_vector(&pos, 0, 0);
-        verify_map_lines(this, token->values,pos);
+       // verify_map_lines(this, token->values,pos);
     }
 }
 
@@ -24,6 +24,6 @@ void verify_map_lines(t_parser *this,t_array_list list,t_vector pos)
     line  = list.get(&(list),pos.x);
     if (line == NULL)
         return;
-
+    
 
 }

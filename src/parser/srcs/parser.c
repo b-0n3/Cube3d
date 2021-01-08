@@ -38,36 +38,7 @@ t_bool check_digit(char *line)
 
 
 
-void parse_line(t_game *g_p, char *line)
-{
-  int i;
-   if (line!= NULL)
-   {
-     i = 0;
-     while ((line[i] == ' ' || line[i] == '\t')&& line[i] != '\0')
-        i++;
-        if (ft_strncmp(line + i,"NO", 2) == 0)
-            set_no_tex(g_p , line + i);
-        else if (ft_strncmp(line + i, "SO", 2) == 0)
-            set_so_tex(g_p , line + i);
-        else if (ft_strncmp(line + i, "WE", 2) == 0)
-            set_we_tex(g_p , line + i);
-        else if (ft_strncmp(line + i, "EA", 2) == 0 )
-            set_ea_tex(g_p , line + i);
-        else if (ft_strncmp(line + i, "S", 1) == 0)
-            set_colors(g_p , line + i, 'S');
-        else if (ft_strncmp(line + i, "F", 1)== 0)
-            set_colors(g_p , line + i, 'f');
-        else if (ft_strncmp(line + i, "C", 1)==0)
-            set_colors(g_p ,line + i, 'c');
-        else if (ft_isdigit(line[i ]) == 1)
-            sprite_tex_parser(line + i  );
-        else  if (ft_strncmp(line + i, "R", 1) != 0)
-          game->errors.push(&game->errors,ft_strjoin(line, "\n invalid line")
-          ,sizeof(char *));
-        
-    }
-}
+
 
 
 t_bool check_empty_line(char *line)
@@ -292,54 +263,7 @@ void on_one_texture()
   }
 }
 
-/* 
-    ea  -> we;
-    so -> no;
- */
 
-void on_two_texture(){
-  if (game->n_texture != NULL && game->so_texture == NULL)
-    game->so_texture = game->n_texture;
-  else if (game->n_texture == NULL && game->so_texture != NULL)
-    game->n_texture = game->so_texture;
-  if (game->we_texture != NULL && game->ea_texture == NULL)
-    game->ea_texture = game->we_texture;
-  else if (game->ea_texture != NULL && game->we_texture == NULL)
-    game->we_texture = game->ea_texture;
-  if (game->n_texture == NULL && game->so_texture == NULL)
-  {
-    game->so_texture = game->ea_texture;
-    game->n_texture = game->we_texture;
-  }
-  else if (game->we_texture == NULL && game->ea_texture == NULL)
-  {
-    game->ea_texture = game->n_texture;
-    game->we_texture = game->so_texture;
-  }
-}
-void on_tree_texture()
-{
-  if(game->ea_texture == NULL)
-    game->ea_texture = game->we_texture;
-  else if(game->n_texture == NULL)
-    game->n_texture = game->so_texture;
-  else if (game->we_texture == NULL)
-   game->we_texture = game->ea_texture;
-  else if (game->so_texture == NULL)
-   game->we_texture = game->n_texture;
-} 
-
-void check_tex()
-{
-  int nb_tex;
-  nb_tex = nb_texture();
-  if( nb_tex == 1)
-    on_one_texture();
-  else if( nb_tex == 2)
-    on_two_texture();
-  else if( nb_tex == 3)
-    on_tree_texture();
-}
 
 void init_tex()
 {
@@ -352,37 +276,42 @@ void init_tex()
   game->color[2] = 0xbb3b0e;
   game->color[3] = 0xdd7631;
   game->color[4] = 0xbb3b0e;
-  game->color[5] = 0x2c786c;  
+  game->color[5] = 0x2c786c;
 }
+void parse_properties(t_parser *this)
+{
+  t_token *token;
 
+  if (this == NULL || this->tokens.arr == NULL)
+    put_error(game ,ft_strdup("no map!"));
+  else{
+    token = get_token_by_key(this, "R");
+    parse_resultion(this ,token);
+    #ifndef BONUS
+    token = get_token_by_key(this, "S");
+    parse_sprite(this , token);
+    #else
+    parse
+    #endif
+    token = get_token_by_key(this, "C");
+    parse_ceil_tex(this, token);
+    token = get_token_by_key(this, "SE");
+    parse_se_tex(this , token);
+    token = get_token_by_key(this, "WE");
+    parse_we_tex(this , token);
+    token = get_token_by_key()
+  }
+}
 
 void   parser_do_final(t_parser *this)
 {
     char *line;
 
-
     game = this->g_p;
     this->get_lines(this);
+    this->parse_file(this);
     init_tex();
-    if (this->lines.index > 0)
-    {
-      if ( (this->g_p , this->lines))
-      {
-        while (!check_mapline(this->lines.get(&(this->lines),0)))
-        {
-            line = (char *) this->lines.pull(&(this->lines));
-            if ( line == NULL)
-                this->g_p->errors.push(&(this->g_p->errors),ft_strdup("invalid file : "), sizeof(char *));
-            else if (check_empty_line(line) == FALSE)
-                parse_line(this->g_p, line);
-            free(line);
-        }
-        if (create_map(this))
-        {
-          check_tex();
-            return;
-        }
-      }
-    }
-     this->g_p->errors.push(&(this->g_p->errors),ft_strdup("invalid file : "), sizeof(char *));
+    if (game->errors.index > 0)
+      return;
+    parse_properties(this->tokens);
 }
