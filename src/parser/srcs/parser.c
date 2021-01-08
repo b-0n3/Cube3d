@@ -291,15 +291,19 @@ void parse_properties(t_parser *this)
     token = get_token_by_key(this, "S");
     parse_sprite(this , token);
     #else
-    parse
+    parse_sprite_bonus(this);
     #endif
     token = get_token_by_key(this, "C");
-    parse_ceil_tex(this, token);
+    parse_ceil(this, token);
     token = get_token_by_key(this, "SE");
     parse_se_tex(this , token);
     token = get_token_by_key(this, "WE");
     parse_we_tex(this , token);
-    token = get_token_by_key()
+    token = get_token_by_key(this, "EA");
+    parse_ea_tex(this , token);
+    token = get_token_by_key(this, "SO");
+    parse_so_tex(this , token);
+    
   }
 }
 
