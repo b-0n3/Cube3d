@@ -2,12 +2,9 @@
 
 void parse_ceil(t_parser *this, t_token *token)
 {
-  #ifdef BONUS
-    parse_ceilling_tex(this->g, token);
-  #else
     parse_ceilling_color(this->g ,token);
-  #endif
 }
+
 int parse_color(t_game *g, t_array_list rgb_colors)
 {
   int val[3];
@@ -21,10 +18,10 @@ int parse_color(t_game *g, t_array_list rgb_colors)
   i = 0;
   while((v = (char *) word.pull(&word)) != NULL)
   {
-             val[i++] = ft_atoi(v);
-          if (val[i - 1]  > 255 || val[i - 1] < 0)
-           put_error(g,ft_strjoin("invalid  color",v));
-           free(v);
+    val[i++] = ft_atoi(v);
+    if (val[i - 1]  > 255 || val[i - 1] < 0)
+      put_error(g, ft_strjoin("invalid  color\n", v));
+    free(v);
   }
   return list_rgb_to_int(val);
 }
@@ -45,27 +42,20 @@ void parse_ceilling_color(t_game *this, t_token *token)
 {
   t_array_list  word;
   char          *line;
-  int           val[3];
-  char            *v;
-  int           i;
+  int           color;
 
-  i = 0;
+
   if (this != NULL && token != NULL)
   {
     new_array_list(&word,2,sizeof(char *));
     line = token->get(&(token->values),0);
     if(line == NULL)
-      put_error(this,ft_strdup("invalid ceiling color"));
+      put_error(this,ft_strdup("invalid ceilling color"));
     split_that(&word, line, ',');
-    if(word->index == 3)
-        while((v = (char *) word.pull(&word)) != NULL)
-        {
-             val[i++] = ft_atoi(v);
-          if (val[i - 1]  > 255 || val[i - 1] < 0)
-           put_error(this,ft_strjoin("invalid ceiling color",v));
-        }
+    color = parse_color(this , &word);
+    if (color < 0)
+      put_error(this,ft_strdup("invalid ceilling color"));
     else
-      put_error(this,ft_strdup("invalid ceiling color"));
-  
+      this->color[6] = color;
   }
 }

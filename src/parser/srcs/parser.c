@@ -241,27 +241,6 @@ int nb_texture()
   return i;
 }
 
-void on_one_texture()
-{
-  t_texture *tex;
-
-  tex = NULL;
-  if(game->ea_texture != NULL)
-    tex = game->ea_texture;
-  else if(game->n_texture != NULL)
-    tex  =game->n_texture;
-  else if (game->we_texture != NULL)
-    tex = game->we_texture;
-  else if (game->so_texture != NULL)
-    tex = game->we_texture;
-  if(tex != NULL)
-  {
-    game->ea_texture = tex;
-    game->n_texture = tex;
-    game->we_texture = tex;
-    game->so_texture = tex;
-  }
-}
 
 
 
@@ -295,6 +274,8 @@ void parse_properties(t_parser *this)
     #endif
     token = get_token_by_key(this, "C");
     parse_ceil(this, token);
+    token = get_token_by_key(this, "F");
+    parse_floor(this, token);
     token = get_token_by_key(this, "SE");
     parse_se_tex(this , token);
     token = get_token_by_key(this, "WE");

@@ -94,12 +94,7 @@ t_bool  set_borders(t_sp_texture *tex)
    return FALSE;
 }
 
-t_bool push_sp_texture(t_sp_texture *tex)
-{
-  return game->allocated_sp_tex.push(
-  &game->allocated_sp_tex, 
-  tex, sizeof(t_sp_texture));
-}
+
 
 t_bool line_parser( char *str)
 {

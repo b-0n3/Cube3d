@@ -18,7 +18,7 @@ void get_lines(t_parser *this)
         free(line);
     }
     else
-    put
+        put_error(this->g, ft_strdup("invalid file"));
     close(this->fd);
 }
 

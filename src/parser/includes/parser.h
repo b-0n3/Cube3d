@@ -53,6 +53,13 @@ t_bool is_map_character(char ch);
 t_bool map_created();
 t_bool is_empty_or_comment(char *line);
 t_bool check_properties(char *token);
+void parse_ceil(t_parser *this, t_token *token);
+int parse_color(t_game *g, t_array_list rgb_colors);
+int list_rgb_to_int(int *val);
+void parse_ceilling_color(t_game *this, t_token *token);
+void parse_floor(t_parser *this, t_token *token);
+void parse_floor_color(t_game *this, t_token *token);
+void parse_floor_tex(t_game *this, t_token *token);
 /*
  *** token 
 */

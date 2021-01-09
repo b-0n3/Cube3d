@@ -61,6 +61,7 @@ t_sp_texture *get_sp_tex(int kind)
   }
   return tex;
 }
+
 t_sp_texture *new_sp_texture(char *link, int kind)
 {
     t_sp_texture *tex;
