@@ -13,11 +13,12 @@ int parse_color(t_game *g, t_array_list rgb_colors)
   int val[3];
   int i;
 
-  i = 2;
-  while(i >=0)
-    val[i--] = -1;
+  i = 0;
+  while(i < 3)
+    val[i++] = -1;
   if(e_list == NULL || rgb_colors.index != 3)
     return -1;
+  i = 0;
   while((v = (char *) word.pull(&word)) != NULL)
   {
              val[i++] = ft_atoi(v);
