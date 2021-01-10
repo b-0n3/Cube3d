@@ -26,7 +26,7 @@ void parse_sprite(t_parser *this, t_token *token)
     else
     {
         tex = new_sp_texture(filename, 2);
-        if(sp == NULL)
+        if(tex == NULL)
            put_error(this , ft_strdup("invalid sprite texture"));
         else
             if (set_borders(tex))

@@ -44,5 +44,8 @@ void parse_floor_tex(t_game *this, t_token *token)
     if (filename == NULL || fd < 0)
         put_error(this , ft_strdup("invalid floor texture file"));
     else
+    {
         this->floor = new_sp_texture(filename, 10);
+        close(fd);
+    }
 }

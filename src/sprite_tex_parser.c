@@ -89,7 +89,7 @@ t_bool  set_borders(t_sp_texture *tex)
       }
     tex->hsize = tex->borders[1] - tex->borders[0];
     tex->wsize = tex->borders[3] - tex->borders[2];
-    if (tex->hsize >0 && tex->wsize >0)
+    if (tex->hsize >  0 && tex->wsize > 0)
       return TRUE;
    return FALSE;
 }
