@@ -5,19 +5,6 @@ t_game *game;
 /* 
   @autor b0ne@1337 
   
-  this file is for parser function
-  ToDo:
-    create fallowing functions:
-      new_parser:
-        this function should allocate and return a new  parser pointer
-      do_final:
-        this function should be the parsing entry point.
-      ......
-    continue setting up the parsing colors functions
-    and create sprite texture function on another file 
-    split this fucking file into files with five function each 
-    to help with the  42 fucking norm d zeb 
-
       
 */
 
@@ -262,7 +249,7 @@ void parse_properties(t_parser *this)
   t_token *token;
 
   if (this == NULL || this->tokens.arr == NULL)
-    put_error(game ,ft_strdup("no map!"));
+    put_error(game ,ft_strdup("empty file!"));
   else{
     token = get_token_by_key(this, "R");
     parse_resultion(this ,token);

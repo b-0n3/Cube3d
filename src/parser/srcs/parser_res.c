@@ -1,5 +1,35 @@
 # include "parser.h"
 
+void parse_resultion(t_parser *this , t_token *token)
+{
+  t_array_list word;
+  char *line;
+  int h;
+  int w;
+
+  if (this != NULL  && token != NULL && token->values.arr != NULL)
+  {
+    line = token->values.pull(&(token->values));
+      split_that(&word, line, ' ');
+      if(word.index != 2)
+        put_error(this->g , ft_strdup("invalid resulotion"));
+      else
+      {
+        h = ft_atoi((char*)word.get(&word, 1));
+        w = ft_atoi((char *) word.get(&word, 0));
+        g_p->heigth = (h > 1440 || h < 0) ? 1440 : h;
+        g_p->width = (w > 2560 || w < 0) ? 2560 : w;
+        g_p->window.mlx = mlx_init();
+        g_p->window.win =  mlx_new_window(g_p->window.mlx, 
+        (int) g_p->width, (int) g_p->heigth , "CUB3d");
+        g_p->window.img = (t_image *) malloc (sizeof(t_image));
+        init_image(g_p->window.img, g_p->window);
+        word.free(&word , &free);
+        //free(line);
+        //token->free(token);
+      }
+  }
+}
 t_bool check_res(t_array_list words)
 {
   int i;
@@ -39,16 +69,7 @@ t_bool check_res(t_array_list words)
       sizeof(char *));
     else
     {
-        h = ft_atoi((char*)word.get(&word ,2));
-        w = ft_atoi((char *) word.get(&word, 1));
-        g_p->heigth = (h > 1440 || h < 0) ? 1440 : h;
-        g_p->width = (w > 2560 || w < 0) ? 2560 : w;
-        g_p->window.mlx = mlx_init();
-        g_p->window.win =  mlx_new_window(g_p->window.mlx, 
-        (int) g_p->width, (int) g_p->heigth , "CUB3d");
-        g_p->window.img = (t_image *) malloc (sizeof(t_image));
-        init_image(g_p->window.img, g_p->window);
-        word.free(&word , &free);
+        
     }
 }
 
