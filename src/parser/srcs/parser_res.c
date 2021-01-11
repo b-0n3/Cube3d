@@ -11,9 +11,7 @@ void parse_resultion(t_parser *this , t_token *token)
   {
     line = token->values.pull(&(token->values));
       split_that(&word, line, ' ');
-      if(word.index != 2)
-        put_error(this->g , ft_strdup("invalid resulotion"));
-      else
+      if (word.index == 2)
       {
         h = ft_atoi((char*)word.get(&word, 1));
         w = ft_atoi((char *) word.get(&word, 0));
@@ -28,93 +26,98 @@ void parse_resultion(t_parser *this , t_token *token)
         //free(line);
         //token->free(token);
       }
+      else 
+       put_error(this->g , ft_strdup("invalid resulotion"));
   }
+  else
+    put_error(this->g , ft_strdup("no resulotion"));
 }
-t_bool check_res(t_array_list words)
-{
-  int i;
-  int r;
-  char *line;
 
-  i = 0;
-  r = 0;
-  if (words.index  == 3)
-    if (!ft_memcmp(words.get(&words , 0), "R",
-     ft_strlen((char *)words.get(&words , 0))))  
-    {  while(++r <words.index)
-      {
-        i = 0;
-        if ((line =  words.get(&words, r)) != NULL)
-           while (line[i++] != '\0')
-                if(!ft_isdigit((int) line[i]))
-                    return (FALSE);
-        else
-          return (FALSE);
-      }
-        return (TRUE);
-    }
-  return (FALSE);
-}
-{
-    int h;
-    int w;
-    t_array_list word;
+// t_bool check_res(t_array_list words)
+// {
+//   int i;
+//   int r;
+//   char *line;
 
-    h = 0;
-    w = 0;
-    new_array_list(&word , 3, sizeof(char *));
-    split_that(&word, line , ' ');
-    if ( !check_res(word))
-      game->errors.push(&game->errors ,ft_strdup("invalid resulotion"),
-      sizeof(char *));
-    else
-    {
+//   i = 0;
+//   r = 0;
+//   if (words.index  == 3)
+//     if (!ft_memcmp(words.get(&words , 0), "R",
+//      ft_strlen((char *)words.get(&words , 0))))  
+//     {  while(++r <words.index)
+//       {
+//         i = 0;
+//         if ((line =  words.get(&words, r)) != NULL)
+//            while (line[i++] != '\0')
+//                 if(!ft_isdigit((int) line[i]))
+//                     return (FALSE);
+//         else
+//           return (FALSE);
+//       }
+//         return (TRUE);
+//     }
+//   return (FALSE);
+// }
+// {
+//     int h;
+//     int w;
+//     t_array_list word;
+
+//     h = 0;
+//     w = 0;
+//     new_array_list(&word , 3, sizeof(char *));
+//     split_that(&word, line , ' ');
+//     if ( !check_res(word))
+//       game->errors.push(&game->errors ,ft_strdup("invalid resulotion"),
+//       sizeof(char *));
+//     else
+//     {
         
-    }
-}
+//     }
+// }
 
-t_bool find_res(t_game *g_p,t_array_list array)
-{
-  int i;
-  int r;
+// t_bool find_res(t_game *g_p,t_array_list array)
+// {
+//   int i;
+//   int r;
 
-  t_bool res_founded;
-  i = 0;
-  res_founded = find_res_loop(array);
+//   t_bool res_founded;
+//   i = 0;
+//   res_founded = find_res_loop(array);
   
-  if (res_founded == TRUE && g_p->errors.index != 0)
-      res_founded = FALSE;
-  else if (res_founded == FALSE)
-    g_p->errors.push(&g_p->errors ,ft_strdup("define resulotion please !"),
-        sizeof(char *));
-  return res_founded;
-}
+//   if (res_founded == TRUE && g_p->errors.index != 0)
+//       res_founded = FALSE;
+//   else if (res_founded == FALSE)
+//     g_p->errors.push(&g_p->errors ,ft_strdup("define resulotion please !"),
+//         sizeof(char *));
+//   return res_founded;
+// }
 
-t_bool find_res_loop(t_array_list array)
-{
-  while (i < array.index)
-  {
-      int i;
-      int r;
-      t_bool res_founded;
-      char *line;
+// t_bool find_res_loop(t_array_list array)
+// {
+//   while (i < array.index)
+//   {
+//       int i;
+//       int r;
+//       t_bool res_founded;
+//       char *line;
 
-      res_founded = FALSE;
-      i = 0;
-      r = 0;
-      line = (char *)array.get(&array, i);
-      if (line != NULL)
-      {
-        while (ft_iswhitespace(line[r]))
-          r++;
-        if(ft_strncmp(line + r , "R", 1) == 0)
-        {
-              res_founded = TRUE;
-              fill_res(g_p ,line );
-            break;
-        }
-      }
-      i++;
-    }
+//       res_founded = FALSE;
+//       i = 0;
+//       r = 0;
+//       line = (char *)array.get(&array, i);
+//       if (line != NULL)
+//       {
+//         while (ft_iswhitespace(line[r]))
+//           r++;
+//         if(ft_strncmp(line + r , "R", 1) == 0)
+//         {
+//               res_founded = TRUE;
+//               fill_res(g_p ,line );
+//             break;
+//         }
+//       }
+//       i++;
+//     }
 
-}
+// }

@@ -38,6 +38,7 @@ int list_rgb_to_int(int *val)
   }
   return rgb_to_int(val[0],val[1],val[3]);
 }
+
 void parse_ceilling_color(t_game *this, t_token *token)
 {
   t_array_list  word;
