@@ -31,6 +31,7 @@ typedef struct s_array_list{
         void (*swap)(void **a, void **b);
         void *(*pull)(struct s_array_list *this);
         void *(*pull_i)(struct s_array_list *this , size_t index);
+        struct s_array_list *(*filter)(struct s_array_list list, size_t size , t_bool *(*f)cond(void *item), void *(*map)(void *item))
 }               t_array_list;
 
 
@@ -48,5 +49,6 @@ void ft_swap(void **a, void **b);
 t_bool update_at(struct s_array_list *this, void *value, size_t index);
 void *pull(t_array_list *this);
 void *pull_index(t_array_list *this , size_t index);
+t_array_list *filter_list(t_array_list list, size_t size , t_bool *(*cond)(void *item), void *(*map)(void *item));
 
 #endif

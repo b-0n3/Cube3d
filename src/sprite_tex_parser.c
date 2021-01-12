@@ -2,21 +2,12 @@
 
 /* 
   @autor : b0n3
-
-    info :
-      this file contains function that handle the sprite texture 
-      and handle errors thought.
-      - a sprite line 
        X |Y   Z   | ....
       x : how many texture in the line 
       Y : a number defines the kind  of  the texture 
       Z : the full path to the image
       
-    toDo:
-        create this function :
-        sprite_tex_parser(line + i); 
-          line_parser(t_array_list *sp_links, char *str)
-          check_tex_kind()
+  
           
  */
 

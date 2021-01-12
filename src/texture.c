@@ -31,8 +31,6 @@ t_texture  *new_texture(char *link)
           sizeof(char *));
         tex->data = (int *) mlx_get_data_addr(tex->img.img_ptr , &(tex->img.bpp) 
           ,&tex->img.size_line , &(tex->img.endian));
-          game->allocated_tex.push(&game->allocated_tex, tex, sizeof(t_texture));
-         // printf("%s : heigth %d  : width : %d" , link, tex->height , tex->width);
       }
     
     }

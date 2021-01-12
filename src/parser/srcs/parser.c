@@ -255,7 +255,7 @@ void parse_properties(t_parser *this)
     parse_resultion(this ,token);
     #ifndef BONUS
     token = get_token_by_key(this, "S");
-    parse_sprite(this , token);
+    parse_sprite(this , token, 2);
     #else
     parse_sprite_bonus(this);
     #endif

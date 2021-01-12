@@ -73,7 +73,7 @@ t_bool  set_borders(t_sp_texture *tex)
    return FALSE;
 }
 
-void parse_sprite(t_parser *this, t_token *token)
+void parse_sprite(t_parser *this, t_token *token, int kind)
 {
     int fd;
     char *filename;
@@ -89,7 +89,7 @@ void parse_sprite(t_parser *this, t_token *token)
         put_error(this , ft_strdup("invalid sprite texture"));
     else
     {
-        tex = new_sp_texture(filename, 2);
+        tex = new_sp_texture(filename, kind);
         if(tex == NULL)
            put_error(this , ft_strdup("invalid sprite texture"));
         else

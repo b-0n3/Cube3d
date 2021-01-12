@@ -60,6 +60,11 @@ void parse_ceilling_color(t_game *this, t_token *token);
 void parse_floor(t_parser *this, t_token *token);
 void parse_floor_color(t_game *this, t_token *token);
 void parse_floor_tex(t_game *this, t_token *token);
+void parse_we_tex(t_parser *this, t_token *token);
+void parse_so_tex(t_parser *this, t_token *token);
+void parse_ea_tex(t_parser *this, t_token *token);
+void parse_se_tex(t_parser *this, t_token *token)
+void parse_sprite(t_parser *this, t_token *token, int kind);
 /*
  *** token 
 */
