@@ -14,137 +14,50 @@
 extern t_game *game;
 
 
-/* 
-  borders;
-    0: where the real heigth starts;
-    1: where the real heigth ends;
-    2: where the real width starts;
-    3: where the real width ends;
-*/
-// static t_bool is_empty(int *line, int size)
-// {
-//   int i;
+void parse_b_sprite(void *item)
+{
+    char *line;
+    t_token *token;
+    t_array_list *list;
+    int kind;
 
-//   i = 0;
-//   while (i < size)
-//   {
-//       if (line[i] != 0 )
-//           return FALSE;
-//     i++;
-//   }
-//   return TRUE;
-// }
+    line = (char *) item;
+    if (item != NULL)
+    {
 
-// t_bool  set_borders(t_sp_texture *tex)
-// {
-//   int i;
-//   int j;
- 
-//   i = 0;
-//   j = 0;
-//   if (tex->height <= 0 || tex->width <= 0)
-//     return FALSE;
-//   while(i++ < 4)
-//     tex->borders[i] = 0;
-//   i = 0;
-//   while (j++ < tex->height)
-//       if(!is_empty(tex->data + (j * tex->width), tex->width))
-//       {
-//         tex->borders[0] = j;
-//         break;
-//       }
-//   while (i++ < tex->width)
-//       if (tex->data[i + j * tex->width] != 0)
-//       {
-//         tex->borders[2] = i;
-//       }
-//   while (j++ < tex->height)
-//   {
-//     i =0;
-//     while (tex->data[i + j * tex->width] == 0 && i < tex->width)
-//         i++;
-//     if (tex->borders[2] > i)
-//        tex->borders[2] = i;
-//        i = tex->width -1;
-//     while (tex->data[i + j * tex->width] == 0 && i >=0)
-//         i--;
-//     if (tex->borders[3] < i)
-//        tex->borders[3] = i;
-//   }
-//   j = tex->height - 1;
-//   while (j-- >= 0)
-//     if(!is_empty(tex->data + (j * tex->width), tex->width))
-//       {
-//         tex->borders[1] = j;
-//         break;
-//       }
-//     tex->hsize = tex->borders[1] - tex->borders[0];
-//     tex->wsize = tex->borders[3] - tex->borders[2];
-//     if (tex->hsize >  0 && tex->wsize > 0)
-//       return TRUE;
-//    return FALSE;
-// }
+        list = ft_split_property(line);
+        new_token(token, *list);
+        kind = ft_atoi(token->token);
+        parse_sprite(game->parser,token ,kind);
+    }
+    else
+      put_error(game , ft_strdup("invalid sp texture"));
 
+}
+void  sprite_tex_parser(char *line)
+{
+  t_array_list data;
+  char *l;
+  int nb;
 
-
-// t_bool line_parser( char *str)
-// {
-//   t_sp_texture *tex;
-//   t_array_list links;
-//   int kind;
-//   t_bool valid;
-
-//   valid = FALSE;
-//   new_array_list(&links,2,sizeof(char *));
-//   split_that(&links , str, ' ');
-//   if (links.index == 2)
-//   {
-//     kind = ((char *)links.get(&links, 0))[0] - 48;
-//     tex = new_sp_texture(links.get(&links, 1), kind);
-//     if (tex != NULL)
-//     {
-//       if (set_borders(tex))
-//         if (push_sp_texture(tex))
-//             valid = TRUE;
-//     }
-//   }
-//   links.free(&links, &free);
-//     return valid;
-// }
-
-// void  sprite_tex_parser(char *line)
-// {
-//   t_array_list data;
-//   char *l;
-//   int nb;
-
-//   new_array_list(&data ,3 , sizeof(char *));
-//   printf("\n %s\n", line);
-//   split_that(&data, line , '|'); 
-//   if (data.index > 0)
-//   {
-//     nb = ft_atoi(data.get(&data, 0));
-//     if (nb > 0 && nb == data.index - 1)
-//     {
-//       while (nb > 0)
-//       {
-//         if (!line_parser(data.get(&data, nb)))
-//         {
-//           game->errors.push(&game->errors,
-//           ft_strdup("invalid sp texture"),
-//           sizeof(char *));
-//           break;
-//         }
-//         nb--;
-//       }
-//     }
-//     else
-//       game->errors.push(&game->errors,
-//       ft_strdup("invalid sizeof sp texture"),
-//       sizeof(char *));
-//   }
-//   data.free(&data, &free);
-// }
+  new_array_list(&data ,3 , sizeof(char *));
+  split_that(&data, line , '|'); 
+  if (data.index == 0)
+    put_error(game, ft_strdup("invalid line"));
+  else
+  {
+    l = data.pull(&data);
+    nb = ft_atoi(l);
+    free(l);
+    if (nb > 0 && nb == data.index - 1)
+    {
+        data.foreach(&data, &parse_b_sprite);
+    }
+    else
+      put_error(game ,ft_strdup("invalid sp texture"));
+  }
+  data.free(&data, &free);
+}
 
 
 

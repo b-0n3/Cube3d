@@ -20,6 +20,7 @@ char *map_token(void *item)
     char *tmp;
     size_t i;
 
+    
     i = 0;
     ptr = NULL;
     token = (token *) item;
@@ -46,7 +47,8 @@ void parse_sp_line(void *item)
     line = (char *)item;
     if(line != NULL)
     {
-        
+        printf("%s \n", line);
+        sprite_tex_parser(line);
     }
 }
 

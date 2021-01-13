@@ -274,6 +274,10 @@ void parse_properties(t_parser *this)
     
   }
 }
+void parse_map(this)
+{
+  
+}
 
 void   parser_do_final(t_parser *this)
 {
@@ -286,4 +290,5 @@ void   parser_do_final(t_parser *this)
     if (game->errors.index > 0)
       return;
     parse_properties(this->tokens);
+    parse_map(this);
 }
