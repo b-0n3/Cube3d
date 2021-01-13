@@ -274,9 +274,18 @@ void parse_properties(t_parser *this)
     
   }
 }
-void parse_map(this)
+void parse_map(t_parser *this)
 {
-  
+  t_token *token;
+  t_array_list map;
+  token = get_token_by_key(this ,"MAP");
+  if(token == NULL)
+    put_error(this->g, ft_strdup("no map"));
+  else
+  {
+    parse_walls(token->lines);
+    parse_sprites(token->lines);
+  }
 }
 
 void   parser_do_final(t_parser *this)
