@@ -1,4 +1,5 @@
 #include "util.h"
+#include "game.h"
 
 void put_error(t_game *g_p, char *message)
 {

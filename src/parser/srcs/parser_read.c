@@ -1,4 +1,4 @@
-#include "parser.h"
+#include "cub3d.h"
 
 void get_lines(t_parser *this)
 {

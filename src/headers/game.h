@@ -1,18 +1,29 @@
 #ifndef FT_GAME_H
 #define FT_GAME_H
 
-#ifndef FT_ARRAY_LIST_H
 # include "array_list.h"
-#endif
+# include "player.h"
 
-#ifndef FT_PLAYER_H
-#include "player.c"
-#endif 
+# include "ray.h"
 
-#ifndef FT_PARSER_H
-#include "parser.h"
-#endif
+typedef struct s_wall{
+        t_vector  *pos;
+        t_vector  *dir;
+        int     kind;
+}               t_wall;
 
+
+
+typedef struct s_sptites{
+        t_vector *pos;
+        double    rad;
+        int kind;
+        double u_a;
+        double d_a;
+        double a_p_r;
+        void (*free)(void *item);
+}       t_sprites;
+ 
 typedef struct s_window {
             void *mlx;
             void *win;
@@ -85,7 +96,7 @@ typedef struct s_game{
         char *(*to_string)(struct s_game *this);
         void (*free)(void *this);
 }               t_game;
-
+# include "parser.h"
 void new_game(t_game *this, char *file_name);
 void __exit_(struct s_game *this , char *err_msg);
 char *game_to_string(struct s_game *this);
@@ -103,4 +114,16 @@ void set_so_tex(t_game *g_p , char *line);
 void set_we_tex(t_game *g_p , char *line);
 void set_ea_tex(t_game *g_p , char *line);
 t_sp_texture *get_sp_tex(int kind);
+
+t_wall *new_wall(t_vector *pos , t_vector *dir, int angle);
+void free_wall(void  * item);
+
+void    init_image(t_image *this,t_window win);
+void clear_screen( t_window s_win);
+void show_image(t_window s_win);
+
+/*     sprites functions*/
+t_sprites *new_sprite(t_vector *pos, double rad , int kind);
+void free_sprite(void *item);
+void    cast_sprite(t_vector *pos, t_sprites *sp, t_ray_sp **ray_sp , double r_len, double angle, int index);
 #endif 

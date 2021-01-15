@@ -1,10 +1,10 @@
-#include "parser.h"
+#include "cub3d.h"
 
 t_bool bonus_sp_condition(void *item)
 {
     t_token *token;
 
-    token = (token *) item;
+    token = (t_token *) item;
     if (token != NULL)
     {
         if (ft_strchr("123456789" ,token->token[0]))
@@ -13,25 +13,25 @@ t_bool bonus_sp_condition(void *item)
     return (FALSE);
 }
 
-char *map_token(void *item)
+void  *map_token(void *item)
 {
     t_token *token;
-    chat *ptr;
+    char *ptr;
     char *tmp;
     size_t i;
 
     
     i = 0;
     ptr = NULL;
-    token = (token *) item;
+    token = (t_token *) item;
     if (token != NULL)
     {
         ptr = ft_strdup(token->token);
         if (ptr != NULL)
             while (i++ < token->values.index)
             {
-                tmp = token->values.get(&(token->values),i);
-                tmp = ft_strjoin(ptr,tmp);
+                tmp = token->values.get(&(token->values), i);
+                tmp = ft_strjoin(ptr, tmp);
                 free(ptr);
                 ptr = tmp;
             }
@@ -57,9 +57,9 @@ void parse_sprite_bonus(t_parser *this){
 
     if(this != NULL)
     {
-        lines = this->tokens.filter(&(this->tokens),
+        lines = this->tokens.filter(this->tokens,
          sizeof(char *), &bonus_sp_condition, &map_token);
          if (lines != NULL)
-            lines->foreach(lines,&parse_sp_line);
+            lines->foreach(lines, &parse_sp_line);
     }
 }

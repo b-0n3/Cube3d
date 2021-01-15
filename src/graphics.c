@@ -1,4 +1,4 @@
-#include "Cube3d.h"
+#include "cub3d.h"
 
 t_window windo;
 extern t_game *game;

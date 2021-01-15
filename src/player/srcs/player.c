@@ -1,4 +1,4 @@
-#include "Cube3d.h"
+#include "cub3d.h"
 
 extern t_game *game;
 int nb_rays;

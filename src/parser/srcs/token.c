@@ -1,11 +1,11 @@
-# include "parser.h"
+# include "cub3d.h"
 
 void new_token(t_token *this, t_array_list list)
 {
     if (this != NULL && list.arr != NULL )
     {
         this->token = list.pull(&list);
-        new_array_list(&(this->values), 1,sizeof(chat *));
+        new_array_list(&(this->values), 1,sizeof(char *));
         token_push_values(this, list);
     }
 }
@@ -15,7 +15,7 @@ void new_empty_token(t_token *this, char *token)
     if (this != NULL && token != NULL )
     {
         this->token = token;
-        new_array_list(&(this->values), 1, sizeof(chat *));
+        new_array_list(&(this->values), 1, sizeof(char *));
     }
 }
 
@@ -46,11 +46,13 @@ t_token *get_token_by_key(t_parser *this, char *key){
     index = 0;
     if(this == NULL || key == NULL)
         return (NULL);
-    while (index++ <this->tokens.index)
+    while (index < this->tokens.index)
     {
-        token = (t_token *) this->tokens.get(&(this->tokens),index);    
-        if(ft_strncmp(token->token,key , ft_strlen(token->token)) == 0)
+        token = (t_token *) this->tokens.get(&(this->tokens), index);
+
+        if(token != NULL && ft_strncmp(token->token , key , ft_strlen(token->token)) == 0)
             return token;
+        index++;
     }
     return (NULL);
 }

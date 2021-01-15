@@ -1,5 +1,6 @@
-#include "parser.h"
+#include "cub3d.h"
 t_parser *parser;
+
 t_array_list *keywords;
 
 void parser_parse_file(t_parser *this)
@@ -8,8 +9,8 @@ void parser_parse_file(t_parser *this)
     {
         parser = this;
 
-        
-        new_array_list(keywods,1 ,sizeof(char *));
+        keywords  = (t_array_list *) malloc(sizeof(t_array_list));
+        new_array_list(keywords,7 ,sizeof(char *));
         init_properties(keywords);
         this->lines.foreach(&(this->lines), &parse_token);
         verify_map(parser);
@@ -21,7 +22,7 @@ void init_properties(t_array_list *words)
 {
     if(words !=NULL && words->arr != NULL)
     {
-        words->push(words,ft_strdup("R"),sizeof(char *));
+        words->push(words,ft_strdup("R"),  sizeof(char *));
         words->push(words,ft_strdup("NO"),sizeof(char *));
         words->push(words,ft_strdup("SO"),sizeof(char *));
         words->push(words,ft_strdup("WE"),sizeof(char *));
@@ -68,13 +69,13 @@ void parse_token(void *item)
             word = ft_split_property(line);
             if (word != NULL && word->index >1)
             {
-                if(!check_properties(word.get(&word, 0)))
+                if(!check_properties(word->get(word, 0)))
                     put_error(parser->g,ft_strjoin("invalid line :\n", line));
                 else 
-                    put_token(this , word);
+                    put_token(parser , *word);
             }else
                 put_error(parser->g,ft_strjoin("invalid line :\n", line));
-                 word.free(&word, &free);
+                 //word->free(word, &free);
         }
         else if(map_created())
             put_error(parser->g,ft_strjoin("propeties after map line :\n", line));
@@ -86,11 +87,12 @@ t_bool create_map(char *line)
     t_token *token;
     if (line == NULL)
         return FALSE;
-    if(!map_created())
+    if(map_created())
         token = get_token_by_key(parser , "MAP");
     else
     {
-        token = new_empty_token(token,ft_strdup("MAP"));
+        token = (t_token *) malloc(sizeof(t_token ));
+        new_empty_token(token,ft_strdup("MAP"));
         if(token != NULL)
             parser->tokens.push(&(parser->tokens),token,sizeof(t_token *));
     }
@@ -107,13 +109,15 @@ t_bool is_map_line(char *line)
     i = 0;
     if (line == NULL)
         return FALSE;
+    if(line[0] == '\0')
+        return (FALSE);
     while (ft_iswhitespace(line[i]))
             i++;
     while (is_map_character(line[i]))
         i++;
-    if(i == ft_strlen(line))
+    if(line[i] == '\0')
         return (TRUE);
-    retrn (FALSE);
+    return (FALSE);
 }
 t_bool is_map_character(char ch)
 {
@@ -126,7 +130,7 @@ t_bool is_map_character(char ch)
 #endif
     if(ch == '\0')
         return (FALSE);
-    if (ft_strchr(arr,ch) != NULL)
+    if (ft_strchr(arr, ch) != NULL)
         return (TRUE);
     return (FALSE);
 }
@@ -162,14 +166,15 @@ t_bool check_properties(char *token)
     
     size_t       index;
     char *key;
-    if(line != NULL)
+    if(token != NULL)
     {
-        
-        while (index++ < keywords->index)
+        index = 0;
+        while (index < keywords->index)
         {
-            key = keywords->get(keyword ,index)
+            key = keywords->get(keywords ,index);
             if (key != NULL && ft_strncmp(token ,key,ft_strlen(key)) == 0)
                 return TRUE;
+            index++;
         }
     }
     return FALSE;

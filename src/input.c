@@ -1,4 +1,4 @@
-# include "Cube3d.h"
+# include "cub3d.h"
 # include "key_macos.h"
 
 extern	t_game	*game;

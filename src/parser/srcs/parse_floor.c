@@ -1,4 +1,4 @@
-#include "parser.h"
+#include "cub3d.h"
 
 void parse_floor(t_parser *this, t_token *token)
 {
@@ -19,15 +19,15 @@ void parse_floor_color(t_game *this, t_token *token)
   if (this != NULL && token != NULL)
   {
     new_array_list(&word,2,sizeof(char *));
-    line = token->get(&(token->values),0);
+    line = token->values.get(&(token->values),0);
     if(line == NULL)
       put_error(this,ft_strdup("invalid floor color"));
     split_that(&word, line, ',');
-    color = parse_color(this , &word);
+    color = parse_color(this , word);
     if (color < 0)
       put_error(this,ft_strdup("invalid floor color"));
     else
-      this->color[6] = color;
+      this->color[5] = color;
   }
 }
 
@@ -38,7 +38,7 @@ void parse_floor_tex(t_game *this, t_token *token)
     
     if (this == NULL || token == NULL)
         return;
-    filename =(char *) token->values.pop(&(token->values));
+    filename =(char *) token->values.pull(&(token->values));
     if(filename != NULL)
         fd = open(filename , O_RDONLY);
     if (filename == NULL || fd < 0)

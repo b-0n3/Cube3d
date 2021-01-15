@@ -1,4 +1,4 @@
-#include "Cube3d.h"
+#include "cub3d.h"
 
 void new_game(t_game *this, char *file_name)
 {

@@ -1,5 +1,4 @@
-# include "parser.h"
-
+# include "cub3d.h"
 void parse_resultion(t_parser *this , t_token *token)
 {
   t_array_list word;
@@ -15,13 +14,13 @@ void parse_resultion(t_parser *this , t_token *token)
       {
         h = ft_atoi((char*)word.get(&word, 1));
         w = ft_atoi((char *) word.get(&word, 0));
-        g_p->heigth = (h > 1440 || h < 0) ? 1440 : h;
-        g_p->width = (w > 2560 || w < 0) ? 2560 : w;
-        g_p->window.mlx = mlx_init();
-        g_p->window.win =  mlx_new_window(g_p->window.mlx, 
-        (int) g_p->width, (int) g_p->heigth , "CUB3d");
-        g_p->window.img = (t_image *) malloc (sizeof(t_image));
-        init_image(g_p->window.img, g_p->window);
+        this->g->heigth = (h > 1440 || h < 0) ? 1440 : h;
+        this->g->width = (w > 2560 || w < 0) ? 2560 : w;
+        this->g->window.mlx = mlx_init();
+        this->g->window.win =  mlx_new_window(this->g->window.mlx, 
+        (int) this->g->width, (int) this->g->heigth , "CUB3d");
+        this->g->window.img = (t_image *) malloc (sizeof(t_image));
+        init_image(this->g->window.img, this->g->window);
         word.free(&word , &free);
         //free(line);
         //token->free(token);

@@ -1,5 +1,5 @@
 
-#include "Cube3d.h"
+#include "cub3d.h"
 #include <sys/time.h>
 #define FRAME_CAP 20000.0
 long  SECOND  =1000000000L;
@@ -117,7 +117,7 @@ void startgame(t_game *game)
 
 int main(int argc , char **paths)
 {
-    t_game gam
+    t_game game;
     new_game(&game, paths[1]);
     lastTime = get_current_time();
     startgame(&game);

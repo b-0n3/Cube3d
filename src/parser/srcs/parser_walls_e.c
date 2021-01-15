@@ -1,4 +1,7 @@
-t_game *game;
+#include "cub3d.h"
+
+extern t_game *game;
+
 void push_e_walls(t_vector p)
 {
     char *l;

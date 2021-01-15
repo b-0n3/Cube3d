@@ -1,11 +1,13 @@
-t_game *game;
+#include "cub3d.h"
+
+extern t_game *game;
 void push_n_walls(t_parser *this,char *l ,t_vector r_p)
 {
     char *l_d;
     t_vector start;
 
     l_d =this->lines.get(&(this->lines),r_p.y + 1);
-    game = this->g_p;
+    game = this->g;
     new_vector(&start , r_p.x , r_p.y);
     if (l_d != NULL)
      while (l[(int)r_p.x] != '\0' )
@@ -16,15 +18,14 @@ void push_n_walls(t_parser *this,char *l ,t_vector r_p)
                 {
                     if ( l[(int) r_p.x] == '\0' || l_d[(int)r_p.x] == '\0')
                         break;
-                    r_p.
-                     += 1;
+                    r_p.x += 1;
                 }
                 if (start.x < r_p.x)
-                            insert_nb_wall(start.x,start.y,r_p.x,r_p.y);
+                            insert_n_wall(start.x,start.y,r_p.x,r_p.y);
                  if(l[(int)r_p.x] == 'N' || l[(int)r_p.x] == 'S' 
                  || l[(int)r_p.x] == 'E' || l[(int)r_p.x] == 'W')
                 {
-                  insert_player(r_p.x, r_p.y)
+                  insert_player(r_p.x, r_p.y,l[(int) r_p.x]);
                     l[(int) r_p.x] = '0';
                 }
                  r_p.x += 1;
@@ -43,9 +44,9 @@ void insert_n_wall(double s_x,double s_y,double e_x,double e_y){
                         sizeof(t_wall));
 }
 
-void insert_player(double x,double y){
+void insert_player(double x,double y,char ch){
     new_player(&(game->player),
                    new_vector_pointer(x *game->wvalue + (0.5 * game->wvalue ),
                     y * game->hvalue + (0.5 *game->hvalue)) ,
-                   l[(int)r_p.x]);
+                   ch);
 }

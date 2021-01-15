@@ -1,4 +1,4 @@
-#include "parser.h"
+#include "cub3d.h"
 
 void parse_ceil(t_parser *this, t_token *token)
 {
@@ -9,14 +9,15 @@ int parse_color(t_game *g, t_array_list rgb_colors)
 {
   int val[3];
   int i;
+  char *v;
 
   i = 0;
   while(i < 3)
     val[i++] = -1;
-  if(e_list == NULL || rgb_colors.index != 3)
+  if(rgb_colors.index != 3)
     return -1;
   i = 0;
-  while((v = (char *) word.pull(&word)) != NULL)
+  while((v = (char *) rgb_colors.pull(&rgb_colors)) != NULL)
   {
     val[i++] = ft_atoi(v);
     if (val[i - 1]  > 255 || val[i - 1] < 0)
@@ -49,14 +50,14 @@ void parse_ceilling_color(t_game *this, t_token *token)
   if (this != NULL && token != NULL)
   {
     new_array_list(&word,2,sizeof(char *));
-    line = token->get(&(token->values),0);
+    line = token->values.get(&(token->values),0);
     if(line == NULL)
       put_error(this,ft_strdup("invalid ceilling color"));
     split_that(&word, line, ',');
-    color = parse_color(this , &word);
+    color = parse_color(this , word);
     if (color < 0)
       put_error(this,ft_strdup("invalid ceilling color"));
     else
-      this->color[6] = color;
+      this->color[4] = color;
   }
 }

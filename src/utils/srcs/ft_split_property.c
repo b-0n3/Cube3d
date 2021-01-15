@@ -1,4 +1,4 @@
-#include "util.h"
+#include "utils.h"
 
 t_array_list *ft_split_property(char *line)
 {

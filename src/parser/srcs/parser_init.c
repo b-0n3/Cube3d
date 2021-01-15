@@ -1,4 +1,4 @@
-#include "parser.h"
+#include "cub3d.h"
 
 void new_parser(t_parser *this, char *filename, t_game *g_p)
 {
@@ -9,7 +9,7 @@ void new_parser(t_parser *this, char *filename, t_game *g_p)
     this->get_fd = &get_fd;
     this->do_final = &parser_do_final;
     this->free = &free_parser;
-    this->g_p = g_p;
+    this->g = g_p;
     this->fd = this->get_fd(filename);
 }
 // todo : create t_token free methode and tokens list

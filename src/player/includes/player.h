@@ -36,4 +36,6 @@ void  new_player(t_player *this , t_vector *pos, char ch);
 void  update_player(t_player *this);
 void  render_player(t_player *this);
 void  free_player(void *item);
+void s_player_down(t_vector *pos,int  newx , int newy);
+void s_player_up(t_vector *pos,int  newx , int newy);
 #endif

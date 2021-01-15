@@ -1,4 +1,4 @@
-#include "Cube3d.h"
+#include "cub3d.h"
 extern int nb_rays;
 
 t_vector *get_sprite_inter(t_vector *pos, t_vector *dir , t_vector *c_pos, double rad)

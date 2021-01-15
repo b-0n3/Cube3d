@@ -1,4 +1,4 @@
-#include "parser.h"
+#include "cub3d.h"
 
 extern t_game *game;
 
@@ -82,19 +82,19 @@ void parse_sprite(t_parser *this, t_token *token, int kind)
 
     if(this == NULL  || token == NULL)
         return;
-    filename =(char *) token->values.pop(&(token->values));
+    filename =(char *) token->values.pull(&(token->values));
     if(filename != NULL)
         fd = open(filename , O_RDONLY);
     if (filename == NULL || fd < 0)
-        put_error(this , ft_strdup("invalid sprite texture"));
+        put_error(this->g , ft_strdup("invalid sprite texture"));
     else
     {
         tex = new_sp_texture(filename, kind);
         if(tex == NULL)
-           put_error(this , ft_strdup("invalid sprite texture"));
+           put_error(this->g , ft_strdup("invalid sprite texture"));
         else
             if (set_borders(tex))
                 if (!push_sp_texture(tex))
-                    put_error(this , ft_strdup("invalid sprite texture"));
+                    put_error(this->g , ft_strdup("invalid sprite texture"));
     }
 }

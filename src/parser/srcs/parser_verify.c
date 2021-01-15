@@ -1,4 +1,4 @@
-#include "parser.h"
+#include "cub3d.h"
 
 void verify_map(t_parser *this){
     t_token *token;

@@ -1,4 +1,4 @@
-#include "parser.h"
+#include "cub3d.h"
 t_game *game;
 
 void push_s_walls(t_parser *this,char *l ,t_vector r_p)
@@ -7,7 +7,7 @@ void push_s_walls(t_parser *this,char *l ,t_vector r_p)
     t_vector start;
 
     l_u = this->lines.get(&(this->lines),r_p.y - 1);
-    game = this->g_p;
+    game = this->g;
     new_vector(&start , r_p.x , r_p.y);
     if (l_u != NULL)
       while (l[(int)r_p.x] != '\0' && l_u[(int)r_p.x] != '\0')

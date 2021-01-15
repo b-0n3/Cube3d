@@ -5,33 +5,17 @@
     # M sounds comes with the sp number or 1 for the main music
   # G gun  tex 10
  #D ./texture/barrel.xpm
-
 NO ./texture/bluestone.xpm
-      
-    
-     
 C ./texture/MineShaft00.XPM
- 
- WE ./texture/mossy.xpm
-  
+WE ./texture/mossy.xpm
 SO ./texture/old_stones.xpm
- 
-  
 F ./texture/mossy.xpm
- 
- 
 EA ./texture/redbrick.xpm
-
+#S ./texture/wor.xpm
 4 | 8 ./texture/wor.xpm | 5 ./texture/lamp.xpm|   2 ./texture/eagle.xpm | 7 ./texture/barrel.xpm
-
 3 | 6   ./texture/barrel.xpm | 7 ./texture/barrel.xpm | 9 ./texture/table.xpm
-
-3 | 1 ./texture/WoodenWallWithPoster0.xpm | 3 ./texture/WoodenWallWithStand0.xpm | 4 ./texture/WoodenWallWithStand1.xpm 
- 
-
-        R 1920 1080
-
-
+3 | 1 ./texture/WoodenWallWithPoster0.xpm | 3 ./texture/WoodenWallWithStand0.xpm | 4 ./texture/WoodenWallWithStand1.xpm
+R 1920 1080
                                                        1111111111111111111111111112111121111111111
                                                        10000000000000000000000000000000000000000011
                                                        100000000000000000000080000000000000000000011
@@ -61,5 +45,3 @@ EA ./texture/redbrick.xpm
                                                        100000000000000000000000000000000000000000011
                                                        111111100111121112111212111121112111211121211
                                                              1111
-
-

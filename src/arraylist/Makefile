@@ -1,5 +1,6 @@
 NAME = arraylist.a	
-SRC = ./srcs/array_list.c ./srcs/array_list_crud.c ./srcs/array_list_delete_if.c ./srcs/array_list_operation.c ./srcs/array_list_sort.c
+SRC = ./srcs/array_list.c ./srcs/array_list_crud.c ./srcs/array_list_delete_if.c\
+ ./srcs/array_list_operation.c ./srcs/array_list_sort.c ./srcs/array_list_filter.c
 INC = ./includes/	
 OBJ= $(SRC:.c=.o)
 CC = gcc	

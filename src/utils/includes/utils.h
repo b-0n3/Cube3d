@@ -6,4 +6,5 @@
 
 t_array_list *ft_split_property(char *line);
 void put_error(t_game *g_p, char *message);
+int rgb_to_int(int r, int g, int b);
 #endif
