@@ -9,6 +9,7 @@ void parse_resultion(t_parser *this , t_token *token)
   if (this != NULL  && token != NULL && token->values.arr != NULL)
   {
     line = token->values.pull(&(token->values));
+    new_array_list(&word,2,sizeof(char *));
       split_that(&word, line, ' ');
       if (word.index == 2)
       {

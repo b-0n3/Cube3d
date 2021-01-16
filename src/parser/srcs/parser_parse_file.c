@@ -51,6 +51,7 @@ void put_token(t_parser *p , t_array_list word)
 
     token = (t_token *) malloc(sizeof(t_token));
     new_token(token, word);
+    p->tokens.push(&(p->tokens),token , sizeof(t_token *));
 }
 
 void parse_token(void *item)

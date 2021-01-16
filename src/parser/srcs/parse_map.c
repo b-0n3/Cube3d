@@ -84,6 +84,12 @@ void  create_map_p(t_parser *this)
     get_sprites(this);
     
 }
+
+void print_line(void *item)
+{
+  printf("{%s}\n", (char *) item);
+}
+
 void parse_map(t_parser *this)
 {
   t_token *token;
@@ -94,6 +100,8 @@ void parse_map(t_parser *this)
   else
   {
     this->lines.arr = token->values.arr;
+    this->lines.index = token->values.index;
+    this->lines.foreach(&(this->lines), &print_line);
     create_map_p(this);
    // parse_walls(token->values);
    // parse_sprites(token->values);

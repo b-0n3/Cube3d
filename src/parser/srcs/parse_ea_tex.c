@@ -10,6 +10,7 @@ void parse_ea_tex(t_parser *this, t_token *token)
     {
         if (token == NULL) 
             put_error(this->g , ft_strdup("no ea tex"));
+        else{
          filename =(char *) token->values.pull(&(token->values));
     if(filename != NULL)
         fd = open(filename , O_RDONLY);
@@ -23,6 +24,7 @@ void parse_ea_tex(t_parser *this, t_token *token)
         else
         this->g->ea_texture = tex;
     }
+        }
     }
     close(fd);
 }
