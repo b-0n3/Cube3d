@@ -4,17 +4,26 @@ t_array_list *ft_split_property(char *line)
 {
     t_array_list *words;
     int          i;
- 
+    int           j;
         words =(t_array_list *) malloc(sizeof(t_array_list));
-        new_array_list(words,2,sizeof(char *));
+        new_array_list(words, 2,sizeof(char *));
+        j = 0;
     if (line != NULL )
     {
-            i =0;
+            
+            while (ft_iswhitespace(line[j]))
+                j++;
+            i = j;
             while (!ft_iswhitespace(line[i]))
                 i++;
-            words->push(words , ft_substr(line , 0 , i),sizeof(char *));
+            words->push(words , ft_substr(line , j , i),sizeof(char *));
+           
+            while (ft_iswhitespace(line[i])  && line [i] != '\0')
+                    i++;
             if ( ft_strlen(line) > i)
+            {
                 words->push(words, ft_substr(line, i ,ft_strlen(line) - i), sizeof(char*));
+            }
             return words;
     }
     return words;

@@ -77,8 +77,8 @@ void parse_properties(t_parser *this)
     parse_ceil(this, token);
     token = get_token_by_key(this, "F");
     parse_floor(this, token);
-    token = get_token_by_key(this, "SE");
-    parse_se_tex(this , token);
+    token = get_token_by_key(this, "NO");
+    parse_no_tex(this , token);
     token = get_token_by_key(this, "WE");
     parse_we_tex(this , token);
     token = get_token_by_key(this, "EA");

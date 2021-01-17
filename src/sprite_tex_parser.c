@@ -31,7 +31,7 @@ void parse_b_sprite(void *item)
         parse_sprite(game->parser,token ,kind);
     }
     else
-      put_error(game , ft_strdup("invalid sp texture"));
+      put_error(game , ft_strdup("invalid sp1 texture"));
 
 }
 void  sprite_tex_parser(char *line)
@@ -48,14 +48,16 @@ void  sprite_tex_parser(char *line)
   else
   {
     l = data.pull(&data);
+    
     nb = ft_atoi(l);
+   printf("line = {%s} \n nb = {%d}\n", l , nb);
     free(l);
-    if (nb > 0 && nb == data.index - 1)
+    if (nb > 0)
     {
         data.foreach(&data, &parse_b_sprite);
     }
     else
-      put_error(game ,ft_strdup("invalid sp texture"));
+      put_error(game ,ft_strdup("invalid sp2 texture"));
   }
   data.free(&data, &free);
 }

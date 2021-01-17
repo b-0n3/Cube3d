@@ -43,7 +43,7 @@ void  *map_token(void *item)
 void parse_sp_line(void *item)
 {
     char *line;
-    t_array_list *words;
+    
     line = (char *)item;
     if(line != NULL)
     {

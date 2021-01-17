@@ -76,10 +76,21 @@ void get_sprites(t_parser *this)
 void  create_map_p(t_parser *this)
 {
     int nb_lines = 0;
+    char *line;
+    int len;
 
     game = this->g;  
     game->hvalue = 64;
     game->wvalue = 64;
+    game->bi = 0;
+    while (nb_lines < this->lines.index)
+    {
+      line = this->lines.get(&(this->lines),nb_lines);
+        len = ft_strlen(line);
+        if(len > game->bi)
+          game->bi = len;
+      nb_lines++;
+    }
     get_walls(this);
     get_sprites(this);
     

@@ -75,7 +75,7 @@ void parse_floor_tex(t_game *this, t_token *token);
 void parse_we_tex(t_parser *this, t_token *token);
 void parse_so_tex(t_parser *this, t_token *token);
 void parse_ea_tex(t_parser *this, t_token *token);
-void parse_se_tex(t_parser *this, t_token *token);
+void parse_no_tex(t_parser *this, t_token *token);
 void parse_sprite(t_parser *this, t_token *token, int kind);
 int list_rgb_to_int(int *val);
 void  create_map_p(t_parser *this);

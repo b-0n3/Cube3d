@@ -37,7 +37,7 @@ int list_rgb_to_int(int *val)
       if(val[i++] == -1)
         return -1;
   }
-  return rgb_to_int(val[0],val[1],val[3]);
+  return rgb_to_int(val[0],val[1],val[2]);
 }
 
 void parse_ceilling_color(t_game *this, t_token *token)
