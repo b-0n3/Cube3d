@@ -33,7 +33,13 @@ void get_sprites(t_parser *this)
     char *l;
     float size;
     t_sp_texture *tex;
+    char *arr;
 
+    #ifdef BONUS
+    arr = "12s5";
+    #else
+    arr = "1s5";
+    #endif
 
     while (y < this->lines.index)
     {
@@ -42,7 +48,7 @@ void get_sprites(t_parser *this)
         while (l[x] != '\0')
         {
           size = game->hvalue;
-            if (ft_strchr("12s5", l[x]) == NULL)
+            if (ft_strchr(arr, l[x]) == NULL)
             {
                 tex = get_sp_tex(l[x] - 48);
                 if (tex != NULL)
@@ -98,7 +104,7 @@ void  create_map_p(t_parser *this)
 
 void print_line(void *item)
 {
-  printf("{%s}\n", (char *) item);
+  //printf("{%s}\n", (char *) item);
 }
 
 void parse_map(t_parser *this)

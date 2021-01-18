@@ -5,19 +5,21 @@
     # M sounds comes with the sp number or 1 for the main music
   # G gun  tex 10
  #D ./texture/barrel.xpm
-NO  ./texture/barrel.xpm
+# S ./texture/barrel.xpm
+NO  ./texture/bluestone.xpm
 C 255,22,255
-WE ./texture/barrel.xpm
-SO ./texture/barrel.xpm
-F ./texture/barrel.xpm
-EA ./texture/barrel.xpm
-#S ./texture/barrel.xpm
-4 | 8  ./texture/barrel.xpm |  5  ./texture/barrel.xpm|   2  ./texture/barrel.xpm | 7  ./texture/barrel.xpm
-3 | 6   ./texture/barrel.xpm | 7  ./texture/barrel.xpm |  9  ./texture/barrel.xpm
-3 | 1  ./texture/barrel.xpm | 3   ./texture/barrel.xpm |  4  ./texture/barrel.xpm
+WE  ./texture/bluestone.xpm
+SO  ./texture/bluestone.xpm
+#F   11,122,22
+F ./texture/bluestone.xpm
+EA  ./texture/bluestone.xpm
+2 | 3 ./texture/barrel.xpm 
+# 4 | 8  ./texture/barrel.xpm |  5  ./texture/barrel.xpm|   2  ./texture/barrel.xpm | 7  ./texture/barrel.xpm
+# 3 | 6   ./texture/barrel.xpm | 7  ./texture/barrel.xpm |  9  ./texture/barrel.xpm
+# 3 | 1  ./texture/barrel.xpm | 3   ./texture/barrel.xpm |  4  ./texture/barrel.xpm
 R 1920 1080
-1111111111111111111
-1000000000000000001
-10000000000000000011
+11111111111111111111
+10000030000000000001
+1000000300N030000001
 10000000000000000001
 11111111111111111111

@@ -54,6 +54,13 @@ void push_n_walls(t_parser *this,char *l ,t_vector r_p)
 {
     char *l_d = this->lines.get(&(this->lines),r_p.y + 1);
     t_vector start;
+    char *arr;
+
+    #ifdef BONUS
+    arr =  "1s2";
+    #else
+    arr = "1s";
+    #endif
 
     game = this->g;
     new_vector(&start , r_p.x , r_p.y);
@@ -62,7 +69,7 @@ void push_n_walls(t_parser *this,char *l ,t_vector r_p)
      while (l[(int)r_p.x] != '\0' && l_d[(int) r_p.x] != '\0' )
      {
          
-                while ( (l[(int) r_p.x] == '1'||l[(int) r_p.x] == 's'||l[(int) r_p.x] == '2')
+                while ( ft_strchr(arr,l[(int) r_p.x]) != NULL
                  && l_d[(int)r_p.x] != '1' )
                 {
                     if ( l[(int) r_p.x] == '\0' || l_d[(int)r_p.x] == '\0')

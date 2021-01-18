@@ -39,13 +39,19 @@ void push_s_walls(t_parser *this,char *l ,t_vector r_p)
 {
     char *l_u = this->lines.get(&(this->lines),r_p.y - 1);
     t_vector start;
+    char *arr;
 
+    #ifdef BONUS
+    arr =  "1s2";
+    #else
+    arr = "1s";
+    #endif
     game = this->g;
     new_vector(&start , r_p.x , r_p.y);
     if (l_u != NULL)
       while (l[(int)r_p.x] != '\0' && l_u[(int)r_p.x] != '\0')
      {
-                while ((l[(int) r_p.x] == '1' ||l[(int) r_p.x] == 's'||l[(int) r_p.x] == '2' )&& l_u[(int)r_p.x] !='1' && l[(int) r_p.x] != '\0' && l_u[(int)r_p.x] != '\0')
+                while (ft_strchr(arr,l[(int) r_p.x]) != NULL && l_u[(int)r_p.x] !='1' && l[(int) r_p.x] != '\0' && l_u[(int)r_p.x] != '\0')
                     r_p.x += 1;
                 if (start.x < r_p.x)
                 {

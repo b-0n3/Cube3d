@@ -167,13 +167,18 @@ t_bool check_properties(char *token)
     
     size_t       index;
     char *key;
+    int len1;
+    int len2;
+
     if(token != NULL)
     {
         index = 0;
         while (index < keywords->index)
         {
-            key = keywords->get(keywords ,index);
-            if (key != NULL && ft_strncmp(token ,key,ft_strlen(key)) == 0)
+            key =(char *) keywords->get(keywords ,index);
+            len1 = ft_strlen(key);
+            len2 = ft_strlen(token);
+            if (key != NULL && ft_strncmp(token ,key,( len1 > len2?len1:len2)) == 0)
                 return TRUE;
             index++;
         }

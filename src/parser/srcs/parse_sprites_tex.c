@@ -46,10 +46,10 @@ t_bool  set_borders(t_sp_texture *tex)
       {
         tex->borders[2] = i;
       }
-  while (j++ < tex->height)
+  while (j++ < (tex->height - 1))
   {
     i =0;
-    while (tex->data[i + j * tex->width] == 0 && i < tex->width)
+    while (tex->data[i + j * tex->width] == 0 && i <= tex->width)
         i++;
     if (tex->borders[2] > i)
        tex->borders[2] = i;

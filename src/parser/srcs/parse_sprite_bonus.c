@@ -30,10 +30,11 @@ void  *map_token(void *item)
         if (ptr != NULL)
             while (i++ < token->values.index)
             {
-                tmp = token->values.get(&(token->values), i);
-                tmp = ft_strjoin(ptr, tmp);
-                free(ptr);
-                ptr = tmp;
+                tmp = (char *) token->values.get(&(token->values), i);
+                ptr = ft_strjoin(ptr, tmp);
+            
+            //    ptr = tmp;
+                
             }
     }
     return ptr;

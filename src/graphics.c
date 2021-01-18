@@ -141,11 +141,11 @@ void image_put_pixel(t_window v , int x, int y, int color)
 {
   int i;
 
-  if (x < 0 || y < 0  || x > game->width || y > game->heigth)
+  if (x < 0 || y < 0  || x >= game->width || y >= game->heigth)
       return;
   i = x * v.img->bpp / 8 + y * v.img->size_line;
-  v.img->img_data[i] = color & 0xFF; // Blue
-  v.img->img_data[i + 1] = (color & 0xFF00) >> 8; // Green
+  v.img->img_data[i] = color & 0xFF; 
+  v.img->img_data[i + 1] = (color & 0xFF00) >> 8; 
   v.img->img_data[i + 2] = (color & 0xFF0000) >> 16; 
 
 }

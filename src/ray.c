@@ -253,10 +253,13 @@ void   render_wall_texture( double start , double end , double wallHei ,t_textur
       //   step = 1;
       //printf(" ---- %f -- \n", step);
       new_vector(&pos, start,end);
+    
       while (pos.y < y2)
       {
-          
-          color = tex->data[(int)tex->offset   + (int) index * (int)tex->width];
+        if (((int)tex->offset   + (int) index  * (int)tex->width ) >= tex->height *tex->width)
+            break;
+           
+          color = tex->data[(int)tex->offset   + (int) index  * (int)tex->width];
           color = shadow (color , dis);
           image_put_pixel(game->window ,start , pos.y, color);
           pos.y += 1;
@@ -360,7 +363,7 @@ void    render_ray(t_ray *this)
             if (game->floor == NULL) 
               rec(start, end + wallHei + game->player.offset, xsize,  
               game->heigth /2 - game->player.offset,
-               game->color[4] );
+               game->color[4]);
               // else
               // render_floor(end + wallHei + game->player.offset ,correctdis,this->index,end + wallHei + game->player.offset);
                

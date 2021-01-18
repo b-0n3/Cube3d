@@ -21,6 +21,6 @@ KEYS= ./src/keys/
 # fs:
 # 	gcc $(FS) ./Tools/*.c ./Tools/GetNextLine/*.c ./Tools/libft/*.c -L/usr/X11/lib /usr/X11/lib/libmlx.a -lXext -lX11  -lm -I ./Tools/Headers -I ./keys -g 
 me:
-	gcc  $(FS) -lmlx -framework OpenGL -framework AppKit $(SRC) $(LIBFT) $(PARSER) $(GNL) $(AL) $(PLAYER) $(UTILS)  -I $(LIBFTINC) -I $(ALINC)  -I $(UTILSINC) -I $(PARSERINC)   -I $(INC)  -I $(LINEINC) -I $(PLAYERINC)  -I $(KEYS)  -g
+	gcc   -lmlx -framework OpenGL -framework AppKit $(SRC) $(LIBFT) $(PARSER) $(GNL) $(AL) $(PLAYER) $(UTILS)  -I $(LIBFTINC) -I $(ALINC)  -I $(UTILSINC) -I $(PARSERINC)   -I $(INC)  -I $(LINEINC) -I $(PLAYERINC)  -I $(KEYS)  -g -O3
 bonus:
-	gcc  -D BONUS=1 $(FS) -lmlx -framework OpenGL -framework AppKit $(SRC) $(LIBFT) $(PARSER) $(GNL) $(AL) $(PLAYER) $(UTILS)  -I $(LIBFTINC) -I $(ALINC)  -I $(UTILSINC) -I $(PARSERINC)   -I $(INC)  -I $(LINEINC) -I $(PLAYERINC)  -I $(KEYS)  -g
+	gcc  -D BONUS=1  -lmlx -framework OpenGL -framework AppKit $(SRC) $(LIBFT) $(PARSER) $(GNL) $(AL) $(PLAYER) $(UTILS)  -I $(LIBFTINC) -I $(ALINC)  -I $(UTILSINC) -I $(PARSERINC)   -I $(INC)  -I $(LINEINC) -I $(PLAYERINC)  -I $(KEYS)  -g -O3

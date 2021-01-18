@@ -232,7 +232,7 @@ t_bool check_collision(t_player *player , double newx ,double newy)
          //  newy = player->pos->y +(sin(player->rotaion_angle) *player->mov_speed);
             if (player->t_dir != 0)
                 to = player->t_dir;
-            if(line[(int) newx] != 's')
+            if(line[(int) (newx / game->hvalue)] != 's')
             {
             player->rotaion_angle = ffangle;
          //  if(player->t_dir == 0)

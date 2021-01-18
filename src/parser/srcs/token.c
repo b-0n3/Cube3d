@@ -42,6 +42,8 @@ t_bool token_push_value(t_token *this,char *line)
 t_token *get_token_by_key(t_parser *this, char *key){
     size_t index;
     t_token *token;
+     int len1;
+    int len2;
 
     index = 0;
     if(this == NULL || key == NULL)
@@ -49,8 +51,9 @@ t_token *get_token_by_key(t_parser *this, char *key){
     while (index < this->tokens.index)
     {
         token = (t_token *) this->tokens.get(&(this->tokens), index);
-
-        if(token != NULL && ft_strncmp(token->token , key , ft_strlen(token->token)) == 0)
+        len1 = ft_strlen(key);
+            len2 = ft_strlen(token->token);
+        if(token != NULL && ft_strncmp(token->token , key ,( len1 > len2?len1:len2)) == 0)
             return token;
         index++;
     }

@@ -50,7 +50,7 @@ void  sprite_tex_parser(char *line)
     l = data.pull(&data);
     
     nb = ft_atoi(l);
-   printf("line = {%s} \n nb = {%d}\n", l , nb);
+  
     free(l);
     if (nb > 0)
     {

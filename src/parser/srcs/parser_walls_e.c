@@ -47,10 +47,18 @@ void push_e_walls(t_vector p)
     new_vector(&start , p.x, p.y);
     int len;
     double y = p.y;
+    char *arr;
+
+    #ifdef BONUS
+    arr =  "1s2";
+    #else
+    arr = "1s";
+    #endif
+
     while (l != NULL && p.y < game->parser->lines.index)
     {
          l = game->parser->lines.get(&game->parser->lines, p.y);
-        while ((l[(int)p.x] == '1' || l[(int)p.x] == 's'|| l[(int)p.x] == '2')
+        while (ft_strchr(arr,l[(int) p.x]) != NULL
          && l[(int)p.x + 1] != '1' && l[(int)p.x + 1] != '2')
         {
             p.y += 1;

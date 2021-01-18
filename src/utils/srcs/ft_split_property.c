@@ -16,7 +16,7 @@ t_array_list *ft_split_property(char *line)
             i = j;
             while (!ft_iswhitespace(line[i]))
                 i++;
-            words->push(words , ft_substr(line , j , i),sizeof(char *));
+            words->push(words , ft_substr(line , j , i -j  ),sizeof(char *));
            
             while (ft_iswhitespace(line[i])  && line [i] != '\0')
                     i++;
