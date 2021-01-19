@@ -15,8 +15,8 @@ void parse_resultion(t_parser *this , t_token *token)
       {
         h = ft_atoi((char*)word.get(&word, 1));
         w = ft_atoi((char *) word.get(&word, 0));
-        this->g->heigth = (h > 1440 || h < 0) ? 1440 : h;
-        this->g->width = (w > 2560 || w < 0) ? 2560 : w;
+        this->g->heigth = (h > 1440 || h <= 0) ? 1440 : h;
+        this->g->width = (w > 2560 || w <= 0) ? 2560 : w;
         this->g->window.mlx = mlx_init();
         this->g->window.win =  mlx_new_window(this->g->window.mlx, 
         (int) this->g->width, (int) this->g->heigth , "CUB3d");

@@ -58,7 +58,7 @@ void get_sprites(t_parser *this)
 
                 game->sprites.push(&game->sprites, 
                 new_sprite(new_vector_pointer((x + 0.5) * game->wvalue,
-                 (y + 0.5) * game->hvalue), size * 0.5, l[x] - 48) , sizeof(t_sprites));
+                 (y + 0.5) * game->hvalue), size * 0.3, l[x] - 48) , sizeof(t_sprites));
                 }
             }
             else if (l[x] == '5')

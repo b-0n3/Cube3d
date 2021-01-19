@@ -41,9 +41,12 @@ void push_bonus_sprites_properties(t_array_list *words)
 {
     int i;
 
-    i = 1;
-    while (i++ <= 9)
+    i = 0;
+    while (i <= 9)
+    {
         words->push(words, ft_itoa(i), sizeof(char *));
+        i++;
+    }
 }
 void put_token(t_parser *p , t_array_list word)
 {
@@ -65,7 +68,7 @@ void parse_token(void *item)
         line = (char *) item;
         if (is_map_line(line))
             create_map(line);
-        else if (!is_empty_or_comment(line))
+        else if (!map_created() && !is_empty_or_comment(line))
         {
             word = ft_split_property(line);
             if (word != NULL && word->index >1)
@@ -78,7 +81,7 @@ void parse_token(void *item)
                 put_error(parser->g,ft_strjoin("invalid line :\n", line));
                  //word->free(word, &free);
         }
-        else if(map_created())
+        else if(map_created() && !ft_is_empty(line))
             put_error(parser->g,ft_strjoin("propeties after map line :\n", line));
     }
 }
@@ -110,7 +113,7 @@ t_bool is_map_line(char *line)
     i = 0;
     if (line == NULL)
         return FALSE;
-    if(line[0] == '\0')
+    if(line[0] == '\0' || ft_is_empty(line))
         return (FALSE);
     while (ft_iswhitespace(line[i]))
             i++;
@@ -152,14 +155,31 @@ t_bool is_empty_or_comment(char *line){
          i = 0;
         while (ft_iswhitespace(line[i]))
             i++;
+        #ifdef BONUS
         if(i < len)
             if(line[i] == '#')
                 return TRUE;
+        #endif
         return i == len ? TRUE : FALSE;
     }
     else 
         return TRUE;
     return FALSE;
+}
+t_bool ft_is_empty(char *line)
+{
+    int i;
+    int len;
+
+    i = 0;
+    len = 0;
+    if(line != NULL)
+    {
+        len = ft_strlen(line);
+        while (ft_iswhitespace(line[i]) && line[i] != '\0')
+            i++;
+    }
+    return (len == i ? TRUE : FALSE);
 }
 
 t_bool check_properties(char *token)

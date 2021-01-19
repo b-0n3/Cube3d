@@ -28,13 +28,13 @@ void  *map_token(void *item)
     {
         ptr = ft_strdup(token->token);
         if (ptr != NULL)
-            while (i++ < token->values.index)
+            while (i < token->values.index)
             {
                 tmp = (char *) token->values.get(&(token->values), i);
                 ptr = ft_strjoin(ptr, tmp);
             
             //    ptr = tmp;
-                
+                i++;
             }
     }
     return ptr;

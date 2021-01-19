@@ -27,7 +27,7 @@ void parse_floor_color(t_game *this, t_token *token)
     if (color < 0)
       put_error(this,ft_strdup("invalid floor color"));
     else
-      this->color[5] = color;
+      this->color[4] = color;
   }
 }
 

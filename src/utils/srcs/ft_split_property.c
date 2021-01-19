@@ -20,9 +20,13 @@ t_array_list *ft_split_property(char *line)
            
             while (ft_iswhitespace(line[i])  && line [i] != '\0')
                     i++;
-            if ( ft_strlen(line) > i)
+            
+                j = ft_strlen(line);
+            while (j > i && ft_iswhitespace(line[j -1]))
+                j--;
+            if ( j  > i)
             {
-                words->push(words, ft_substr(line, i ,ft_strlen(line) - i), sizeof(char*));
+                words->push(words, ft_substr(line, i , j - i), sizeof(char*));
             }
             return words;
     }

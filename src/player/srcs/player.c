@@ -614,6 +614,22 @@ void cast_rays(void *item)
   }
 }
 
+int ren_con(void *item1 , void *item2)
+{
+  t_ray_sp *r1;
+  t_ray_sp *r2;
+
+  r2  = (t_ray_sp *) item2;
+  r1 = (t_ray_sp *) item1;
+  if (item2 == NULL || item1 == NULL)
+    return 0;
+  if (r2->length(r2) > r1->length(r1))
+      return 1;
+  else if (r2->length(r2) < r1->length(r1))
+    return -1;
+  return 0;
+}
+
 void render_player(t_player *this)
 {
     
@@ -622,7 +638,7 @@ void render_player(t_player *this)
       cast_draw_floor(this);
     
     this->wall_rays.foreach(&this->wall_rays, &draw_ray);
-
+    this->sprit_rays.sort(&(this->sprit_rays),&ren_con, 0, this->sprit_rays.index);
    do{
         t_ray_sp *spray = (t_ray_sp *)this->light_rays.pull(&this->light_rays);
         if(spray != NULL)

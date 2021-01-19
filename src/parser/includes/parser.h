@@ -81,6 +81,7 @@ int list_rgb_to_int(int *val);
 void  create_map_p(t_parser *this);
 t_bool create_map(char *line);
 void parse_sprite_bonus(t_parser *this);
+t_bool ft_is_empty(char *line);
 /*
  *** token 
 */

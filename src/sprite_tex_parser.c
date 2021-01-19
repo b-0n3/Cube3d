@@ -25,6 +25,7 @@ void parse_b_sprite(void *item)
     if (item != NULL)
     {
 
+        token = (t_token *) malloc(sizeof(t_token));
         list = ft_split_property(line);
         new_token(token, *list);
         kind = ft_atoi(token->token);
@@ -34,6 +35,7 @@ void parse_b_sprite(void *item)
       put_error(game , ft_strdup("invalid sp1 texture"));
 
 }
+
 void  sprite_tex_parser(char *line)
 {
   t_array_list data;
