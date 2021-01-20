@@ -416,7 +416,7 @@ double get_line_distance(t_ray_sp *ray)
             
             if (!(tex->kind == '5' - 48 && color == tex->data[0]))
             {
-                if (tex->kind != '5' -48 && tex->kind != 10)
+                if (tex->kind != '5' - 48 && tex->kind != 10)
                      color = shadow(color , dis);
               image_put_pixel(game->window ,start , pos.y, color);
             }
@@ -614,21 +614,7 @@ void cast_rays(void *item)
   }
 }
 
-int ren_con(void *item1 , void *item2)
-{
-  t_ray_sp *r1;
-  t_ray_sp *r2;
 
-  r2  = (t_ray_sp *) item2;
-  r1 = (t_ray_sp *) item1;
-  if (item2 == NULL || item1 == NULL)
-    return 0;
-  if (r2->length(r2) > r1->length(r1))
-      return 1;
-  else if (r2->length(r2) < r1->length(r1))
-    return -1;
-  return 0;
-}
 
 void render_player(t_player *this)
 {
@@ -638,8 +624,7 @@ void render_player(t_player *this)
       cast_draw_floor(this);
     
     this->wall_rays.foreach(&this->wall_rays, &draw_ray);
-    this->sprit_rays.sort(&(this->sprit_rays),&ren_con, 0, this->sprit_rays.index);
-   do{
+     do{
         t_ray_sp *spray = (t_ray_sp *)this->light_rays.pull(&this->light_rays);
         if(spray != NULL)
         {
@@ -668,6 +653,7 @@ void render_player(t_player *this)
 void free_player(void *item)
 {
    t_player *pla;
+   
    pla = (t_player *) item;
 
    pla->wall_rays.free(&pla->wall_rays, &free_ray);

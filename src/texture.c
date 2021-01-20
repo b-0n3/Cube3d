@@ -29,7 +29,7 @@ t_texture  *new_texture(char *link)
         if (tex->img.img_ptr == NULL)
           game->errors.push(&game->errors, ft_strdup("invalid texture bitch"), 
           sizeof(char *));
-        tex->data =  mlx_get_data_addr(tex->img.img_ptr , &(tex->img.bpp) 
+        tex->data = (int *) mlx_get_data_addr(tex->img.img_ptr , &(tex->img.bpp) 
           ,&tex->img.size_line , &(tex->img.endian));
       }
     

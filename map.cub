@@ -6,10 +6,10 @@
   # G gun  tex 10
  #D ./texture/barrel.xpm
     #S      ./texture/table.xpm
-2 | 3 ./texture/barrel.xpm  | 4  ./texture/table.xpm
-  NO  ./texture/bluestone.xpm
+4 | 3 ./texture/barrel.xpm  | 4  ./texture/table.xpm | 2 ./texture/eagle.xpm 
+  WE  ./texture/bluestone.xpm
    C    255 , 22 , 255
-    WE  ./texture/bluestone.xpm
+    NO  ./texture/colorstone.xpm
   SO  ./texture/bluestone.xpm
  # F   11 , 122,22
  F ./texture/bluestone.xpm
@@ -19,12 +19,18 @@
 # 3 | 6   ./texture/barrel.xpm | 7  ./texture/barrel.xpm |  9  ./texture/barrel.xpm
 # 3 | 1  ./texture/barrel.xpm | 3   ./texture/barrel.xpm |  4  ./texture/barrel.xpm
   
-   R    1076   1000
+   R    10760000000  100000000000008
 
-11111111111111111111
-10000030040000000001
-1000000300N030000001
-10000000000000000001
-11111111111111111111
-
+11112111111 111121111
+ 10040030011110000001
+ 1000000300300000W001
+111111111000012111111
+11111111103001111111
+10000030004003000001
+11111111100111111111
+      1110011111
+       110020001
+    111100000001
+    100000030111 
+    1111121111111
 

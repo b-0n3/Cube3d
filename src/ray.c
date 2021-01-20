@@ -351,7 +351,7 @@ void    render_ray(t_ray *this)
            t_bool  isl = this->kind == 3 ? TRUE : FALSE;
            int y = this->dir->y /  game->hvalue -  1;
             if (this->kind == 2)
-              y +=1;
+              y += 1;
             char *line = (char *)game->parser->lines.get(
               &game->parser->lines, 
             y);
@@ -379,7 +379,7 @@ void    render_ray(t_ray *this)
                if (line[x] == '2')
             {
               //printf("%s\n", line);
-              text = get_sp_tex(this->kind + 1);
+              text = get_sp_tex(line[x] - 48 );
             }
             if(text != NULL)
             {

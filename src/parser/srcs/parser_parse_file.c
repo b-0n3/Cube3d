@@ -56,17 +56,33 @@ void put_token(t_parser *p , t_array_list word)
     new_token(token, word);
     p->tokens.push(&(p->tokens),token , sizeof(t_token *));
 }
+t_bool map_ended(char *line, t_bool *var)
+{
+   
+
+    if( var == NULL)
+        *var = FALSE;
+   printf("dd %s", line);
+    if (map_created() && !is_map_line(line))
+    {
+       
+            *var = TRUE;
+    }
+    printf("%d \n", *var);
+    return *var;
+}
 
 void parse_token(void *item)
 {
     char *line;
     t_array_list *word;
-    
+    static t_bool var;
 
+     
     if (item != NULL && parser != NULL)
     {
         line = (char *) item;
-        if (is_map_line(line))
+        if (!map_ended(line , &var) && is_map_line(line) )
             create_map(line);
         else if (!map_created() && !is_empty_or_comment(line))
         {
@@ -81,7 +97,7 @@ void parse_token(void *item)
                 put_error(parser->g,ft_strjoin("invalid line :\n", line));
                  //word->free(word, &free);
         }
-        else if(map_created() && !ft_is_empty(line))
+        else if((map_created() || map_ended(line, &var )) && !ft_is_empty(line))
             put_error(parser->g,ft_strjoin("propeties after map line :\n", line));
     }
 }
@@ -198,7 +214,7 @@ t_bool check_properties(char *token)
             key =(char *) keywords->get(keywords ,index);
             len1 = ft_strlen(key);
             len2 = ft_strlen(token);
-            if (key != NULL && ft_strncmp(token ,key,( len1 > len2?len1:len2)) == 0)
+            if (key != NULL && ft_strncmp(token ,key,( len1 > len2 ? len1 : len2)) == 0)
                 return TRUE;
             index++;
         }
