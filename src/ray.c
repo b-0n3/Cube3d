@@ -215,22 +215,22 @@ t_texture *pick_texture(int kind)
 
   tex = NULL;
 
-  if (kind == 0 )
+  if (kind == 2 )
   {
       if (game->n_texture != NULL)
         tex = game->n_texture;
   }
-  else  if (kind == 2)
+  else  if (kind == 0)
   {
       if (game->so_texture != NULL)
         tex = game->so_texture;
   } 
-  else  if (kind == 1)
+  else  if (kind == 3)
   {
       if (game->ea_texture != NULL)
         tex = game->ea_texture;
   }
-  else if (kind == 3)            
+  else if (kind == 1)            
   {
       if (game->we_texture != NULL)
         tex = game->we_texture;

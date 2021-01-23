@@ -23,7 +23,10 @@ void parse_no_tex(t_parser *this, t_token *token)
         if(tex == NULL)
            put_error(this->g , ft_strdup("invalid no2 texture"));
         else
+        {
+        tex->data =  flip_w_arr(tex->data, tex->height * tex->width, tex->width);    
         this->g->n_texture = tex;
+        }
     }
         }
     }

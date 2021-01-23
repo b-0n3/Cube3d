@@ -48,6 +48,8 @@ t_bool check_res(t_array_list words);
 // void fill_res(t_game *g_p , char *line);
 // t_bool find_res(t_game *g_p,t_array_list array);
 // t_bool check_digit(char *line);
+int  *flip_arr(int *real, size_t size);
+int  *flip_w_arr(int *real, size_t size, int width);
 t_token *get_token_by_key(t_parser *this, char *key);
 void parse_resultion(t_parser *this , t_token *token);
 void parser_parse_file(t_parser *this);
