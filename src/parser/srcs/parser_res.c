@@ -1,4 +1,18 @@
 # include "cub3d.h"
+t_bool check_res_line(t_array_list lines)
+{
+  int i;
+  char *l[2];
+  if (lines.arr == NULL || lines.index != 2)
+    return (FALSE);
+  l[0] = lines.get(&lines,0);
+  l[1] = lines.get(&line,1);
+  if (l[0] ==NULL || l[1] == NULL)
+    return (FALSE);
+  i = 0;
+  while (l[0][i] != '\0')
+    i++;
+}
 void parse_resultion(t_parser *this , t_token *token)
 {
   t_array_list word;
@@ -11,7 +25,7 @@ void parse_resultion(t_parser *this , t_token *token)
     line = token->values.pull(&(token->values));
     new_array_list(&word,2,sizeof(char *));
       split_that(&word, line, ' ');
-      if (word.index == 2)
+      if (check_res_line(word))
       {
         h = ft_atoi((char*)word.get(&word, 1));
         w = ft_atoi((char *) word.get(&word, 0));
@@ -23,8 +37,7 @@ void parse_resultion(t_parser *this , t_token *token)
         this->g->window.img = (t_image *) malloc (sizeof(t_image));
         init_image(this->g->window.img, this->g->window);
         word.free(&word , &free);
-        //free(line);
-        //token->free(token);
+        
       }
       else 
        put_error(this->g , ft_strdup("invalid resulotion"));

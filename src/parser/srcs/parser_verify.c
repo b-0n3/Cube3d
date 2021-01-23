@@ -84,21 +84,16 @@ t_bool check_border_i(t_array_list lines, size_t index)
     if (index  >= lines.index && index != 0)
         return TRUE;
     line = lines.get(&lines, index);
-    ex[0] = FALSE;
-    ex[1] = FALSE;
     if (line != NULL)
     {
-        len = ft_strlen(line) - 1;
-        i = 0;
-        while(ft_iswhitespace(line[i]))
+        len  = ft_strlen(line)-1;
+        while (ft_iswhitespace(line[i]))
             i++;
-        while (len > i && ft_iswhitespace(line[len]))
+        while(ft_iswhitespace(line[len]))
             len--;
-
         if (!is_map_s_or_end(line[i])
-         || !is_map_s_or_end(line[len]) || len == 0)
+         || !is_map_s_or_end(line[len]))
             put_error(p->g, ft_strjoin("invalid line",line));
-    
             return check_border_i(lines, index + 1);
     }
     return (FALSE);
@@ -110,15 +105,58 @@ t_bool check_borders(t_array_list lines)
             && check_border_i(lines, 0));
 }
 
-t_bool check
-t_bool check_inside(t_array_list lines)
+t_bool check_map_char(char ch)
 {
-    char *line;
-    t_vector pos;
+    char *arr;
 
-    new_vector(&pos, 0,0);
-    while()
-    return (TRUE);
+    #ifdef BONUS
+        arr = "0123456789NWSE";
+    #else
+        arr = "012NWSE";
+    #endif
+     if (ft_strchr(arr, ch) != NULL)
+        return (TRUE);
+    return (FALSE);
+}
+void check_sides(char **line, int *len , size_t x){
+    int i;
+
+    i = -1;
+    while (i < 2)
+    {
+        if (x + 1 < len[i + 1] && x > 0)
+            if (!check_map_char(line[i+1][x + 1])|| !check_map_char(line[i+1][x - 1]))
+                put_error(p->g, ft_strjoin("invalid line \n", line[ i + 1]));
+        if (x < len[i +1])
+            if (!check_map_char(line[i+1][x ]))
+                put_error(p->g, ft_strjoin("invalid line \n", line[ i + 1]));
+        if (x == len[i + 1] || x - 1 == len[i + 1] || x + 1 == len[i + 1])
+          put_error(p->g, ft_strjoin("invalid line \n", line[ i + 1]));
+        i++;
+    }
+}
+t_bool check_inside(t_array_list lines, size_t x, size_t y)
+{
+    char *line[3];
+    int i;
+    int len[3];
+    if (y >= 0 && y >= lines.index)
+        return (TRUE);
+    i = -1 ;
+    while (i < 2)
+    {
+        line[i + 1] =  lines.get(&lines, y  + i);
+        len[i + 1] = line[i + 1] != NULL?ft_strlen(line[i + 1]) : 0;
+        i++;
+    }
+    while (x < len[1])
+    {
+        if(line[1][x]== '0')
+            check_sides(line,len , x);
+        x++;
+    }
+
+    return check_inside(lines, 0 , y + 1);
 }
 
 void verify_map(t_parser *this){
@@ -134,7 +172,7 @@ void verify_map(t_parser *this){
     {
        p = this; 
         lines = token->values;
-        if (!( check_borders(lines) && check_inside(lines)))
+        if (!( check_borders(lines) && check_inside(lines,0,0)))
             put_error(this->g,ft_strdup("invalid map"));
     }
 }
