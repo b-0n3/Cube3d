@@ -347,10 +347,10 @@ void    render_ray(t_ray *this)
            xsize = 1;
            t_bool i_h = this->kind == 0 || this->kind == 2? TRUE : FALSE;
 
-           t_bool isu = this->kind == 0 ? TRUE : FALSE;
-           t_bool  isl = this->kind == 3 ? TRUE : FALSE;
-           int y = this->dir->y /  game->hvalue -  1;
-            if (this->kind == 2)
+           // t_bool isu = this->kind == 0 ? TRUE : FALSE;
+        //    t_bool  isl = this->kind == 3 ? TRUE : FALSE;
+           int y = this->dir->y /  game->hvalue -1;
+            if (this->kind == 2 || this->kind == 0)
               y += 1;
             char *line = (char *)game->parser->lines.get(
               &game->parser->lines, 
@@ -364,22 +364,21 @@ void    render_ray(t_ray *this)
               rec(start, end + wallHei + game->player.offset, xsize,  
               game->heigth /2 - game->player.offset,
                game->color[4]);
-              // else
-              // render_floor(end + wallHei + game->player.offset ,correctdis,this->index,end + wallHei + game->player.offset);
-               
+            
              
           rec(start,0 , xsize,  game->heigth - end - wallHei + game->player.offset, game->color[5]);
            //if(start < game->width /4 || start > 3 * game->width /4)
             end += game->player.offset;
-            int x = (this->dir->x /  game->hvalue) -1;
+            int x = (this->dir->x /  game->hvalue) -1 ;
             if (this->kind == 1)
-              x++;
-             //printf("%s\n", line);
+              x  += 1;
+            // printf("%s\n", line);
               t_sp_texture *text = NULL;
+              ///printf("%s\n" , line);
                if (line[x] == '2')
             {
-              //printf("%s\n", line);
-              text = get_sp_tex(line[x] - 48 );
+
+              text = get_sp_tex(2);
             }
             if(text != NULL)
             {

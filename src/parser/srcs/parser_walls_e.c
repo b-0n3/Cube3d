@@ -58,8 +58,7 @@ void push_e_walls(t_vector p)
     while (l != NULL && p.y < game->parser->lines.index)
     {
          l = game->parser->lines.get(&game->parser->lines, p.y);
-        while (ft_strchr(arr,l[(int) p.x]) != NULL
-         && l[(int)p.x + 1] != '1' && l[(int)p.x + 1] != '2')
+        while (ft_strchr(arr,l[(int) p.x]) != NULL)
         {
             p.y += 1;
             l = game->parser->lines.get(&game->parser->lines, p.y);
@@ -75,8 +74,12 @@ void push_e_walls(t_vector p)
 
             if (start.y < p.y)
                 {
-                   int xx= game->walls.push(&(game->walls),new_wall(new_vector_pointer((start.x +1 ) * game->wvalue, (start.y )*game->hvalue),new_vector_pointer((p.x + 1)* game->wvalue ,(p.y )*game->hvalue),3), sizeof(t_wall));
-                 //   printf("this is xx %d",xx);
+                   int xx = game->walls.push(&(game->walls),
+                   new_wall(
+                       new_vector_pointer((start.x +1 ) * game->wvalue,
+                        (start.y )*game->hvalue),
+                        new_vector_pointer((p.x + 1)* game->wvalue ,
+                        (p.y )*game->hvalue),3), sizeof(t_wall));
                 }
                  p.y += 1;
                  start.x = p.x;

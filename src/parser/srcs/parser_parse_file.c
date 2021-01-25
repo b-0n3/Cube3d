@@ -51,11 +51,16 @@ void push_bonus_sprites_properties(t_array_list *words)
 void put_token(t_parser *p , t_array_list word)
 {
     t_token *token;
-
+    if (get_token_by_key(p, (char *) word.get(&word,0)) == NULL){
     token = (t_token *) malloc(sizeof(t_token));
+    
     new_token(token, word);
     p->tokens.push(&(p->tokens),token , sizeof(t_token *));
+    }
+    else 
+        put_error(p->g, ft_strdup("diplicate property "));
 }
+
 t_bool map_ended(char *line, t_bool *var)
 {
    

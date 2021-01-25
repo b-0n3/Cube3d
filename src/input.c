@@ -51,7 +51,7 @@ int		key_relased(int k_code, void *ptr)
 	ptr = NULL;
 	if (k_code == K_AR_U)
 		game->player.offset = 0;
-	else if (k_code == K_AR_U)
+	else if (k_code == K_AR_D)
 		game->player.offset = 0;
 	else if (k_code == K_AR_L)
 		game->player.t_dir = 0;

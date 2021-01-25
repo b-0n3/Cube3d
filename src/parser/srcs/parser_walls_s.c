@@ -51,11 +51,16 @@ void push_s_walls(t_parser *this,char *l ,t_vector r_p)
     if (l_u != NULL)
       while (l[(int)r_p.x] != '\0' && l_u[(int)r_p.x] != '\0')
      {
-                while (ft_strchr(arr,l[(int) r_p.x]) != NULL && l_u[(int)r_p.x] !='1' && l[(int) r_p.x] != '\0' && l_u[(int)r_p.x] != '\0')
+                while (ft_strchr(arr,l[(int) r_p.x]) != NULL  &&
+                ft_strchr(arr, l_u[(int) r_p.x]) == NULL)
                     r_p.x += 1;
                 if (start.x < r_p.x)
                 {
-                   int xx= game->walls.push(&(game->walls),new_wall(new_vector_pointer(start.x * game->wvalue, (start.y )*game->hvalue),new_vector_pointer((r_p.x )* game->wvalue ,(r_p.y )*game->hvalue),2), sizeof(t_wall));
+                   int xx= game->walls.push(&(game->walls),
+                   new_wall(
+                     new_vector_pointer(start.x * game->wvalue, (start.y )*game->hvalue),
+                   new_vector_pointer((r_p.x )* game->wvalue ,(r_p.y )*game->hvalue),2),
+                    sizeof(t_wall));
                  //   printf("this is xx %d",xx);
                 }
                  r_p.x += 1;

@@ -98,3 +98,7 @@ void parse_sprite(t_parser *this, t_token *token, int kind)
                     put_error(this->g , ft_strdup("invalid sprite texture"));
     }
 }
+// t_bool check_tex_file(char *filename)
+// {
+  
+// }

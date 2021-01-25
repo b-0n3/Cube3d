@@ -293,23 +293,25 @@ void update_player(t_player *this)
         int index = 0;
         ray_angle = this->rotaion_angle - (this->fov / 2);
         
-             this->vpos->x += this->dir->x * this->mov_speed * this->w_dir /2;
+            
+        // if (this->t_dir == 0)
+        // {
+           this->vpos->x += this->dir->x * this->mov_speed * this->w_dir /2;
           this->vpos->y += this->dir->y * this->mov_speed * this->w_dir /2 ;
-        if (this->t_dir != 0)
-        {
-          float lastplanx = this->planx;
-        this->planx = this->planx * cos(this->rotation_speed * this->t_dir/2)
-         - this->plany * sin(this->rotation_speed * this->t_dir/2);
 
-         this->plany = lastplanx * sin(this->rotation_speed * this->t_dir/2) 
-        + this->plany * cos(this->rotation_speed * this->t_dir /2);
+          float lastplanx = this->planx;
+        this->planx = this->planx * cos(this->rotation_speed * (this->t_dir)/2)
+         - this->plany * sin(this->rotation_speed * (-1 *this->t_dir)/2);
+
+         this->plany = lastplanx * sin(this->rotation_speed * (this->t_dir)/2) 
+        + this->plany * cos(this->rotation_speed * (-1 *this->t_dir) /2);
 
         double oldDirX = this->dir->x;
-       this->dir->x = this->dir->x * cos(this->rotation_speed * this->t_dir / 2)
-        - this->dir->y * sin(this->rotation_speed * this->t_dir /2);
-        this->dir->y = oldDirX * sin(this->rotation_speed * this->t_dir /2 )
-         + this->dir->y * cos(this->rotation_speed * this->t_dir /2 );
-        }
+       this->dir->x = this->dir->x * cos(this->rotation_speed * (-1 *this->t_dir) / 2)
+        - this->dir->y * sin(this->rotation_speed * (-1 *this->t_dir) /2);
+        this->dir->y = oldDirX * sin(this->rotation_speed * ( -1 *this->t_dir) /2 )
+         + this->dir->y * cos(this->rotation_speed *(-1 *this->t_dir) /2 );
+     //   }
        
        
         t_ray *ray;

@@ -70,7 +70,7 @@ void push_n_walls(t_parser *this,char *l ,t_vector r_p)
      {
          
                 while ( ft_strchr(arr,l[(int) r_p.x]) != NULL
-                 && l_d[(int)r_p.x] != '1' )
+                 &&ft_strchr(arr,l_d[(int) r_p.x])   == NULL)
                 {
                     if ( l[(int) r_p.x] == '\0' || l_d[(int)r_p.x] == '\0')
                         break;
@@ -78,11 +78,18 @@ void push_n_walls(t_parser *this,char *l ,t_vector r_p)
                 }
                 if (start.x < r_p.x)
                 {
-                    game->walls.push(&(game->walls),new_wall(new_vector_pointer(start.x * game->wvalue, (start.y + 1)*game->hvalue),new_vector_pointer((r_p.x )* game->wvalue ,(r_p.y + 1)*game->hvalue),0), sizeof(t_wall));
+                    game->walls.push(&(game->walls),
+                    new_wall(
+                        new_vector_pointer(start.x * game->wvalue, (start.y + 1)
+                        *game->hvalue),
+                        new_vector_pointer((r_p.x )* game->wvalue ,(r_p.y + 1)
+                        *game->hvalue), 0), sizeof(t_wall));
                    // printf("this is xx %d",xx);
                 }
                  if(l[(int)r_p.x] == 'N' || l[(int)r_p.x] == 'S' || l[(int)r_p.x] == 'E' || l[(int)r_p.x] == 'W')
                 {
+                    if (game->player.free != NULL)
+                        put_error(game , ft_strdup("diplicate player pos"));
                     
                   new_player(&(game->player), new_vector_pointer(r_p.x *game->wvalue + (0.5 * game->wvalue ), r_p.y * game->hvalue + (0.5 *game->hvalue)) ,l[(int)r_p.x]);
                     l[(int) r_p.x] = '0';

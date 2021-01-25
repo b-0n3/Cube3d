@@ -70,7 +70,11 @@ char *l = game->parser->lines.get(&game->parser->lines, p.y);
             if (start.y < p.y)
                 {
 
-                   game->walls.push(&(game->walls),new_wall(new_vector_pointer((start.x ) * game->wvalue, (start.y )*game->hvalue),new_vector_pointer((p.x)* game->wvalue ,(p.y )*game->hvalue),1), sizeof(t_wall));
+                   game->walls.push(&(game->walls),
+                   new_wall(new_vector_pointer((start.x ) * game->wvalue,
+                    (start.y )*game->hvalue),
+                    new_vector_pointer((p.x)* game->wvalue ,
+                    (p.y )*game->hvalue),1), sizeof(t_wall));
                  //   printf("this is xx %d",xx);
                 }
                  p.y += 1;
