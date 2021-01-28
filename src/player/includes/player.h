@@ -38,4 +38,8 @@ void  render_player(t_player *this);
 void  free_player(void *item);
 void s_player_down(t_vector *pos,int  newx , int newy);
 void s_player_up(t_vector *pos,int  newx , int newy);
+void draw_ray(void *item);
+void cast_rays(void *item);
+void  draw_sprit(void *item);
+ void cast_draw_floor(t_player *this);
 #endif

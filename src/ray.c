@@ -336,7 +336,7 @@ void    render_ray(t_ray *this)
        {
          
            correctdis = this->length(this) * cos(this->angle - game->player.rotaion_angle);
-           dispro = (game->width /2) * tan(game->player.fov /2);
+           dispro = (game->width /4) * tan(game->player.fov   );
            wallHei = (game->wvalue / correctdis) * dispro;
            //printf("dispro : %f     walhei : %f", dispro, wallHei);
            start = this->index ;

@@ -86,7 +86,7 @@ void  create_map_p(t_parser *this)
     int len;
 
     game = this->g;  
-    game->hvalue = 64;
+    game->hvalue =64;
     game->wvalue = 64;
     game->bi = 0;
     while (nb_lines < this->lines.index)

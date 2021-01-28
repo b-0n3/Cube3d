@@ -1,55 +1,8 @@
 #include "cub3d.h"
 
 extern t_game *game;
-int nb_rays;
+extern int nb_rays;
 
-
-void new_player(t_player *this , t_vector *pos, char ch)
-{
-  
-    double ray_angle;
-
-    this->fov = 70 * (M_PI / 180);
-    this->render= &render_player;
-    this->pos = pos;
-    this->vpos = new_vector_pointer(pos->x, pos->y);
-    this->mov_speed = game->hvalue / 6;
-    this->update = &update_player;
-    this->rotation_speed = this->mov_speed  * 0.0174533;
-    this->w_dir = 0;
-    this->t_dir = 0;
-    this->offset = 0;
-    this->planx = 0;
-    this->plany = 0.66;
-    
-    this->free = &free_player;
-    nb_rays = game->width - 2;
-    if (ch == 'S')
-        this->rotaion_angle =  (M_PI_2);
-    else if (ch == 'N')
-        this->rotaion_angle =  (3 * M_PI_2);
-    else if (ch == 'W')
-        this->rotaion_angle = M_PI;
-    else
-        this->rotaion_angle = 0.0f;
-    this->dir = new_vector_pointer(-1, 0);
-    new_array_list(&(this->collision), 1, sizeof(t_ray));
-    new_array_list(&(this->wall_rays) ,nb_rays, sizeof (t_ray));
-    new_array_list(&(this->sprit_rays) ,14, sizeof (t_ray));
-    new_array_list(&(this->light_rays) ,14, sizeof (t_ray_sp));
-    
-    ray_angle = this->rotaion_angle - (this->fov / 2);
-    this->collision.push(&(this->collision),new_ray(this->pos , this->rotaion_angle , -10 ) , sizeof(t_ray));
-
-    int nb = 0;
-    while (nb < nb_rays)
-    {
-        ray_angle = normelize_angel(ray_angle);
-        this->wall_rays.push(&this->wall_rays, new_ray(this->pos ,ray_angle,nb) , sizeof(t_ray));
-        ray_angle = ray_angle + (this->fov / nb_rays);
-        nb++;
-    }
-}
 
 double  normelize_angel(double angle)
 {
@@ -237,7 +190,7 @@ t_bool check_collision(t_player *player , double newx ,double newy)
             player->rotaion_angle = ffangle;
          //  if(player->t_dir == 0)
          //  {
-              player->rotaion_angle += player->rotation_speed * to;
+             // player->rotaion_angle += player->rotation_speed * to;
                // player->vpos->y += player->dir->y * player->mov_speed * player->w_dir;
             
             }
@@ -264,7 +217,25 @@ t_bool check_collision(t_player *player , double newx ,double newy)
             player->pos->x = newx * game->wvalue;
             player->pos->y = newy * game->hvalue;
             player->rotaion_angle = ffangle;
-          
+            player->vpos->x += player->planx * ((player->mov_speed ) * -player->w_dir);
+           player->vpos->y += player->plany * ((player->mov_speed )* -player->w_dir);
+
+
+          float lastplanx = player->planx;
+        player->planx = player->planx * cos((-player->rotation_speed  * player->t_dir ))
+         - player->plany * sin(( -player->rotation_speed  * player->t_dir ));
+
+         player->plany = lastplanx * sin( -player->rotation_speed * player->t_dir) 
+        + player->plany * cos( -player->rotation_speed * player->t_dir) ;
+     
+  
+ 
+  double oldDirX = player->dir->x;
+       player->dir->x = player->dir->x * cos(-player->rotation_speed * player->t_dir)
+        - player->dir->y * sin(-player->rotation_speed * player->t_dir);
+        player->dir->y = oldDirX *  sin(-player->rotation_speed* player->t_dir)
+         + player->dir->y * cos(-player->rotation_speed  * player->t_dir);
+       
        
        
         }   
@@ -280,8 +251,8 @@ void update_player(t_player *this)
     double newAngle ;
     double lastangle = this->rotaion_angle;
     newAngle =   this->rotaion_angle + (this->rotation_speed * this->t_dir);
-    double lastx = this->pos->x;
-    double lasty = this->pos->y;
+     double lastx = this->pos->x;
+     double lasty = this->pos->y;
     
    this->sprit_rays.index = 0;
     next_x =  this->pos->x  + cos(newAngle) *(this->mov_speed * this->w_dir);
@@ -294,25 +265,11 @@ void update_player(t_player *this)
         ray_angle = this->rotaion_angle - (this->fov / 2);
         
             
-        // if (this->t_dir == 0)
-        // {
-           this->vpos->x += this->dir->x * this->mov_speed * this->w_dir /2;
-          this->vpos->y += this->dir->y * this->mov_speed * this->w_dir /2 ;
+        
+         
+      
+           
 
-          float lastplanx = this->planx;
-        this->planx = this->planx * cos(this->rotation_speed * (this->t_dir)/2)
-         - this->plany * sin(this->rotation_speed * (-1 *this->t_dir)/2);
-
-         this->plany = lastplanx * sin(this->rotation_speed * (this->t_dir)/2) 
-        + this->plany * cos(this->rotation_speed * (-1 *this->t_dir) /2);
-
-        double oldDirX = this->dir->x;
-       this->dir->x = this->dir->x * cos(this->rotation_speed * (-1 *this->t_dir) / 2)
-        - this->dir->y * sin(this->rotation_speed * (-1 *this->t_dir) /2);
-        this->dir->y = oldDirX * sin(this->rotation_speed * ( -1 *this->t_dir) /2 )
-         + this->dir->y * cos(this->rotation_speed *(-1 *this->t_dir) /2 );
-     //   }
-       
        
         t_ray *ray;
         while (index < this->wall_rays.index)
@@ -334,18 +291,7 @@ void update_player(t_player *this)
     //}
 
 
-void draw_ray(void *item)
-{
-    t_ray *ray;
-
-    ray = (t_ray *) item;
-    if(ray != NULL)
-    {
-       // printf("hi %d \n", xccv);
-        ray->render(ray);
-        //printf("this is kind %d \n" , ray->kind);
-    }
-}        
+     
 
 
 
@@ -400,7 +346,7 @@ double get_line_distance(t_ray_sp *ray)
 {
       int color;
       t_vector pos;
-      int y2 = end  + wallHei;
+      int y2 = end  + wallHei ;
       float index;
        
       index = 0;
@@ -452,11 +398,11 @@ void  draw_sprit(void *item)
     double color;
   t_sp_texture *tsp;
 
-        if(this->pos != NULL )
+        if(this->pos != NULL  && this->sp != NULL)
         {
           tsp = get_sp_tex(this->sp->kind);
            correctdis = this->length(this) * cos(this->angle -game->player.rotaion_angle  );
-           dispro = (game->width / 2) * tan(game->player.fov /2);
+           dispro = (game->width / 5) * tan(game->player.fov );
            wallHei = (game->wvalue / correctdis) * dispro;
            
        // printf ( "thsi is the offset  %d  \n ", this->offset);
@@ -580,78 +526,27 @@ void  draw_sprit(void *item)
         
         floorX += floorStepX;
         floorY += floorStepY;
-        // choose texture and draw the pixel
         
         int  color;
 
   
          color = game->floor->data[game->floor->width * ty + tx];
          color = shadow(color , game->heigth  - y);
-      //  color = (color >> 1) & 8355711; // make a bit darker
         if (y > game->heigth /2  +  this->offset)
         image_put_pixel(game->window , x,y ,color);
-      //color = game->floor->data[game->floor->width * ty + tx];      
-        //ceiling (symmetrical, at screenHeight - y - 1 instead of y)
-        // color = texture[ceilingTexture][texWidth * ty + tx];
-        // if (game->ceil != NULL){
-        // color = game->ceil->data[game->ceil->width * ty + tx];
-        //  color = shadow(color ,  y  );
-        //  if (y < game->heigth  /2  + this->offset)
-        // image_put_pixel(game->window , x, y ,color);
+      
+       
         }
-        // buffer[screenHeight - y - 1][x] = color;
-       // x+=diff;
+     
       }
        
    }
  
-void cast_rays(void *item)
-{
-  t_ray *ray;
-
-  ray = (t_ray *) item;
-  if (ray != NULL)
-  {
-    ray->cast(ray);
-  }
-}
 
 
 
-void render_player(t_player *this)
-{
-    
-   this->wall_rays.foreach(&this->wall_rays, &cast_rays);
-   if (game->floor != NULL)
-      cast_draw_floor(this);
-    
-    this->wall_rays.foreach(&this->wall_rays, &draw_ray);
-     do{
-        t_ray_sp *spray = (t_ray_sp *)this->light_rays.pull(&this->light_rays);
-        if(spray != NULL)
-        {
-            draw_sprit(spray);
-             
-            
-        }
-      } while  (this->light_rays.index > 0 );
-    do{
-        t_ray_sp *spray = (t_ray_sp *)this->sprit_rays.pull(&this->sprit_rays);
-        if(spray != NULL)
-        {
-            draw_sprit(spray);
-             
-            
-        }
-      } while  (this->sprit_rays.index > 0 );
 
 
-    
-          
-   // game->walls.foreach(&(game->walls), &drawwall);
-    // printf("walls nb %ld",game->walls.index);
-
-}
 void free_player(void *item)
 {
    t_player *pla;
