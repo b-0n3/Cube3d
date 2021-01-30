@@ -29,14 +29,6 @@ t_vector *get_sprite_inter(t_vector *pos, t_vector *dir , t_vector *c_pos, doubl
          pos->y - baY * abScalingFactor1);
             return p1;
         }
-        // t_vector *p2 = new_vector_pointer (pos->x - baX * abScalingFactor2, pos->y
-        //         - baY * abScalingFactor2);
-        // t_vector sub1;
-        // t_vector sub2;
-        // new_vector(&sub1, p1->x - pos->x , p1->y - pos->y);
-        // new_vector(&sub1, p2->x - pos->x , p2->y - pos->y);
-        // if(sub2.len P< sub1.len)
-        //     return p2;
         return NULL;
 }
 

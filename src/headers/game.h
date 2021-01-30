@@ -97,6 +97,11 @@ typedef struct s_game{
         void (*free)(void *this);
 }               t_game;
 # include "parser.h"
+
+void    get_intesection_wall(t_ray *ray, t_wall wall);
+double calculate_t(t_ray *ray , t_wall wall, double den);
+double calculate_u(t_ray *ray , t_wall wall , double den);
+double calculate_den(t_ray *ray, t_wall wall);
 void new_game(t_game *this, char *file_name);
 void __exit_(struct s_game *this , char *err_msg);
 char *game_to_string(struct s_game *this);
@@ -114,6 +119,8 @@ void set_so_tex(t_game *g_p , char *line);
 void set_we_tex(t_game *g_p , char *line);
 void set_ea_tex(t_game *g_p , char *line);
 t_sp_texture *get_sp_tex(int kind);
+t_texture *pick_texture(int kind);
+void   render_sprite_texture( double start , double end , double wallHei ,t_sp_texture *tex , double dis);
 
 t_wall *new_wall(t_vector *pos , t_vector *dir, int angle);
 void free_wall(void  * item);
@@ -126,4 +133,5 @@ void show_image(t_window s_win);
 t_sprites *new_sprite(t_vector *pos, double rad , int kind);
 void free_sprite(void *item);
 void    cast_sprite(t_vector *pos, t_sprites *sp, t_ray_sp **ray_sp , double r_len, double angle, int index);
+void   render_wall_texture( double start , double end , double wallHei ,t_texture *tex , double dis);
 #endif 

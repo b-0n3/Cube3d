@@ -16,8 +16,7 @@ t_texture  *new_texture(char *link)
 {
     t_texture *tex;
 
-    if (link != NULL)
-    {
+ 
       tex =(t_texture *) malloc(sizeof(t_texture));
       if(tex != NULL)
       {
@@ -32,8 +31,6 @@ t_texture  *new_texture(char *link)
         tex->data = (int *) mlx_get_data_addr(tex->img.img_ptr , &(tex->img.bpp) 
           ,&tex->img.size_line , &(tex->img.endian));
       }
-    
-    }
     return tex;
 }
 

@@ -143,10 +143,10 @@ void update_secretdor_pos(t_vector *pos , int newx, int newy)
   int posy;
   posx =  pos->x / game->hvalue;
   posy = pos->y / game->hvalue;
-  door_d = posy < newy ?TRUE :FALSE;
-  door_u = posy > newy ?TRUE :FALSE;
-  door_r = posx < newx ?TRUE :FALSE;
-  door_l = posx > newx?TRUE :FALSE;
+  door_d = posy < newy ? TRUE :FALSE;
+  door_u = posy > newy ? TRUE :FALSE;
+  door_r = posx < newx ? TRUE :FALSE;
+  door_l = posx > newx ? TRUE :FALSE;
   if (door_u )
     s_player_up(pos, newx , newy);
   else if(door_d)
@@ -330,7 +330,6 @@ double get_line_distance(t_ray_sp *ray)
 {
     t_line tang;
     double angle;
-    double x_size;
     tang.pos = ray->sp->pos;
 
     angle = normelize_angel(atan2(ray->pos->y - tang.pos->y , 
@@ -477,8 +476,6 @@ void  draw_sprit(void *item)
 
  void cast_draw_floor(t_player *this)
  {
-   t_ray *f_ray;
-   t_ray *l_ray;
       float r_dirx0;
       float r_diry0;
       float r_dirx1;

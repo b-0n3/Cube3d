@@ -1,7 +1,7 @@
 
 #include "cub3d.h"
 #include <sys/time.h>
-#define FRAME_CAP 20000.0
+#define FRAME_CAP 15000.0
 long  SECOND  =1000000000L;
 long long  lastTime;
 double   frame_time = 1.0 / FRAME_CAP;
