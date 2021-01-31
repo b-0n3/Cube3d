@@ -1,7 +1,7 @@
 
 #include "cub3d.h"
 #include <sys/time.h>
-#define FRAME_CAP 15000.0
+#define FRAME_CAP 20000.0
 long  SECOND  =1000000000L;
 long long  lastTime;
 double   frame_time = 1.0 / FRAME_CAP;
@@ -32,7 +32,7 @@ void drawborder(t_game *game)
 {
     t_vector pos;
 
-     new_vector(&pos, 0,0);
+    new_vector(&pos, 0,0);
     for(int y = 0 ; y < game->parser->lines.index; y++)
     {
         char *line = game->parser->lines.get(&(game->parser->lines),y);

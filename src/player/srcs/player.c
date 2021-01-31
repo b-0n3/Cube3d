@@ -157,175 +157,55 @@ void update_secretdor_pos(t_vector *pos , int newx, int newy)
     s_player_left(pos, newx , newy);
 }
 
-t_bool check_collision(t_player *player , double newx ,double newy)
+
+
+
+
+ double calculate_t_sprite(t_ray_sp *ray , t_line line, double den)
 {
-
-    
-    t_ray *ray;
-    double newAngle;
-    double ffangle;
-    static int to;
-    char *line;
-    newAngle = player->rotaion_angle; 
-    newAngle += player->w_dir == -1 ? M_PI: 0;
-   newAngle += player->t_dir * player->rotation_speed;
-    ffangle = player->rotaion_angle + player->t_dir * player->rotation_speed;
-            normelize_angel(newAngle);
-        ray = player->collision.get( &player->collision ,0);
-        ray->angle = newAngle;
-        free(ray->dir);
-        ray->dir = ray->pos->get_dir_angle(ray->pos , ray->angle);
-        ray->cast(ray);
-      if (to == 0)
-        to = 1;
-        line = ((char *)game->parser->lines.get(&game->parser->lines, (int)newy));
-        if(ray->coli == 1 || ft_strchr("50",line [(int) newx])==NULL)
-        {
-           newx = player->pos->x + (cos(player->rotaion_angle)* player->mov_speed);
-         //  newy = player->pos->y +(sin(player->rotaion_angle) *player->mov_speed);
-            if (player->t_dir != 0)
-                to = player->t_dir;
-            if(line[(int) (newx / game->hvalue)] != 's')
-            {
-            player->rotaion_angle = ffangle;
-         //  if(player->t_dir == 0)
-         //  {
-             // player->rotaion_angle += player->rotation_speed * to;
-               // player->vpos->y += player->dir->y * player->mov_speed * player->w_dir;
-            
-            }
-            ray->coli = 0;
-           
-            newx /= game->hvalue;
-           // newy /= game->hvalue;
-            line = (char *)game->parser->lines.get(
-              &game->parser->lines, 
-            (int)newy);
-              if(line != NULL)
-                if (newx > 0 && newx < ft_strlen(line))
-                {
-                  if ( line [(int) newx] == 's')
-                  {
-                    update_secretdor_pos(player->pos , (int )newx,(int) newy);
-                  
-                  }
-                }
-            return TRUE;
-        }
-        else
-        {
-            player->pos->x = newx * game->wvalue;
-            player->pos->y = newy * game->hvalue;
-            player->rotaion_angle = ffangle;
-            player->vpos->x += player->planx * ((player->mov_speed ) * -player->w_dir);
-           player->vpos->y += player->plany * ((player->mov_speed )* -player->w_dir);
-
-
-          float lastplanx = player->planx;
-        player->planx = player->planx * cos((-player->rotation_speed  * player->t_dir ))
-         - player->plany * sin(( -player->rotation_speed  * player->t_dir ));
-
-         player->plany = lastplanx * sin( -player->rotation_speed * player->t_dir) 
-        + player->plany * cos( -player->rotation_speed * player->t_dir) ;
-     
-  
- 
-  double oldDirX = player->dir->x;
-       player->dir->x = player->dir->x * cos(-player->rotation_speed * player->t_dir)
-        - player->dir->y * sin(-player->rotation_speed * player->t_dir);
-        player->dir->y = oldDirX *  sin(-player->rotation_speed* player->t_dir)
-         + player->dir->y * cos(-player->rotation_speed  * player->t_dir);
-       
-       
-       
-        }   
-    
-    return FALSE;
+    return (( line.pos->x - ray->pos->x) 
+    * ( ray->pos->y - ray->dir->y ) 
+    - ( line.pos->y - ray->pos->y ) 
+    * ( ray->pos->x - ray->dir->x)) / den;
 }
-void update_player(t_player *this)
+
+double calculate_u_sprite(t_ray_sp *ray , t_line line, double den)
 {
-    double next_x;
-    double next_y;
+    return -(( line.pos->x - line.dir->x ) 
+    * ( line.pos->y - ray->pos->y ) 
+    - ( line.pos->y - line.dir->y )
+    *( line.pos->x - ray->pos->x ))
+    / den;
 
-    double ray_angle;
-    double newAngle ;
-    double lastangle = this->rotaion_angle;
-    newAngle =   this->rotaion_angle + (this->rotation_speed * this->t_dir);
-     double lastx = this->pos->x;
-     double lasty = this->pos->y;
-    
-   this->sprit_rays.index = 0;
-    next_x =  this->pos->x  + cos(newAngle) *(this->mov_speed * this->w_dir);
-     next_y =  this->pos->y  + sin(newAngle) *(this->mov_speed * this->w_dir);
+}
 
-    char *line = (char *) game->parser->lines.get(&game->parser->lines, (int)floor( (next_y ) / game->hvalue));
-    
-        check_collision(this ,next_x / game->wvalue , next_y / game->hvalue);
-        int index = 0;
-        ray_angle = this->rotaion_angle - (this->fov / 2);
-        
-            
-        
-         
-      
-           
-
-       
-        t_ray *ray;
-        while (index < this->wall_rays.index)
-        {
-            ray_angle = normelize_angel(ray_angle);
-            ray = (t_ray *) this->wall_rays.get(&this->wall_rays , index);
-            if(ray != NULL)
-            {
-                ray->update(ray , ray_angle, index);
-                ray_angle = ray_angle + (this->fov / nb_rays);
-            }
-
-            
-            index++;
-        }
-      //  }
-      
-        }
-    //}
-
-
-     
-
-
+double calculate_den_sprite(t_ray_sp *ray, t_line line)
+{
+    return  ( line.pos->x - line.dir->x )
+    *( ray->pos->y - ray->dir->y) -
+     ( line.pos->y - line.dir->y ) 
+    * ( ray->pos->x - ray->dir->x );
+}
 
 double get_offset( t_line tang, t_ray_sp *ray)
 {
-    double newx;
-    double newy;
-    double new_len;
+    
+    double den;
     float t = 0;
     float u = 0;
-      double x3= ray->pos->x;
-    double x4 = ray->dir->x;
+  
 
-    double x1 = tang.pos->x;
-    double x2 = tang.dir->x;
-   
-    double y3 = ray->pos->y;
-    double y4 = ray->dir->y;
-    
-    double y1 = tang.pos->y;
-    double y2 = tang.dir->y;
-
-    //new_vector(&sub , ray->pos->x, ray->pos->y);
-    double den = (x1 - x2)*(y3 - y4) - (y1 -y2) * (x3-x4);
-    free(tang.dir);
+  den = calculate_den_sprite(ray , tang);
+  free(tang.dir);
    if (den != 0)
    {
-    t = ((x1 -x3) *(y3- y4 ) - (y1 - y3) *( x3 - x4))/ den;
-    u = -((x1 -x2) * (y1 -y3) - (y1 - y2)*(x1 - x3))/den;
-    //   printf ("%f \n ", t);
+    t =  calculate_t_sprite(ray, tang,den);
+    u = calculate_u_sprite(ray ,tang,den);
     return t * ray->sp->rad ;
     }
     return 0;
 }
+
 double get_line_distance(t_ray_sp *ray)
 {
     t_line tang;
@@ -474,71 +354,6 @@ void  draw_sprit(void *item)
 
 
 
- void cast_draw_floor(t_player *this)
- {
-      float r_dirx0;
-      float r_diry0;
-      float r_dirx1;
-      float r_diry1;
-  
-  
-   //double diff =  game->width / game->heigth;
-  for(int y = 0; y < game->heigth; y++)
-    {
-      
-       r_dirx0 = this->dir->x - this->planx;
-       r_diry0 = this->dir->y - this->plany;
-       r_dirx1 = this->dir->x + this->planx;
-       r_diry1 = this->dir->y + this->plany;
-
-       double  p = y - (game->heigth / 2) ;
-        p -= this->offset;
-
-      // Vertical position of the camera.
-      float posZ = 0.5 * game->heigth ;
-        posZ -= this->offset;
-      // Horizontal distance from the camera to the floor for the current row.
-      // 0.5 is the z position exactly in the middle between floor and ceiling.
-      float rowDistance = posZ / p;
-      
-      // calculate the real world step vector we have to add for each x (parallel to camera plane)
-      // adding step by step avoids multiplications with a weight in the inner loop
-      float floorStepX = (rowDistance * (r_dirx1 - r_dirx0 ))/ game->width;
-      float floorStepY = (rowDistance * (r_diry1 - r_diry0) )/ game->heigth;
-
-      // real world coordinates of the leftmost column. This will be updated as we step to the right.
-      float floorX =  this->vpos->x + rowDistance * r_dirx0;
-      float floorY =  this->vpos->y + rowDistance * r_diry0;
-       for(int x = 0; x < game->width; ++x)
-      {
-        // the cell coord is simply got from the integer parts of floorX and floorY
-        double cellX =  floorX - floor(floorX);
-        double  cellY = floorY - floor(floorY);
-
-        // get the texture coordinate from the fractional part
-        
-        int tx = ( int)(game->floor->width /2 * (cellX) ) & ( game->floor->width -1 );
-        int ty = (int)(game->floor->height /2  * (cellY) ) & (game->floor->height -1);
-
-        
-        floorX += floorStepX;
-        floorY += floorStepY;
-        
-        int  color;
-
-  
-         color = game->floor->data[game->floor->width * ty + tx];
-         color = shadow(color , game->heigth  - y);
-        if (y > game->heigth /2  +  this->offset)
-        image_put_pixel(game->window , x,y ,color);
-      
-       
-        }
-     
-      }
-       
-   }
- 
 
 
 
@@ -547,12 +362,9 @@ void  draw_sprit(void *item)
 void free_player(void *item)
 {
    t_player *pla;
-   
-   pla = (t_player *) item;
 
+   pla = (t_player *) item;
    pla->wall_rays.free(&pla->wall_rays, &free_ray);
-   
    pla->sprit_rays.free(&pla->sprit_rays , &free_ray_sp);
-   
    free(pla->pos);
 }

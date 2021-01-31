@@ -42,4 +42,6 @@ void draw_ray(void *item);
 void cast_rays(void *item);
 void  draw_sprit(void *item);
  void cast_draw_floor(t_player *this);
+
+t_bool check_collision(t_player *player , double newx ,double newy);
 #endif
