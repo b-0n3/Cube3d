@@ -7,7 +7,7 @@ t_bool is_wall_character(char ch)
     char *arr;
 
     #ifdef BONUS
-        arr = " 12";
+        arr = " 12s";
     #else
         arr = " 1";
     #endif
@@ -65,7 +65,7 @@ t_bool is_map_s_or_end(char ch)
     char *arr;
 
     #ifdef BONUS
-        arr = "12";
+        arr = "12s";
     #else
         arr = "1";
     #endif
@@ -110,7 +110,7 @@ t_bool check_map_char(char ch)
     char *arr;
 
     #ifdef BONUS
-        arr = "0123456789NWSE";
+        arr = "0123456789NWSEs";
     #else
         arr = "012NWSE";
     #endif

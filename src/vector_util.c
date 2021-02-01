@@ -83,7 +83,9 @@ void vector_to_string(void *item)
 
 t_vector *dir_from_angle(t_vector *this, double angle)
 {
-        return (new_vector_pointer(this->x + (game->wvalue/2 * cos(angle)) , this->y + (game->hvalue/2 * sin(angle))));
+        return (new_vector_pointer(this->x + 
+        (game->wvalue/2 * cos(angle)) , 
+        this->y + (game->hvalue/2 * sin(angle))));
 }
 
 

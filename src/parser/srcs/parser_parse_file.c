@@ -67,7 +67,6 @@ t_bool map_ended(char *line, t_bool *var)
 
     if( var == NULL)
         *var = FALSE;
-   printf("dd %s", line);
     if (map_created() && !is_map_line(line))
     {
        
