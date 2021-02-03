@@ -20,7 +20,7 @@ int  *flip_arr(int *real, size_t size)
 }
 void parse_so_tex(t_parser *this, t_token *token)
 {
-    int fd;
+
     char *filename;
     t_texture *tex;
 
@@ -30,9 +30,7 @@ void parse_so_tex(t_parser *this, t_token *token)
             put_error(this->g , ft_strdup("no so tex"));
         else{
          filename =(char *) token->values.pull(&(token->values));
-    if(filename != NULL)
-        fd = open(filename , O_RDONLY);
-    if (filename == NULL || fd < 0)
+    if(!ft_check_file(filename, ".xpm"))
         put_error(this->g , ft_strdup("invalid so texture"));
     else
     {
@@ -46,5 +44,5 @@ void parse_so_tex(t_parser *this, t_token *token)
     }
         }
     }
-    close(fd);
+    
 }

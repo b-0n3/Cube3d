@@ -84,7 +84,6 @@ void push_n_walls(t_parser *this,char *l ,t_vector r_p)
                         *game->hvalue),
                         new_vector_pointer((r_p.x )* game->wvalue ,(r_p.y + 1)
                         *game->hvalue), 0), sizeof(t_wall));
-                   // printf("this is xx %d",xx);
                 }
                  if(l[(int)r_p.x] == 'N' || l[(int)r_p.x] == 'S' || l[(int)r_p.x] == 'E' || l[(int)r_p.x] == 'W')
                 {

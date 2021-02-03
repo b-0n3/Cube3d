@@ -33,19 +33,14 @@ void parse_floor_color(t_game *this, t_token *token)
 
 void parse_floor_tex(t_game *this, t_token *token)
 {
-    int fd;
     char *filename;
     
     if (this == NULL || token == NULL)
         return;
     filename =(char *) token->values.pull(&(token->values));
-    if(filename != NULL)
-        fd = open(filename , O_RDONLY);
-    if (filename == NULL || fd < 0)
+    if(!ft_check_file(filename, ".xpm"))
         put_error(this , ft_strdup("invalid floor texture file"));
     else
-    {
         this->floor = new_sp_texture(filename, 10);
-        close(fd);
-    }
+
 }

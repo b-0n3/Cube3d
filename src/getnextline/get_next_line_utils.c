@@ -12,33 +12,6 @@
 
 #include "get_next_line.h"
 
-// char		*ft_strjoin(char *s1, char *s2)
-// {
-// 	int		l1;
-// 	int		i;
-// 	char	*p;
-
-// 	if (!s1 || !s2)
-// 		return (NULL);
-// 	l1 = ft_strlen(s1);
-// 	i = 0;
-// 	p = malloc(sizeof(char *) * (l1 + ft_strlen(s2)));
-// 	if (p == 0)
-// 		return (NULL);
-// 	while (s1[i] != '\0')
-// 	{
-// 		p[i] = s1[i];
-// 		i++;
-// 	}
-// 	i = 0;
-// 	while (s2[i] != '\0')
-// 	{
-// 		p[i + l1] = s2[i];
-// 		i++;
-// 	}
-// 	p[i + l1] = '\0';
-// 	return (p);
-// }
 
 
 char		*search(int fd, char **rest, int *ret)
@@ -62,22 +35,3 @@ char		*search(int fd, char **rest, int *ret)
 	return (*rest);
 }
 
-// size_t		ft_strlen(const char *s)
-// {
-// 	size_t	len;
-
-// 	len = 0;
-// 	while (s[len] != '\0')
-// 		len++;
-// 	return (len);
-// }
-
-// char		*ft_strchr(const char *s, int c)
-// {
-// 	while (*s != (unsigned char)c)
-// 	{
-// 		if (!*s++)
-// 			return (0);
-// 	}
-// 	return ((char *)s);
-// }

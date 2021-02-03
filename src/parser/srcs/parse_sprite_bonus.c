@@ -32,7 +32,6 @@ void  *map_token(void *item)
             {
                 tmp = (char *) token->values.get(&(token->values), i);
                 ptr = ft_strjoin(ptr, tmp);
-            
             //    ptr = tmp;
                 i++;
             }
@@ -47,10 +46,7 @@ void parse_sp_line(void *item)
     
     line = (char *)item;
     if(line != NULL)
-    {
-        printf("%s \n", line);
         sprite_tex_parser(line);
-    }
 }
 
 void parse_sprite_bonus(t_parser *this){

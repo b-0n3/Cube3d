@@ -42,6 +42,7 @@ void draw_ray(void *item);
 void cast_rays(void *item);
 void  draw_sprit(void *item);
  void cast_draw_floor(t_player *this);
-
+ void update_on_secret_door(t_player *player, double newx, double newy);
+void update_secretdor_pos(t_vector *pos , int newx, int newy);
 t_bool check_collision(t_player *player , double newx ,double newy);
 #endif

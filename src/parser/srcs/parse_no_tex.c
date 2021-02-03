@@ -2,20 +2,16 @@
 
 void parse_no_tex(t_parser *this, t_token *token)
 {
-    int fd;
     char *filename;
     t_texture *tex;
 
     if (this != NULL)
     {
-        fd = -2;
         if (token == NULL) 
             put_error(this->g , ft_strdup("no no tex"));
         else{
          filename =(char *) token->values.pull(&(token->values));
-    if(filename != NULL)
-        fd = open(filename , O_RDONLY);
-    if (fd < 0)
+   if(!ft_check_file(filename, ".xpm"))
         put_error(this->g , ft_strdup("invalid no1 texture"));
     else
     {

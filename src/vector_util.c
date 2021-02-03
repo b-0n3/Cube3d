@@ -4,7 +4,6 @@ extern t_game *game;
 
 t_vector new_vector(t_vector *this,double x, double y)
 {
-    
     this->x = x;
     this->y = y;
     this->length = &length;
@@ -63,6 +62,8 @@ t_bool con(void *item)
         return TRUE;
     return FALSE;
 }
+
+
 int compare_to(void  *this , void *o)
 {
     if (((t_vector *) this)->len < ((t_vector *)o)->len)
@@ -77,7 +78,7 @@ void vector_to_string(void *item)
     t_vector *this = (t_vector *) item;
         if (this != NULL)
         {
-            printf(" x  = %12.2f  , y =  %12.2f  \n", this->x , this->y);   
+            // write(1,"sorry i can't use printf right now")  
         }
 }
 

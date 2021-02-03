@@ -154,7 +154,7 @@ void clear_screen( t_window v)
 {
   int x = 0;
   int y = 0;
- //mlx_destroy_image(v.mlx, v.img->img_ptr);
+ 
  while (y < game->heigth)
 {  
     x =0;

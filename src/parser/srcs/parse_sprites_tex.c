@@ -23,6 +23,30 @@ static t_bool is_empty(int *line, int size)
   return TRUE;
 }
 
+void set_borders_c(t_sp_texture *tex, int i , int j)
+{
+   while (j++ < (tex->height - 1))
+  {
+    i =0;
+    while (tex->data[i + j * tex->width] == 0 && i <= tex->width)
+        i++;
+    if (tex->borders[2] > i)
+       tex->borders[2] = i;
+       i = tex->width -1;
+    while (tex->data[i + j * tex->width] == 0 && i >=0)
+        i--;
+    if (tex->borders[3] < i)
+       tex->borders[3] = i;
+  }
+  j = tex->height - 1;
+  while (j-- >= 0)
+    if(!is_empty(tex->data + (j * tex->width), tex->width))
+      {
+        tex->borders[1] = j;
+        break;
+      }
+}
+
 t_bool  set_borders(t_sp_texture *tex)
 {
   int i;
@@ -43,29 +67,9 @@ t_bool  set_borders(t_sp_texture *tex)
       }
   while (i++ < tex->width)
       if (tex->data[i + j * tex->width] != 0)
-      {
         tex->borders[2] = i;
-      }
-  while (j++ < (tex->height - 1))
-  {
-    i =0;
-    while (tex->data[i + j * tex->width] == 0 && i <= tex->width)
-        i++;
-    if (tex->borders[2] > i)
-       tex->borders[2] = i;
-       i = tex->width -1;
-    while (tex->data[i + j * tex->width] == 0 && i >=0)
-        i--;
-    if (tex->borders[3] < i)
-       tex->borders[3] = i;
-  }
-  j = tex->height - 1;
-  while (j-- >= 0)
-    if(!is_empty(tex->data + (j * tex->width), tex->width))
-      {
-        tex->borders[1] = j;
-        break;
-      }
+
+    set_borders_c(tex, i , j);
     tex->hsize = tex->borders[1] - tex->borders[0];
     tex->wsize = tex->borders[3] - tex->borders[2];
     if (tex->hsize >  0 && tex->wsize > 0)
@@ -98,7 +102,3 @@ void parse_sprite(t_parser *this, t_token *token, int kind)
                     put_error(this->g , ft_strdup("invalid sprite texture"));
     }
 }
-// t_bool check_tex_file(char *filename)
-// {
-  
-// }

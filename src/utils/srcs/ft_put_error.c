@@ -1,8 +1,8 @@
-#include "util.h"
-#include "game.h"
+# include "util.h"
+# include "game.h"
 
-void put_error(t_game *g_p, char *message)
+void    put_error(t_game *g_p, char *message)
 {
     g_p->errors.push(&g_p->errors , message,
-     sizeof (char *));
+            sizeof (char *));
 }

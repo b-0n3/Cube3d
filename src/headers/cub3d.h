@@ -21,7 +21,7 @@
 /* wall function */
 
 
-
+double get_line_distance(t_ray_sp *ray);
 
 /*  graphics function */
 void  draw_line(t_window wi ,t_vector *pos , t_vector *dir , int color);
