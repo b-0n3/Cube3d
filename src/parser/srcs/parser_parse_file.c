@@ -82,7 +82,6 @@ void parse_token(void *item)
     t_array_list *word;
     static t_bool var;
 
-     
     if (item != NULL && parser != NULL)
     {
         line = (char *) item;
@@ -99,7 +98,6 @@ void parse_token(void *item)
                     put_token(parser , *word);
             }else
                 put_error(parser->g,ft_strjoin("invalid line :\n", line));
-                 //word->free(word, &free);
         }
         else if((map_created() || map_ended(line, &var )) && !ft_is_empty(line))
             put_error(parser->g,ft_strjoin("propeties after map line :\n", line));

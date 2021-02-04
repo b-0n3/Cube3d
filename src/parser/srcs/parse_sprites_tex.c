@@ -68,7 +68,6 @@ t_bool  set_borders(t_sp_texture *tex)
   while (i++ < tex->width)
       if (tex->data[i + j * tex->width] != 0)
         tex->borders[2] = i;
-
     set_borders_c(tex, i , j);
     tex->hsize = tex->borders[1] - tex->borders[0];
     tex->wsize = tex->borders[3] - tex->borders[2];
@@ -79,17 +78,13 @@ t_bool  set_borders(t_sp_texture *tex)
 
 void parse_sprite(t_parser *this, t_token *token, int kind)
 {
-    int fd;
     char *filename;
     t_sp_texture *tex;
-
 
     if(this == NULL  || token == NULL)
         return;
     filename =(char *) token->values.pull(&(token->values));
-    if(filename != NULL)
-        fd = open(filename , O_RDONLY);
-    if (filename == NULL || fd < 0)
+    if(!ft_check_file(filename, ".xpm"))
         put_error(this->g , ft_strdup("invalid sprite texture"));
     else
     {

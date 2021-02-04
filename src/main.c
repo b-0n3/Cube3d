@@ -61,8 +61,10 @@ void startgame(t_game *game)
 int main(int argc , char **paths)
 {
     t_game game;
-    new_game(&game, paths[1]);
-    lastTime = get_current_time();
-    startgame(&game);
+    
+     new_game(&game, paths[1]);
+      lastTime = get_current_time();
+    
+        startgame(&game);
     return 0;
 }
