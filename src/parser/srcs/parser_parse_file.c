@@ -72,7 +72,6 @@ t_bool map_ended(char *line, t_bool *var)
        
             *var = TRUE;
     }
-    printf("%d \n", *var);
     return *var;
 }
 

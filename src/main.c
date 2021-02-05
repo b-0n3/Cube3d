@@ -1,7 +1,7 @@
 
 #include "cub3d.h"
 
-#define FRAME_CAP 20000.0
+#define FRAME_CAP 14000.0
 long  SECOND  =1000000000L;
 long long  lastTime;
 double   frame_time = 1.0 / FRAME_CAP;
@@ -39,8 +39,6 @@ int update(int key)
          g->window.img->clear(g->window);
         render();
     }
-    else
-        system("sleep 0.01");
     return 0;
 }
 

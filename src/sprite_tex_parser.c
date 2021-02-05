@@ -43,7 +43,6 @@ void  sprite_tex_parser(char *line)
   int nb;
 
   new_array_list(&data ,3 , sizeof(char *));
-  printf("%s\n", line);
   split_that(&data, line , '|'); 
   if (data.index == 0)
     put_error(game, ft_strdup("invalid line"));

@@ -146,12 +146,12 @@ t_bool check_inside(t_array_list lines, size_t x, size_t y)
     while (i < 2)
     {
         line[i + 1] =  lines.get(&lines, y  + i);
-        len[i + 1] = line[i + 1] != NULL?ft_strlen(line[i + 1]) : 0;
+        len[i + 1] = line[i + 1] != NULL ? ft_strlen(line[i + 1]) : 0;
         i++;
     }
     while (x < len[1])
     {
-        if(line[1][x]== '0')
+        if(line[1][x]== '0' || line[1][x]== '0')
             check_sides(line,len , x);
         x++;
     }

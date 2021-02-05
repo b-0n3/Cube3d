@@ -41,8 +41,7 @@ char *l = game->parser->lines.get(&game->parser->lines, p.y);
                     (start.y )*game->hvalue),
                     new_vector_pointer((p.x)* game->wvalue ,
                     (p.y )*game->hvalue),1), sizeof(t_wall));
-                 //   printf("this is xx %d",xx);
-                }
+                 }
                  p.y += 1;
                  start.x = p.x;
                  start.y = p.y;

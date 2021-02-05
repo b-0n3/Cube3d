@@ -1,6 +1,7 @@
 #include "array_list.h"
 
-t_array_list *filter_list(t_array_list this, size_t size , t_bool (*cond)(void *item), void *(*map)(void *item))
+t_array_list *filter_list(t_array_list this, size_t size , 
+t_bool (*cond)(void *item), void *(*map)(void *item))
 {
     t_array_list *list;
     size_t i;
