@@ -30,21 +30,22 @@ void    get_walls(t_parser *this)
 
 void  create_map_p(t_parser *this)
 {
-    int nb_lines = 0;
+   size_t i ;
     char *line;
     int len;
-
+    
     game = this->g;  
     game->hvalue =64;
     game->wvalue = 64;
     game->bi = 0;
-    while (nb_lines < this->lines.index)
+    i = 0;
+    while (i < this->lines.index)
     {
-      line = this->lines.get(&(this->lines),nb_lines);
+      line = this->lines.get(&(this->lines),i);
         len = ft_strlen(line);
         if(len > game->bi)
           game->bi = len;
-      nb_lines++;
+      i++;
     }
     get_walls(this);
     get_sprites(this);
@@ -56,7 +57,7 @@ void  create_map_p(t_parser *this)
 void parse_map(t_parser *this)
 {
   t_token *token;
-  t_array_list map;
+  
   token = get_token_by_key(this ,"MAP");
   if(token == NULL)
     put_error(this->g, ft_strdup("no map"));

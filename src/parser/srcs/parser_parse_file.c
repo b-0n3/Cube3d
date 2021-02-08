@@ -68,10 +68,7 @@ t_bool map_ended(char *line, t_bool *var)
     if( var == NULL)
         *var = FALSE;
     if (map_created() && !is_map_line(line))
-    {
-       
             *var = TRUE;
-    }
     return *var;
 }
 
@@ -98,7 +95,7 @@ void parse_token(void *item)
             }else
                 put_error(parser->g,ft_strjoin("invalid line :\n", line));
         }
-        else if((map_created() || map_ended(line, &var )) && !ft_is_empty(line))
+        else if(((map_created() || map_ended(line, &var )) && !ft_is_empty(line)))
             put_error(parser->g,ft_strjoin("propeties after map line :\n", line));
     }
 }
@@ -177,7 +174,7 @@ t_bool is_empty_or_comment(char *line){
             if(line[i] == '#')
                 return TRUE;
         #endif
-        return i == len ? TRUE : FALSE;
+        return i == len  && i == 0? TRUE : FALSE;
     }
     else 
         return TRUE;

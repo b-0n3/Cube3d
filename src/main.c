@@ -1,7 +1,7 @@
 
 #include "cub3d.h"
 
-#define FRAME_CAP 14000.0
+#define FRAME_CAP 12000.0
 long  SECOND  =1000000000L;
 long long  lastTime;
 double   frame_time = 1.0 / FRAME_CAP;
@@ -45,7 +45,11 @@ int update(int key)
 
 void startgame(t_game *game)
 {
-    g = game; 
+    g = game;
+    
+    
+    g->window.win =  mlx_new_window(g->window.mlx, 
+    (int) g->width, (int) g->heigth , "CUB3d");
     mlx_hook( g->window.win, 5,(1L<<3), mouse_relased, (void*)0);
     mlx_mouse_hook (g->window.win, mouse_pressed, (void*) 0 );
     mlx_hook(g->window.win ,2,(1L << 0),key_pressed ,(void *) 0);
@@ -60,9 +64,18 @@ int main(int argc , char **paths)
 {
     t_game game;
     
+    if (argc  >=2)
+    {
      new_game(&game, paths[1]);
       lastTime = get_current_time();
-    
-        startgame(&game);
+        if (argc == 3)
+        {
+            game.player.render(&(game.player));
+            game.save(&game);
+        }
+        else
+          startgame(&game);
+    }else
+        perror("invalid call");
     return 0;
 }

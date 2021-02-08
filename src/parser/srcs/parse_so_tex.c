@@ -3,7 +3,7 @@
 int  *flip_arr(int *real, size_t size)
 {
     int *ret;
-    int i;
+    size_t i;
     int len;
 
     len = size - 1;

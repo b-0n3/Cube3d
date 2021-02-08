@@ -91,7 +91,7 @@ void new_token(t_token *this, t_array_list list);
 void new_empty_token(t_token *this, char *token);
 t_bool token_push_values(t_token *this,t_array_list list);
 t_bool token_push_value(t_token *this,char *line);
-
+void get_sprites(t_parser *this);
 void parse_map(t_parser *this);
 
 #endif

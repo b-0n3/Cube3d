@@ -48,6 +48,7 @@ t_sp_texture *new_sp_texture(char *link, int kind)
 {
     t_sp_texture *tex;
 
+    tex = NULL;
     if (link != NULL)
     {
       tex =(t_sp_texture *) malloc(sizeof(t_sp_texture));

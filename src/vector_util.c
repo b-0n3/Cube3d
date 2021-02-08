@@ -75,7 +75,7 @@ int compare_to(void  *this , void *o)
 
 void vector_to_string(void *item)
 {
-    t_vector *this = (t_vector *) item;
+   (char *) item;
 }
 
 t_vector *dir_from_angle(t_vector *this, double angle)

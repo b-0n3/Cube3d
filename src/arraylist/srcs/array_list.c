@@ -1,14 +1,14 @@
-#include "array_list.h"
+# include "array_list.h"
 
 /*
-***  @param first_size : array initial size 
-***  @param __sizeofit : sizeof element
-***  @ param this :  ! please make sure the pointer you passing is already
-***               allocated or expect a  bus error
-*/
+ ***  @param first_size : array initial size 
+ ***  @param __sizeofit : sizeof element
+ ***  @ param this :  ! please make sure the pointer you passing is already
+ ***               allocated or expect a  bus error
+ */
 t_array_list *new_array_list(t_array_list *this, size_t first_size, size_t __sizeofit)
 {
-	this->arr = (void *)malloc ( first_size * __sizeofit);
+	this->arr = (void *)malloc (first_size * __sizeofit);
 	if (this->arr != NULL)
 	{
 		this->index = 0;

@@ -3,24 +3,24 @@
 t_window windo;
 extern t_game *game;
 
-void draw_rec(t_window wi ,t_vector pos , int size , int color)
-{
-    int x = pos.x ;
-    int x2 = pos.x + (size );
-    int y1 = pos.y ;
-    int y2 = pos.y + (size );
+// void draw_rec(t_window wi ,t_vector pos , int size , int color)
+// {
+//     int x = pos.x ;
+//     int x2 = pos.x + (size );
+//     int y1 = pos.y ;
+//     int y2 = pos.y + (size );
 
-while (y1 < y2)
-  {
-     int x1 = x;
-     while ( x1 < x2)
-    { 
-         game->window.img->put_pixel(game->window ,  x1, y1 ,color);
-       x1++;
-   }
-  y1++;
-  }
-}
+// while (y1 < y2)
+//   {
+//      int x1 = x;
+//      while ( x1 < x2)
+//     { 
+//          game->window.img->put_pixel(game->window ,  x1, y1 ,color);
+//        x1++;
+//    }
+//   y1++;
+//   }
+// }
 
 void	circle(t_vector a, int radius, int color)
 {
@@ -106,7 +106,6 @@ void    init_image(t_image *this,t_window win)
     this->put_pixel = &image_put_pixel;
     this->clear = &clear_screen;
     this->show = &show_image;
-
   }
 }
 int rgb_to_int(int r, int g, int b)

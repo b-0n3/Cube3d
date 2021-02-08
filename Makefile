@@ -28,4 +28,4 @@ FLAGS = -Wall -Wextra -Werror
 me:
 	gcc   -lmlx -framework OpenGL -framework AppKit $(SRC) $(GAME) $(RAY) $(LIBFT) $(PARSER) $(GNL) $(AL) $(PLAYER) $(UTILS)  -I $(GAMEINC) -I $(LIBFTINC) -I $(ALINC)  -I $(UTILSINC) -I $(PARSERINC)   -I $(INC)  -I $(LINEINC) -I $(PLAYERINC)  -I $(KEYS) -I $(RAYINC) -g -O3
 bonus:
-	gcc   -D BONUS=1  -lmlx -framework OpenGL -framework AppKit $(SRC) $(GAME) $(RAY) $(LIBFT) $(PARSER) $(GNL) $(AL) $(PLAYER) $(UTILS) -I $(GAMEINC)  -I $(LIBFTINC) -I $(ALINC)  -I $(UTILSINC) -I $(PARSERINC)   -I $(INC)  -I $(LINEINC) -I $(PLAYERINC)  -I $(KEYS) -I $(RAYINC)   -g -O3
+	gcc    -D BONUS=1  -lmlx -framework OpenGL -framework AppKit $(SRC) $(GAME) $(RAY) $(LIBFT) $(PARSER) $(GNL) $(AL) $(PLAYER) $(UTILS) -I $(GAMEINC)  -I $(LIBFTINC) -I $(ALINC)  -I $(UTILSINC) -I $(PARSERINC)   -I $(INC)  -I $(LINEINC) -I $(PLAYERINC)  -I $(KEYS) -I $(RAYINC)   -g -O3

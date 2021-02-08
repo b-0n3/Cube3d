@@ -6,7 +6,6 @@ t_bool (*cond)(void *item), void *(*map)(void *item))
     t_array_list *list;
     size_t i;
     void  *item;
-    char *l;
 
     list = (t_array_list *) malloc (sizeof(t_array_list));
     new_array_list(list, this.index +1, size);

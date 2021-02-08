@@ -92,7 +92,6 @@ void parse_properties(t_parser *this)
 
 void   parser_do_final(t_parser *this)
 {
-    char *line;
 
     game = this->g;
     this->get_lines(this);

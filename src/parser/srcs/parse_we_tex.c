@@ -2,7 +2,7 @@
 int  *flip_w_arr(int *real, size_t size, int width)
 {
     int *ret;
-    int i;
+    size_t i;
     int len;
     int j;
 
@@ -27,7 +27,7 @@ int  *flip_w_arr(int *real, size_t size, int width)
 
 void parse_we_tex(t_parser *this, t_token *token)
 {
-    int fd;
+
     char *filename;
     t_texture *tex;
 
@@ -38,9 +38,7 @@ void parse_we_tex(t_parser *this, t_token *token)
         else
         {
          filename =(char *) token->values.pull(&(token->values));
-    if(filename != NULL)
-        fd = open(filename , O_RDONLY);
-    if (filename == NULL || fd < 0)
+    if(!ft_check_file(filename, ".xpm"))
         put_error(this->g , ft_strdup("invalid we texture"));
     else
     {
@@ -49,10 +47,10 @@ void parse_we_tex(t_parser *this, t_token *token)
         if(tex == NULL)
            put_error(this->g , ft_strdup("invalid we texture"));
         else
-        this->g->we_texture = tex;
+            this->g->we_texture = tex;
     
     }
     }
     }
-    close(fd);
+  
 }
