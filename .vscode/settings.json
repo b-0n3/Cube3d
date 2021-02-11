@@ -1,0 +1,23 @@
+{
+    "files.associations": {
+        "__bit_reference": "cpp",
+        "__hash_table": "cpp",
+        "__string": "cpp",
+        "algorithm": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "unordered_map": "cpp",
+        "parser.h": "c",
+        "array_list.h": "c",
+        "game.h": "c",
+        "libft.h": "c",
+        "__locale": "c",
+        "cub3d.h": "c",
+        "cstdlib": "c",
+        "locale": "c",
+        "atomic": "c",
+        "ostream": "c",
+        "complex": "c",
+        "new": "c"
+    }
+}

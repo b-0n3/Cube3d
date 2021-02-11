@@ -1,0 +1,2991 @@
+Norme: ./a.out
+Warning: Not a valid file
+Norme: ./arraylist/Makefile
+Warning: Not a valid file
+Norme: ./norm.txt
+Warning: Not a valid file
+Norme: ./arraylist/includes/array_list.h
+Error: global scope bad aligned
+Error (line 14): wrong number of spaces in preprocessor indentation
+Error (line 16): multiple empty lines
+Error (line 22): wrong number of spaces in preprocessor indentation
+Error (line 23): wrong number of spaces in preprocessor indentation
+Error (line 23): preprocessor block must be followed by one empty line
+Error (line 24): must have tabulations between INT and t_bool
+Error (line 24, col 11): bad spacing
+Error (line 25): wrong number of spaces in preprocessor indentation
+Error (line 26): wrong number of spaces in preprocessor indentation
+Error (line 27): wrong number of spaces in preprocessor indentation
+Error (line 27): preprocessor block must be followed by one empty line
+Error (line 28): Struct s_array_list bad aligned
+Error (line 28): s_array_list and t_array_list not aligned.
+Error (line 28): must have only tabulations between struct and s_array_list.
+Error (line 33, col 55): space before ,
+Error (line 33, col 55): bad character after ,
+Error (line 36, col 53): bad spacing
+Error (line 38, col 43): space before ,
+Error (line 38, col 43): bad character after ,
+Error (line 39): line has 100 characters
+Error (line 39, col 71): bad character after ,
+Error (line 40): line has 101 characters
+Error (line 40, col 65): space before ,
+Error (line 40, col 84): bad spacing
+Error (line 40, col 92): bad spacing
+Error (line 41, col 40): space before ,
+Error (line 45, col 43): space before ,
+Error (line 46): line has 130 characters
+Error (line 46, col 70): space before ,
+Error (line 47, col 1): bad spacing
+Error (line 49): multiple empty lines
+Error (line 50): line has 88 characters
+Error (line 50, col 68): __sizeofit not unixcase
+Error (line 52, col 36): bad spacing
+Error (line 54, col 42): bad spacing
+Error (line 56, col 32): space before ,
+Error (line 56, col 32): bad character after ,
+Error (line 57): line has 87 characters
+Error (line 58): line has 87 characters
+Error (line 58, col 54): space before ,
+Error (line 58, col 73): bad spacing
+Error (line 58, col 81): bad spacing
+Error (line 59, col 5): _free not unixcase
+Error (line 63, col 36): space before ,
+Error (line 64): line has 114 characters
+Error (line 64, col 57): space before ,
+Norme: ./arraylist/srcs/array_list_crud.c
+Error: global scope bad aligned
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14): comment not well formatted
+Error (line 17): Space before function name
+Error (line 17): bad spacing before update_at
+Error (line 17): bad spacing after update_at
+Error (line 19): Empty line
+Error (line 20, col 1): missing space after if
+Error (line 23, col 9): missing parentheses in return statement
+Error (line 25, col 8): missing parentheses in return statement
+Error (line 28): multiple empty lines
+Error (line 29): Space before function name
+Error (line 29): bad spacing before get
+Error (line 32, col 2): must have one a space after return
+Error (line 32, col 8): bad spacing
+Error (line 32, col 10): missing parentheses in return statement
+Error (line 33, col 8): missing parentheses in return statement
+Error (line 36): Space before function name
+Error (line 36, col 0): _free not unixcase
+Error (line 39): spaces at the end of line
+Error (line 41): Empty line
+Error (line 42): spaces at the end of line
+Norme: ./arraylist/srcs/array_list_filter.c
+Error (line 15): spaces at the end of line
+Error (line 15): Space before function name
+Error (line 15): declarations in filter_list are bad aligned
+Error (line 15, col 57): space before ,
+Error (line 20, col 5): bad spacing
+Error (line 22, col 23): space after cast
+Error (line 22, col 32): Spacing after call to malloc
+Error (line 23, col 33): missing space around +
+Error (line 25, col 4): space after (
+Error (line 25, col 5): bad spacing
+Error (line 29): Empty line
+Error (line 35, col 26): space before ,
+Error (line 35, col 26): bad character after ,
+Error (line 37): spaces at the end of line
+Error (line 40, col 8): missing parentheses in return statement
+Norme: ./arraylist/srcs/array_list.c
+Error: global scope bad aligned
+Error: file must end with a single empty line
+Error (line 13): wrong number of spaces in preprocessor indentation
+Error (line 15): comment not well formatted
+Error (line 16): spaces at the end of line
+Error (line 21): Space before function name
+Error (line 21): bad spacing before new_array_list
+Error (line 21): line has 87 characters
+Error (line 21, col 68): __sizeofit not unixcase
+Error (line 23, col 28): Spacing after call to malloc
+Error (line 38): spaces at the end of line
+Error (line 43, col 9): missing parentheses in return statement
+Error (line 45, col 8): missing parentheses in return statement
+Error (line 48): Space before function name
+Error (line 48, col 32): space before ,
+Error (line 48, col 32): bad character after ,
+Error (line 61): Space before function name
+Error (line 61): declarations must be followed by one empty line in ft_swap
+Norme: ./arraylist/srcs/array_list_delete_if.c
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14): Space before function name
+Error (line 14): declarations must be followed by one empty line in delete_if_free
+Error (line 14): Bad spacing for argument cond
+Error (line 14): bad spacing before delete_if_free
+Error (line 14): line has 101 characters
+Error (line 14, col 38): bad character after ,
+Error (line 14, col 88): bad character after ,
+Error (line 24, col 18): bad spacing
+Error (line 25, col 1): missing space after while
+Error (line 34): Space before function name
+Error (line 34): Bad spacing for argument cond
+Error (line 34): line has 86 characters
+Error (line 41, col 3): missing space around =
+Error (line 51, col 4): missing space after if
+Error (line 52): spaces at the end of line
+Error (line 52, col 4): no newline after block
+Error (line 54, col 5): missing space after break
+Error (line 59, col 30): bad character after ,
+Norme: ./game/srcs/game_exit.c
+Error: global scope bad aligned
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15, col 4): bad spacing
+Error (line 19, col 5): missing space around =
+Error (line 19, col 13): space after cast
+Error (line 22, col 15): space before ,
+Error (line 23, col 16): space before ,
+Error (line 27): Space before function name
+Error (line 27): declarations must be followed by one empty line in __exit_
+Error (line 27, col 0): __exit_ not unixcase
+Error (line 27, col 33): space before ,
+Error (line 29, col 5): ret is instanciated during declaration
+Error (line 38, col 37): space before ,
+Norme: ./arraylist/srcs/array_list_sort.c
+Error (line 15): spaces at the end of line
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15): Spacing after function name
+Error (line 15): Bad spacing for argument low
+Error (line 15): Bad spacing for argument high
+Error (line 15): declarations in partition are bad aligned
+Error (line 15): line has 97 characters
+Error (line 15, col 3): bad spacing
+Error (line 15, col 39): bad spacing
+Error (line 15, col 49): bad spacing
+Error (line 16): spaces at the end of line
+Error (line 16, col 0): no newline after block
+Error (line 19, col 4): bad spacing
+Error (line 22): spaces at the end of line
+Error (line 22, col 15): space before ;
+Error (line 23, col 9): space before ;
+Error (line 24): spaces at the end of line
+Error (line 24): missing newline after while
+Error (line 25): spaces at the end of line
+Error (line 25, col 1): no newline after block
+Error (line 26): spaces at the end of line
+Error (line 26): missing newline after if
+Error (line 26, col 24): space before ,
+Error (line 27): spaces at the end of line
+Error (line 27, col 2): no newline after block
+Error (line 28): spaces at the end of line
+Error (line 29): spaces at the end of line
+Error (line 29, col 29): bad character after ,
+Error (line 30): spaces at the end of line
+Error (line 30, col 2): no newline after block
+Error (line 32): spaces at the end of line
+Error (line 32, col 1): no newline after block
+Error (line 33): spaces at the end of line
+Error (line 34): spaces at the end of line
+Error (line 35): spaces at the end of line
+Error (line 35, col 0): no newline after block
+Error (line 37): Space before function name
+Error (line 37): declarations in sort must be at the top of the function
+Error (line 37): declarations must be followed by one empty line in sort
+Error (line 37): Bad spacing for argument l
+Error (line 37): Bad spacing for argument r
+Error (line 37): line has 86 characters
+Error (line 37, col 54): space before ,
+Error (line 37, col 73): bad spacing
+Error (line 37, col 81): bad spacing
+Error (line 39): spaces at the end of line
+Error (line 39): missing newline after if
+Error (line 40): spaces at the end of line
+Error (line 40, col 1): no newline after block
+Error (line 41, col 6): pi is instanciated during declaration
+Error (line 42): spaces at the end of line
+Error (line 42, col 18): space before ,
+Error (line 42, col 18): bad character after ,
+Error (line 42, col 27): space before ,
+Error (line 43): spaces at the end of line
+Error (line 43, col 17): bad character after ,
+Error (line 43, col 33): space before ,
+Error (line 43, col 37): space before )
+Error (line 44): spaces at the end of line
+Error (line 44, col 1): no newline after block
+Error (line 45): Empty line
+Error (line 46, col 0): no empty line before block
+Norme: ./game/srcs/game_free.c
+Error (line 15): Space before function name
+Error (line 15): declarations must be followed by one empty line in free_game
+Error (line 17, col 9): this is instanciated during declaration
+Error (line 17, col 13): bad spacing
+Error (line 17, col 26): space after cast
+Error (line 19): multiple empty lines
+Error (line 19): Empty line
+Error (line 20): C++ comment
+Error (line 21): C++ comment
+Error (line 22): C++ comment
+Error (line 23): C++ comment
+Error (line 24): C++ comment
+Error (line 25): C++ comment
+Error (line 26): C++ comment
+Error (line 27): C++ comment
+Error (line 28): Empty line
+Error (line 29, col 0): no empty line before block
+Norme: ./arraylist/srcs/array_list_operation.c
+Error: global scope bad aligned
+Error: 6 functions in the file
+Error (line 15): multiple empty lines
+Error (line 16): comment not well formatted
+Error (line 19): Space before function name
+Error (line 19): bad spacing before push
+Error (line 22, col 2): missing space after if
+Error (line 22, col 32): bad spacing
+Error (line 28, col 11): missing parentheses in return statement
+Error (line 31): spaces at the end of line
+Error (line 31, col 3): no newline after block
+Error (line 34, col 11): missing parentheses in return statement
+Error (line 37, col 8): missing parentheses in return statement
+Error (line 40): Space before function name
+Error (line 40): bad spacing after check_data_type
+Error (line 40, col 42): bad spacing
+Error (line 44, col 5): space after (
+Error (line 45, col 10): missing parentheses in return statement
+Error (line 47, col 8): missing parentheses in return statement
+Error (line 49): Space before function name
+Error (line 49): bad spacing before check_size
+Error (line 54, col 10): missing parentheses in return statement
+Error (line 56, col 8): missing parentheses in return statement
+Error (line 59): Space before function name
+Error (line 59): declarations in new_array_double_size must be at the top of the function
+Error (line 59): declarations must be followed by one empty line in new_array_double_size
+Error (line 59): bad spacing after new_array_double_size
+Error (line 64, col 10): missing parentheses in return statement
+Error (line 67, col 10): ll is instanciated during declaration
+Error (line 71, col 11): arrr is instanciated during declaration
+Error (line 72, col 11): i is instanciated during declaration
+Error (line 75, col 14): bad spacing
+Error (line 78, col 19): space before )
+Error (line 80, col 11): missing parentheses in return statement
+Error (line 84, col 8): missing parentheses in return statement
+Error (line 87): multiple empty lines
+Error (line 88): Space before function name
+Error (line 88): declarations in pull are bad aligned
+Error (line 88): bad spacing before pull
+Error (line 88): bad spacing after pull
+Error (line 90, col 5): bad spacing
+Error (line 97, col 22): bad character after ,
+Error (line 98, col 10): bad spacing
+Error (line 100, col 40): space before ,
+Error (line 100, col 40): bad character after ,
+Error (line 105, col 8): missing parentheses in return statement
+Error (line 107): comment not well formatted
+Error (line 112): spaces at the end of line
+Error (line 113): spaces at the end of line
+Error (line 117): Space before function name
+Error (line 117): declarations in pull_index are bad aligned
+Error (line 117, col 36): space before ,
+Error (line 127, col 27): space before )
+Error (line 128, col 23): bad character after ,
+Error (line 131): Empty line
+Error (line 132, col 8): missing parentheses in return statement
+Norme: ./game/srcs/game_init.c
+Norme: ./getnextline/get_next_line_utils.c
+Error: file must end with a single empty line
+Error (line 15): multiple empty lines
+Error (line 16): multiple empty lines
+Error (line 17): bad spacing before search
+Norme: ./game/includes/game.h
+Error: global scope bad aligned
+Error (line 14): wrong number of spaces in preprocessor indentation
+Error (line 21): Struct s_wall bad aligned
+Error (line 21): s_wall and t_wall not aligned.
+Error (line 21): must have only tabulations between struct and s_wall.
+Error (line 22, col 9): bad spacing
+Error (line 23, col 9): bad spacing
+Error (line 24, col 4): bad spacing
+Error (line 25, col 1): bad spacing
+Error (line 27): multiple empty lines
+Error (line 28): multiple empty lines
+Error (line 29): Struct s_sptites bad aligned
+Error (line 29): s_sptites and t_sprites not aligned.
+Error (line 29): must have only tabulations between struct and s_sptites.
+Error (line 31, col 7): bad spacing
+Error (line 37, col 1): bad spacing
+Error (line 39): Struct s_window bad aligned
+Error (line 39): s_window and t_window not aligned.
+Error (line 39): must have only tabulations between struct and s_window.
+Error (line 43, col 1): bad spacing
+Error (line 45): Struct s_image bad aligned
+Error (line 45): s_image and t_image not aligned.
+Error (line 45): must have only tabulations between struct and s_image.
+Error (line 47, col 4): bad spacing
+Error (line 48, col 4): bad spacing
+Error (line 49, col 4): bad spacing
+Error (line 50, col 5): bad spacing
+Error (line 51, col 5): bad spacing
+Error (line 52, col 4): bad spacing
+Error (line 55, col 44): space before ,
+Error (line 56, col 1): bad spacing
+Error (line 58): Struct s_sp_texture bad aligned
+Error (line 58): s_sp_texture and t_sp_texture not aligned.
+Error (line 58): must have only tabulations between struct and s_sp_texture.
+Error (line 61, col 4): bad spacing
+Error (line 63, col 4): bad spacing
+Error (line 64, col 6): bad spacing
+Error (line 70, col 1): bad spacing
+Error (line 72): Struct s_texture bad aligned
+Error (line 72): s_texture and t_texture not aligned.
+Error (line 77, col 4): bad spacing
+Error (line 82): multiple empty lines
+Error (line 83): multiple empty lines
+Error (line 84): Struct s_game bad aligned
+Error (line 84): s_game and t_game not aligned.
+Error (line 84): must have only tabulations between struct and s_game.
+Error (line 92, col 4): bad spacing
+Error (line 93, col 7): bad spacing
+Error (line 94, col 7): bad spacing
+Error (line 95, col 4): bad spacing
+Error (line 96, col 4): bad spacing
+Error (line 97, col 4): bad spacing
+Error (line 98, col 9): bad spacing
+Error (line 106, col 16): bad spacing
+Error (line 108, col 34): space before ,
+Error (line 110, col 1): bad spacing
+Error (line 111): # include "parser.h" should be before line 21
+Error (line 113, col 4): bad spacing
+Error (line 114, col 30): space before ,
+Error (line 115, col 30): space before ,
+Error (line 115, col 44): space before ,
+Error (line 118, col 5): __exit_ not unixcase
+Error (line 118, col 33): space before ,
+Error (line 122): multiple empty lines
+Error (line 123): multiple empty lines
+Error (line 124): multiple empty lines
+Error (line 125): multiple empty lines
+Error (line 126): comment not well formatted
+Error (line 129, col 28): space before ,
+Error (line 130, col 28): space before ,
+Error (line 131, col 28): space before ,
+Error (line 132, col 28): space before ,
+Error (line 135): line has 92 characters
+Error (line 135, col 4): bad spacing
+Error (line 135, col 28): space after (
+Error (line 135, col 41): space before ,
+Error (line 135, col 43): wallHei not unixcase
+Error (line 135, col 58): space before ,
+Error (line 135, col 58): bad character after ,
+Error (line 135, col 77): space before ,
+Error (line 137, col 31): space before ,
+Error (line 138, col 19): bad spacing
+Error (line 138, col 21): space after pointer
+Error (line 140, col 4): bad spacing
+Error (line 140, col 32): bad character after ,
+Error (line 141, col 17): space after (
+Error (line 144): comment not well formatted
+Error (line 145, col 48): space before ,
+Error (line 147, col 65): space before ,
+Error (line 147, col 65): bad character after ,
+Error (line 148): line has 87 characters
+Error (line 148, col 4): bad spacing
+Error (line 148, col 26): space after (
+Error (line 148, col 39): space before ,
+Error (line 148, col 41): wallHei not unixcase
+Error (line 148, col 56): space before ,
+Error (line 148, col 56): bad character after ,
+Error (line 148, col 72): space before ,
+Error (line 149): spaces at the end of line
+Norme: ./getnextline/get_next_line.c
+Error (line 15): multiple empty lines
+Error (line 16): multiple empty lines
+Error (line 17): bad spacing before find
+Norme: ./headers/cub3d.h
+Error: has double inclusion protection but not with the good define name
+Error: global scope bad aligned
+Error: 42 header not at top of the file
+Error (line 1): wrong number of spaces in preprocessor indentation
+Error (line 17): multiple empty lines
+Error (line 18): multiple empty lines
+Error (line 19): multiple empty lines
+Error (line 20): multiple empty lines
+Error (line 21): comment not well formatted
+Error (line 23): multiple empty lines
+Error (line 26): comment not well formatted
+Error (line 27, col 4): bad spacing
+Error (line 27, col 28): space before ,
+Error (line 27, col 28): bad character after ,
+Error (line 27, col 43): space before ,
+Error (line 27, col 59): space before ,
+Error (line 28, col 26): space before ,
+Error (line 28, col 26): bad character after ,
+Error (line 28, col 40): space before ,
+Error (line 28, col 51): space before ,
+Error (line 29, col 4): bad spacing
+Error (line 29, col 43): space before ,
+Error (line 29, col 43): bad character after ,
+Error (line 31, col 32): space before ,
+Error (line 32, col 12): bad spacing
+Error (line 32, col 16): space before ,
+Error (line 32, col 16): bad character after ,
+Error (line 32, col 20): bad spacing
+Error (line 32, col 28): bad spacing
+Error (line 32, col 36): space before ,
+Error (line 32, col 36): bad character after ,
+Error (line 37): multiple empty lines
+Error (line 38): comment not well formatted
+Error (line 39, col 27): space before ,
+Error (line 40, col 27): space before ,
+Error (line 41): C++ comment
+Error (line 46): multiple empty lines
+Error (line 47): multiple empty lines
+Error (line 48): wrong number of spaces in preprocessor indentation
+Norme: ./headers/get_next_line.h
+Error (line 26): multiple empty lines
+Norme: ./headers/vector.h
+Error: global scope bad aligned
+Error: file must end with a single empty line
+Error: 42 header not at top of the file
+Error (line 2): wrong number of spaces in preprocessor indentation
+Error (line 4): Struct s_vector bad aligned
+Error (line 4): must have only tabulations between struct and s_vector.
+Error (line 5): must begin only by tabulations
+Error (line 5): bad indentation
+Error (line 6): must begin only by tabulations
+Error (line 6): bad indentation
+Error (line 7): must begin only by tabulations
+Error (line 7): bad indentation
+Error (line 9): must begin only by tabulations
+Error (line 9): bad indentation
+Error (line 10): must begin only by tabulations
+Error (line 10): bad indentation
+Error (line 10, col 38): space before ,
+Error (line 11): must begin only by tabulations
+Error (line 11): bad indentation
+Error (line 12): must begin only by tabulations
+Error (line 12): bad indentation
+Error (line 12, col 26): bad spacing
+Error (line 12, col 34): space before ,
+Error (line 13): must begin only by tabulations
+Error (line 13): bad indentation
+Error (line 13, col 60): space before ,
+Error (line 14): must begin only by tabulations
+Error (line 14): bad indentation
+Error (line 15, col 1): bad spacing
+Error (line 17): multiple empty lines
+Error (line 18, col 35): bad spacing
+Error (line 22, col 24): space before ,
+Error (line 24, col 19): bad spacing
+Error (line 24, col 27): space before ,
+Error (line 26, col 6): bad spacing
+Norme: ./game/srcs/game_save.c
+Error: global scope bad aligned
+Error (line 15, col 54): bad character after ,
+Error (line 40): bad spacing after fill_buf
+Error (line 56): line has 84 characters
+Error (line 65): bad spacing before save_first_frame_in_bmp_file
+Error (line 65): bad spacing after save_first_frame_in_bmp_file
+Error (line 84): Space before function name
+Error (line 84): bad spacing before save_game
+Norme: ./keys/key_macos.h
+Norme: ./keys/key_linux.h
+Norme: ./libft/ft_atoi.c
+Norme: ./input.c
+Error: global scope bad aligned
+Error: 6 functions in the file
+Error (line 13): wrong number of spaces in preprocessor indentation
+Error (line 14): wrong number of spaces in preprocessor indentation
+Error (line 16, col 15): global named game is not well prefixed
+Error (line 18): Space before function name
+Error (line 18): bad spacing after key_pressed_c
+Error (line 24, col 12): missing space around ==
+Error (line 26, col 21): missing space around =
+Error (line 26, col 45): missing space around ?
+Error (line 27, col 38): missing space around /
+Error (line 31, col 21): missing space around =
+Error (line 31, col 45): missing space around ?
+Error (line 32, col 39): missing space around /
+Error (line 36): bad spacing before key_pressed
+Error (line 49): Empty line
+Error (line 50, col 8): missing parentheses in return statement
+Error (line 53): Space before function name
+Error (line 56, col 8): missing parentheses in return statement
+Error (line 59): Space before function name
+Error (line 61): Empty line
+Error (line 62): multiple empty lines
+Error (line 62): Empty line
+Error (line 63, col 23): missing space around /
+Error (line 72): Space before function name
+Error (line 72, col 30): space before )
+Error (line 108, col 8): missing parentheses in return statement
+Norme: ./libft/ft_bzero.c
+Norme: ./libft/ft_isalnum.c
+Norme: ./libft/ft_calloc.c
+Norme: ./libft/ft_isascii.c
+Norme: ./libft/ft_isalpha.c
+Norme: ./libft/ft_isdigit.c
+Norme: ./libft/ft_islower.c
+Norme: ./libft/ft_isupper.c
+Norme: ./libft/ft_iswhitespace.c
+Error: file must end with a single empty line
+Error: 42 header not at top of the file
+Error (line 1): Space before function name
+Error (line 1): Space before function name
+Error (line 1): Space before function name
+Error (line 1): Space before function name
+Error (line 1): Space before function name
+Error (line 1): bad spacing before ft_iswhitespace
+Error (line 1, col 3): bad spacing
+Error (line 3): must begin only by tabulations
+Error (line 3): bad indentation
+Error (line 5): must begin only by tabulations
+Error (line 5): bad indentation
+Error (line 5, col 15): missing parentheses in return statement
+Error (line 7, col 0): no newline after block
+Norme: ./libft/ft_itoa.c
+Norme: ./libft/ft_lstadd_back_bonus.c
+Norme: ./libft/ft_lstadd_front_bonus.c
+Norme: ./libft/ft_lstclear_bonus.c
+Norme: ./libft/ft_lstdelone_bonus.c
+Norme: ./graphics.c
+Error: global scope bad aligned
+Error: 10 functions in the file
+Error (line 15, col 9): global named windo is not well prefixed
+Error (line 16, col 15): global named game is not well prefixed
+Error (line 18): C++ comment
+Error (line 19): C++ comment
+Error (line 20): C++ comment
+Error (line 21): C++ comment
+Error (line 22): C++ comment
+Error (line 23): C++ comment
+Error (line 25): C++ comment
+Error (line 26): C++ comment
+Error (line 27): C++ comment
+Error (line 28): C++ comment
+Error (line 29): spaces at the end of line
+Error (line 29): C++ comment
+Error (line 30): C++ comment
+Error (line 31): C++ comment
+Error (line 32): C++ comment
+Error (line 33): C++ comment
+Error (line 34): C++ comment
+Error (line 35): C++ comment
+Error (line 44, col 8): bad spacing
+Error (line 48): Empty line
+Error (line 49, col 27): space before ,
+Error (line 55): Space before function name
+Error (line 55): declarations must be followed by one empty line in rec
+Error (line 55): Bad spacing for argument x
+Error (line 55): Bad spacing for argument y
+Error (line 55): Bad spacing for argument sizex
+Error (line 55): rec have 5 parameters
+Error (line 55, col 12): bad spacing
+Error (line 55, col 16): space before ,
+Error (line 55, col 16): bad character after ,
+Error (line 55, col 20): bad spacing
+Error (line 55, col 28): bad spacing
+Error (line 55, col 36): space before ,
+Error (line 55, col 36): bad character after ,
+Error (line 57, col 5): x2 is instanciated during declaration
+Error (line 58, col 5): y2 is instanciated during declaration
+Error (line 58, col 11): missing space around +
+Error (line 59, col 5): vx is instanciated during declaration
+Error (line 59, col 9): bad spacing
+Error (line 65, col 44): space before ,
+Error (line 65, col 45): bad spacing
+Error (line 65, col 53): space before ,
+Error (line 65, col 53): bad character after ,
+Error (line 70): Empty line
+Error (line 71, col 0): no empty line before block
+Error (line 73): line have 5 parameters
+Error (line 73): declarations in line are bad aligned
+Error (line 73): bad spacing after line
+Error (line 73, col 0): line has 6 variables
+Error (line 85): C++ comment
+Error (line 97): multiple empty lines
+Error (line 98): Space before function name
+Error (line 98): Space before function name
+Error (line 98): Space before function name
+Error (line 98): Space before function name
+Error (line 98): declarations must be followed by one empty line in ft_line
+Error (line 98): ft_line have 5 parameters
+Error (line 98): declarations in ft_line are bad aligned
+Error (line 98): bad spacing before ft_line
+Error (line 98, col 4): bad spacing
+Error (line 98, col 43): space before ,
+Error (line 98, col 43): bad character after ,
+Error (line 100, col 5): r is instanciated during declaration
+Error (line 101, col 7): or_x is instanciated during declaration
+Error (line 102, col 7): or_y is instanciated during declaration
+Error (line 107, col 43): space before ,
+Error (line 107, col 49): space after cast
+Error (line 107, col 61): space before ,
+Error (line 107, col 61): bad character after ,
+Error (line 112): Space before function name
+Error (line 112): Space before function name
+Error (line 112): Space before function name
+Error (line 112): Space before function name
+Error (line 112): bad spacing after init_image
+Error (line 112, col 4): bad spacing
+Error (line 112, col 32): bad character after ,
+Error (line 114, col 1): missing space after if
+Error (line 117): line has 104 characters
+Error (line 123): Space before function name
+Error (line 123): declarations must be followed by one empty line in rgb_to_int
+Error (line 123): bad spacing before rgb_to_int
+Error (line 125, col 5): c is instanciated during declaration
+Error (line 128, col 8): missing parentheses in return statement
+Error (line 131): bad spacing after shadow
+Error (line 150): multiple empty lines
+Error (line 151): Space before function name
+Error (line 151): bad spacing before image_put_pixel
+Error (line 151, col 32): space before ,
+Error (line 155, col 19): bad spacing
+Error (line 156, col 2): missing space after return
+Error (line 158): spaces at the end of line
+Error (line 159): spaces at the end of line
+Error (line 160): spaces at the end of line
+Error (line 161): Empty line
+Error (line 162, col 0): no empty line before block
+Error (line 164): Space before function name
+Error (line 164, col 17): space after (
+Error (line 166, col 5): x is instanciated during declaration
+Error (line 167, col 5): y is instanciated during declaration
+Error (line 170): spaces at the end of line
+Error (line 170, col 1): no newline after block
+Error (line 171, col 4): missing space around =
+Error (line 174, col 25): space before ,
+Error (line 174, col 29): space before ,
+Error (line 182): Space before function name
+Error (line 184, col 53): bad character after ,
+Error (line 184, col 55): bad character after ,
+Norme: ./libft/ft_lstlast_bonus.c
+Norme: ./libft/ft_atoi_p.c
+Error: file must end with a single empty line
+Error: 42 header not at top of the file
+Error (line 36, col 0): no newline after block
+Norme: ./libft/ft_lstmap_bonus.c
+Norme: ./libft/ft_isprint.c
+Norme: ./libft/ft_lstiter_bonus.c
+Norme: ./libft/ft_memccpy.c
+Norme: ./libft/ft_lstsize_bonus.c
+Norme: ./libft/ft_memchr.c
+Norme: ./libft/ft_lstnew_bonus.c
+Norme: ./libft/ft_memset.c
+Norme: ./libft/ft_memcpy.c
+Norme: ./libft/ft_memcmp.c
+Error (line 25, col 9): missing parentheses in return statement
+Error (line 26): spaces at the end of line
+Norme: ./libft/ft_memmove.c
+Norme: ./libft/ft_putchar_fd.c
+Norme: ./libft/ft_putnbr_fd.c
+Norme: ./libft/ft_putendl_fd.c
+Norme: ./libft/ft_putstr_fd.c
+Norme: ./libft/ft_strchr.c
+Error (line 20, col 10): missing parentheses in return statement
+Norme: ./libft/ft_skip.c
+Error: file must end with a single empty line
+Error: 42 header not at top of the file
+Error (line 4): Space before function name
+Error (line 4, col 20): space before ,
+Error (line 6): must begin only by tabulations
+Error (line 6): bad indentation
+Error (line 7): must begin only by tabulations
+Error (line 7): bad indentation
+Error (line 7, col 11): missing parentheses in return statement
+Error (line 8): must begin only by tabulations
+Error (line 8): bad indentation
+Error (line 9): must begin only by tabulations
+Error (line 9): bad indentation
+Error (line 10): must begin only by tabulations
+Error (line 10): bad indentation
+Error (line 10, col 9): missing parentheses in return statement
+Error (line 10, col 15): space before ;
+Error (line 11, col 0): no newline after block
+Norme: ./libft/ft_strdup.c
+Norme: ./libft/ft_strlcpy.c
+Norme: ./libft/ft_strlcat.c
+Norme: ./libft/ft_strlen.c
+Norme: ./libft/ft_strjoin.c
+Norme: ./libft/ft_strmapi.c
+Norme: ./libft/ft_strrchr.c
+Norme: ./libft/ft_strnstr.c
+Norme: ./libft/ft_strtrim.c
+Norme: ./libft/ft_substr.c
+Norme: ./libft/ft_tolower.c
+Norme: ./libft/ft_toupper.c
+Norme: ./libft/ft_split.c
+Norme: ./line/includes/ft_line.h
+Error (line 14): wrong number of spaces in preprocessor indentation
+Error (line 15): wrong number of spaces in preprocessor indentation
+Error (line 17): s_line and t_line not aligned.
+Error (line 17): must have only tabulations between struct and s_line.
+Error (line 20, col 1): bad spacing
+Norme: ./libft/ft_strncmp.c
+Norme: ./libft/libft.h
+Error: global scope bad aligned
+Error (line 19): wrong number of spaces in preprocessor indentation
+Error (line 20): wrong number of spaces in preprocessor indentation
+Error (line 20): must not begin by spaces/tabulations
+Error (line 21): wrong number of spaces in preprocessor indentation
+Error (line 83, col 4): bad spacing
+Error (line 83, col 37): space before ,
+Error (line 83, col 50): space before ,
+Error (line 84, col 20): space before ,
+Norme: ./libft/split.c
+Error: file must end with a single empty line
+Error: 42 header not at top of the file
+Error (line 4): Space before function name
+Error (line 4): Space before function name
+Error (line 4): declarations in split_that are bad aligned
+Error (line 4, col 4): bad spacing
+Error (line 4, col 37): space before ,
+Error (line 4, col 50): space before ,
+Error (line 6): must begin only by tabulations
+Error (line 6): bad indentation
+Error (line 7): must begin only by tabulations
+Error (line 7): bad indentation
+Error (line 8): must begin only by tabulations
+Error (line 8): bad indentation
+Error (line 10): must begin only by tabulations
+Error (line 10): bad indentation
+Error (line 10, col 31): space before ;
+Error (line 11): must begin only by tabulations
+Error (line 11): bad indentation
+Error (line 12): must begin only by tabulations
+Error (line 12): bad indentation
+Error (line 13): must begin only by tabulations
+Error (line 13): bad indentation
+Error (line 14): must begin only by tabulations
+Error (line 14): bad indentation
+Error (line 14, col 35): space before ]
+Error (line 15): must begin only by tabulations
+Error (line 15): bad indentation
+Error (line 16): must begin only by tabulations
+Error (line 16): bad indentation
+Error (line 17): must begin only by tabulations
+Error (line 17): bad indentation
+Error (line 18): must begin only by tabulations
+Error (line 18): bad indentation
+Error (line 18, col 21): space after cast
+Error (line 19): must begin only by tabulations
+Error (line 19): bad indentation
+Error (line 19, col 23): space before ,
+Error (line 19, col 41): space before ,
+Error (line 20): must begin only by tabulations
+Error (line 20): bad indentation
+Error (line 20, col 32): space after sizeof
+Error (line 21): must begin only by tabulations
+Error (line 21): bad indentation
+Error (line 21, col 18): bad spacing
+Error (line 21, col 33): space before ,
+Error (line 21, col 39): space before ;
+Error (line 22): must begin only by tabulations
+Error (line 22): bad indentation
+Error (line 23): must begin only by tabulations
+Error (line 23): bad indentation
+Error (line 24): must begin only by tabulations
+Error (line 24): bad indentation
+Error (line 25): must begin only by tabulations
+Error (line 25): bad indentation
+Error (line 26, col 0): no newline after block
+Norme: ./parser/srcs/parse_ea_tex.c
+Error (line 15): Space before function name
+Error (line 15): declarations in parse_ea_tex are bad aligned
+Error (line 22): spaces at the end of line
+Error (line 22): missing newline after if
+Error (line 23): 2 instructions
+Error (line 23, col 21): space before ,
+Error (line 24, col 6): no newline before block
+Error (line 25, col 12): missing space around =
+Error (line 25, col 20): space after cast
+Error (line 26, col 3): missing space after if
+Error (line 27, col 22): space before ,
+Error (line 31, col 4): missing space after if
+Error (line 32, col 23): space before ,
+Error (line 35): spaces at the end of line
+Error (line 35): line has 98 characters
+Error (line 35, col 16): bad spacing
+Norme: ./parser/includes/parser.h
+Error: global scope bad aligned
+Error (line 14): wrong number of spaces in preprocessor indentation
+Error (line 16): multiple empty lines
+Error (line 17): wrong number of spaces in preprocessor indentation
+Error (line 18): wrong number of spaces in preprocessor indentation
+Error (line 19): wrong number of spaces in preprocessor indentation
+Error (line 20): wrong number of spaces in preprocessor indentation
+Error (line 25): spaces at the end of line
+Error (line 27): Struct s_token bad aligned
+Error (line 27): s_token and t_token not aligned.
+Error (line 27): must have only tabulations between struct and s_token.
+Error (line 31, col 1): bad spacing
+Error (line 33): Struct s_parser bad aligned
+Error (line 33): s_parser and t_parser not aligned.
+Error (line 33): must have only tabulations between struct and s_parser.
+Error (line 36, col 4): bad spacing
+Error (line 37, col 14): bad spacing
+Error (line 41, col 5): bad spacing
+Error (line 41, col 18): space after (
+Error (line 43, col 1): bad spacing
+Error (line 48, col 47): space before ,
+Error (line 49, col 4): bad spacing
+Error (line 50, col 4): bad spacing
+Error (line 54, col 27): bad character after ,
+Error (line 54, col 38): bad character after ,
+Error (line 54, col 49): bad character after ,
+Error (line 55, col 27): bad character after ,
+Error (line 55, col 36): bad character after ,
+Error (line 56, col 32): bad character after ,
+Error (line 56, col 41): space before ,
+Error (line 56, col 41): bad character after ,
+Error (line 60): C++ comment
+Error (line 61): C++ comment
+Error (line 62): C++ comment
+Error (line 63, col 3): bad spacing
+Error (line 64, col 3): bad spacing
+Error (line 66, col 36): space before ,
+Error (line 70, col 27): space before ,
+Error (line 72): C++ comment
+Error (line 85, col 32): bad character after ,
+Error (line 85, col 41): space before ,
+Error (line 85, col 41): bad character after ,
+Error (line 86, col 29): bad character after ,
+Error (line 86, col 40): bad character after ,
+Error (line 86, col 51): bad character after ,
+Error (line 95, col 4): bad spacing
+Error (line 99): comment not well formatted
+Error (line 100): spaces at the end of line
+Error (line 104, col 38): bad character after ,
+Error (line 105, col 37): bad character after ,
+Norme: ./parser/srcs/parse_floor.c
+Error (line 15): Space before function name
+Error (line 17): preprocessor block must be followed by one empty line
+Error (line 19): preprocessor block must be followed by one empty line
+Error (line 20, col 27): space before ,
+Error (line 20, col 27): bad character after ,
+Error (line 21): preprocessor block must be followed by one empty line
+Error (line 22, col 0): no empty line before block
+Error (line 24): Space before function name
+Error (line 24): declarations must be followed by one empty line in parse_floor_color
+Error (line 26, col 13): bad spacing
+Error (line 27, col 5): bad spacing
+Error (line 28, col 4): bad spacing
+Error (line 30): multiple empty lines
+Error (line 30): Empty line
+Error (line 33, col 22): bad character after ,
+Error (line 33, col 24): bad character after ,
+Error (line 34, col 43): bad character after ,
+Error (line 35, col 2): missing space after if
+Error (line 36, col 17): bad character after ,
+Error (line 38, col 27): space before ,
+Error (line 40, col 17): bad character after ,
+Error (line 46): Space before function name
+Error (line 51, col 2): missing space after return
+Error (line 52, col 10): missing space around =
+Error (line 52, col 18): space after cast
+Error (line 53, col 1): missing space after if
+Error (line 54, col 17): space before ,
+Error (line 57): Empty line
+Error (line 58, col 0): no empty line before block
+Norme: ./main.c
+Error: global scope bad aligned
+Error (line 13): multiple empty lines
+Error (line 16): preprocessor block must be followed by one empty line
+Error (line 17, col 4): bad spacing
+Error (line 17, col 6): SECOND not unixcase
+Error (line 17, col 6): global named SECOND is not well prefixed
+Error (line 17, col 12): bad spacing
+Error (line 17, col 14): missing space around =
+Error (line 18, col 9): bad spacing
+Error (line 18, col 11): lastTime not unixcase
+Error (line 18, col 11): global named lastTime is not well prefixed
+Error (line 19, col 6): bad spacing
+Error (line 19, col 9): global named frame_time is not well prefixed
+Error (line 20, col 6): bad spacing
+Error (line 20, col 8): global named unprocessed is not well prefixed
+Error (line 21, col 6): bad spacing
+Error (line 21, col 9): global named g is not well prefixed
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): missing void in function render
+Error (line 23): bad spacing after render
+Error (line 23, col 4): bad spacing
+Error (line 29): multiple empty lines
+Error (line 30): multiple empty lines
+Error (line 31): Space before function name
+Error (line 31): declarations in update are bad aligned
+Error (line 31): bad spacing before update
+Error (line 31): bad spacing after update
+Error (line 34): spaces at the end of line
+Error (line 34, col 10): bad spacing
+Error (line 37, col 11): bad spacing
+Error (line 42, col 38): space after cast
+Error (line 49, col 1): missing space after if
+Error (line 54, col 8): missing parentheses in return statement
+Error (line 57): multiple empty lines
+Error (line 58): Space before function name
+Error (line 58): bad spacing before startgame
+Error (line 58): bad spacing after startgame
+Error (line 61): Empty line
+Error (line 62): multiple empty lines
+Error (line 62): Empty line
+Error (line 63): spaces at the end of line
+Error (line 63, col 16): bad spacing
+Error (line 64, col 7): space after cast
+Error (line 64, col 23): space after cast
+Error (line 64, col 35): space before ,
+Error (line 65, col 9): space after (
+Error (line 65, col 27): bad character after ,
+Error (line 65, col 31): missing space around <<
+Error (line 66, col 16): Spacing after call to mlx_mouse_hook
+Error (line 66, col 53): space after cast
+Error (line 66, col 57): space before )
+Error (line 67, col 24): space before ,
+Error (line 67, col 24): bad character after ,
+Error (line 67, col 26): bad character after ,
+Error (line 67, col 36): bad character after ,
+Error (line 67, col 49): space before ,
+Error (line 67, col 49): bad character after ,
+Error (line 67, col 57): space after cast
+Error (line 68, col 24): space before ,
+Error (line 68, col 27): bad character after ,
+Error (line 68, col 51): space before ,
+Error (line 68, col 60): space after cast
+Error (line 69, col 45): space after cast
+Error (line 73): multiple empty lines
+Error (line 74): multiple empty lines
+Error (line 75): Space before function name
+Error (line 75): bad spacing before main
+Error (line 75, col 18): space before ,
+Error (line 79, col 9): bad spacing
+Error (line 79, col 11): missing space around >=
+Error (line 90, col 1): no newline after block
+Error (line 92, col 8): missing parentheses in return statement
+Norme: ./parser/srcs/parse_no_tex.c
+Error (line 15): Space before function name
+Error (line 15): declarations in parse_no_tex are bad aligned
+Error (line 22): spaces at the end of line
+Error (line 22): missing newline after if
+Error (line 23): 2 instructions
+Error (line 23, col 21): space before ,
+Error (line 24, col 6): no newline before block
+Error (line 25, col 12): missing space around =
+Error (line 25, col 20): space after cast
+Error (line 26, col 3): missing space after if
+Error (line 27, col 22): space before ,
+Error (line 31, col 4): missing space after if
+Error (line 32, col 23): space before ,
+Error (line 35): spaces at the end of line
+Error (line 35): line has 98 characters
+Error (line 35, col 16): bad spacing
+Norme: ./parser/srcs/parse_map.c
+Error: global scope bad aligned
+Error (line 15, col 15): global named game is not well prefixed
+Error (line 17): Space before function name
+Error (line 17): Space before function name
+Error (line 17): Space before function name
+Error (line 17): Space before function name
+Error (line 17): declarations in get_walls are bad aligned
+Error (line 17): bad spacing after get_walls
+Error (line 17, col 4): bad spacing
+Error (line 22, col 25): space before ,
+Error (line 26, col 13): space after cast
+Error (line 26, col 44): space before ,
+Error (line 26, col 50): space after cast
+Error (line 28, col 23): space before ,
+Error (line 28, col 23): bad character after ,
+Error (line 36, col 2): missing space after if
+Error (line 42): multiple empty lines
+Error (line 43): Space before function name
+Error (line 43): Space before function name
+Error (line 43): declarations in create_map_p are bad aligned
+Error (line 43): bad spacing before create_map_p
+Error (line 43): bad spacing after create_map_p
+Error (line 43, col 4): bad spacing
+Error (line 45, col 10): space before ;
+Error (line 49): spaces at the end of line
+Error (line 50, col 14): missing space around =
+Error (line 56, col 39): bad character after ,
+Error (line 58, col 2): missing space after if
+Error (line 64): Empty line
+Error (line 65, col 0): no empty line before block
+Error (line 67): multiple empty lines
+Error (line 68): multiple empty lines
+Error (line 69): Space before function name
+Error (line 69): bad spacing before parse_map
+Error (line 73, col 31): space before ,
+Error (line 73, col 31): bad character after ,
+Error (line 74, col 1): missing space after if
+Error (line 81): Empty line
+Error (line 82, col 1): no empty line before block
+Norme: ./parser/srcs/parse_so_tex.c
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15): declarations in flip_arr are bad aligned
+Error (line 15): bad spacing after flip_arr
+Error (line 15, col 3): bad spacing
+Error (line 23, col 13): space after cast
+Error (line 23, col 22): Spacing after call to malloc
+Error (line 31, col 8): missing parentheses in return statement
+Error (line 33): Space before function name
+Error (line 33): declarations in parse_so_tex must be at the top of the function
+Error (line 33): declarations in parse_so_tex are bad aligned
+Error (line 33): bad spacing before parse_so_tex
+Error (line 41): spaces at the end of line
+Error (line 41): missing newline after if
+Error (line 42): 2 instructions
+Error (line 42, col 21): space before ,
+Error (line 43, col 6): no newline before block
+Error (line 44, col 12): missing space around =
+Error (line 44, col 20): space after cast
+Error (line 45, col 3): missing space after if
+Error (line 46, col 22): space before ,
+Error (line 50): Empty line
+Error (line 51, col 4): missing space after if
+Error (line 52): 2 instructions
+Error (line 52, col 23): space before ,
+Error (line 53, col 8): no newline before block
+Error (line 59): Empty line
+Error (line 60, col 0): no empty line before block
+Norme: ./parser/srcs/parse_sprite_bonus.c
+Error: global scope bad aligned
+Error (line 15): Space before function name
+Error (line 19, col 19): space after cast
+Error (line 22, col 28): space before ,
+Error (line 22, col 28): bad character after ,
+Error (line 28): Space before function name
+Error (line 28): Space before function name
+Error (line 28): declarations must be followed by one empty line in map_token
+Error (line 28): declarations in map_token are bad aligned
+Error (line 28): bad spacing after map_token
+Error (line 28, col 4): bad spacing
+Error (line 35): multiple empty lines
+Error (line 35): Empty line
+Error (line 38, col 19): space after cast
+Error (line 45, col 17): space after cast
+Error (line 47): C++ comment
+Error (line 51, col 8): missing parentheses in return statement
+Error (line 54): multiple empty lines
+Error (line 55): Space before function name
+Error (line 55): bad spacing before parse_sp_line
+Error (line 60, col 1): missing space after if
+Error (line 64): Space before function name
+Error (line 64, col 39): no newline before block
+Error (line 67, col 1): missing space after if
+Norme: ./parser/srcs/parse_sprites.c
+Error (line 13): multiple empty lines
+Error (line 16, col 15): global named game is not well prefixed
+Error (line 18): Space before function name
+Error (line 18): bad spacing after push_sprite
+Error (line 18, col 29): bad character after ,
+Error (line 20): spaces at the end of line
+Error (line 22): line has 90 characters
+Error (line 22, col 53): space before ,
+Error (line 24): Space before function name
+Error (line 24): declarations in check_and_push_sprite are bad aligned
+Error (line 24): bad spacing before check_and_push_sprite
+Error (line 24, col 37): space before ,
+Error (line 24, col 46): bad character after ,
+Error (line 27, col 6): bad spacing
+Error (line 37, col 20): space before ,
+Error (line 37, col 27): space before ,
+Error (line 37, col 27): bad character after ,
+Error (line 42): Space before function name
+Error (line 42, col 42): space before ,
+Error (line 48, col 18): space after (
+Error (line 51): spaces at the end of line
+Error (line 53): line has 109 characters
+Error (line 53, col 53): bad spacing
+Error (line 53, col 55): space before ,
+Error (line 53, col 67): bad character after ,
+Error (line 58): Space before function name
+Error (line 58): declarations must be followed by one empty line in get_sprites
+Error (line 58): declarations in get_sprites are bad aligned
+Error (line 65): preprocessor block must be followed by one empty line
+Error (line 67): preprocessor block must be followed by one empty line
+Error (line 70): Empty line
+Error (line 71, col 2): bad spacing
+Error (line 75, col 35): space before ,
+Error (line 78, col 29): space before ,
+Error (line 78, col 33): space before ,
+Error (line 78, col 37): space before ,
+Error (line 79, col 27): space before ,
+Error (line 79, col 31): space before ,
+Error (line 84): Empty line
+Error (line 85, col 0): no empty line before block
+Norme: ./parser/srcs/parse_we_tex.c
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14): Space before function name
+Error (line 14): Space before function name
+Error (line 14): declarations must be followed by one empty line in flip_w_arr
+Error (line 14): declarations in flip_w_arr are bad aligned
+Error (line 14): bad spacing before flip_w_arr
+Error (line 14, col 3): bad spacing
+Error (line 21): multiple empty lines
+Error (line 21): Empty line
+Error (line 23, col 13): space after cast
+Error (line 23, col 22): Spacing after call to malloc
+Error (line 24, col 11): bad spacing
+Error (line 27, col 14): missing space around -
+Error (line 37, col 8): missing parentheses in return statement
+Error (line 40): Space before function name
+Error (line 40): declarations in parse_we_tex must be at the top of the function
+Error (line 40): declarations in parse_we_tex are bad aligned
+Error (line 40): function parse_we_tex has 26 lines
+Error (line 48): spaces at the end of line
+Error (line 48): missing newline after if
+Error (line 49, col 21): space before ,
+Error (line 52, col 12): missing space around =
+Error (line 52, col 20): space after cast
+Error (line 53, col 3): missing space after if
+Error (line 54, col 22): space before ,
+Error (line 58): Empty line
+Error (line 59, col 4): missing space after if
+Error (line 60, col 23): space before ,
+Error (line 63): Empty line
+Error (line 64, col 3): no empty line before block
+Error (line 67): Empty line
+Error (line 68, col 0): no empty line before block
+Norme: ./parser/srcs/parser_init.c
+Error: global scope bad aligned
+Error (line 15): Space before function name
+Error (line 15): bad spacing after new_parser
+Error (line 27): C++ comment
+Error (line 28): Space before function name
+Error (line 28): Space before function name
+Error (line 28): Space before function name
+Error (line 28): declarations must be followed by one empty line in free_parser
+Error (line 28): bad spacing before free_parser
+Error (line 28, col 4): bad spacing
+Error (line 31, col 19): space after cast
+Error (line 32, col 31): space before ,
+Error (line 32, col 31): bad character after ,
+Norme: ./parser/srcs/parser.c
+Error: global scope bad aligned
+Error (line 13): wrong number of spaces in preprocessor line
+Error (line 15, col 8): global named game is not well prefixed
+Error (line 17): comment not well formatted
+Error (line 17): spaces at the end of line
+Error (line 18): spaces at the end of line
+Error (line 20): multiple empty lines
+Error (line 23): multiple empty lines
+Error (line 24): multiple empty lines
+Error (line 25): multiple empty lines
+Error (line 26): multiple empty lines
+Error (line 27): multiple empty lines
+Error (line 28): Space before function name
+Error (line 28): bad spacing before check_empty_line
+Error (line 28): bad spacing after check_empty_line
+Error (line 33): Empty line
+Error (line 34, col 10): space before [
+Error (line 35, col 9): missing parentheses in return statement
+Error (line 36, col 13): space before [
+Error (line 39, col 10): missing parentheses in return statement
+Error (line 42): Empty line
+Error (line 43, col 8): missing parentheses in return statement
+Error (line 46): multiple empty lines
+Error (line 47): multiple empty lines
+Error (line 48): multiple empty lines
+Error (line 49): multiple empty lines
+Error (line 50): multiple empty lines
+Error (line 51): multiple empty lines
+Error (line 52): multiple empty lines
+Error (line 53): multiple empty lines
+Error (line 54): multiple empty lines
+Error (line 55): multiple empty lines
+Error (line 56): multiple empty lines
+Error (line 57): multiple empty lines
+Error (line 58): multiple empty lines
+Error (line 59): multiple empty lines
+Error (line 60): Space before function name
+Error (line 60): missing void in function init_tex
+Error (line 60): bad spacing before init_tex
+Error (line 60): bad spacing after init_tex
+Error (line 73): Space before function name
+Error (line 73): bad spacing before parse_properties
+Error (line 73): bad spacing after parse_properties
+Error (line 73): function parse_properties has 27 lines
+Error (line 78): 2 instructions
+Error (line 78, col 17): space before ,
+Error (line 78, col 17): bad character after ,
+Error (line 79, col 5): no newline before block
+Error (line 81, col 23): space before ,
+Error (line 81, col 23): bad character after ,
+Error (line 82): preprocessor block must be followed by one empty line
+Error (line 84, col 20): space before ,
+Error (line 85): preprocessor block must be followed by one empty line
+Error (line 87): preprocessor block must be followed by one empty line
+Error (line 93, col 20): space before ,
+Error (line 95, col 20): space before ,
+Error (line 97, col 20): space before ,
+Error (line 99, col 20): space before ,
+Error (line 100): Empty line
+Error (line 101, col 1): no empty line before block
+Error (line 104): multiple empty lines
+Error (line 105): Space before function name
+Error (line 105): Space before function name
+Error (line 105): Space before function name
+Error (line 105): bad spacing before parser_do_final
+Error (line 105, col 4): bad spacing
+Error (line 107): Empty line
+Error (line 113, col 2): missing space after return
+Norme: ./parser/srcs/parser_ceilling.c
+Error: global scope bad aligned
+Error (line 15): Space before function name
+Error (line 17, col 30): space before ,
+Error (line 17, col 30): bad character after ,
+Error (line 20): Space before function name
+Error (line 20): declarations in parse_color are bad aligned
+Error (line 27, col 1): missing space after while
+Error (line 29, col 1): missing space after if
+Error (line 30, col 9): missing parentheses in return statement
+Error (line 32, col 1): missing space after while
+Error (line 32, col 19): space after cast
+Error (line 35, col 16): bad spacing
+Error (line 39, col 8): missing parentheses in return statement
+Error (line 42): Space before function name
+Error (line 47, col 1): missing space after while
+Error (line 49, col 2): missing space after if
+Error (line 50, col 10): missing parentheses in return statement
+Error (line 52, col 8): missing parentheses in return statement
+Error (line 52, col 25): bad character after ,
+Error (line 52, col 32): bad character after ,
+Error (line 55): Space before function name
+Error (line 55): declarations must be followed by one empty line in parse_ceilling_color
+Error (line 57, col 13): bad spacing
+Error (line 58, col 5): bad spacing
+Error (line 59, col 4): bad spacing
+Error (line 61): multiple empty lines
+Error (line 61): Empty line
+Error (line 64, col 22): bad character after ,
+Error (line 64, col 24): bad character after ,
+Error (line 65, col 43): bad character after ,
+Error (line 66, col 2): missing space after if
+Error (line 67, col 17): bad character after ,
+Error (line 69, col 27): space before ,
+Error (line 71, col 17): bad character after ,
+Norme: ./parser/srcs/parser_read.c
+Error: global scope bad aligned
+Error (line 15): Space before function name
+Error (line 15): declarations in get_lines are bad aligned
+Error (line 24): spaces at the end of line
+Error (line 24): missing newline after if
+Error (line 24): line has 90 characters
+Error (line 28): spaces at the end of line
+Error (line 28): missing newline after if
+Error (line 28): line has 94 characters
+Error (line 28, col 37): bad character after ,
+Error (line 28, col 45): space after cast
+Error (line 37): Space before function name
+Error (line 37): declarations must be followed by one empty line in get_fd
+Error (line 39, col 5): fd is instanciated during declaration
+Error (line 41, col 21): space before ,
+Error (line 42, col 8): missing parentheses in return statement
+Norme: ./parser/srcs/parse_sprites_tex.c
+Error: global scope bad aligned
+Error (line 15, col 15): global named game is not well prefixed
+Error (line 17): Space before function name
+Error (line 19, col 8): missing parentheses in return statement
+Error (line 20): spaces at the end of line
+Error (line 24): Space before function name
+Error (line 31, col 19): space before )
+Error (line 32, col 10): missing parentheses in return statement
+Error (line 35, col 8): missing parentheses in return statement
+Error (line 38): Space before function name
+Error (line 38, col 44): space before ,
+Error (line 42, col 4): missing space around =
+Error (line 47, col 17): missing space around -
+Error (line 48, col 49): missing space around >=
+Error (line 55, col 2): missing space after if
+Error (line 58, col 3): missing space after break
+Error (line 62): Space before function name
+Error (line 62): Space before function name
+Error (line 62, col 6): bad spacing
+Error (line 70, col 9): missing parentheses in return statement
+Error (line 71, col 1): missing space after while
+Error (line 75, col 2): missing space after if
+Error (line 78, col 3): missing space after break
+Error (line 83, col 22): space before ,
+Error (line 86, col 17): bad spacing
+Error (line 87, col 9): missing parentheses in return statement
+Error (line 88, col 8): missing parentheses in return statement
+Error (line 91): Space before function name
+Error (line 91): declarations in parse_sprite are bad aligned
+Error (line 96, col 1): missing space after if
+Error (line 96, col 16): bad spacing
+Error (line 97, col 2): missing space after return
+Error (line 98, col 10): missing space around =
+Error (line 98, col 18): space after cast
+Error (line 99, col 1): missing space after if
+Error (line 100, col 20): space before ,
+Error (line 104, col 2): missing space after if
+Error (line 105, col 21): space before ,
+Error (line 107): bad indentation
+Error (line 107): If is not on the same line that else
+Error (line 108): bad indentation
+Error (line 109): bad indentation
+Error (line 109, col 23): space before ,
+Norme: ./parser/srcs/parser_walls_e.c
+Error: global scope bad aligned
+Error (line 15, col 15): global named game is not well prefixed
+Error (line 17): Space before function name
+Error (line 17): declarations must be followed by one empty line in push_e_walls_c
+Error (line 17): bad spacing after push_e_walls_c
+Error (line 17, col 32): space before ,
+Error (line 17, col 32): bad character after ,
+Error (line 17, col 53): space before )
+Error (line 21, col 22): bad character after ,
+Error (line 21, col 29): space after cast
+Error (line 26, col 4): missing space after break
+Error (line 28, col 3): missing space after if
+Error (line 29, col 4): missing space after break
+Error (line 31, col 8): missing parentheses in return statement
+Error (line 33): Space before function name
+Error (line 33): bad spacing before push_e_wall
+Error (line 33, col 32): space before ,
+Error (line 38, col 33): missing space around +
+Error (line 38, col 36): space before )
+Error (line 39, col 15): space before )
+Error (line 39, col 16): missing space around *
+Error (line 40, col 33): missing space around *
+Error (line 40, col 48): space before ,
+Error (line 41, col 11): space before )
+Error (line 41, col 12): missing space around *
+Error (line 41, col 26): bad character after ,
+Error (line 44): Space before function name
+Error (line 44): declarations must be followed by one empty line in push_e_walls
+Error (line 44): declarations in push_e_walls are bad aligned
+Error (line 51): Empty line
+Error (line 52, col 6): bad spacing
+Error (line 54): Empty line
+Error (line 57): Empty line
+Error (line 58, col 19): space before ,
+Error (line 63, col 29): bad character after ,
+Error (line 64, col 20): space before ,
+Error (line 68): Empty line
+Error (line 69, col 1): no empty line before block
+Norme: ./parser/srcs/parser_res.c
+Error: global scope bad aligned
+Error (line 13): wrong number of spaces in preprocessor indentation
+Error (line 15): Space before function name
+Error (line 24, col 1): missing space after while
+Error (line 28, col 8): missing parentheses in return statement
+Error (line 31): Space before function name
+Error (line 31): declarations must be followed by one empty line in check_res_line
+Error (line 31): bad spacing after check_res_line
+Error (line 36, col 24): bad character after ,
+Error (line 37, col 24): bad character after ,
+Error (line 38, col 10): missing space around ==
+Error (line 40): Empty line
+Error (line 41): multiple empty lines
+Error (line 41): Empty line
+Error (line 44): Space before function name
+Error (line 44): bad spacing before init_window
+Error (line 44): bad spacing after init_window
+Error (line 49, col 27): space after cast
+Error (line 49, col 36): Spacing after call to malloc
+Error (line 51): Empty line
+Error (line 52, col 0): no empty line before block
+Error (line 53): Space before function name
+Error (line 53): declarations must be followed by one empty line in parse_resultion
+Error (line 53): declarations in parse_resultion are bad aligned
+Error (line 53): bad spacing before parse_resultion
+Error (line 53, col 36): space before ,
+Error (line 59, col 17): bad spacing
+Error (line 64, col 22): bad character after ,
+Error (line 64, col 24): bad character after ,
+Error (line 69, col 22): space after cast
+Error (line 71): spaces at the end of line
+Error (line 72, col 21): space before ,
+Error (line 74, col 18): space before ,
+Error (line 77, col 20): space before ,
+Norme: ./parser/srcs/parser_walls_s.c
+Error: global scope bad aligned
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14, col 8): global named game is not well prefixed
+Error (line 15): Space before function name
+Error (line 15): bad spacing before push_s_walls_c
+Error (line 15): bad spacing after push_s_walls_c
+Error (line 15, col 32): space before ,
+Error (line 15, col 53): space before ,
+Error (line 15, col 53): bad character after ,
+Error (line 17, col 21): bad character after ,
+Error (line 17, col 28): space after cast
+Error (line 17, col 45): bad spacing
+Error (line 18, col 26): space after cast
+Error (line 20, col 8): missing parentheses in return statement
+Error (line 22): Space before function name
+Error (line 22): bad spacing before push_s_wall
+Error (line 22, col 32): space before ,
+Error (line 28): line has 89 characters
+Error (line 28, col 57): space before )
+Error (line 28, col 58): missing space around *
+Error (line 29): line has 90 characters
+Error (line 29, col 31): space before )
+Error (line 29, col 32): missing space around *
+Error (line 29, col 47): space before ,
+Error (line 29, col 47): bad character after ,
+Error (line 29, col 55): space before )
+Error (line 29, col 56): missing space around *
+Error (line 29, col 70): bad character after ,
+Error (line 34): Space before function name
+Error (line 34): declarations in push_s_walls are bad aligned
+Error (line 34, col 32): bad character after ,
+Error (line 34, col 41): space before ,
+Error (line 34, col 41): bad character after ,
+Error (line 40, col 37): bad character after ,
+Error (line 42): Empty line
+Error (line 43, col 6): bad spacing
+Error (line 45): Empty line
+Error (line 47): preprocessor block must be followed by one empty line
+Error (line 49, col 19): space before ,
+Error (line 49, col 27): space before ,
+Error (line 51, col 2): must have one a space after while
+Error (line 51, col 7): bad spacing
+Error (line 51, col 36): missing space around &&
+Error (line 51, col 65): bad spacing
+Error (line 51, col 67): space before )
+Error (line 53): Empty line
+Error (line 54, col 30): space before ,
+Error (line 54, col 34): space before ,
+Error (line 54, col 40): space before ,
+Error (line 55, col 21): space before ,
+Error (line 55, col 21): bad character after ,
+Error (line 59): Empty line
+Error (line 60, col 2): no empty line before block
+Norme: ./parser/srcs/parser_walls_n.c
+Error: global scope bad aligned
+Error (line 15, col 15): global named game is not well prefixed
+Error (line 17): Space before function name
+Error (line 17): bad spacing after push_n_walls_c
+Error (line 17, col 55): space before ,
+Error (line 17, col 55): bad character after ,
+Error (line 19, col 21): bad character after ,
+Error (line 19, col 28): space after cast
+Error (line 20, col 3): missing space around &&
+Error (line 20, col 18): bad character after ,
+Error (line 20, col 27): space after cast
+Error (line 20, col 36): bad spacing
+Error (line 22, col 5): space after (
+Error (line 22, col 13): space after cast
+Error (line 23, col 3): missing space after break
+Error (line 26, col 8): missing parentheses in return statement
+Error (line 28): Space before function name
+Error (line 28): bad spacing before push_n_wall
+Error (line 28): bad spacing after push_n_wall
+Error (line 28, col 32): space before ,
+Error (line 28, col 32): bad character after ,
+Error (line 34, col 6): missing space around *
+Error (line 35, col 31): space before )
+Error (line 35, col 32): missing space around *
+Error (line 35, col 47): space before ,
+Error (line 35, col 47): bad character after ,
+Error (line 36, col 6): missing space around *
+Error (line 38): Space before function name
+Error (line 38): bad spacing before push_player
+Error (line 38): bad spacing after push_player
+Error (line 43, col 1): missing space after if
+Error (line 43, col 36): bad spacing
+Error (line 43, col 52): space after cast
+Error (line 46): 2 instructions
+Error (line 46, col 18): space before ,
+Error (line 46, col 63): bad character after ,
+Error (line 47, col 6): no newline before block
+Error (line 48): spaces at the end of line
+Error (line 49, col 30): missing space around *
+Error (line 50, col 26): space before )
+Error (line 51, col 26): missing space around *
+Error (line 51, col 42): space before ,
+Error (line 53, col 9): space after cast
+Error (line 57): Space before function name
+Error (line 57): declarations must be followed by one empty line in push_n_walls
+Error (line 57): declarations in push_n_walls are bad aligned
+Error (line 57): bad spacing before push_n_walls
+Error (line 57): function push_n_walls has 26 lines
+Error (line 57, col 32): bad character after ,
+Error (line 57, col 41): space before ,
+Error (line 57, col 41): bad character after ,
+Error (line 64): Empty line
+Error (line 65, col 6): bad spacing
+Error (line 67): Empty line
+Error (line 70): Empty line
+Error (line 72, col 19): space before ,
+Error (line 72, col 27): space before ,
+Error (line 73, col 37): bad character after ,
+Error (line 75, col 35): missing space around &&
+Error (line 75, col 64): bad spacing
+Error (line 75, col 66): space before )
+Error (line 77): Empty line
+Error (line 78, col 30): space before ,
+Error (line 78, col 30): bad character after ,
+Error (line 78, col 38): space before ,
+Error (line 78, col 38): bad character after ,
+Error (line 79, col 21): space before ,
+Norme: ./parser/srcs/parser_walls_w.c
+Error: global scope bad aligned
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14, col 15): global named game is not well prefixed
+Error (line 16): Space before function name
+Error (line 16): declarations must be followed by one empty line in push_w_walls_c
+Error (line 16): bad spacing after push_w_walls_c
+Error (line 16, col 32): space before ,
+Error (line 20): spaces at the end of line
+Error (line 20, col 30): space after cast
+Error (line 20, col 45): missing space around &&
+Error (line 21, col 18): space before ,
+Error (line 21, col 36): space before )
+Error (line 26, col 4): missing space after break
+Error (line 29, col 4): missing space after break
+Error (line 30): Empty line
+Error (line 31, col 2): no empty line before block
+Error (line 32, col 8): missing parentheses in return statement
+Error (line 34): Space before function name
+Error (line 34): bad spacing before push_w_wall
+Error (line 34, col 32): space before ,
+Error (line 38): Empty line
+Error (line 40, col 41): space before )
+Error (line 41, col 15): space before )
+Error (line 41, col 16): missing space around *
+Error (line 42, col 29): missing space around *
+Error (line 42, col 44): space before ,
+Error (line 43, col 11): space before )
+Error (line 43, col 12): missing space around *
+Error (line 43, col 26): bad character after ,
+Error (line 47): Space before function name
+Error (line 47): declarations must be followed by one empty line in push_w_walls
+Error (line 47): declarations in push_w_walls are bad aligned
+Error (line 49, col 7): l is instanciated during declaration
+Error (line 54): Empty line
+Error (line 55, col 6): bad spacing
+Error (line 57): Empty line
+Error (line 60): Empty line
+Error (line 61, col 19): space before ,
+Error (line 64, col 56): space before )
+Error (line 65, col 27): space before ,
+Error (line 65, col 27): bad character after ,
+Error (line 65, col 30): space before ,
+Error (line 66, col 20): space before ,
+Error (line 66, col 20): bad character after ,
+Error (line 70): Empty line
+Error (line 71, col 1): no empty line before block
+Norme: ./player/includes/player.h
+Error: global scope bad aligned
+Error (line 13): multiple empty lines
+Error (line 15): wrong number of spaces in preprocessor indentation
+Error (line 21): multiple empty lines
+Error (line 22): Struct s_player bad aligned
+Error (line 22): s_player and t_player not aligned.
+Error (line 22): must have only tabulations between struct and s_player.
+Error (line 23, col 9): bad spacing
+Error (line 24, col 9): bad spacing
+Error (line 25, col 9): bad spacing
+Error (line 26, col 7): bad spacing
+Error (line 27, col 7): bad spacing
+Error (line 28, col 7): bad spacing
+Error (line 29, col 7): bad spacing
+Error (line 30, col 4): bad spacing
+Error (line 31, col 7): bad spacing
+Error (line 32, col 4): bad spacing
+Error (line 33, col 4): bad spacing
+Error (line 34, col 6): bad spacing
+Error (line 35, col 6): bad spacing
+Error (line 44, col 1): bad spacing
+Error (line 46): multiple empty lines
+Error (line 47): multiple empty lines
+Error (line 48, col 4): bad spacing
+Error (line 48, col 32): space before ,
+Error (line 49, col 4): bad spacing
+Error (line 50, col 4): bad spacing
+Error (line 51, col 4): bad spacing
+Error (line 52, col 32): bad character after ,
+Error (line 52, col 36): bad spacing
+Error (line 52, col 43): space before ,
+Error (line 53, col 30): bad character after ,
+Error (line 53, col 34): bad spacing
+Error (line 53, col 41): space before ,
+Error (line 56, col 4): bad spacing
+Error (line 59, col 40): space before ,
+Error (line 60, col 40): space before ,
+Error (line 60, col 54): space before ,
+Error (line 60, col 54): bad character after ,
+Norme: ./parser/srcs/parser_verify.c
+Error: global scope bad aligned
+Error: 11 functions in the file
+Error (line 15, col 10): global named p is not well prefixed
+Error (line 17): Space before function name
+Error (line 17): declarations must be followed by one empty line in is_wall_character
+Error (line 17): bad spacing after is_wall_character
+Error (line 21): preprocessor block must be followed by one empty line
+Error (line 23): preprocessor block must be followed by one empty line
+Error (line 25): preprocessor block must be followed by one empty line
+Error (line 30): Space before function name
+Error (line 30): declarations must be followed by one empty line in check_border_s
+Error (line 30): declarations in check_border_s are bad aligned
+Error (line 30): bad spacing before check_border_s
+Error (line 30): bad spacing after check_border_s
+Error (line 36): multiple empty lines
+Error (line 36): Empty line
+Error (line 52): Space before function name
+Error (line 52): declarations must be followed by one empty line in check_border_e
+Error (line 52): declarations in check_border_e are bad aligned
+Error (line 52): bad spacing before check_border_e
+Error (line 58): multiple empty lines
+Error (line 58): Empty line
+Error (line 61, col 40): missing space around -
+Error (line 75): Space before function name
+Error (line 75): declarations must be followed by one empty line in is_map_s_or_end
+Error (line 79): preprocessor block must be followed by one empty line
+Error (line 81): preprocessor block must be followed by one empty line
+Error (line 83): preprocessor block must be followed by one empty line
+Error (line 89): Space before function name
+Error (line 89): declarations in check_border_i are bad aligned
+Error (line 89): bad spacing after check_border_i
+Error (line 95, col 10): bad spacing
+Error (line 96, col 9): missing parentheses in return statement
+Error (line 101, col 5): bad spacing
+Error (line 101, col 24): missing space around -
+Error (line 104, col 2): missing space after while
+Error (line 108, col 44): bad character after ,
+Error (line 109, col 9): missing parentheses in return statement
+Error (line 113): Space before function name
+Error (line 113): bad spacing before check_borders
+Error (line 115): spaces at the end of line
+Error (line 116): spaces at the end of line
+Error (line 120): Space before function name
+Error (line 120): declarations must be followed by one empty line in check_map_char
+Error (line 120): bad spacing after check_map_char
+Error (line 124): preprocessor block must be followed by one empty line
+Error (line 126): preprocessor block must be followed by one empty line
+Error (line 128): preprocessor block must be followed by one empty line
+Error (line 133): Space before function name
+Error (line 133): bad spacing before check_sides
+Error (line 133, col 39): space before ,
+Error (line 133, col 47): no newline before block
+Error (line 140): line has 87 characters
+Error (line 140, col 29): missing space around +
+Error (line 140, col 40): missing space around ||
+Error (line 140, col 65): missing space around +
+Error (line 141, col 54): space after [
+Error (line 142, col 16): missing space around +
+Error (line 143, col 29): missing space around +
+Error (line 144, col 54): space after [
+Error (line 146, col 53): space after [
+Error (line 147, col 12): missing space around >
+Error (line 147, col 19): missing space around +
+Error (line 148, col 53): space after [
+Error (line 153): Space before function name
+Error (line 153): declarations must be followed by one empty line in check_map_chars
+Error (line 153): bad spacing after check_map_chars
+Error (line 157): preprocessor block must be followed by one empty line
+Error (line 159): preprocessor block must be followed by one empty line
+Error (line 162): Empty line
+Error (line 163, col 19): space before ,
+Error (line 163, col 19): bad character after ,
+Error (line 164, col 9): missing parentheses in return statement
+Error (line 165, col 8): missing parentheses in return statement
+Error (line 167): Space before function name
+Error (line 167): declarations must be followed by one empty line in check_inside
+Error (line 167): declarations in check_inside are bad aligned
+Error (line 167): bad spacing before check_inside
+Error (line 172, col 25): space before )
+Error (line 172, col 25): space after cast
+Error (line 174, col 8): space before ;
+Error (line 177, col 15): bad spacing
+Error (line 177, col 36): bad spacing
+Error (line 183, col 2): missing space after if
+Error (line 184, col 19): bad character after ,
+Error (line 184, col 24): space before ,
+Error (line 187): Empty line
+Error (line 188, col 8): missing parentheses in return statement
+Error (line 188, col 30): space before ,
+Error (line 191): Space before function name
+Error (line 191): declarations must be followed by one empty line in verify_map
+Error (line 191): declarations in verify_map are bad aligned
+Error (line 191, col 31): no newline before block
+Error (line 195): multiple empty lines
+Error (line 195): Empty line
+Error (line 196): multiple empty lines
+Error (line 196): Empty line
+Error (line 198, col 1): missing space after if
+Error (line 199, col 19): bad character after ,
+Error (line 202): spaces at the end of line
+Error (line 204, col 7): space after (
+Error (line 204, col 51): bad character after ,
+Error (line 204, col 53): bad character after ,
+Error (line 205, col 20): bad character after ,
+Norme: ./parser/srcs/parser_parse_file.c
+Error: global scope bad aligned
+Error: 13 functions in the file
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14, col 10): global named parser is not well prefixed
+Error (line 16, col 14): global named keywords is not well prefixed
+Error (line 18): Space before function name
+Error (line 20, col 1): missing space after if
+Error (line 23): Empty line
+Error (line 24, col 10): bad spacing
+Error (line 24, col 29): space after cast
+Error (line 25, col 25): bad character after ,
+Error (line 25, col 28): space before ,
+Error (line 25, col 28): bad character after ,
+Error (line 29, col 25): bad character after ,
+Error (line 33): Space before function name
+Error (line 33): bad spacing after init_properties
+Error (line 35, col 1): missing space after if
+Error (line 35, col 10): missing space around !=
+Error (line 37, col 19): bad character after ,
+Error (line 37, col 35): bad spacing
+Error (line 38, col 19): bad character after ,
+Error (line 38, col 35): bad character after ,
+Error (line 39, col 19): bad character after ,
+Error (line 39, col 35): bad character after ,
+Error (line 40, col 19): bad character after ,
+Error (line 40, col 35): bad character after ,
+Error (line 41, col 19): bad character after ,
+Error (line 41, col 35): bad character after ,
+Error (line 42, col 19): bad character after ,
+Error (line 42, col 34): bad character after ,
+Error (line 43, col 19): bad character after ,
+Error (line 43, col 34): bad character after ,
+Error (line 44, col 19): bad character after ,
+Error (line 44, col 36): bad character after ,
+Error (line 45): preprocessor block must be followed by one empty line
+Error (line 47): preprocessor block must be followed by one empty line
+Error (line 48, col 19): bad character after ,
+Error (line 48, col 34): bad character after ,
+Error (line 49): preprocessor block must be followed by one empty line
+Error (line 50, col 1): no empty line before block
+Error (line 52): Space before function name
+Error (line 52): bad spacing before push_bonus_sprites_properties
+Error (line 52): bad spacing after push_bonus_sprites_properties
+Error (line 63): Space before function name
+Error (line 63): declarations must be followed by one empty line in put_token
+Error (line 63): bad spacing before put_token
+Error (line 63, col 27): space before ,
+Error (line 66): missing newline after if
+Error (line 66, col 32): space after cast
+Error (line 66, col 48): bad character after ,
+Error (line 66, col 61): no newline before block
+Error (line 67, col 20): space after cast
+Error (line 68): Empty line
+Error (line 70, col 29): bad character after ,
+Error (line 70, col 36): space before ,
+Error (line 72): spaces at the end of line
+Error (line 76): Space before function name
+Error (line 78): Empty line
+Error (line 79): multiple empty lines
+Error (line 79): Empty line
+Error (line 80, col 1): missing space after if
+Error (line 80, col 3): space after (
+Error (line 84, col 8): missing parentheses in return statement
+Error (line 87): Space before function name
+Error (line 87): declarations in parse_token are bad aligned
+Error (line 95, col 16): space after cast
+Error (line 96, col 22): space before ,
+Error (line 96, col 51): space before )
+Error (line 101, col 35): missing space around >
+Error (line 103, col 4): missing space after if
+Error (line 104, col 24): bad character after ,
+Error (line 105): spaces at the end of line
+Error (line 106, col 22): space before ,
+Error (line 107, col 3): no newline after block
+Error (line 108, col 23): bad character after ,
+Error (line 110): line has 83 characters
+Error (line 110, col 7): missing space after if
+Error (line 110, col 50): space before )
+Error (line 111): line has 83 characters
+Error (line 111, col 22): bad character after ,
+Error (line 115): Space before function name
+Error (line 115): declarations must be followed by one empty line in create_map
+Error (line 119, col 9): missing parentheses in return statement
+Error (line 120, col 1): missing space after if
+Error (line 121, col 34): space before ,
+Error (line 124, col 20): space after cast
+Error (line 125, col 23): bad character after ,
+Error (line 126, col 2): missing space after if
+Error (line 127, col 40): bad character after ,
+Error (line 127, col 46): bad character after ,
+Error (line 129, col 1): missing space after if
+Error (line 131, col 24): space before ,
+Error (line 132, col 1): must have one a space after return
+Error (line 132, col 7): bad spacing
+Error (line 135): Space before function name
+Error (line 135): bad spacing after is_map_line
+Error (line 141, col 9): missing parentheses in return statement
+Error (line 142, col 1): missing space after if
+Error (line 148, col 1): missing space after if
+Error (line 152): Space before function name
+Error (line 152): declarations must be followed by one empty line in is_map_character
+Error (line 152): bad spacing before is_map_character
+Error (line 152): bad spacing after is_map_character
+Error (line 156): preprocessor block must be followed by one empty line
+Error (line 158): preprocessor block must be followed by one empty line
+Error (line 160): preprocessor block must be followed by one empty line
+Error (line 161, col 1): missing space after if
+Error (line 167): Space before function name
+Error (line 167): missing void in function map_created
+Error (line 167): bad spacing before map_created
+Error (line 167, col 20): no newline before block
+Error (line 170, col 33): space before ,
+Error (line 170, col 33): bad character after ,
+Error (line 171, col 31): missing space around :
+Error (line 174): Space before function name
+Error (line 174): bad spacing after is_empty_or_comment
+Error (line 174, col 38): no newline before block
+Error (line 178, col 1): missing space after if
+Error (line 184): preprocessor block must be followed by one empty line
+Error (line 185, col 2): missing space after if
+Error (line 186, col 3): missing space after if
+Error (line 187, col 11): missing parentheses in return statement
+Error (line 188): preprocessor block must be followed by one empty line
+Error (line 189, col 9): missing parentheses in return statement
+Error (line 189, col 17): bad spacing
+Error (line 189, col 28): missing space around ?
+Error (line 191): spaces at the end of line
+Error (line 192, col 9): missing parentheses in return statement
+Error (line 193, col 8): missing parentheses in return statement
+Error (line 195): Space before function name
+Error (line 195): bad spacing before ft_is_empty
+Error (line 202, col 1): missing space after if
+Error (line 211): Space before function name
+Error (line 211): declarations in check_properties must be at the top of the function
+Error (line 211): declarations in check_properties are bad aligned
+Error (line 214, col 7): bad spacing
+Error (line 219, col 1): missing space after if
+Error (line 224, col 7): missing space around =
+Error (line 224, col 15): space after cast
+Error (line 224, col 40): space before ,
+Error (line 224, col 40): bad character after ,
+Error (line 227): line has 89 characters
+Error (line 227, col 39): space before ,
+Error (line 227, col 39): bad character after ,
+Error (line 227, col 43): bad character after ,
+Error (line 227, col 44): space after (
+Error (line 228, col 11): missing parentheses in return statement
+Error (line 232, col 8): missing parentheses in return statement
+Norme: ./player/srcs/floor_cast_render.c
+Error: file must end with a single empty line
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14, col 15): global named game is not well prefixed
+Error (line 15, col 10): global named player is not well prefixed
+Error (line 17): Space before function name
+Error (line 17): declarations in render_floor are bad aligned
+Error (line 17, col 44): bad character after ,
+Error (line 20, col 4): bad spacing
+Error (line 25, col 1): missing space after while
+Error (line 25, col 6): space after (
+Error (line 27): spaces at the end of line
+Error (line 27, col 7): space after (
+Error (line 27, col 33): missing space around /
+Error (line 28, col 31): space before )
+Error (line 28, col 35): space after (
+Error (line 28, col 56): missing space around -
+Error (line 28, col 59): space before )
+Error (line 29): spaces at the end of line
+Error (line 29, col 33): missing space around /
+Error (line 30, col 31): space before )
+Error (line 30, col 56): missing space around -
+Error (line 34, col 23): space before ,
+Error (line 34, col 37): bad spacing
+Error (line 35, col 23): missing space around /
+Error (line 35, col 25): bad spacing
+Error (line 35, col 28): bad spacing
+Error (line 36, col 32): space before ,
+Error (line 36, col 35): bad character after ,
+Error (line 36, col 38): space before ,
+Error (line 36, col 38): bad character after ,
+Error (line 39): Empty line
+Error (line 40, col 0): no empty line before block
+Error (line 42): Space before function name
+Error (line 42): declarations in cast_draw_floor are bad aligned
+Error (line 51, col 19): bad character after ,
+Error (line 52, col 3): missing space around =
+Error (line 53, col 7): space after (
+Error (line 59): spaces at the end of line
+Error (line 60, col 29): missing space around -
+Error (line 61, col 52): space before )
+Error (line 61, col 54): missing space around /
+Error (line 62, col 53): space before )
+Error (line 62, col 54): missing space around /
+Error (line 63, col 9): bad spacing
+Error (line 64, col 9): bad spacing
+Error (line 65, col 20): bad character after ,
+Norme: ./player/srcs/player_free.c
+Error: global scope bad aligned
+Error: 42 header not at top of the file
+Error (line 3): Space before function name
+Error (line 3): Space before function name
+Error (line 3, col 6): bad spacing
+Error (line 5, col 20): space before ,
+Error (line 7): spaces at the end of line
+Error (line 7, col 16): bad spacing
+Error (line 8, col 8): missing parentheses in return statement
+Error (line 11): Space before function name
+Error (line 15, col 18): space after cast
+Error (line 17, col 39): space before ,
+Norme: ./player/srcs/line_distance.c
+Error (line 15): multiple empty lines
+Error (line 16): multiple empty lines
+Error (line 17): Space before function name
+Error (line 17): bad spacing before calculate_t_sprite
+Error (line 17, col 40): space before ,
+Error (line 19): spaces at the end of line
+Error (line 19, col 9): space after (
+Error (line 20): spaces at the end of line
+Error (line 20, col 5): space after (
+Error (line 20, col 33): space before )
+Error (line 21): spaces at the end of line
+Error (line 21, col 5): space after (
+Error (line 21, col 33): space before )
+Error (line 22, col 5): space after (
+Error (line 25): Space before function name
+Error (line 25, col 40): space before ,
+Error (line 27): spaces at the end of line
+Error (line 27, col 8): missing parentheses in return statement
+Error (line 27, col 10): space after (
+Error (line 27, col 38): space before )
+Error (line 28): spaces at the end of line
+Error (line 28, col 5): space after (
+Error (line 28, col 33): space before )
+Error (line 29, col 5): space after (
+Error (line 29, col 33): space before )
+Error (line 30, col 3): missing space around *
+Error (line 30, col 4): space after (
+Error (line 30, col 32): space before )
+Error (line 31): bad indentation
+Error (line 32): Empty line
+Error (line 33, col 0): no empty line before block
+Error (line 35): Space before function name
+Error (line 37, col 1): must have one a space after return
+Error (line 37, col 7): bad spacing
+Error (line 37, col 9): space after (
+Error (line 37, col 37): space before )
+Error (line 38): bad indentation
+Error (line 38, col 2): missing space around *
+Error (line 38, col 3): space after (
+Error (line 39): spaces at the end of line
+Error (line 39): bad indentation
+Error (line 39, col 2): space after (
+Error (line 39, col 30): space before )
+Error (line 40): bad indentation
+Error (line 40, col 4): space after (
+Error (line 40, col 32): space before )
+Error (line 43): Space before function name
+Error (line 43): declarations in get_offset must be at the top of the function
+Error (line 43): declarations must be followed by one empty line in get_offset
+Error (line 43): declarations in get_offset are bad aligned
+Error (line 43, col 17): space after (
+Error (line 47, col 7): t is instanciated during declaration
+Error (line 48, col 7): u is instanciated during declaration
+Error (line 50): multiple empty lines
+Error (line 50): Empty line
+Error (line 51, col 32): space before ,
+Error (line 55, col 5): bad spacing
+Error (line 55, col 35): bad character after ,
+Error (line 56, col 29): space before ,
+Error (line 56, col 29): bad character after ,
+Error (line 56, col 34): bad character after ,
+Error (line 57, col 9): missing parentheses in return statement
+Error (line 57, col 26): space before ;
+Error (line 59, col 8): missing parentheses in return statement
+Error (line 62): Space before function name
+Error (line 68): spaces at the end of line
+Error (line 68, col 57): space before ,
+Error (line 69, col 31): bad spacing
+Error (line 71): spaces at the end of line
+Error (line 72, col 37): Spacing after call to sin
+Error (line 72, col 44): space before )
+Error (line 73, col 8): missing parentheses in return statement
+Error (line 73, col 18): space after (
+Norme: ./parser/srcs/token.c
+Error: global scope bad aligned
+Error (line 13): wrong number of spaces in preprocessor indentation
+Error (line 15): Space before function name
+Error (line 17, col 38): space before )
+Error (line 20, col 35): bad character after ,
+Error (line 25): Space before function name
+Error (line 27, col 35): space before )
+Error (line 34): Space before function name
+Error (line 34): declarations must be followed by one empty line in token_push_values
+Error (line 34, col 38): bad character after ,
+Error (line 38): multiple empty lines
+Error (line 38): Empty line
+Error (line 39, col 1): missing space after if
+Error (line 41): Empty line
+Error (line 43, col 23): bad character after ,
+Error (line 47): Space before function name
+Error (line 47, col 37): bad character after ,
+Error (line 49, col 1): missing space after if
+Error (line 51, col 8): missing parentheses in return statement
+Error (line 51, col 41): bad character after ,
+Error (line 51, col 47): space before ,
+Error (line 51, col 47): bad character after ,
+Error (line 54): Space before function name
+Error (line 54): declarations in get_token_by_key are bad aligned
+Error (line 54, col 52): no newline before block
+Error (line 61, col 1): missing space after if
+Error (line 65, col 20): space after cast
+Error (line 68): line has 91 characters
+Error (line 68, col 2): missing space after if
+Error (line 68, col 46): space before ,
+Error (line 68, col 52): space before ,
+Error (line 68, col 52): bad character after ,
+Error (line 68, col 53): space after (
+Error (line 68, col 66): missing space around ?
+Error (line 68, col 71): missing space around :
+Error (line 69, col 10): missing parentheses in return statement
+Norme: ./player/srcs/player_render.c
+Error: file must end with a single empty line
+Error (line 15, col 15): global named game is not well prefixed
+Error (line 17): Space before function name
+Error (line 25): line has 84 characters
+Error (line 25, col 70): space before )
+Error (line 27, col 2): missing space after if
+Error (line 29): Empty line
+Error (line 30, col 1): no empty line before block
+Error (line 31): line has 83 characters
+Error (line 33, col 2): missing space after if
+Error (line 35): Empty line
+Error (line 36, col 1): no empty line before block
+Error (line 37): spaces at the end of line
+Error (line 37, col 0): no newline after block
+Error (line 39): multiple empty lines
+Error (line 40): multiple empty lines
+Norme: ./player/srcs/player_init.c
+Error (line 15, col 13): bad spacing
+Error (line 15, col 17): global named game is not well prefixed
+Error (line 16, col 3): bad spacing
+Error (line 16, col 16): global named nb_rays is not well prefixed
+Error (line 18): Space before function name
+Error (line 18): bad spacing after set_rotation_angle
+Error (line 21, col 23): bad spacing
+Error (line 23, col 23): bad spacing
+Error (line 29): Space before function name
+Error (line 29): bad spacing before init_player_lists
+Error (line 29): bad spacing after init_player_lists
+Error (line 32, col 35): space before ,
+Error (line 32, col 35): bad character after ,
+Error (line 32, col 45): space after sizeof
+Error (line 33, col 36): space before ,
+Error (line 33, col 36): bad character after ,
+Error (line 33, col 41): space after sizeof
+Error (line 34, col 36): space before ,
+Error (line 34, col 36): bad character after ,
+Error (line 34, col 41): space after sizeof
+Error (line 35): line has 110 characters
+Error (line 35, col 40): bad character after ,
+Error (line 35, col 59): space before ,
+Error (line 35, col 81): space before ,
+Error (line 35, col 87): space before )
+Error (line 35, col 89): space before ,
+Error (line 37): Space before function name
+Error (line 37): bad spacing before init_wall_rays
+Error (line 37): bad spacing after init_wall_rays
+Error (line 39, col 7): bad spacing
+Error (line 40, col 4): bad spacing
+Error (line 47): line has 98 characters
+Error (line 47, col 59): space before ,
+Error (line 47, col 59): bad character after ,
+Error (line 47, col 69): bad character after ,
+Error (line 47, col 74): space before ,
+Error (line 52): Space before function name
+Error (line 52): bad spacing before new_player
+Error (line 52, col 31): space before ,
+Error (line 55, col 13): missing space around =
+Error (line 58, col 17): missing space around =
+Error (line 61, col 39): bad spacing
+Norme: ./player/srcs/player_update.c
+Error (line 15, col 15): global named game is not well prefixed
+Error (line 16, col 11): global named nb_rays is not well prefixed
+Error (line 18): Space before function name
+Error (line 18): declarations in init_rays are bad aligned
+Error (line 29, col 16): space after cast
+Error (line 29, col 55): space before ,
+Error (line 30, col 2): missing space after if
+Error (line 32, col 19): space before ,
+Error (line 39): Space before function name
+Error (line 43, col 8): newAngle not unixcase
+Error (line 43, col 17): space before ;
+Error (line 45): line has 96 characters
+Error (line 45, col 11): bad spacing
+Error (line 48, col 9): bad spacing
+Error (line 48, col 23): bad spacing
+Error (line 48, col 41): missing space around *
+Error (line 49, col 9): bad spacing
+Error (line 49, col 23): bad spacing
+Error (line 49, col 41): missing space around *
+Error (line 50, col 22): space before ,
+Error (line 50, col 22): bad character after ,
+Error (line 50, col 45): space before ,
+Error (line 52): Empty line
+Error (line 53, col 0): no empty line before block
+Norme: ./player/srcs/render_sprite_texture.c
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14, col 15): global named game is not well prefixed
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15): declarations in render_sprite_texture are bad aligned
+Error (line 15): bad spacing before render_sprite_texture
+Error (line 15): line has 90 characters
+Error (line 15): function render_sprite_texture has 26 lines
+Error (line 15, col 4): bad spacing
+Error (line 15, col 40): space before ,
+Error (line 15, col 42): wallHei not unixcase
+Error (line 15, col 57): space before ,
+Error (line 15, col 57): bad character after ,
+Error (line 15, col 76): space before ,
+Error (line 23, col 10): bad spacing
+Error (line 24, col 10): bad spacing
+Error (line 25, col 17): bad spacing
+Error (line 28, col 18): space after cast
+Error (line 28, col 31): bad spacing
+Error (line 28, col 41): space after cast
+Error (line 28, col 52): bad spacing
+Error (line 31, col 25): space after cast
+Error (line 32, col 3): missing space after if
+Error (line 36, col 27): space before ,
+Error (line 37, col 34): space before ,
+Error (line 37, col 41): space before ,
+Error (line 41, col 11): bad spacing
+Norme: ./player/srcs/sprite_render.c
+Error: global scope bad aligned
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14, col 15): global named game is not well prefixed
+Error (line 16): Space before function name
+Error (line 16): declarations in render_sprite_c must be at the top of the function
+Error (line 16): declarations must be followed by one empty line in render_sprite_c
+Error (line 16): declarations in render_sprite_c are bad aligned
+Error (line 16): line has 84 characters
+Error (line 16, col 35): bad character after ,
+Error (line 16, col 47): space before ,
+Error (line 16, col 64): bad character after ,
+Error (line 24): spaces at the end of line
+Error (line 24, col 58): space before ,
+Error (line 25, col 32): bad spacing
+Error (line 27): spaces at the end of line
+Error (line 28, col 38): Spacing after call to sin
+Error (line 28, col 45): space before )
+Error (line 29, col 8): dist is instanciated during declaration
+Error (line 29, col 14): bad spacing
+Error (line 29, col 40): space before ;
+Error (line 33, col 9): nof is instanciated during declaration
+Error (line 36): line has 89 characters
+Error (line 36, col 32): space before [
+Error (line 40): Space before function name
+Error (line 40): Space before function name
+Error (line 40): declarations in draw_sprit must be at the top of the function
+Error (line 40): declarations must be followed by one empty line in draw_sprit
+Error (line 40): declarations in draw_sprit are bad aligned
+Error (line 40, col 4): bad spacing
+Error (line 42, col 11): this is instanciated during declaration
+Error (line 42, col 29): space after cast
+Error (line 48, col 1): missing space after if
+Error (line 48, col 21): bad spacing
+Error (line 50): line has 88 characters
+Error (line 50, col 52): missing space around -
+Error (line 51, col 52): space before )
+Error (line 53, col 21): missing space around /
+Error (line 53, col 23): bad spacing
+Norme: ./player/srcs/player_check_collision.c
+Error: global scope bad aligned
+Error: 6 functions in the file
+Error (line 15, col 15): global named game is not well prefixed
+Error (line 16, col 4): global named tos is not well prefixed
+Error (line 18): Space before function name
+Error (line 20, col 6): bad spacing
+Error (line 21, col 7): bad spacing
+Error (line 23, col 56): space before )
+Error (line 23, col 59): bad spacing
+Error (line 24, col 56): space before )
+Error (line 24, col 57): missing space around *
+Error (line 25): Empty line
+Error (line 28, col 11): bad spacing
+Error (line 29): line has 89 characters
+Error (line 29, col 61): bad spacing
+Error (line 29, col 80): space before )
+Error (line 30, col 25): space after (
+Error (line 30, col 49): bad spacing
+Error (line 30, col 68): space before )
+Error (line 31): spaces at the end of line
+Error (line 31): line has 83 characters
+Error (line 31, col 33): space after (
+Error (line 32): spaces at the end of line
+Error (line 32, col 24): space after (
+Error (line 34): line has 87 characters
+Error (line 36, col 28): bad spacing
+Error (line 36, col 56): missing space around *
+Error (line 37, col 48): bad spacing
+Error (line 41): Space before function name
+Error (line 41): bad spacing after update_player_pos
+Error (line 41): line has 83 characters
+Error (line 43): Empty line
+Error (line 44): multiple empty lines
+Error (line 44): Empty line
+Error (line 49): Empty line
+Error (line 50): multiple empty lines
+Error (line 50): Empty line
+Error (line 51, col 0): no empty line before block
+Error (line 53): multiple empty lines
+Error (line 54): Space before function name
+Error (line 54): bad spacing before update_on_secret_door
+Error (line 59): spaces at the end of line
+Error (line 61, col 1): missing space after if
+Error (line 63, col 6): space after (
+Error (line 63, col 13): space before [
+Error (line 63, col 18): space after cast
+Error (line 64, col 37): space before ,
+Error (line 64, col 44): space before )
+Error (line 64, col 49): bad character after ,
+Error (line 64, col 54): space after cast
+Error (line 67): Space before function name
+Error (line 67): Space before function name
+Error (line 67, col 6): bad spacing
+Error (line 67, col 44): bad character after ,
+Error (line 72): spaces at the end of line
+Error (line 72, col 35): missing space around +
+Error (line 72, col 36): space after (
+Error (line 72, col 64): missing space around :
+Error (line 76, col 31): space after (
+Error (line 76, col 52): space before ,
+Error (line 76, col 52): bad character after ,
+Error (line 79, col 13): missing space around =
+Error (line 79, col 53): space before ,
+Error (line 81, col 8): missing parentheses in return statement
+Error (line 84): Space before function name
+Error (line 84, col 39): bad character after ,
+Error (line 84, col 50): bad character after ,
+Error (line 88, col 52): missing space around *
+Error (line 89): Empty line
+Error (line 90, col 1): missing space after if
+Error (line 90, col 13): space after cast
+Error (line 95): Space before function name
+Error (line 95): declarations in check_collision are bad aligned
+Error (line 95, col 40): space before ,
+Error (line 95, col 54): space before ,
+Error (line 95, col 54): bad character after ,
+Error (line 105, col 1): missing space after if
+Error (line 105, col 36): bad character after ,
+Error (line 105, col 42): space before [
+Error (line 105, col 47): space after cast
+Error (line 105, col 54): space before ]
+Error (line 109, col 26): bad character after ,
+Error (line 109, col 31): bad character after ,
+Error (line 109, col 35): bad character after ,
+Error (line 111, col 9): missing parentheses in return statement
+Error (line 114, col 26): bad character after ,
+Error (line 114, col 31): bad character after ,
+Error (line 114, col 36): bad character after ,
+Error (line 115, col 8): missing parentheses in return statement
+Norme: ./player/srcs/secret_door_update.c
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14, col 15): global named game is not well prefixed
+Error (line 16): Space before function name
+Error (line 16): declarations in s_player_right are bad aligned
+Error (line 16): bad spacing after s_player_right
+Error (line 16, col 33): bad character after ,
+Error (line 16, col 43): space before ,
+Error (line 34): comment not well formatted
+Error (line 34): spaces at the end of line
+Error (line 39): Space before function name
+Error (line 39): Bad spacing for argument newx
+Error (line 39): declarations in s_player_left are bad aligned
+Error (line 39): bad spacing before s_player_left
+Error (line 39): bad spacing after s_player_left
+Error (line 39, col 37): bad spacing
+Error (line 39, col 44): space before ,
+Error (line 58): multiple empty lines
+Error (line 59): Space before function name
+Error (line 59): Bad spacing for argument newx
+Error (line 59): declarations in s_player_down are bad aligned
+Error (line 59): bad spacing before s_player_down
+Error (line 59, col 32): bad character after ,
+Error (line 59, col 36): bad spacing
+Error (line 59, col 43): space before ,
+Error (line 70): spaces at the end of line
+Error (line 71, col 4): missing space around ||
+Error (line 71, col 45): space before )
+Error (line 72, col 3): missing space after break
+Error (line 74, col 3): missing space after break
+Error (line 85): Space before function name
+Error (line 85): Bad spacing for argument newx
+Error (line 85): declarations in s_player_up are bad aligned
+Error (line 85, col 30): bad character after ,
+Error (line 85, col 34): bad spacing
+Error (line 85, col 41): space before ,
+Error (line 96): Empty line
+Error (line 97): line has 86 characters
+Error (line 97, col 60): space after cast
+Error (line 98, col 3): missing space after break
+Error (line 100, col 3): missing space after break
+Error (line 111): Space before function name
+Error (line 111, col 40): space before ,
+Error (line 116, col 7): bad spacing
+Error (line 118, col 17): space before )
+Error (line 119, col 24): space before ,
+Error (line 120, col 6): missing space after if
+Error (line 121, col 26): space before ,
+Error (line 122, col 6): missing space after if
+Error (line 123, col 27): space before ,
+Error (line 124, col 6): missing space after if
+Error (line 125, col 26): space before ,
+Norme: ./ray/includes/ray.h
+Error: global scope bad aligned
+Error (line 13): wrong number of spaces in preprocessor indentation
+Error (line 14): wrong number of spaces in preprocessor indentation
+Error (line 16): wrong number of spaces in preprocessor indentation
+Error (line 18): Struct s_ray bad aligned
+Error (line 18): s_ray and t_ray not aligned.
+Error (line 18): must have only tabulations between struct and s_ray.
+Error (line 21, col 7): bad spacing
+Error (line 22, col 4): bad spacing
+Error (line 23, col 7): bad spacing
+Error (line 27, col 5): bad spacing
+Error (line 28, col 5): bad spacing
+Error (line 31, col 1): bad spacing
+Error (line 33): Struct s_ray_sp bad aligned
+Error (line 33): s_ray_sp and t_ray_sp not aligned.
+Error (line 33): must have only tabulations between struct and s_ray_sp.
+Error (line 36, col 4): bad spacing
+Error (line 37, col 4): bad spacing
+Error (line 38, col 7): bad spacing
+Error (line 42, col 5): bad spacing
+Error (line 43, col 5): bad spacing
+Error (line 49): comment not well formatted
+Error (line 51, col 4): bad spacing
+Error (line 52, col 4): bad spacing
+Error (line 55, col 6): bad spacing
+Error (line 56, col 6): bad spacing
+Error (line 58): line has 95 characters
+Error (line 58, col 50): bad spacing
+Error (line 58, col 71): bad character after ,
+Norme: ./ray/srcs/ray_free.c
+Error (line 15): Space before function name
+Error (line 15): declarations must be followed by one empty line in free_ray
+Error (line 18, col 15): space after cast
+Error (line 19, col 1): missing space after if
+Error (line 21, col 2): missing space after if
+Error (line 27): Empty line
+Error (line 28, col 0): no empty line before block
+Error (line 30): Space before function name
+Error (line 30): declarations must be followed by one empty line in free_sprite
+Error (line 32, col 12): sp is instanciated during declaration
+Error (line 32, col 29): space after cast
+Error (line 40): Space before function name
+Error (line 40): declarations must be followed by one empty line in free_wall
+Error (line 40, col 19): bad spacing
+Error (line 40, col 21): space after pointer
+Error (line 43, col 17): space after cast
+Error (line 44, col 1): missing space after if
+Error (line 48, col 2): missing space after if
+Error (line 54): Space before function name
+Error (line 54): declarations must be followed by one empty line in free_ray_sp
+Error (line 57, col 4): bad spacing
+Error (line 57, col 14): bad spacing
+Error (line 57, col 17): space after cast
+Error (line 58, col 1): missing space after if
+Error (line 60, col 2): missing space after if
+Error (line 63): Empty line
+Error (line 64, col 2): no empty line before block
+Error (line 65, col 2): missing space after if
+Norme: ./ray/srcs/ray_cast.c
+Error: global scope bad aligned
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14, col 15): global named game is not well prefixed
+Error (line 16): Space before function name
+Error (line 20, col 15): space after cast
+Error (line 27): Space before function name
+Error (line 27): declarations in cast_sprite_s are bad aligned
+Error (line 30, col 9): bad spacing
+Error (line 35): spaces at the end of line
+Error (line 40, col 8): space before ,
+Error (line 43, col 1): missing space after if
+Error (line 44): line has 86 characters
+Error (line 44, col 62): space before ,
+Error (line 47): Space before function name
+Error (line 47): declarations must be followed by one empty line in cast_lights
+Error (line 47): declarations in cast_lights are bad aligned
+Error (line 50, col 9): bad spacing
+Error (line 54, col 1): missing space after if
+Error (line 59): Empty line
+Error (line 62, col 9): space before ,
+Error (line 65, col 2): missing space after if
+Error (line 66): line has 93 characters
+Error (line 66, col 63): space before ,
+Error (line 67): Empty line
+Error (line 68, col 1): no empty line before block
+Error (line 71): Space before function name
+Error (line 71): Space before function name
+Error (line 71): Space before function name
+Error (line 71): Space before function name
+Error (line 71): declarations in cast_ray are bad aligned
+Error (line 71, col 4): bad spacing
+Error (line 77, col 4): bad spacing
+Error (line 77, col 17): space after cast
+Error (line 78): spaces at the end of line
+Error (line 87): Empty line
+Error (line 88, col 0): no empty line before block
+Norme: ./ray/srcs/ray_len.c
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14): Space before function name
+Error (line 14): Space before function name
+Error (line 14): Space before function name
+Error (line 14): Space before function name
+Error (line 14): Space before function name
+Error (line 14): Space before function name
+Error (line 14): bad spacing before ray_len
+Error (line 14, col 6): bad spacing
+Error (line 18, col 44): space before ,
+Error (line 19): Empty line
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23): Space before function name
+Error (line 23, col 6): bad spacing
+Error (line 27, col 44): space before ,
+Norme: ./ray/srcs/ray_init.c
+Error: global scope bad aligned
+Error (line 15): Space before function name
+Error (line 15): new_sp_ray have 5 parameters
+Error (line 15): line has 88 characters
+Error (line 15, col 50): bad spacing
+Error (line 19, col 26): space after sizeof
+Error (line 32, col 8): missing parentheses in return statement
+Error (line 35): Space before function name
+Error (line 39, col 23): space after sizeof
+Error (line 49, col 18): space before ,
+Error (line 52): Empty line
+Error (line 53, col 8): missing parentheses in return statement
+Norme: ./ray/srcs/ray_intersection_calculation.c
+Error (line 15): Space before function name
+Error (line 15): bad spacing after calculate_den
+Error (line 17, col 1): must have one a space after return
+Error (line 17, col 7): bad spacing
+Error (line 17, col 9): space after (
+Error (line 17, col 37): space before )
+Error (line 18): bad indentation
+Error (line 18, col 2): missing space around *
+Error (line 18, col 3): space after (
+Error (line 19): spaces at the end of line
+Error (line 19): bad indentation
+Error (line 19, col 2): space after (
+Error (line 19, col 30): space before )
+Error (line 20): bad indentation
+Error (line 20, col 4): space after (
+Error (line 20, col 32): space before )
+Error (line 23): multiple empty lines
+Error (line 24): Space before function name
+Error (line 24): bad spacing before calculate_t
+Error (line 24, col 30): space before ,
+Error (line 26): spaces at the end of line
+Error (line 26, col 9): space after (
+Error (line 27): spaces at the end of line
+Error (line 27, col 5): space after (
+Error (line 27, col 33): space before )
+Error (line 28): spaces at the end of line
+Error (line 28, col 5): space after (
+Error (line 28, col 33): space before )
+Error (line 29, col 5): space after (
+Error (line 32): Space before function name
+Error (line 32, col 30): space before ,
+Error (line 32, col 44): space before ,
+Error (line 34): spaces at the end of line
+Error (line 34, col 8): missing parentheses in return statement
+Error (line 34, col 10): space after (
+Error (line 34, col 38): space before )
+Error (line 35): spaces at the end of line
+Error (line 35, col 5): space after (
+Error (line 35, col 33): space before )
+Error (line 36, col 5): space after (
+Error (line 36, col 33): space before )
+Error (line 37, col 3): missing space around *
+Error (line 37, col 4): space after (
+Error (line 37, col 32): space before )
+Error (line 38): bad indentation
+Error (line 39): Empty line
+Error (line 40, col 0): no empty line before block
+Norme: ./ray/srcs/ray_tex_col.c
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14, col 15): global named game is not well prefixed
+Error (line 16): C++ comment
+Error (line 17): C++ comment
+Error (line 18): C++ comment
+Error (line 20): C++ comment
+Error (line 21): C++ comment
+Error (line 22): C++ comment
+Error (line 23): C++ comment
+Error (line 24): C++ comment
+Error (line 25): C++ comment
+Error (line 26): spaces at the end of line
+Error (line 26): C++ comment
+Error (line 27): C++ comment
+Error (line 28): C++ comment
+Error (line 29): C++ comment
+Error (line 31): Space before function name
+Error (line 31): Space before function name
+Error (line 31): Space before function name
+Error (line 31, col 9): bad spacing
+Error (line 38, col 5): bad spacing
+Error (line 38, col 20): bad spacing
+Error (line 40, col 5): bad spacing
+Error (line 42): spaces at the end of line
+Error (line 42): missing newline after if
+Error (line 44, col 8): missing parentheses in return statement
+Norme: ./ray/srcs/ray_render_wall.c
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14, col 15): global named game is not well prefixed
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15): declarations in render_wall_texture are bad aligned
+Error (line 15): bad spacing before render_wall_texture
+Error (line 15): line has 84 characters
+Error (line 15, col 4): bad spacing
+Error (line 15, col 39): wallHei not unixcase
+Error (line 15, col 54): space before ,
+Error (line 15, col 54): bad character after ,
+Error (line 15, col 70): space before ,
+Error (line 23, col 22): bad character after ,
+Error (line 24, col 10): bad spacing
+Error (line 27): line has 96 characters
+Error (line 27, col 23): bad spacing
+Error (line 27, col 32): space after cast
+Error (line 27, col 39): bad spacing
+Error (line 27, col 59): space before )
+Error (line 28, col 3): missing space after break
+Error (line 29, col 36): bad spacing
+Error (line 29, col 45): space after cast
+Error (line 29, col 52): bad spacing
+Error (line 30, col 17): Spacing after call to shadow
+Error (line 30, col 24): space before ,
+Error (line 31, col 31): space before ,
+Error (line 31, col 38): space before ,
+Error (line 34): spaces at the end of line
+Error (line 34, col 1): no newline after block
+Norme: ./ray/srcs/ray_intersection.c
+Error: global scope bad aligned
+Error: file must end with a single empty line
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14, col 15): global named game is not well prefixed
+Error (line 16): multiple empty lines
+Error (line 17): Space before function name
+Error (line 17): bad spacing before put_ray_pos
+Error (line 17, col 57): space before ,
+Error (line 19): Empty line
+Error (line 27): bad indentation
+Error (line 27): If is not on the same line that else
+Error (line 27, col 2): missing space after if
+Error (line 28): bad indentation
+Error (line 29): bad indentation
+Error (line 30): bad indentation
+Error (line 31): bad indentation
+Error (line 32): bad indentation
+Error (line 35): Space before function name
+Error (line 35): declarations must be followed by one empty line in put_wall_pos
+Error (line 35): declarations in put_wall_pos are bad aligned
+Error (line 35, col 23): bad spacing
+Error (line 35, col 25): space after pointer
+Error (line 35, col 31): space before ,
+Error (line 41): multiple empty lines
+Error (line 41): Empty line
+Error (line 42, col 17): space before ,
+Error (line 43, col 11): missing space around =
+Error (line 43, col 12): space after (
+Error (line 43, col 61): space before ;
+Error (line 44, col 10): missing space around =
+Error (line 44, col 11): space after (
+Error (line 44, col 29): missing space around *
+Error (line 44, col 59): space before ;
+Error (line 45, col 6): bad spacing
+Error (line 51): Space before function name
+Error (line 51): Space before function name
+Error (line 51): Space before function name
+Error (line 51): Space before function name
+Error (line 51): declarations in get_intesection_wall are bad aligned
+Error (line 51, col 4): bad spacing
+Error (line 57, col 4): bad spacing
+Error (line 57, col 26): space before ,
+Error (line 61, col 22): space before ,
+Error (line 61, col 29): space before ,
+Error (line 61, col 29): bad character after ,
+Error (line 64): Empty line
+Error (line 65, col 3): missing space after if
+Error (line 65, col 8): missing space around >
+Error (line 66, col 13): bad spacing
+Error (line 67, col 20): space before ,
+Error (line 67, col 20): bad character after ,
+Error (line 67, col 26): space before ,
+Error (line 67, col 26): bad character after ,
+Norme: ./ray/srcs/wall_init.c
+Error: file must end with a single empty line
+Error (line 15): Space before function name
+Error (line 15, col 31): space before ,
+Error (line 23, col 8): missing parentheses in return statement
+Error (line 26): multiple empty lines
+Norme: ./ray/srcs/ray_update.c
+Error (line 15): Space before function name
+Error (line 17): Empty line
+Error (line 20, col 1): missing space after if
+Error (line 26): Space before function name
+Error (line 30, col 1): missing space after if
+Norme: ./sprite_tex_parser.c
+Error: global scope bad aligned
+Error: file must end with a single empty line
+Error (line 15): comment not well formatted
+Error (line 15): spaces at the end of line
+Error (line 18): spaces at the end of line
+Error (line 19): spaces at the end of line
+Error (line 22): multiple empty lines
+Error (line 23): multiple empty lines
+Error (line 26, col 15): global named game is not well prefixed
+Error (line 28): multiple empty lines
+Error (line 29): Space before function name
+Error (line 29): declarations in parse_b_sprite are bad aligned
+Error (line 29): bad spacing before parse_b_sprite
+Error (line 36, col 15): space after cast
+Error (line 39): Empty line
+Error (line 40, col 20): space after cast
+Error (line 44, col 27): bad character after ,
+Error (line 44, col 34): space before ,
+Error (line 44, col 34): bad character after ,
+Error (line 47, col 17): space before ,
+Error (line 48): Empty line
+Error (line 49, col 0): no empty line before block
+Error (line 51): Space before function name
+Error (line 51): Space before function name
+Error (line 51): declarations in sprite_tex_parser are bad aligned
+Error (line 51, col 4): bad spacing
+Error (line 57, col 22): space before ,
+Error (line 57, col 22): bad character after ,
+Error (line 57, col 25): space before ,
+Error (line 58): spaces at the end of line
+Error (line 58, col 24): space before ,
+Error (line 64): Empty line
+Error (line 66): Empty line
+Error (line 73, col 18): space before ,
+Error (line 73, col 18): bad character after ,
+Error (line 78): multiple empty lines
+Error (line 79): multiple empty lines
+Error (line 80): multiple empty lines
+Norme: ./texture.c
+Error: global scope bad aligned
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14, col 15): global named game is not well prefixed
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): declarations in new_texture must be at the top of the function
+Error (line 16): declarations must be followed by one empty line in new_texture
+Error (line 16, col 9): bad spacing
+Error (line 20, col 5): missing space around =
+Error (line 20, col 18): space after cast
+Error (line 21, col 1): missing space after if
+Error (line 24, col 8): ptr is instanciated during declaration
+Error (line 26): spaces at the end of line
+Error (line 28): spaces at the end of line
+Error (line 30): spaces at the end of line
+Error (line 30): line has 82 characters
+Error (line 30, col 20): space after cast
+Error (line 30, col 57): space before ,
+Error (line 31, col 4): bad character after ,
+Error (line 31, col 25): space before ,
+Error (line 33, col 8): missing parentheses in return statement
+Error (line 36): Space before function name
+Error (line 36): declarations in get_sp_tex are bad aligned
+Error (line 52, col 4): missing space after break
+Error (line 56, col 8): missing parentheses in return statement
+Error (line 59): Space before function name
+Error (line 66, col 6): missing space around =
+Error (line 66, col 22): space after cast
+Error (line 67, col 2): missing space after if
+Error (line 70): spaces at the end of line
+Error (line 70, col 21): bad spacing
+Error (line 70, col 61): bad character after ,
+Error (line 72): spaces at the end of line
+Error (line 72): line has 83 characters
+Error (line 72, col 13): missing space around =
+Error (line 72, col 20): space after cast
+Error (line 72, col 57): space before ,
+Error (line 73, col 5): bad character after ,
+Error (line 73, col 26): space before ,
+Error (line 77, col 8): missing parentheses in return statement
+Norme: ./utils/srcs/ft_check_file.c
+Error (line 15): Space before function name
+Error (line 15, col 36): bad character after ,
+Error (line 24, col 9): missing parentheses in return statement
+Error (line 25, col 21): space before ,
+Error (line 27, col 9): missing parentheses in return statement
+Error (line 32, col 9): missing parentheses in return statement
+Error (line 33, col 1): missing space after while
+Norme: ./utils/srcs/ft_put_error.c
+Error (line 13): wrong number of spaces in preprocessor indentation
+Error (line 14): wrong number of spaces in preprocessor indentation
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16): Space before function name
+Error (line 16, col 4): bad spacing
+Error (line 18, col 31): space before ,
+Error (line 19, col 3): space after sizeof
+Norme: ./ray/srcs/ray_render.c
+Error: global scope bad aligned
+Error (line 15, col 15): global named game is not well prefixed
+Error (line 17): Space before function name
+Error (line 17): bad spacing after draw_ray
+Error (line 21, col 15): space after cast
+Error (line 22, col 1): missing space after if
+Error (line 24): Empty line
+Error (line 25, col 0): no empty line before block
+Error (line 26): Space before function name
+Error (line 26): bad spacing before render_wall_normal
+Error (line 26): bad spacing after render_wall_normal
+Error (line 26): line has 86 characters
+Error (line 26, col 48): space before ,
+Error (line 31, col 1): missing space after if
+Error (line 33): line has 95 characters
+Error (line 33, col 52): bad spacing
+Error (line 33, col 74): space before ,
+Error (line 33, col 74): bad character after ,
+Error (line 34, col 3): missing space around :
+Error (line 34, col 22): space before ,
+Error (line 34, col 22): bad character after ,
+Error (line 36): line has 90 characters
+Error (line 36, col 30): space before [
+Error (line 36, col 46): space before ,
+Error (line 36, col 64): space before ,
+Error (line 36, col 70): space before ,
+Error (line 36, col 70): bad character after ,
+Error (line 39): Space before function name
+Error (line 39): declarations in render_wall_pic are bad aligned
+Error (line 39): bad spacing before render_wall_pic
+Error (line 39): bad spacing after render_wall_pic
+Error (line 39): line has 82 characters
+Error (line 39, col 32): bad character after ,
+Error (line 39, col 44): space before ,
+Error (line 46): line has 92 characters
+Error (line 46, col 21): bad spacing
+Error (line 46, col 42): missing space around +
+Error (line 46, col 80): missing space around ?
+Error (line 46, col 84): missing space around :
+Error (line 47, col 21): bad spacing
+Error (line 47, col 37): missing space around -
+Error (line 47, col 40): space before )
+Error (line 47, col 41): missing space around +
+Error (line 49, col 24): bad spacing
+Error (line 53, col 1): missing space after if
+Error (line 55, col 15): missing space around =
+Error (line 55, col 16): space after (
+Error (line 55, col 54): bad spacing
+Error (line 56, col 22): space before ,
+Error (line 56, col 22): bad character after ,
+Error (line 57, col 4): missing space around :
+Error (line 57, col 23): space before ,
+Error (line 57, col 23): bad character after ,
+Error (line 57, col 38): space before )
+Error (line 58, col 4): bad spacing
+Error (line 59, col 35): space before ,
+Error (line 59, col 35): bad character after ,
+Error (line 61, col 53): space before ,
+Error (line 61, col 64): space before ,
+Error (line 62, col 9): space before ,
+Error (line 65, col 25): bad character after ,
+Error (line 65, col 30): space before ,
+Error (line 65, col 30): bad character after ,
+Error (line 65, col 39): bad character after ,
+Error (line 68): multiple empty lines
+Error (line 69): Space before function name
+Error (line 69): Space before function name
+Error (line 69): Space before function name
+Error (line 69): Space before function name
+Error (line 69): bad spacing before render_ray
+Error (line 69, col 4): bad spacing
+Error (line 76, col 1): missing space after if
+Error (line 78): line has 89 characters
+Error (line 82): spaces at the end of line
+Error (line 82): missing newline after if
+Error (line 83): spaces at the end of line
+Error (line 84, col 18): missing space around /
+Error (line 85): spaces at the end of line
+Error (line 86): line has 102 characters
+Error (line 86, col 17): bad character after ,
+Error (line 86, col 20): space before ,
+Error (line 86, col 24): bad spacing
+Error (line 88): preprocessor block must be followed by one empty line
+Error (line 89, col 22): bad character after ,
+Error (line 89, col 27): space before ,
+Error (line 89, col 27): bad character after ,
+Error (line 89, col 36): bad character after ,
+Error (line 90): preprocessor block must be followed by one empty line
+Error (line 91, col 25): bad character after ,
+Error (line 91, col 30): space before ,
+Error (line 91, col 30): bad character after ,
+Error (line 91, col 39): bad character after ,
+Error (line 92): preprocessor block must be followed by one empty line
+Error (line 93, col 1): no empty line before block
+Norme: ./utils/srcs/ft_split_property.c
+Error (line 15): Space before function name
+Error (line 15): declarations must be followed by one empty line in ft_split_property
+Error (line 15): declarations in ft_split_property are bad aligned
+Error (line 15): function ft_split_property has 29 lines
+Error (line 18, col 4): bad spacing
+Error (line 19, col 4): bad spacing
+Error (line 20, col 7): missing space around =
+Error (line 20, col 23): space after cast
+Error (line 21, col 24): bad character after ,
+Error (line 23, col 18): space before )
+Error (line 25): Empty line
+Error (line 31, col 20): space before ,
+Error (line 31, col 37): space before ,
+Error (line 31, col 41): space before ,
+Error (line 31, col 45): missing space around -
+Error (line 31, col 47): bad spacing
+Error (line 31, col 49): space before )
+Error (line 31, col 50): bad character after ,
+Error (line 32): Empty line
+Error (line 33, col 33): bad spacing
+Error (line 33, col 43): space before [
+Error (line 35): Empty line
+Error (line 37, col 41): missing space around -
+Error (line 39, col 5): space after (
+Error (line 39, col 8): bad spacing
+Error (line 41, col 40): space before ,
+Error (line 43, col 9): missing parentheses in return statement
+Error (line 45, col 8): missing parentheses in return statement
+Norme: ./sprites.c
+Error: global scope bad aligned
+Error: file must end with a single empty line
+Error (line 13): preprocessor block must be followed by one empty line
+Error (line 14, col 11): global named nb_rays is not well prefixed
+Error (line 16): Space before function name
+Error (line 16): bad spacing after get_sprite_inter
+Error (line 16): line has 87 characters
+Error (line 16, col 56): space before ,
+Error (line 24): line has 90 characters
+Error (line 24, col 2): bad spacing
+Error (line 24, col 46): space after (
+Error (line 24, col 67): space after (
+Error (line 25): line has 95 characters
+Error (line 25, col 50): space after (
+Error (line 26): line has 107 characters
+Error (line 28): missing newline after if
+Error (line 28, col 15): no newline before block
+Error (line 29, col 9): missing parentheses in return statement
+Error (line 34): line has 83 characters
+Error (line 34, col 2): must have one a space after return
+Error (line 34, col 8): bad spacing
+Error (line 34, col 10): missing parentheses in return statement
+Error (line 35, col 13): space after (
+Error (line 37, col 8): missing parentheses in return statement
+Error (line 40): multiple empty lines
+Error (line 41): Space before function name
+Error (line 41): Space before function name
+Error (line 41): Space before function name
+Error (line 41): Space before function name
+Error (line 41): declarations in cast_sprite are bad aligned
+Error (line 41): bad spacing before cast_sprite
+Error (line 41): function cast_sprite has 27 lines
+Error (line 41, col 4): bad spacing
+Error (line 41, col 68): space before ,
+Error (line 41, col 68): bad character after ,
+Error (line 48): line has 121 characters
+Error (line 48, col 6): bad spacing
+Error (line 48, col 71): space before ,
+Error (line 48, col 99): missing space around *
+Error (line 49, col 32): space before ,
+Error (line 51, col 1): missing space after if
+Error (line 53, col 18): space before ,
+Error (line 55, col 2): missing space after if
+Error (line 57, col 3): missing space after if
+Error (line 59, col 33): space before ,
+Error (line 59, col 46): space before ,
+Error (line 61, col 7): bad spacing
+Error (line 61, col 10): missing space after if
+Error (line 63, col 30): space before ,
+Error (line 65): Empty line
+Error (line 66, col 2): no empty line before block
+Error (line 72): Space before function name
+Error (line 72): Spacing after function name
+Error (line 72): declarations must be followed by one empty line in get_angle
+Error (line 72, col 27): space before ,
+Error (line 72, col 27): bad character after ,
+Error (line 76, col 9): missing parentheses in return statement
+Error (line 78, col 8): missing parentheses in return statement
+Error (line 81): Space before function name
+Error (line 81): declarations in new_sprite must be at the top of the function
+Error (line 81): declarations must be followed by one empty line in new_sprite
+Error (line 81): declarations in new_sprite are bad aligned
+Error (line 85, col 12): sp is instanciated during declaration
+Error (line 85, col 29): space after cast
+Error (line 85, col 38): Spacing after call to malloc
+Error (line 90, col 32): space before ,
+Error (line 91, col 21): Spacing after call to get_angle
+Error (line 91, col 33): space before ,
+Error (line 92, col 6): bad spacing
+Error (line 94, col 8): missing parentheses in return statement
+Norme: ./utils/srcs/get_current_time.c
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15): missing void in function get_current_time
+Error (line 15, col 9): bad spacing
+Error (line 20): spaces at the end of line
+Error (line 20, col 20): space before )
+Error (line 20, col 20): space after cast
+Error (line 20, col 56): space before )
+Error (line 20, col 56): space after cast
+Norme: ./utils/includes/utils.h
+Error: global scope bad aligned
+Error (line 14): wrong number of spaces in preprocessor indentation
+Error (line 15): wrong number of spaces in preprocessor indentation
+Error (line 16): wrong number of spaces in preprocessor indentation
+Error (line 17): wrong number of spaces in preprocessor indentation
+Error (line 18): wrong number of spaces in preprocessor indentation
+Error (line 23, col 9): bad spacing
+Error (line 24, col 36): bad character after ,
+Norme: ./vector_util.c
+Error: global scope bad aligned
+Error: file must end with a single empty line
+Error: 9 functions in the file
+Error (line 15, col 15): global named game is not well prefixed
+Error (line 17): Space before function name
+Error (line 17): bad spacing after new_vector
+Error (line 17, col 34): bad character after ,
+Error (line 26, col 17): bad spacing
+Error (line 28, col 8): missing parentheses in return statement
+Error (line 30): Space before function name
+Error (line 30): bad spacing before new_vector_pointer
+Error (line 44, col 18): bad spacing
+Error (line 48, col 8): missing parentheses in return statement
+Error (line 51): Space before function name
+Error (line 53, col 16): space after cast
+Error (line 53, col 38): space after arrow
+Error (line 56): Space before function name
+Error (line 56, col 24): space before ,
+Error (line 63): Space before function name
+Error (line 70): Space before function name
+Error (line 70): declarations must be followed by one empty line in con
+Error (line 70): bad spacing after con
+Error (line 72, col 11): vert1 is instanciated during declaration
+Error (line 72, col 30): space after cast
+Error (line 73, col 10): space after arrow
+Error (line 73, col 16): bad spacing
+Error (line 74, col 9): missing parentheses in return statement
+Error (line 75, col 8): missing parentheses in return statement
+Error (line 78): multiple empty lines
+Error (line 79): Space before function name
+Error (line 79): Bad spacing for argument this
+Error (line 79): bad spacing before compare_to
+Error (line 79, col 19): bad spacing
+Error (line 79, col 27): space before ,
+Error (line 81, col 17): space after cast
+Error (line 82, col 2): must have one a space after return
+Error (line 82, col 8): bad spacing
+Error (line 82, col 10): missing parentheses in return statement
+Error (line 83, col 17): space after cast
+Error (line 84, col 2): must have one a space after return
+Error (line 84, col 8): bad spacing
+Error (line 84, col 10): missing parentheses in return statement
+Error (line 85, col 8): missing parentheses in return statement
+Error (line 88): Space before function name
+Error (line 93): Space before function name
+Error (line 95): spaces at the end of line
+Error (line 96): spaces at the end of line
+Error (line 96, col 17): missing space around /
+Error (line 96, col 34): space before ,
+Error (line 97, col 27): missing space around /
+Error (line 100): multiple empty lines
