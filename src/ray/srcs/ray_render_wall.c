@@ -12,6 +12,7 @@
 
 #include "cub3d.h"
 extern t_game *game;
+
 void   render_wall_texture(double p[], double wallHei ,t_texture *tex , double dis)
 {
 	int color;

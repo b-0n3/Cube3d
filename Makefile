@@ -5,6 +5,7 @@ PARSER=./src/parser/srcs/*.c
 PARSERINC=./src/parser/includes/
 GNL=./src/getnextline/*.c
 LINEINC=./src/line/includes/
+LINE=./src/line/srcs/*.c
 AL=./src/arraylist/srcs/*.c
 ALINC=./src/arraylist/includes/
 PLAYER=./src/player/srcs/*.c
@@ -26,6 +27,6 @@ FLAGS = -Wall -Wextra -Werror
 # fs:
 # 	gcc $(FS) ./Tools/*.c ./Tools/GetNextLine/*.c ./Tools/libft/*.c -L/usr/X11/lib /usr/X11/lib/libmlx.a -lXext -lX11  -lm -I ./Tools/Headers -I ./keys -g 
 me:
-	gcc   -lmlx -framework OpenGL -framework AppKit $(SRC) $(GAME) $(RAY) $(LIBFT) $(PARSER) $(GNL) $(AL) $(PLAYER) $(UTILS)  -I $(GAMEINC) -I $(LIBFTINC) -I $(ALINC)  -I $(UTILSINC) -I $(PARSERINC)   -I $(INC)  -I $(LINEINC) -I $(PLAYERINC)  -I $(KEYS) -I $(RAYINC) -g -O3
+	gcc   -lmlx -framework OpenGL -framework AppKit $(SRC) $(LINE) $(GAME) $(RAY) $(LIBFT) $(PARSER) $(GNL) $(AL) $(PLAYER) $(UTILS)  -I $(GAMEINC) -I $(LIBFTINC) -I $(ALINC)  -I $(UTILSINC) -I $(PARSERINC)   -I $(INC)  -I $(LINEINC) -I $(PLAYERINC)  -I $(KEYS) -I $(RAYINC) -g -O3
 bonus:
-	gcc  -D BONUS=1  -lmlx -framework OpenGL -framework AppKit $(SRC) $(GAME) $(RAY) $(LIBFT) $(PARSER) $(GNL) $(AL) $(PLAYER) $(UTILS) -I $(GAMEINC)  -I $(LIBFTINC) -I $(ALINC)  -I $(UTILSINC) -I $(PARSERINC)   -I $(INC)  -I $(LINEINC) -I $(PLAYERINC)  -I $(KEYS) -I $(RAYINC)   -g -O3
+	gcc  -D BONUS=1  -lmlx -framework OpenGL -framework AppKit $(SRC) $(LINE) $(GAME) $(RAY) $(LIBFT) $(PARSER) $(GNL) $(AL) $(PLAYER) $(UTILS) -I $(GAMEINC)  -I $(LIBFTINC) -I $(ALINC)  -I $(UTILSINC) -I $(PARSERINC)   -I $(INC)  -I $(LINEINC) -I $(PLAYERINC)  -I $(KEYS) -I $(RAYINC)   -g -O3

@@ -53,8 +53,8 @@ void free_wall(void  * item)
 
 void free_ray_sp(void *item)
 {
-	t_ray *ray;
-	ray  = (t_ray  *) item;
+	t_ray_sp *ray;
+	ray  = (t_ray_sp  *) item;
 	if(ray != NULL)
 	{
 		if(ray->dir != NULL)

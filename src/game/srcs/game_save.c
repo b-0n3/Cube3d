@@ -80,6 +80,8 @@ void	save_first_frame_in_bmp_file(t_game *this)
 	write(fd, header, 54);
 	write(fd, buf, imagesize);
 	close(fd);
+	free(buf);
+	free(header);
 }
 void save_game(t_game *this)
 {

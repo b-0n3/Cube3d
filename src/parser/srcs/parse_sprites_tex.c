@@ -108,4 +108,8 @@ void parse_sprite(t_parser *this, t_token *token, int kind)
 				if (!push_sp_texture(tex))
 					put_error(this->g , ft_strdup("invalid sprite texture"));
 	}
+#ifdef BONUS
+	free(token->token);
+#endif
+	free(filename);
 }

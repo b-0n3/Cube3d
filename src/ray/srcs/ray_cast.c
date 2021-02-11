@@ -84,5 +84,5 @@ void    cast_ray(void *r)
 	}
 	cast_sprite_s(ray);
 	cast_lights(ray);
-
+	
 }

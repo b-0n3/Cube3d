@@ -40,6 +40,7 @@ void parse_floor_color(t_game *this, t_token *token)
 			put_error(this,ft_strdup("invalid floor color"));
 		else
 			this->color[4] = color;
+		free(word.arr);
 	}
 }
 
@@ -54,5 +55,6 @@ void parse_floor_tex(t_game *this, t_token *token)
 		put_error(this , ft_strdup("invalid floor texture file"));
 	else
 		this->floor = new_sp_texture(filename, 10);
-
+	free(filename);
+	
 }

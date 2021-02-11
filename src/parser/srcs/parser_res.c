@@ -71,6 +71,7 @@ void parse_resultion(t_parser *this , t_token *token)
 		else 
 			put_error(this->g , ft_strdup("invalid resulotion"));
 		init_window(this->g, h, w);
+		free(line);
 		word.free(&word , &free);
 	}
 	else

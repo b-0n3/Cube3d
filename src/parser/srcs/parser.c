@@ -109,8 +109,6 @@ void   parser_do_final(t_parser *this)
 	this->get_lines(this);
 	this->parse_file(this);
 	init_tex();
-	if (game->errors.index > 0)
-		return;
 	parse_properties(this);
 	parse_map(this);
 	this->tokens.free(&this->tokens,&free_token);

@@ -71,5 +71,6 @@ void parse_ceilling_color(t_game *this, t_token *token)
 			put_error(this,ft_strdup("invalid ceilling color"));
 		else
 			this->color[5] = color;
+		free(word.arr);
 	}
 }

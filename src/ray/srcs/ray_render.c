@@ -21,7 +21,7 @@ void draw_ray(void *item)
 	ray = (t_ray *) item;
 	if(ray != NULL)
 		ray->render(ray);
-
+	
 }
 void render_wall_normal(t_ray *this, double end , double wall_hei, double correctdis)
 {
@@ -90,5 +90,6 @@ void    render_ray(t_ray *this)
 #else
 		render_wall_normal(this,end ,wall_hei,correctdis);
 #endif
+		
 	}
 }

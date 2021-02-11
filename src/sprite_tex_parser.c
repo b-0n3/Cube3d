@@ -42,6 +42,9 @@ void parse_b_sprite(void *item)
 		new_token(token, *list);
 		kind = ft_atoi(token->token);
 		parse_sprite(game->parser,token ,kind);
+
+		free(list->arr);
+		free(list);
 	}
 	else
 		put_error(game , ft_strdup("invalid sp1 texture"));
@@ -61,9 +64,7 @@ void  sprite_tex_parser(char *line)
 	else
 	{
 		l = data.pull(&data);
-
 		nb = ft_atoi(l);
-
 		free(l);
 		if (nb > 0)
 		{

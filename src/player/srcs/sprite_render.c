@@ -35,6 +35,7 @@ void render_sprite_c(t_ray_sp *this,double end , double wall_hei,double correctd
 		tsp->offset = fabs(tsp->offset);
 		render_sprite_texture((double []){this->index, end}, wall_hei, tsp, correctdis);
 	}
+	free_line(tang);
 }
 
 void  draw_sprit(void *item)

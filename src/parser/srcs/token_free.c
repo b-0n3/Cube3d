@@ -6,7 +6,7 @@ void free_token(void *item)
 
     if (this != NULL)
     {
-        if (this->token != NULL)
+        if (this->token!= NULL)
             free(this->token);
         if (this->values.arr != NULL)
             this->values.free(&this->values, &free);

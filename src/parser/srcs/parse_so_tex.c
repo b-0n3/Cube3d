@@ -47,14 +47,13 @@ void parse_so_tex(t_parser *this, t_token *token)
 			else
 			{
 				tex = new_texture(filename);
-
 				if(tex == NULL)
 					put_error(this->g , ft_strdup("invalid so texture"));
 				else{
 					this->g->so_texture = tex;
 				}
 			}
+			free(filename);
 		}
 	}
-
 }

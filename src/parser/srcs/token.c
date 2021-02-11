@@ -14,12 +14,16 @@
 
 void new_token(t_token *this, t_array_list list)
 {
+	char *token;
+
 	if (this != NULL && list.arr != NULL )
 	{
-		this->token = ft_strdup(list.pull(&list));
+		token = list.pull(&list);
+		this->token = ft_strdup(token);
 		this->free = &free_token;
 		new_array_list(&(this->values), 1,sizeof(char *));
 		token_push_values(this, list);
+		free(token);
 	}
 }
 
@@ -27,22 +31,27 @@ void new_empty_token(t_token *this, char *token)
 {
 	if (this != NULL && token != NULL )
 	{
-		this->token = token;
+		this->token = ft_strdup(token);
 		this->free = &free_token;
 		new_array_list(&(this->values), 1, sizeof(char *));
+		free(token);
 	}
 }
 
 t_bool token_push_values(t_token *this,t_array_list list)
 {
 	char *line;
-
+	int index = 0;
 
 	if(this == NULL || this->values.arr == NULL || list.arr == NULL)
 		return (FALSE);
 
-	while ((line = list.pull(&list)) != NULL)
-		token_push_value(this,line);
+	while ((line = list.get(&list, index)) != NULL)
+	{
+		token_push_value(this, line);
+		index++;
+		free(line);
+	}
 	return (TRUE);
 }
 

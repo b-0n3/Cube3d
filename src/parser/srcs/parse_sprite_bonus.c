@@ -42,9 +42,10 @@ void  *map_token(void *item)
 		if (ptr != NULL)
 			while (i < token->values.index)
 			{
-				tmp = (char *) token->values.get(&(token->values), i);
-				ptr = ft_strjoin(ptr, tmp);
-				//    ptr = tmp;
+
+				tmp = ptr;
+				ptr = ft_strjoin(ptr,  (char *) token->values.get(&(token->values), i));
+				free(tmp);
 				i++;
 			}
 	}
@@ -70,5 +71,7 @@ void parse_sprite_bonus(t_parser *this){
 				sizeof(char *), &bonus_sp_condition, &map_token);
 		if (lines != NULL)
 			lines->foreach(lines, &parse_sp_line);
+		lines->foreach(lines , &free);
+		free(lines);
 	}
 }

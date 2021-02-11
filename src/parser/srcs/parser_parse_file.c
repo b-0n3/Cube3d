@@ -27,6 +27,7 @@ void parser_parse_file(t_parser *this)
 		this->lines.foreach(&(this->lines), &parse_token);
 		verify_map(parser);
 		keywords->free(keywords,&free);
+		free(keywords);
 	}
 }
 
@@ -65,7 +66,6 @@ void put_token(t_parser *p , t_array_list word)
 	t_token *token;
 	if (get_token_by_key(p, (char *) word.get(&word,0)) == NULL){
 		token = (t_token *) malloc(sizeof(t_token));
-
 		new_token(token, word);
 		p->tokens.push(&(p->tokens),token , sizeof(t_token *));
 	}
@@ -75,7 +75,6 @@ void put_token(t_parser *p , t_array_list word)
 
 t_bool map_ended(char *line, t_bool *var)
 {
-
 
 	if( var == NULL)
 		*var = FALSE;
@@ -106,6 +105,8 @@ void parse_token(void *item)
 					put_token(parser , *word);
 			}else
 				put_error(parser->g,ft_strjoin("invalid line :\n", line));
+			
+			free(word);
 		}
 		else if(((map_created() || map_ended(line, &var )) && !ft_is_empty(line)))
 			put_error(parser->g,ft_strjoin("propeties after map line :\n", line));
@@ -122,7 +123,7 @@ t_bool create_map(char *line)
 	else
 	{
 		token = (t_token *) malloc(sizeof(t_token ));
-		new_empty_token(token,ft_strdup("MAP"));
+		new_empty_token(token, ft_strdup("MAP"));
 		if(token != NULL)
 			parser->tokens.push(&(parser->tokens),token,sizeof(t_token *));
 	}

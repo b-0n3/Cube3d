@@ -62,6 +62,7 @@ void parse_we_tex(t_parser *this, t_token *token)
 					this->g->we_texture = tex;
 
 			}
+			free(filename);
 		}
 	}
 

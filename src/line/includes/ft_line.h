@@ -19,4 +19,5 @@ typedef struct s_line {
 	t_vector *dir;
 }   t_line;
 
+void free_line(t_line line);
 #endif
