@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   graphics.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aait-ham <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/09 19:53:58 by aait-ham          #+#    #+#             */
+/*   Updated: 2021/02/09 19:54:00 by aait-ham         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 t_window windo;
@@ -33,7 +45,7 @@ void	circle(t_vector a, int radius, int color)
 	step = (M_PI / 180);
 	while (angle <= (2 * M_PI))
 	{
-    
+
 		ft_line(a.x, a.y, radius , angle, color);
 		angle += step;
 		col++;
@@ -42,19 +54,19 @@ void	circle(t_vector a, int radius, int color)
 
 void rec(int  x ,int  y, int  sizex ,int sizey, int color)
 {
-  int x2 = x + sizex;
-  int y2 = y+ sizey;
-  int vx =  x;
-  while (y < y2)
-  {
-    vx = x;
-      while (vx < x2)
-        {
-          game->window.img->put_pixel(game->window ,  vx, y ,color);
-          vx++;
-        }
-        y += 1;
-  }
+	int x2 = x + sizex;
+	int y2 = y+ sizey;
+	int vx =  x;
+	while (y < y2)
+	{
+		vx = x;
+		while (vx < x2)
+		{
+			game->window.img->put_pixel(game->window ,  vx, y ,color);
+			vx++;
+		}
+		y += 1;
+	}
 
 }
 
@@ -70,13 +82,13 @@ void	line(int x0, int y0, int x1, int y1, int color)
 	dx = x1 - x0;
 	dy = y1 - y0;
 	steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
- // steps = fmax(dx, dy);
-  xinc = dx / (float)steps;
+	// steps = fmax(dx, dy);
+	xinc = dx / (float)steps;
 	yinc = dy / (float)steps;
 	i = -1;
 	while (++i <= steps)
 	{
-    image_put_pixel(game->window, x0, y0, color);
+		image_put_pixel(game->window, x0, y0, color);
 		x0 += xinc;
 		y0 += yinc;
 	}
@@ -85,35 +97,35 @@ void	line(int x0, int y0, int x1, int y1, int color)
 
 void    ft_line(float x, float y, int size ,float angle, int color)
 {
-    int r = 0;
-    float or_x = x;
-    float or_y = y;
-    while (r < size)
-    {
-        x = or_x + (r * cos(angle));
-        y = or_y + (r * sin(angle));
-        game->window.img->put_pixel(game->window , (int) x, (int)y ,color);
-        r++;
-    }
+	int r = 0;
+	float or_x = x;
+	float or_y = y;
+	while (r < size)
+	{
+		x = or_x + (r * cos(angle));
+		y = or_y + (r * sin(angle));
+		game->window.img->put_pixel(game->window , (int) x, (int)y ,color);
+		r++;
+	}
 }
 
 void    init_image(t_image *this,t_window win)
 {
-  if(this != NULL)
-  {
-    this->img_ptr = mlx_new_image(win.mlx, game->width, game->heigth);
-    this->img_data = mlx_get_data_addr(this->img_ptr, &this->bpp, &this->size_line, &this->endian);
-    this->put_pixel = &image_put_pixel;
-    this->clear = &clear_screen;
-    this->show = &show_image;
-  }
+	if(this != NULL)
+	{
+		this->img_ptr = mlx_new_image(win.mlx, game->width, game->heigth);
+		this->img_data = mlx_get_data_addr(this->img_ptr, &this->bpp, &this->size_line, &this->endian);
+		this->put_pixel = &image_put_pixel;
+		this->clear = &clear_screen;
+		this->show = &show_image;
+	}
 }
 int rgb_to_int(int r, int g, int b)
 {
-int c = r;
-  c = (c << 8) | g;
-  c = (c << 8) | b;
-  return c;
+	int c = r;
+	c = (c << 8) | g;
+	c = (c << 8) | b;
+	return c;
 }
 
 int		shadow(int color, double distance)
@@ -135,39 +147,39 @@ int		shadow(int color, double distance)
 	return (rgb_to_int(r, g, b));
 }
 
- 
+
 void image_put_pixel(t_window v , int x, int y, int color)
 {
-  int i;
+	int i;
 
-  if (x < 0 || y < 0  || x >= game->width || y >= game->heigth)
-      return;
-  i = x * v.img->bpp / 8 + y * v.img->size_line;
-  v.img->img_data[i] = color & 0xFF; 
-  v.img->img_data[i + 1] = (color & 0xFF00) >> 8; 
-  v.img->img_data[i + 2] = (color & 0xFF0000) >> 16; 
+	if (x < 0 || y < 0  || x >= game->width || y >= game->heigth)
+		return;
+	i = x * v.img->bpp / 8 + y * v.img->size_line;
+	v.img->img_data[i] = color & 0xFF; 
+	v.img->img_data[i + 1] = (color & 0xFF00) >> 8; 
+	v.img->img_data[i + 2] = (color & 0xFF0000) >> 16; 
 
 }
 
 void clear_screen( t_window v)
 {
-  int x = 0;
-  int y = 0;
- 
- while (y < game->heigth)
-{  
-    x =0;
-  while (x < game->width)
-  {
-    v.img->put_pixel(v, x , y , 0);
-    x++;
-  }
-  y++;
-}
-    v.img->show(v);
+	int x = 0;
+	int y = 0;
+
+	while (y < game->heigth)
+	{  
+		x =0;
+		while (x < game->width)
+		{
+			v.img->put_pixel(v, x , y , 0);
+			x++;
+		}
+		y++;
+	}
+	v.img->show(v);
 }
 
 void show_image(t_window v)
 {
-  mlx_put_image_to_window(v.mlx, v.win, v.img->img_ptr,0,0);
+	mlx_put_image_to_window(v.mlx, v.win, v.img->img_ptr,0,0);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game_save.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aait-ham <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/09 19:39:44 by aait-ham          #+#    #+#             */
+/*   Updated: 2021/02/09 19:39:47 by aait-ham         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	fill_header(unsigned char **header, int imagesize,t_game *this)
@@ -71,6 +83,6 @@ void	save_first_frame_in_bmp_file(t_game *this)
 }
 void save_game(t_game *this)
 {
-    save_first_frame_in_bmp_file(this);
-    this->exit(this, NULL);
+	save_first_frame_in_bmp_file(this);
+	this->exit(this, NULL);
 }

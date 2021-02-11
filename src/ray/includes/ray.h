@@ -1,37 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ray.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aait-ham <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/09 19:49:39 by aait-ham          #+#    #+#             */
+/*   Updated: 2021/02/09 19:49:40 by aait-ham         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # ifndef FT_RAY_H
 #define FT_RAY_H
 
 #include "vector.h"
 
 typedef struct s_ray{
-        t_vector *pos;
-        t_vector *dir;
-        double   len;
-        int     kind;
-        double   angle;
-        int index;
-        int coli;
-        void (*update)(struct s_ray *this, double angle, int i);
-        void    (*cast)(void *ray);
-        void    (*render)(struct s_ray *this);
-        double (*length)(struct s_ray *this);
-        void (*free)(void *item);
+	t_vector *pos;
+	t_vector *dir;
+	double   len;
+	int     kind;
+	double   angle;
+	int index;
+	int coli;
+	void (*update)(struct s_ray *this, double angle, int i);
+	void    (*cast)(void *ray);
+	void    (*render)(struct s_ray *this);
+	double (*length)(struct s_ray *this);
+	void (*free)(void *item);
 }       t_ray;
 
 typedef struct s_ray_sp{
-        t_vector *pos;
-        t_vector *dir;
-        int     offset;
-        int     kind;
-        double   angle;
-        int index;
-        double dist;
-        struct s_sptites *sp;
-        void    (*cast)(void *ray);
-        void    (*render)(struct s_ray_sp *this);
-        double (*length)(struct s_ray_sp *this);
-        void (*update)(struct s_ray_sp *this, t_vector *dir, struct s_sptites *sp);
-        void (*free)(void *item);
+	t_vector *pos;
+	t_vector *dir;
+	int     offset;
+	int     kind;
+	double   angle;
+	int index;
+	double dist;
+	struct s_sptites *sp;
+	void    (*cast)(void *ray);
+	void    (*render)(struct s_ray_sp *this);
+	double (*length)(struct s_ray_sp *this);
+	void (*update)(struct s_ray_sp *this, t_vector *dir, struct s_sptites *sp);
+	void (*free)(void *item);
 } t_ray_sp;
 
 /* ray  function*/

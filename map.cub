@@ -6,7 +6,7 @@
   # G gun  tex 10
  #D ./texture/barrel.xpm
     #S      ./texture/table.xpm
-4 | 3 ./texture/wor.xpm  | 4  ./texture/table.xpm | 2 ./texture/eagle.xpm  | 5 ./texture/lamp.xpm 
+4 | 3 ./texture/wor.xpm  | 4  ./texture/barrel.xpm | 2 ./texture/eagle.xpm  | 5 ./texture/lamp.xpm 
   WE  ./texture/bluestone.xpm
    C    255 , 22 , 255
     NO  ./texture/colorstone.xpm
@@ -19,7 +19,7 @@
 # 3 | 6   ./texture/barrel.xpm | 7  ./texture/barrel.xpm |  9  ./texture/barrel.xpm
 # 3 | 1  ./texture/barrel.xpm | 3   ./texture/barrel.xpm |  4  ./texture/barrel.xpm
 
-   R    1500   1100
+   R    1500   1100 
 
 
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aait-ham <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/09 19:38:48 by aait-ham          #+#    #+#             */
+/*   Updated: 2021/02/09 19:38:51 by aait-ham         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_GAME_H
 #define FT_GAME_H
 
@@ -7,40 +19,40 @@
 # include "ray.h"
 
 typedef struct s_wall{
-        t_vector  *pos;
-        t_vector  *dir;
-        int     kind;
+	t_vector  *pos;
+	t_vector  *dir;
+	int     kind;
 }               t_wall;
 
 
 
 typedef struct s_sptites{
-        t_vector *pos;
-        double    rad;
-        int kind;
-        double u_a;
-        double d_a;
-        double a_p_r;
-        void (*free)(void *item);
+	t_vector *pos;
+	double    rad;
+	int kind;
+	double u_a;
+	double d_a;
+	double a_p_r;
+	void (*free)(void *item);
 }       t_sprites;
- 
+
 typedef struct s_window {
-            void *mlx;
-            void *win;
-            struct s_image *img;
+	void *mlx;
+	void *win;
+	struct s_image *img;
 }                t_window;
 
 typedef struct s_image
 {
-        int     bpp;
-        int     size_line;
-        int     endian;
-        void    *img_ptr;
-        char    *img_data;
-        int      len;
-        void (*clear)(t_window s_win);
-        void (*show)(t_window s_win);
-        void (*put_pixel)(t_window v, int x, int y , int color);
+	int     bpp;
+	int     size_line;
+	int     endian;
+	void    *img_ptr;
+	char    *img_data;
+	int      len;
+	void (*clear)(t_window s_win);
+	void (*show)(t_window s_win);
+	void (*put_pixel)(t_window v, int x, int y , int color);
 }       t_image;
 
 typedef struct s_sp_texture
@@ -48,20 +60,20 @@ typedef struct s_sp_texture
 	int		*data;
 	int	    width;
 	int		height;
-  int  kind;
-  float   offset;
-  int borders[4];
-  float hsize;
-  float wsize;
-  t_image img;
-  
+	int  kind;
+	float   offset;
+	int borders[4];
+	float hsize;
+	float wsize;
+	t_image img;
+
 }  t_sp_texture;
 
 typedef	struct		s_texture
 {
-  float offset;
+	float offset;
 	int		*data;
-  t_image img;
+	t_image img;
 	int	        width;
 	int		height;
 
@@ -70,31 +82,31 @@ typedef	struct		s_texture
 
 
 typedef struct s_game{
-        t_window window;
-        t_texture *so_texture;
-        t_texture *ea_texture;
-        t_texture *n_texture;
-        t_texture *we_texture;
-        t_sp_texture *floor;
-        t_sp_texture *ceil;
-        int  color[6];
-        double     hvalue;
-        double     wvalue;
-        int     heigth;
-        int     width;
-        int     bi;
-        t_player  player;
-        t_array_list lights;
-        t_array_list allocated_sp_tex;
-        t_array_list allocated_tex;
-        t_array_list errors;
-        t_array_list walls;
-        t_array_list sprites;
-        t_array_list doors;
-        struct s_parser    *parser;
-        void (*save)(struct s_game *this);
-        void (*exit)(struct s_game *this , char *err_msg);
-        void (*free)(void *this);
+	t_window window;
+	t_texture *so_texture;
+	t_texture *ea_texture;
+	t_texture *n_texture;
+	t_texture *we_texture;
+	t_sp_texture *floor;
+	t_sp_texture *ceil;
+	int  color[6];
+	double     hvalue;
+	double     wvalue;
+	int     heigth;
+	int     width;
+	int     bi;
+	t_player  player;
+	t_array_list lights;
+	t_array_list allocated_sp_tex;
+	t_array_list allocated_tex;
+	t_array_list errors;
+	t_array_list walls;
+	t_array_list sprites;
+	t_array_list doors;
+	struct s_parser    *parser;
+	void (*save)(struct s_game *this);
+	void (*exit)(struct s_game *this , char *err_msg);
+	void (*free)(void *this);
 }               t_game;
 # include "parser.h"
 void save_game(t_game *this);

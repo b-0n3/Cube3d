@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   array_list_operation.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aait-ham <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/09 19:37:04 by aait-ham          #+#    #+#             */
+/*   Updated: 2021/02/09 19:37:13 by aait-ham         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "array_list.h"
 
 
 /*
-	@autor b0n3@1337
-*/
+   @autor b0n3@1337
+   */
 t_bool push(t_array_list *this, void *value, size_t size_of_item)
 {
 	if (this != NULL)
@@ -93,13 +105,13 @@ void *pull(t_array_list *this)
 	return ptr;
 }
 /*
-	@author b0n3@1337
+   @author b0n3@1337
  *	this{ 1,1,2,3,4,5,5,6,7}
-	    i      /
-	[1,1,2,4,5,5,6,7]
-	this function  return item with the index  i and delete it from the array List 
-	@param this (pointer to this arrayList ) / index item index	
-	@return this[i]
+ i      /
+ [1,1,2,4,5,5,6,7]
+ this function  return item with the index  i and delete it from the array List 
+ @param this (pointer to this arrayList ) / index item index	
+ @return this[i]
  */
 
 void *pull_index(t_array_list *this , size_t index)

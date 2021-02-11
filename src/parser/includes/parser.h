@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aait-ham <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/09 19:43:20 by aait-ham          #+#    #+#             */
+/*   Updated: 2021/02/09 19:47:35 by aait-ham         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PARSER_H
 #define FT_PARSER_H
 
@@ -13,21 +25,21 @@
 # include "game.h" 
 
 typedef struct s_token{
-        char *token;
-        t_array_list values;
-        void (*free)(struct s_token *this);
+	char *token;
+	t_array_list values;
+	void (*free)(void *this);
 }               t_token;
 
 typedef struct s_parser{
-        t_array_list lines;
-        t_array_list tokens;
-        int             fd;
-        struct s_game          *g;
-        void (*get_lines)(struct s_parser *this);
-        int (*get_fd)(char *filename);
-        void (*parse_file)(struct s_parser *this);
-        void  (*do_final)( struct s_parser *this);
-        void (*free)(void *this);
+	t_array_list lines;
+	t_array_list tokens;
+	int             fd;
+	struct s_game          *g;
+	void (*get_lines)(struct s_parser *this);
+	int (*get_fd)(char *filename);
+	void (*parse_file)(struct s_parser *this);
+	void  (*do_final)( struct s_parser *this);
+	void (*free)(void *this);
 }           t_parser;
 
 t_bool check_empty_line(char *line);
@@ -86,12 +98,13 @@ void parse_sprite_bonus(t_parser *this);
 t_bool ft_is_empty(char *line);
 /*
  *** token 
-*/
+ */
 void new_token(t_token *this, t_array_list list);
 void new_empty_token(t_token *this, char *token);
 t_bool token_push_values(t_token *this,t_array_list list);
 t_bool token_push_value(t_token *this,char *line);
 void get_sprites(t_parser *this);
 void parse_map(t_parser *this);
+void free_token(void *item);
 
 #endif
