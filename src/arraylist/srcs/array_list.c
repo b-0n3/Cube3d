@@ -10,22 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "array_list.h"
+#include "array_list.h"
 
 /*
- ***  @param first_size : array initial size 
- ***  @param __sizeofit : sizeof element
- ***  @ param this :  ! please make sure the pointer you passing is already
- ***               allocated or expect a  bus error
- */
-t_array_list *new_array_list(t_array_list *this, size_t first_size, size_t __sizeofit)
+***  @param first_size : array initial size
+***  @param __sizeofit : sizeof element
+***  @ param this :  ! please make sure the pointer you passing is already
+***               allocated or expect a  bus error
+*/
+
+t_array_list	*new_array_list(
+					t_array_list *this, size_t first_size, size_t sizeofit)
 {
-	this->arr = (void *)malloc (first_size * __sizeofit);
+	this->arr = (void *)malloc(first_size * sizeofit);
 	if (this->arr != NULL)
 	{
 		this->index = 0;
 		this->length = first_size;
-		this->size_of_object = __sizeofit;
+		this->size_of_object = sizeofit;
 		this->push = &push;
 		this->get = &get;
 		this->check_size = &check_size;
@@ -35,34 +37,12 @@ t_array_list *new_array_list(t_array_list *this, size_t first_size, size_t __siz
 		this->delete_if = &delete_if;
 		this->sort = &sort;
 		this->free = &array_list_free;
-		this->update_at = &update_at;   
+		this->update_at = &update_at;
 		this->swap = &ft_swap;
 		this->pull = &pull;
 		this->pull_i = &pull_index;
 		this->filter = &filter_list;
-		return this;
+		return (this);
 	}
-	return NULL;
+	return (NULL);
 }
-
-void foreach(t_array_list *this ,void (*f)(void *item))
-{
-	size_t i;
-
-	i = 0;
-	while (i < this->index)
-	{
-		if (this->arr[i] != NULL)
-			f(this->arr[i]);
-		i++;
-	}
-}
-
-void ft_swap(void **a, void **b)
-{
-	void *temp;
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
