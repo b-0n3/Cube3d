@@ -55,10 +55,10 @@ void new_player(t_player *this , t_vector *pos, char ch)
 	this->render= &render_player;
 	this->pos = pos;
 	this->vpos = new_vector_pointer(pos->x, pos->y);
-	this->mov_speed =12;
+	this->mov_speed =8;
 	this->update = &update_player;
 	this->side_angle = 0;
-	this->rotation_speed = this->mov_speed  * 0.0174533;
+	this->rotation_speed = this->mov_speed  * 0.0154533;
 	this->w_dir = 0;
 	this->t_dir = 0;
 	this->offset = 0;

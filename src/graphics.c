@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-t_window windo;
+
 extern t_game *game;
 
 // void draw_rec(t_window wi ,t_vector pos , int size , int color)

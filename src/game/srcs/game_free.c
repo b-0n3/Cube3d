@@ -14,7 +14,7 @@
 
 void free_game(void *t)
 {
-	t_game *this  = (t_game *) t;
+	t_game *this  = (t_game *)t;
 
 
 	    this->parser->free(this->parser);

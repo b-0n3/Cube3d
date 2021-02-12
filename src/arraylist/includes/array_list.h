@@ -56,7 +56,7 @@ t_bool new_array_double_size(t_array_list *this);
 void foreach(t_array_list *this ,void (*f)(void *item));
 void delete_if(t_array_list *this, t_bool(*cond)(void *item), void (*fe)(void *item));
 void sort(t_array_list *this, int (*cond)(void *item1 , void *item2), int  l, int  r);
-void _free(t_array_list *this, void (*fe)(void *item));
+void array_list_free(t_array_list *this, void (*fe)(void *item));
 void ft_swap(void **a, void **b);
 t_bool update_at(struct s_array_list *this, void *value, size_t index);
 void *pull(t_array_list *this);

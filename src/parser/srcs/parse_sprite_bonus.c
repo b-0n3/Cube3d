@@ -71,7 +71,7 @@ void parse_sprite_bonus(t_parser *this){
 				sizeof(char *), &bonus_sp_condition, &map_token);
 		if (lines != NULL)
 			lines->foreach(lines, &parse_sp_line);
-		lines->foreach(lines , &free);
+		lines->free(lines, &free);
 		free(lines);
 	}
 }

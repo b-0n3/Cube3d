@@ -34,7 +34,7 @@ t_array_list *new_array_list(t_array_list *this, size_t first_size, size_t __siz
 		this->foreach = &foreach;
 		this->delete_if = &delete_if;
 		this->sort = &sort;
-		this->free = &_free;
+		this->free = &array_list_free;
 		this->update_at = &update_at;   
 		this->swap = &ft_swap;
 		this->pull = &pull;

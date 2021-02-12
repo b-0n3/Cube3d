@@ -46,7 +46,7 @@ void push_w_wall(t_vector start , t_vector p)
 
 void push_w_walls(t_vector p)
 {
-	char *l = game->parser->lines.get(&game->parser->lines, p.y);
+	char *l;
 	t_vector start;
 	char *arr;
 
@@ -57,7 +57,7 @@ void push_w_walls(t_vector p)
 
 	arr = "1s";
 #endif
-
+	l = game->parser->lines.get(&game->parser->lines, p.y);
 	new_vector(&start , p.x, p.y);
 	while (l != NULL && p.y < game->parser->lines.index)
 	{

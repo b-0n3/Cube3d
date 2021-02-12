@@ -19,6 +19,7 @@ void  print_errors(void *item)
 	str =(char *) item;
 	if (str != NULL)
 	{
+		write(2, "error:\n", 8);
 		write(2, str , ft_strlen(str));
 		write(2, "\n" , 1);
 	}
@@ -26,16 +27,17 @@ void  print_errors(void *item)
 
 void __exit_(struct s_game *this , char *err_msg)
 {
-	int ret = 1;
+	int ret = 0;
 	if (err_msg != NULL)
 	{
 		perror(err_msg);
 		free(err_msg);
-		ret = 0;
+		ret = 1;
 	}
 	else if (this->errors.index > 0)
 	{
 		this->errors.foreach(&this->errors , &print_errors);
+		ret = 1;
 	}
 	this->free(this);
 	exit(ret);

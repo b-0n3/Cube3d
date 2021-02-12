@@ -55,7 +55,6 @@ void parse_we_tex(t_parser *this, t_token *token)
 			else
 			{
 				tex = new_texture(filename);
-
 				if(tex == NULL)
 					put_error(this->g , ft_strdup("invalid we texture"));
 				else

@@ -15,6 +15,7 @@
 void free_ray(void *item)
 {
 	t_ray *ray;
+
 	ray = (t_ray *) item;
 	if(ray != NULL)
 	{

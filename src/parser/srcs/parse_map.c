@@ -53,7 +53,7 @@ void  create_map_p(t_parser *this)
 	i = 0;
 	while (i < this->lines.index)
 	{
-		line = this->lines.get(&(this->lines),i);
+		line = this->lines.get(&(this->lines), i);
 		len = ft_strlen(line);
 		if(len > game->bi)
 			game->bi = len;
@@ -67,6 +67,7 @@ void  create_map_p(t_parser *this)
 void copy_to_values(void *item)
 {
 	char *line = (char *) item;
+	
 	if (line != NULL)
 		game->parser->lines.push(&game->parser->lines, ft_strdup(line), sizeof(char *));
 }

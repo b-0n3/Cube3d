@@ -75,7 +75,7 @@ t_bool new_array_double_size(t_array_list *this)
 					arrr[i] =  this->arr[i];
 					i++;
 				}
-				free(this->arr );
+				free(this->arr);
 				this->arr = arrr;
 				return TRUE;
 			}

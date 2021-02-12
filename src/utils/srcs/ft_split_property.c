@@ -17,6 +17,7 @@ t_array_list *ft_split_property(char *line)
 	t_array_list *words;
 	int          i;
 	int           j;
+
 	words =(t_array_list *) malloc(sizeof(t_array_list));
 	new_array_list(words, 2,sizeof(char *));
 	j = 0;

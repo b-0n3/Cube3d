@@ -10,5 +10,6 @@ void free_token(void *item)
             free(this->token);
         if (this->values.arr != NULL)
             this->values.free(&this->values, &free);
+        free(this);
     }
 }

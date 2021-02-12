@@ -36,7 +36,6 @@ void parse_no_tex(t_parser *this, t_token *token)
 					this->g->n_texture = tex;
 				}
 			}
-			
 			free(filename);
 		}
 	}
