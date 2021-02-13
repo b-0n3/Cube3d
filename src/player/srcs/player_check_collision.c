@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-extern t_game *game;
+extern t_game *g_game;
 int tos;
 
 void update_floor_cords(t_player *player)
@@ -42,8 +42,8 @@ void update_player_pos(t_player *player, double newx, double newy, double ffangl
 {
 
 
-	player->pos->x = newx * game->wvalue;
-	player->pos->y = newy * game->hvalue;
+	player->pos->x = newx * g_game->wvalue;
+	player->pos->y = newy * g_game->hvalue;
 	player->rotaion_angle = ffangle;
 	update_floor_cords(player);
 
@@ -55,8 +55,8 @@ void update_on_secret_door(t_player *player, double newx, double newy)
 {
 	char *line;
 
-	line = (char *)game->parser->lines.get(
-			&game->parser->lines, 
+	line = (char *)g_game->parser->lines.get(
+			&g_game->parser->lines, 
 			(int)newy);
 	if(line != NULL)
 		if (newx > 0 && newx < ft_strlen(line))
@@ -87,7 +87,7 @@ void update_player_dir(t_player *player,char *line,t_ray *ray, double ffangle)
 
 	newx = player->pos->x + (cos(player->rotaion_angle)* player->mov_speed);
 
-	if(line[(int) (newx / game->hvalue)] != 's')
+	if(line[(int) (newx / g_game->hvalue)] != 's')
 		player->rotaion_angle = ffangle;
 	ray->coli = 0;
 }
@@ -101,7 +101,7 @@ t_bool check_collision(t_player *player , double newx ,double newy)
 	if (tos == 0)
 		tos = 1;
 	ffangle = update_player_angle(player, &ray);
-	line = ((char *)game->parser->lines.get(&game->parser->lines, (int)newy));
+	line = ((char *)g_game->parser->lines.get(&g_game->parser->lines, (int)newy));
 	if(ray->coli == 1 || ft_strchr("50",line [(int) newx ]) == NULL)
 	{
 		if (player->t_dir != 0)

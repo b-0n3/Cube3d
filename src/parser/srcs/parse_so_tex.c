@@ -12,15 +12,15 @@
 
 #include "cub3d.h"
 
-int  *flip_arr(int *real, size_t size)
+int			*flip_arr(int *real, size_t size)
 {
-	int *ret;
-	size_t i;
-	int len;
+	int		*ret;
+	size_t	i;
+	int		len;
 
 	len = size - 1;
 	i = 0;
-	ret = (int *) malloc (size * sizeof(int));
+	ret = (int *)malloc(size * sizeof(int));
 	while (i < size)
 	{
 		ret[i] = real[len];
@@ -28,32 +28,32 @@ int  *flip_arr(int *real, size_t size)
 		len--;
 	}
 	free(real);
-	return ret;
+	return (ret);
 }
-void parse_so_tex(t_parser *this, t_token *token)
+
+void		parse_so_tex(t_parser *this, t_token *token)
 {
+	char		*filename;
+	t_texture	*tex;
 
-	char *filename;
-	t_texture *tex;
-
-	if (this != NULL)
+	if (token == NULL)
 	{
-		if (token == NULL) 
-			put_error(this->g , ft_strdup("no so tex"));
-		else{
-			filename =(char *) token->values.pull(&(token->values));
-			if(!ft_check_file(filename, ".xpm"))
-				put_error(this->g , ft_strdup("invalid so texture"));
-			else
+		put_error(this->g, ft_strdup("no so tex"));
+	}
+	else
+	{
+		filename = (char *)token->values.pull(&(token->values));
+		if (!ft_check_file(filename, ".xpm"))
+			put_error(this->g, ft_strdup("invalid so texture"));
+		else
+		{
+			if ((tex = new_texture(filename)) == NULL)
 			{
-				tex = new_texture(filename);
-				if(tex == NULL)
-					put_error(this->g , ft_strdup("invalid so texture"));
-				else{
-					this->g->so_texture = tex;
-				}
+				put_error(this->g, ft_strdup("invalid so texture"));
 			}
-			free(filename);
+			else
+				this->g->so_texture = tex;
 		}
+		free(filename);
 	}
 }

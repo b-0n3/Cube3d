@@ -12,8 +12,6 @@
 
 #include "get_next_line.h"
 
-
-
 int			find(char **line, char **rest, int retn)
 {
 	int		len;

@@ -25,7 +25,7 @@ void	new_game(t_game *this, char *file_name)
 	new_array_list(&this->allocated_sp_tex, 2, sizeof(t_sp_texture));
 	new_array_list(&this->allocated_tex, 4, sizeof(t_texture));
 	new_parser(this->parser, file_name, this);
-	this->exit = &__exit_;
+	this->exit = &game_exit;
 	this->save = &save_game;
 	this->free = &free_game;
 	this->parser->do_final(this->parser);

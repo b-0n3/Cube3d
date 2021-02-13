@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
-extern t_game *game;
+extern t_game *g_game;
 
 void cast_rays(void *item)
 {
@@ -33,15 +33,15 @@ void cast_sprite_s(t_ray *ray)
 	sp = NULL;
 	spp = NULL;
 	index = 0;     
-	while (index < game->sprites.index)
+	while (index < g_game->sprites.index)
 	{
-		spp = game->sprites.get(&game->sprites, index);
+		spp = g_game->sprites.get(&g_game->sprites, index);
 		cast_sprite(new_vector_pointer(ray->pos->x, ray->pos->y), spp,
 				&sp , ray);
 		index++;
 	}
 	if(sp != NULL)
-		game->player.sprit_rays.push(&(game->player.sprit_rays), sp , sizeof(t_ray));
+		g_game->player.sprit_rays.push(&(g_game->player.sprit_rays), sp , sizeof(t_ray));
 }
 
 void cast_lights(t_ray *ray)
@@ -54,16 +54,16 @@ void cast_lights(t_ray *ray)
 	if(ray->index != -10)
 	{
 		index = 0;
-		while (index < game->lights.index)
+		while (index < g_game->lights.index)
 		{
 
-			spp = game->lights.get(&game->lights, index);
+			spp = g_game->lights.get(&g_game->lights, index);
 			cast_sprite(new_vector_pointer(ray->pos->x, ray->pos->y), spp,
 					&sp , ray);
 			index++;
 		}
 		if(sp != NULL)
-			game->player.light_rays.push(&(game->player.light_rays), sp , sizeof(t_ray_sp));
+			g_game->player.light_rays.push(&(g_game->player.light_rays), sp , sizeof(t_ray_sp));
 
 	}
 }
@@ -76,9 +76,9 @@ void    cast_ray(void *r)
 
 	ray   = (t_ray *) r;
 	index = 0;  
-	while (index < game->walls.index)
+	while (index < g_game->walls.index)
 	{
-		wall = *((t_wall *)game->walls.get(&game->walls, index));
+		wall = *((t_wall *)g_game->walls.get(&g_game->walls, index));
 		get_intesection_wall(ray, wall);
 		index++;
 	}

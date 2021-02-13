@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
-extern t_game *game;
+extern t_game *g_game;
 
 double push_w_walls_c(char *arr , char *l, t_vector p)
 {
@@ -21,7 +21,7 @@ double push_w_walls_c(char *arr , char *l, t_vector p)
 				ft_strchr(arr , l[(int)p.x - 1] ) == NULL)
 		{
 			p.y += 1;
-			l = game->parser->lines.get(&game->parser->lines, p.y);
+			l = g_game->parser->lines.get(&g_game->parser->lines, p.y);
 			if (l == NULL)
 				break;
 			len = ft_strlen(l);
@@ -36,11 +36,11 @@ void push_w_wall(t_vector start , t_vector p)
 	if (start.y < p.y)
 	{
 
-		game->walls.push(&(game->walls),
-				new_wall(new_vector_pointer((start.x ) * game->wvalue,
-						(start.y )*game->hvalue),
-					new_vector_pointer((p.x)* game->wvalue ,
-						(p.y )*game->hvalue),1), sizeof(t_wall));
+		g_game->walls.push(&(g_game->walls),
+				new_wall(new_vector_pointer((start.x ) * g_game->wvalue,
+						(start.y )*g_game->hvalue),
+					new_vector_pointer((p.x)* g_game->wvalue ,
+						(p.y )*g_game->hvalue),1), sizeof(t_wall));
 	}
 }
 
@@ -57,11 +57,11 @@ void push_w_walls(t_vector p)
 
 	arr = "1s";
 #endif
-	l = game->parser->lines.get(&game->parser->lines, p.y);
+	l = g_game->parser->lines.get(&g_game->parser->lines, p.y);
 	new_vector(&start , p.x, p.y);
-	while (l != NULL && p.y < game->parser->lines.index)
+	while (l != NULL && p.y < g_game->parser->lines.index)
 	{
-		l = game->parser->lines.get(&game->parser->lines, p.y );
+		l = g_game->parser->lines.get(&g_game->parser->lines, p.y );
 		p.y = push_w_walls_c(arr ,l , p);
 		push_w_wall(start ,p);
 		p.y += 1;

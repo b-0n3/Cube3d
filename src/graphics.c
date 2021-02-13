@@ -13,7 +13,7 @@
 #include "cub3d.h"
 
 
-extern t_game *game;
+extern t_game *g_game;;
 
 // void draw_rec(t_window wi ,t_vector pos , int size , int color)
 // {
@@ -27,7 +27,7 @@ extern t_game *game;
 //      int x1 = x;
 //      while ( x1 < x2)
 //     { 
-//          game->window.img->put_pixel(game->window ,  x1, y1 ,color);
+//          g_game->window.img->put_pixel(g_game->window ,  x1, y1 ,color);
 //        x1++;
 //    }
 //   y1++;
@@ -62,7 +62,7 @@ void rec(int  x ,int  y, int  sizex ,int sizey, int color)
 		vx = x;
 		while (vx < x2)
 		{
-			game->window.img->put_pixel(game->window ,  vx, y ,color);
+			g_game->window.img->put_pixel(g_game->window ,  vx, y ,color);
 			vx++;
 		}
 		y += 1;
@@ -88,7 +88,7 @@ void	line(int x0, int y0, int x1, int y1, int color)
 	i = -1;
 	while (++i <= steps)
 	{
-		image_put_pixel(game->window, x0, y0, color);
+		image_put_pixel(g_game->window, x0, y0, color);
 		x0 += xinc;
 		y0 += yinc;
 	}
@@ -104,7 +104,7 @@ void    ft_line(float x, float y, int size ,float angle, int color)
 	{
 		x = or_x + (r * cos(angle));
 		y = or_y + (r * sin(angle));
-		game->window.img->put_pixel(game->window , (int) x, (int)y ,color);
+		g_game->window.img->put_pixel(g_game->window , (int) x, (int)y ,color);
 		r++;
 	}
 }
@@ -113,7 +113,7 @@ void    init_image(t_image *this,t_window win)
 {
 	if(this != NULL)
 	{
-		this->img_ptr = mlx_new_image(win.mlx, game->width, game->heigth);
+		this->img_ptr = mlx_new_image(win.mlx, g_game->width, g_game->heigth);
 		this->img_data = mlx_get_data_addr(this->img_ptr, &this->bpp, &this->size_line, &this->endian);
 		this->put_pixel = &image_put_pixel;
 		this->clear = &clear_screen;
@@ -152,8 +152,8 @@ void image_put_pixel(t_window v , int x, int y, int color)
 {
 	int i;
 
-	if (x < 0 || y < 0  || x >= game->width || y >= game->heigth)
-		return;
+	if (x < 0 || y < 0 || x >= g_game->width || y >= g_game->heigth)
+		return ;
 	i = x * v.img->bpp / 8 + y * v.img->size_line;
 	v.img->img_data[i] = color & 0xFF; 
 	v.img->img_data[i + 1] = (color & 0xFF00) >> 8; 
@@ -161,15 +161,15 @@ void image_put_pixel(t_window v , int x, int y, int color)
 
 }
 
-void clear_screen( t_window v)
+void clear_screen(t_window v)
 {
 	int x = 0;
 	int y = 0;
 
-	while (y < game->heigth)
+	while (y < g_game->heigth)
 	{  
 		x =0;
-		while (x < game->width)
+		while (x < g_game->width)
 		{
 			v.img->put_pixel(v, x , y , 0);
 			x++;

@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	fill_header(unsigned char **header, int imagesize,t_game *this)
+void		fill_header(unsigned char **header, int imagesize, t_game *this)
 {
 	u_int16_t bitcount;
 	u_int32_t bisize;
@@ -37,7 +37,7 @@ void	fill_header(unsigned char **header, int imagesize,t_game *this)
 	ft_memcpy(*header + 34, &imagesize, 4);
 }
 
-void	fill_buf(unsigned char **buf, int width_in_bytes, t_game *this)
+void		fill_buf(unsigned char **buf, int width_in_bytes, t_game *this)
 {
 	int row;
 	int col;
@@ -53,7 +53,8 @@ void	fill_buf(unsigned char **buf, int width_in_bytes, t_game *this)
 		j = 0;
 		while (++col < this->width)
 		{
-			color = ((int *)this->window.img->img_data)[(row * this->width) + col];
+			color = ((int *)this->window.img->img_data)
+				[(row * this->width) + col];
 			(*buf)[i * width_in_bytes + j * 3 + 0] = color & 0xFF;
 			(*buf)[i * width_in_bytes + j * 3 + 1] = (color & 0xFF00) >> 8;
 			(*buf)[i * width_in_bytes + j * 3 + 2] = (color & 0xFF0000) >> 16;
@@ -62,7 +63,8 @@ void	fill_buf(unsigned char **buf, int width_in_bytes, t_game *this)
 		i++;
 	}
 }
-void	save_first_frame_in_bmp_file(t_game *this)
+
+void		save_first_frame_in_bmp_file(t_game *this)
 {
 	int				width_in_bytes;
 	u_int32_t		imagesize;
@@ -83,7 +85,8 @@ void	save_first_frame_in_bmp_file(t_game *this)
 	free(buf);
 	free(header);
 }
-void save_game(t_game *this)
+
+void		save_game(t_game *this)
 {
 	save_first_frame_in_bmp_file(this);
 	this->exit(this, NULL);

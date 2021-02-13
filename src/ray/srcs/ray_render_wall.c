@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
-extern t_game *game;
+extern t_game *g_game;
 
 void   render_wall_texture(double p[], double wallHei ,t_texture *tex , double dis)
 {
@@ -29,7 +29,7 @@ void   render_wall_texture(double p[], double wallHei ,t_texture *tex , double d
 			break;
 		color = tex->data[(int)tex->offset   + (int) index  * (int)tex->width];
 		color = shadow (color , dis);
-		image_put_pixel(game->window , p[0] , pos.y, color);
+		image_put_pixel(g_game->window , p[0] , pos.y, color);
 		pos.y += 1;
 		index += tex->height / wallHei;
 	} 

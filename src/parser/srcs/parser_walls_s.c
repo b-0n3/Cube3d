@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
-t_game *game;
+t_game *g_game;
 double push_s_walls_c(char *arr , char *l, char *l_u ,t_vector r_p)
 {
 	while (ft_strchr(arr,l[(int) r_p.x]) != NULL  &&
@@ -23,10 +23,10 @@ void push_s_wall(t_vector start , t_vector r_p)
 {
 	if (start.x < r_p.x)
 	{
-		game->walls.push(&(game->walls),
+		g_game->walls.push(&(g_game->walls),
 				new_wall(
-					new_vector_pointer(start.x * game->wvalue, (start.y )*game->hvalue),
-					new_vector_pointer((r_p.x )* game->wvalue ,(r_p.y )*game->hvalue),2),
+					new_vector_pointer(start.x * g_game->wvalue, (start.y )*g_game->hvalue),
+					new_vector_pointer((r_p.x )* g_game->wvalue ,(r_p.y )*g_game->hvalue),2),
 				sizeof(t_wall));
 	}
 }
@@ -45,7 +45,7 @@ void push_s_walls(t_parser *this,char *l ,t_vector r_p)
 
 	arr = "1s";
 #endif
-	game = this->g;
+	g_game = this->g;
 	new_vector(&start , r_p.x , r_p.y);
 	if (l_u != NULL)
 		while  ((int)r_p.x < ft_strlen(l) &&(int)r_p.x < ft_strlen(l_u)  )

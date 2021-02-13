@@ -11,13 +11,14 @@
 /* ************************************************************************** */
 
 #ifndef FT_LINE_H
-#define FT_LINE_H
-#include "vector.h"
+# define FT_LINE_H
 
-typedef struct s_line {
-	t_vector *pos;
-	t_vector *dir;
-}   t_line;
+# include "vector.h"
 
-void free_line(t_line line);
+typedef struct	s_line {
+	t_vector	*pos;
+	t_vector	*dir;
+}				t_line;
+
+void			free_line(t_line line);
 #endif

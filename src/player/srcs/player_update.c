@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-extern t_game *game;
+extern t_game *g_game;
 extern int nb_rays;
 
 void init_rays(t_player *this)
@@ -47,7 +47,7 @@ void update_player(t_player *this)
 	this->sprit_rays.index = 0;
 	next_x =  this->pos->x  + cos(newAngle) *(this->mov_speed * this->w_dir);
 	next_y =  this->pos->y  + sin(newAngle) *(this->mov_speed * this->w_dir);
-	check_collision(this ,next_x / game->wvalue , next_y / game->hvalue);
+	check_collision(this ,next_x / g_game->wvalue , next_y / g_game->hvalue);
 	init_rays(this);
 
 }

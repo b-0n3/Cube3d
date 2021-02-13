@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
-extern t_game *game;
+extern t_game *g_game;
 
 
 void put_ray_pos(t_ray *ray, t_wall wall, double new_len , double *newpos)

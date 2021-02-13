@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-extern t_game *game;
+extern t_game *g_game;
 
 t_vector new_vector(t_vector *this,double x, double y)
 {
@@ -93,8 +93,8 @@ void vector_to_string(void *item)
 t_vector *dir_from_angle(t_vector *this, double angle)
 {
 	return (new_vector_pointer(this->x + 
-				(game->wvalue/2 * cos(angle)) , 
-				this->y + (game->hvalue/2 * sin(angle))));
+				(g_game->wvalue/2 * cos(angle)) , 
+				this->y + (g_game->hvalue/2 * sin(angle))));
 }
 
 

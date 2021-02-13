@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-extern t_game   *game;
+extern t_game   *g_game;
 int             nb_rays;
 
 void set_rotation_angle(t_player *this, char ch)
@@ -65,7 +65,7 @@ void new_player(t_player *this , t_vector *pos, char ch)
 	this->planx = 0;
 	this->plany = 0.66;
 	this->free = &free_player;
-	nb_rays = game->width - 2;
+	nb_rays = g_game->width - 2;
 	set_rotation_angle(this, ch);
 	this->dir = new_vector_pointer(-1, 0);
 	init_player_lists(this);

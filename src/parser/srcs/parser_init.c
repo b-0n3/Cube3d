@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void new_parser(t_parser *this, char *filename, t_game *g_p)
+void	new_parser(t_parser *this, char *filename, t_game *g_p)
 {
 	new_array_list(&(this->lines), 7, sizeof(char *));
 	new_array_list(&(this->tokens), 5, sizeof(t_token *));
@@ -24,11 +24,12 @@ void new_parser(t_parser *this, char *filename, t_game *g_p)
 	this->g = g_p;
 	this->fd = this->get_fd(filename);
 }
-// todo : create t_token free methode and tokens list
-void   free_parser(void *th)
+
+void	free_parser(void *th)
 {
 	t_parser *this;
-	this = (t_parser *) th;
-	this->lines.free(&this->lines ,&free);
+
+	this = (t_parser *)th;
+	this->lines.free(&this->lines, &free);
 	free(this);
 }

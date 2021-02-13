@@ -18,12 +18,12 @@ long  SECOND  =1000000000L;
 long long  lastTime;
 double   frame_time = 1.0 / FRAME_CAP;
 double  unprocessed = 0;
-t_game  *g;
+t_game  *g_game;
 
 void    render()
 {
-	g->player.render(&(g->player));
-	g->window.img->show(g->window);
+	g_game->player.render(&(g_game->player));
+	g_game->window.img->show(g_game->window);
 }
 
 
@@ -44,11 +44,11 @@ int update(int key)
 	{
 		rend = TRUE;
 		unprocessed -= frame_time;
-		g->player.update(&g->player);
+		g_game->player.update(&g_game->player);
 	}
 	if(rend == 1)
 	{
-		g->window.img->clear(g->window);
+		g_game->window.img->clear(g_game->window);
 		render();
 	}
 	return 0;
@@ -57,17 +57,17 @@ int update(int key)
 
 void startgame(t_game *game)
 {
-	g = game;
+	g_game = game;
 
 
-	g->window.win =  mlx_new_window(g->window.mlx, 
-			(int) g->width, (int) g->heigth , "CUB3d");
-	mlx_hook( g->window.win, 5,(1L<<3), mouse_relased, (void*)0);
-	mlx_mouse_hook (g->window.win, mouse_pressed, (void*) 0 );
-	mlx_hook(g->window.win ,2,0,key_pressed ,(void *) 0);
-	mlx_hook(g->window.win , 3,0, key_relased , (void *) 0);
-	mlx_loop_hook(g->window.mlx, update, (void *) 0);
-	mlx_loop(game->window.mlx);
+	g_game->window.win =  mlx_new_window(g_game->window.mlx, 
+			(int) g_game->width, (int) g_game->heigth , "CUB3d");
+	mlx_hook( g_game->window.win, 5,(1L<<3), mouse_relased, (void*)0);
+	mlx_mouse_hook (g_game->window.win, mouse_pressed, (void*) 0 );
+	mlx_hook(g_game->window.win ,2,0,key_pressed ,(void *) 0);
+	mlx_hook(g_game->window.win , 3,0, key_relased , (void *) 0);
+	mlx_loop_hook(g_game->window.mlx, update, (void *) 0);
+	mlx_loop(g_game->window.mlx);
 }
 
 

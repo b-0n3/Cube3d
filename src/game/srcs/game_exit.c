@@ -12,22 +12,24 @@
 
 #include "cub3d.h"
 
-void  print_errors(void *item)
+void	print_errors(void *item)
 {
-	char *str;
+	char	*str;
 
-	str =(char *) item;
+	str = (char *)item;
 	if (str != NULL)
 	{
 		write(2, "error:\n", 8);
-		write(2, str , ft_strlen(str));
-		write(2, "\n" , 1);
+		write(2, str, ft_strlen(str));
+		write(2, "\n", 1);
 	}
 }
 
-void __exit_(struct s_game *this , char *err_msg)
+void	game_exit(struct s_game *this, char *err_msg)
 {
-	int ret = 0;
+	int ret;
+
+	ret = 0;
 	if (err_msg != NULL)
 	{
 		perror(err_msg);
@@ -36,7 +38,7 @@ void __exit_(struct s_game *this , char *err_msg)
 	}
 	else if (this->errors.index > 0)
 	{
-		this->errors.foreach(&this->errors , &print_errors);
+		this->errors.foreach(&this->errors, &print_errors);
 		ret = 1;
 	}
 	this->free(this);

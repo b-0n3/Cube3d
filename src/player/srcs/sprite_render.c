@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
-extern t_game *game;
+
+extern t_game *g_game;;
 
 void render_sprite_c(t_ray_sp *this,double end , double wall_hei,double correctdis)
 {
@@ -48,11 +49,11 @@ void  draw_sprit(void *item)
 	double end;
 	if(this->pos != NULL  && this->sp != NULL)
 	{
-		correctdis = this->length(this) * cos(this->angle -game->player.rotaion_angle);
-		dispro = (game->width / 4) * tan(game->player.fov );
-		wall_hei = (game->wvalue / correctdis) * dispro;
-		end = game->heigth /2  - wall_hei / 2;
-		end += game->player.offset;
+		correctdis = this->length(this) * cos(this->angle -g_game->player.rotaion_angle);
+		dispro = (g_game->width / 4) * tan(g_game->player.fov );
+		wall_hei = (g_game->wvalue / correctdis) * dispro;
+		end = g_game->heigth /2  - wall_hei / 2;
+		end += g_game->player.offset;
 		render_sprite_c(this, end, wall_hei, correctdis);
 	}
 	free_ray_sp(this);

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
-extern t_game *game;
+extern t_game *g_game;
 void   render_sprite_texture(double p[] , double wallHei ,t_sp_texture *tex , double dis)
 {
 	int color;
@@ -34,7 +34,7 @@ void   render_sprite_texture(double p[] , double wallHei ,t_sp_texture *tex , do
 				{
 					if (tex->kind != '5' - 48 && tex->kind != 10)
 						color = shadow(color , dis);
-					image_put_pixel(game->window , p[0] , pos.y, color);
+					image_put_pixel(g_game->window , p[0] , pos.y, color);
 				}
 		}
 		pos.y += 1;
