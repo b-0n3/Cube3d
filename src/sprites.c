@@ -25,9 +25,8 @@ t_vector *get_sprite_inter(t_vector *pos, t_vector *dir , t_vector *c_pos, doubl
 	bby2 = (dir->x - pos->x) * (c_pos->x - pos->x) + ( dir->y - pos->y) * (c_pos->y - pos->y);
 	c = (c_pos->x - pos->x) * (c_pos->x - pos->x) + (c_pos->y - pos->y) * (c_pos->y - pos->y) - rad * rad;
 	disc = (bby2 / a) * (bby2 / a) - (c / a);
-	if (disc < 0) {
-		return NULL;
-	}
+	if (disc < 0)
+		return (NULL);
 	ab_scaling_factor = -(bby2 / a) + sqrt(disc);
 	if (ab_scaling_factor <= 0)
 	{
@@ -56,7 +55,7 @@ void    cast_sprite(t_vector *pos, t_sprites *sp, t_ray_sp **ray_sp ,t_ray *ray)
 		{
 			if(*ray_sp == NULL)
 			{
-				*ray_sp = new_sp_ray(pos, in , ray->angle , ray->index, sp);
+				*ray_sp = new_sp_ray((t_vector *){pos , in}, ray->angle, ray->index, sp);
 			}
 			else   if(splen < (*ray_sp)->length(*ray_sp))
 			{

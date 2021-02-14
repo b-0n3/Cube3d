@@ -12,47 +12,53 @@
 
 #include "cub3d.h"
 
-extern t_game *g_game;;
+extern t_game *g_game;
 
-void render_sprite_c(t_ray_sp *this,double end , double wall_hei,double correctdis)
+void	render_sprite_c
+	(t_ray_sp *this, double end, double wall_hei, double correctdis)
 {
-	t_line tang;
-	double angle;
-	t_sp_texture *tsp;
+	t_line			tang;
+	double			angle;
+	t_sp_texture	*tsp;
+	double			nof;
+	double			dist;
 
 	tsp = get_sp_tex(this->sp->kind);
 	tang.pos = this->sp->pos;
-	angle = normelize_angel(atan2(this->pos->y - tang.pos->y , 
-				this->pos->x - tang.pos->x))  + M_PI_2;
+	angle = normelize_angel(atan2(this->pos->y - tang.pos->y,
+				this->pos->x - tang.pos->x)) + M_PI_2;
 	angle = normelize_angel(angle);
-	tang.dir = new_vector_pointer(tang.pos->x + (this->sp->rad * cos(angle)), 
-			tang.pos->y + (this->sp->rad * sin (angle )));
-	double dist =  get_line_distance(this) ;
+	tang.dir = new_vector_pointer(tang.pos->x + (this->sp->rad * cos(angle)),
+			tang.pos->y + (this->sp->rad * sin(angle)));
+	dist = get_line_distance(this);
 	dist += this->sp->rad;
 	if (tsp != NULL)
 	{
-		double nof = (dist / (2 * this->sp->rad)) * tsp->wsize;
+		nof = (dist / (2 * this->sp->rad)) * tsp->wsize;
 		tsp->offset = nof + tsp->borders[2];
 		tsp->offset = fabs(tsp->offset);
-		render_sprite_texture((double []){this->index, end}, wall_hei, tsp, correctdis);
+		render_sprite_texture((double[]){this->index, end},
+			wall_hei, tsp, correctdis);
 	}
 	free_line(tang);
 }
 
-void  draw_sprit(void *item)
+void	draw_sprit(void *item)
 {
-	t_ray_sp *this = (t_ray_sp *) item;
+	t_ray_sp	*this;
+	double		dispro;
+	double		wall_hei;
+	double		correctdis;
+	double		end;
 
-	double dispro;
-	double wall_hei;
-	double correctdis;
-	double end;
-	if(this->pos != NULL  && this->sp != NULL)
+	this = (t_ray_sp *)item;
+	if (this->pos != NULL && this->sp != NULL)
 	{
-		correctdis = this->length(this) * cos(this->angle -g_game->player.rotaion_angle);
-		dispro = (g_game->width / 4) * tan(g_game->player.fov );
+		correctdis = this->length(this) *
+			cos(this->angle - g_game->player.rotaion_angle);
+		dispro = (g_game->width / 4) * tan(g_game->player.fov);
 		wall_hei = (g_game->wvalue / correctdis) * dispro;
-		end = g_game->heigth /2  - wall_hei / 2;
+		end = g_game->heigth / 2 - wall_hei / 2;
 		end += g_game->player.offset;
 		render_sprite_c(this, end, wall_hei, correctdis);
 	}

@@ -28,7 +28,7 @@ void		put_token(t_parser *p, t_array_list word)
 		put_error(p->g, ft_strdup("diplicate property "));
 }
 
-static  void	parse_token_sp(char *line)
+void		parse_token_sp(char *line)
 {
 	t_array_list	*word;
 

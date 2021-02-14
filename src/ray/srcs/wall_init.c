@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-t_wall *new_wall(t_vector *pos , t_vector *dir, int angle)
+t_wall	*new_wall(t_vector *pos, t_vector *dir, int angle)
 {
 	t_wall *wall;
 
@@ -20,7 +20,5 @@ t_wall *new_wall(t_vector *pos , t_vector *dir, int angle)
 	wall->dir = dir;
 	wall->pos = pos;
 	wall->kind = angle;
-	return wall;
+	return (wall);
 }
-
-

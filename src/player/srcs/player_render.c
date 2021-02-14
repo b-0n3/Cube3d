@@ -14,7 +14,7 @@
 
 extern t_game *g_game;
 
-void render_player(t_player *this)
+void	render_player(t_player *this)
 {
 	t_ray_sp *spray;
 
@@ -22,19 +22,16 @@ void render_player(t_player *this)
 	if (g_game->floor != NULL)
 		cast_draw_floor(this);
 	this->wall_rays.foreach(&this->wall_rays, &draw_ray);
-	while ((spray = (t_ray_sp *)this->light_rays.pull(&this->light_rays) ) != NULL)
+	while ((spray = (t_ray_sp *)this->light_rays.pull(
+			&this->light_rays)) != NULL)
 	{
-		if(spray != NULL)
+		if (spray != NULL)
 			draw_sprit(spray);
-
 	}
-	while ((spray = (t_ray_sp *)this->sprit_rays.pull(&this->sprit_rays)) != NULL)
+	while ((spray = (t_ray_sp *)this->sprit_rays.pull(
+			&this->sprit_rays)) != NULL)
 	{
-		if(spray != NULL)
+		if (spray != NULL)
 			draw_sprit(spray);
-
 	}
-} 
-
-
-
+}

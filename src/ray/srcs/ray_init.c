@@ -12,14 +12,15 @@
 
 #include "cub3d.h"
 
-t_ray_sp *new_sp_ray(t_vector *pos, t_vector *dir,  double angle, int i, t_sprites *sp)
+t_ray_sp	*new_sp_ray
+	(t_vector **di, double angle, int i, t_sprites *sp)
 {
 	t_ray_sp *ray;
 
-	ray = (t_ray_sp *)malloc(sizeof (t_ray_sp));
+	ray = (t_ray_sp *)malloc(sizeof(t_ray_sp));
 	if (ray != NULL)
 	{
-		ray->pos = new_vector_pointer(pos->x, pos->y);
+		ray->pos = new_vector_pointer(di[0]->x, di[0]->y);
 		ray->cast = &cast_ray;
 		ray->length = &ray_sp_len;
 		ray->free = &free_ray_sp;
@@ -27,16 +28,16 @@ t_ray_sp *new_sp_ray(t_vector *pos, t_vector *dir,  double angle, int i, t_sprit
 		ray->dir = NULL;
 		ray->angle = angle;
 		ray->index = i;
-		ray->update(ray, dir, sp);
+		ray->update(ray, di[1], sp);
 	}
-	return ray;
+	return (ray);
 }
 
-t_ray *new_ray(t_vector *pos, double angle, int i)
+t_ray		*new_ray(t_vector *pos, double angle, int i)
 {
 	t_ray *ray;
 
-	ray = (t_ray *)malloc(sizeof (t_ray));
+	ray = (t_ray *)malloc(sizeof(t_ray));
 	if (ray != NULL)
 	{
 		ray->pos = pos;
@@ -46,9 +47,8 @@ t_ray *new_ray(t_vector *pos, double angle, int i)
 		ray->free = &free_ray;
 		ray->length = &ray_len;
 		ray->dir = NULL;
-		ray->update(ray , angle, i);
+		ray->update(ray, angle, i);
 		ray->coli = 0;
 	}
-
-	return ray;
+	return (ray);
 }

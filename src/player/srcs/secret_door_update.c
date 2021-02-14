@@ -11,12 +11,13 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
 extern t_game *g_game;
 
-void s_player_right(t_vector *pos,int newx , int newy)
+void	s_player_right(t_vector *pos, int newx, int newy)
 {
-	char *line;
-	int i;
+	char	*line;
+	int		i;
 
 	i = newx;
 	line = (char *)g_game->parser->lines.get(&g_game->parser->lines, newy);
@@ -31,15 +32,11 @@ void s_player_right(t_vector *pos,int newx , int newy)
 		}
 	}
 }
-/* 
-   1110
-   sP00
-   1111
-   */
-void s_player_left(t_vector *pos, int  newx , int newy)
+
+void	s_player_left(t_vector *pos, int newx, int newy)
 {
-	char *line;
-	int i;
+	char	*line;
+	int		i;
 
 	i = newx;
 	line = (char *)g_game->parser->lines.get(&g_game->parser->lines, newy);
@@ -55,23 +52,22 @@ void s_player_left(t_vector *pos, int  newx , int newy)
 	}
 }
 
-
-void s_player_down(t_vector *pos,int  newx , int newy)
+void	s_player_down(t_vector *pos, int newx, int newy)
 {
-	char *line;
-	int i;
-	t_bool comp;
+	char	*line;
+	int		i;
+	t_bool	comp;
 
 	comp = FALSE;
 	i = newy;
 	while (!comp)
 	{
 		line = (char *)g_game->parser->lines.get(&g_game->parser->lines, i);
-		if (line == NULL 
-				||(check_empty_line(line) || newx > (int )ft_strlen(line)))
-			break;
+		if (line == NULL
+				|| (check_empty_line(line) || newx > (int)ft_strlen(line)))
+			break ;
 		if (ft_strchr("s0", line[newx]) == NULL)
-			break;
+			break ;
 		if (line[newx] == '0')
 		{
 			pos->y = (i + 0.5) * g_game->hvalue;
@@ -82,22 +78,22 @@ void s_player_down(t_vector *pos,int  newx , int newy)
 	}
 }
 
-void s_player_up(t_vector *pos,int  newx , int newy)
+void	s_player_up(t_vector *pos, int newx, int newy)
 {
-	char *line;
-	int i;
-	t_bool comp;
+	char	*line;
+	int		i;
+	t_bool	comp;
 
 	comp = FALSE;
 	i = newy;
 	while (!comp)
 	{
 		line = (char *)g_game->parser->lines.get(&g_game->parser->lines, i);
-
-		if (line == NULL || (check_empty_line(line) || newx > (int) ft_strlen(line)))
-			break;
+		if (line == NULL ||
+			(check_empty_line(line) || newx > (int)ft_strlen(line)))
+			break ;
 		if (ft_strchr("s0", line[newx]) == NULL)
-			break;
+			break ;
 		if (line[newx] == '0')
 		{
 			pos->y = (i + 0.5) * g_game->hvalue;
@@ -108,19 +104,19 @@ void s_player_up(t_vector *pos,int  newx , int newy)
 	}
 }
 
-void update_secretdor_pos(t_vector *pos , int newx, int newy)
+void	update_secretdor_pos(t_vector *pos, int newx, int newy)
 {
-	int posx;
-	int posy;
+	int	posx;
+	int	posy;
 
-	posx =  pos->x / g_game->hvalue;
+	posx = pos->x / g_game->hvalue;
 	posy = pos->y / g_game->hvalue;
-	if (posy > newy )
-		s_player_up(pos, newx , newy);
-	else if(posy < newy)
-		s_player_down(pos, newx , newy);
-	else if(posx < newx)
-		s_player_right(pos, newx , newy);
-	else if(posx > newx)
-		s_player_left(pos, newx , newy);
+	if (posy > newy)
+		s_player_up(pos, newx, newy);
+	else if (posy < newy)
+		s_player_down(pos, newx, newy);
+	else if (posx < newx)
+		s_player_right(pos, newx, newy);
+	else if (posx > newx)
+		s_player_left(pos, newx, newy);
 }

@@ -46,7 +46,7 @@ void		init_tex(void)
 
 #ifndef BONUS
 
-void	parse_properties(t_parser *this)
+void		parse_properties(t_parser *this)
 {
 	if (this == NULL || this->tokens.arr == NULL)
 	{
@@ -67,7 +67,7 @@ void	parse_properties(t_parser *this)
 
 #else
 
-void	parse_properties(t_parser *this)
+void		parse_properties(t_parser *this)
 {
 	if (this == NULL || this->tokens.arr == NULL)
 	{
@@ -88,7 +88,7 @@ void	parse_properties(t_parser *this)
 
 #endif
 
-void	parser_do_final(t_parser *this)
+void		parser_do_final(t_parser *this)
 {
 	g_game = this->g;
 	this->get_lines(this);

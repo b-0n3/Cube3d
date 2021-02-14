@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_verify_c.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aait-ham <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/14 14:55:30 by aait-ham          #+#    #+#             */
+/*   Updated: 2021/02/14 14:55:39 by aait-ham         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 t_parser	*g_parser;
@@ -58,10 +70,10 @@ t_bool		check_border_i(t_array_list lines, size_t index)
 	line = lines.get(&lines, index);
 	if (line != NULL)
 	{
-		len  = ft_strlen(line)-1;
+		len = ft_strlen(line) - 1;
 		while (ft_iswhitespace(line[i]))
 			i++;
-		while(ft_iswhitespace(line[len]))
+		while (ft_iswhitespace(line[len]))
 			len--;
 		if (!is_map_s_or_end(line[i])
 				|| !is_map_s_or_end(line[len]))
@@ -71,21 +83,25 @@ t_bool		check_border_i(t_array_list lines, size_t index)
 	return (FALSE);
 }
 
-void		check_sides(char **line, int *len , int x){
+void		check_sides(char **line, int *len, int x)
+{
 	int i;
 
 	i = -1;
 	while (i < 2)
 	{
 		if (x + 1 < len[i + 1] && x > 0)
-			if (!check_map_char(line[i + 1][x + 1])|| !check_map_char(line[i+1][x - 1]))
-				put_error(g_parser->g, ft_strjoin("invalid line \n", line[i + 1]));
-		if (x < len[i +1])
-			if (!check_map_char(line[i+1][x]))
-				put_error(g_parser->g, ft_strjoin("invalid line \n", line[i + 1]));
+			if (!check_map_char(line[i + 1][x + 1]) ||
+				!check_map_char(line[i + 1][x - 1]))
+				put_error(g_parser->g,
+					ft_strjoin("invalid line \n", line[i + 1]));
+		if (x < len[i + 1])
+			if (!check_map_char(line[i + 1][x]))
+				put_error(g_parser->g,
+					ft_strjoin("invalid line \n", line[i + 1]));
 		if (x == len[i + 1] || x - 1 == len[i + 1] || x + 1 == len[i + 1])
 			put_error(g_parser->g, ft_strjoin("invalid line \n", line[i + 1]));
-		if (x + 1 >len[i +1] && len[i + 1] != -1)
+		if (x + 1 > len[i + 1] && len[i + 1] != -1)
 			put_error(g_parser->g, ft_strjoin("invalid line \n", line[i + 1]));
 		i++;
 	}
@@ -93,9 +109,10 @@ void		check_sides(char **line, int *len , int x){
 
 t_bool		check_inside(t_array_list lines, int x, int y)
 {
-	char *line[3];
-	int i;
-	int len[3];
+	char	*line[3];
+	int		i;
+	int		len[3];
+
 	if (y >= 0 && y >= (int)lines.index)
 		return (TRUE);
 	i = -1;
