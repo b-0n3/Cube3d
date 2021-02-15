@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_util.c                                      :+:      :+:    :+:   */
+/*   vector_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aait-ham <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,7 +14,7 @@
 
 extern t_game *g_game;
 
-t_vector new_vector(t_vector *this,double x, double y)
+t_vector	new_vector(t_vector *this, double x, double y)
 {
 	this->x = x;
 	this->y = y;
@@ -23,11 +23,12 @@ t_vector new_vector(t_vector *this,double x, double y)
 	this->sub = &sub;
 	this->get_dir_angle = &dir_from_angle;
 	this->len = this->length(this);
-	this->compare_to  = &compare_to;
+	this->compare_to = &compare_to;
 	this->to_string = &vector_to_string;
-	return *this;
+	return (*this);
 }
-t_vector *new_vector_pointer(double x, double y)
+
+t_vector	*new_vector_pointer(double x, double y)
 {
 	t_vector *this;
 
@@ -41,60 +42,21 @@ t_vector *new_vector_pointer(double x, double y)
 		this->sub = &sub;
 		this->get_dir_angle = &dir_from_angle;
 		this->len = this->length(this);
-		this->compare_to  = &compare_to;
+		this->compare_to = &compare_to;
 		this->to_string = &vector_to_string;
 		return (this);
 	}
-	return NULL;
+	return (NULL);
 }
 
-double length(t_vector *this)
+t_vector	*dir_from_angle(t_vector *this, double angle)
 {
-	return ((double) sqrt((this->x * this-> x) + (this->y * this->y)));
+	return (new_vector_pointer(this->x +
+				(g_game->wvalue / 2 * cos(angle)),
+				this->y + (g_game->hvalue / 2 * sin(angle))));
 }
 
-void add(t_vector *this , t_vector *o)
-{
-	this->x += o->x;
-	this->y += o->y;
-	this->len = this->length(this);
-}
-
-void sub(t_vector *this, t_vector *o)
-{
-	this->x -= o->x;
-	this->y -= o->y;
-	this->len = this->length(this);
-}
-
-t_bool con(void *item)
-{
-	t_vector *vert1 = (t_vector *) item;
-	if (vert1-> len  <= 4.0f)
-		return TRUE;
-	return FALSE;
-}
-
-
-int compare_to(void  *this , void *o)
-{
-	if (((t_vector *) this)->len < ((t_vector *)o)->len)
-		return  1;
-	if (((t_vector *) this)->len > ((t_vector *)o)->len)
-		return  -1;
-	return 0;
-}
-
-void vector_to_string(void *item)
+void		vector_to_string(void *item)
 {
 	item = NULL;
 }
-
-t_vector *dir_from_angle(t_vector *this, double angle)
-{
-	return (new_vector_pointer(this->x + 
-				(g_game->wvalue/2 * cos(angle)) , 
-				this->y + (g_game->hvalue/2 * sin(angle))));
-}
-
-

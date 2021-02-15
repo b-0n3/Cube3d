@@ -54,5 +54,8 @@ void				update_on_secret_door(t_player *player,
 	double newx, double newy);
 void				update_secretdor_pos(t_vector *pos, int newx, int newy);
 t_bool				check_collision(t_player *player, double newx, double newy);
+void				update_player_pos(t_player *player,
+	double newx, double newy, double ffangle);
+void				update_floor_cords(t_player *player);
 
 #endif

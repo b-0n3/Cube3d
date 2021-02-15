@@ -71,7 +71,8 @@ void		push_n_walls(t_parser *this, char *l, t_vector r_p)
 	new_vector(&start, r_p.x, r_p.y);
 	l_d = this->lines.get(&(this->lines), r_p.y + 1);
 	if (l_d != NULL)
-		while ((int)r_p.x < ft_strlen(l) && (int)r_p.x < ft_strlen(l_d))
+		while ((int)r_p.x < (int)ft_strlen(l) &&
+			(int)r_p.x < (int)ft_strlen(l_d))
 		{
 			r_p.x = push_n_walls_c(arr, r_p, l, l_d);
 			push_n_wall(start, r_p);
@@ -95,7 +96,8 @@ void		push_n_walls(t_parser *this, char *l, t_vector r_p)
 	new_vector(&start, r_p.x, r_p.y);
 	l_d = this->lines.get(&(this->lines), r_p.y + 1);
 	if (l_d != NULL)
-		while ((int)r_p.x < ft_strlen(l) && (int)r_p.x < ft_strlen(l_d))
+		while ((int)r_p.x < (int)ft_strlen(l) &&
+				(int)r_p.x < (int)ft_strlen(l_d))
 		{
 			r_p.x = push_n_walls_c(arr, r_p, l, l_d);
 			push_n_wall(start, r_p);

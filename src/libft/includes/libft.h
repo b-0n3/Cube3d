@@ -15,7 +15,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include "../arraylist/includes/array_list.h"
+# include "array_list.h"
 
 typedef unsigned char	t_byte;
 typedef struct			s_list

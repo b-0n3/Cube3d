@@ -1,6 +1,12 @@
 NAME = arraylist.a	
-SRC = ./srcs/array_list.c ./srcs/array_list_crud.c ./srcs/array_list_delete_if.c\
- ./srcs/array_list_operation.c ./srcs/array_list_sort.c ./srcs/array_list_filter.c
+SRC = 	./srcs/array_list.c \
+		./srcs/array_list_crud.c \
+		./srcs/array_list_delete_if.c \
+		./srcs/array_list_filter.c \
+		./srcs/array_list_foreach.c \
+		./srcs/array_list_operation.c \
+		./srcs/array_list_pull.c \
+		./srcs/array_list_sort.c 
 INC = ./includes/	
 OBJ= $(SRC:.c=.o)
 CC = gcc	
@@ -12,7 +18,7 @@ PARA  = -c
 
 all: $(NAME)	
 
-$(NAME): $(OBJ)		
+$(NAME): $(OBJ)	
 	ar rc $(NAME) *.o	
 
 clean:	

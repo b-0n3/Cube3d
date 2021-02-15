@@ -31,7 +31,7 @@ void	draw_line(t_window wi, t_vector *pos, t_vector *dir, int color);
 void	draw_rec(t_window wi, t_vector pos, int size, int color);
 void	ft_line(float x, float y, int size, float angle, int color);
 void	image_put_pixel(t_window v, int x, int y, int color);
-void	rec(int x, int y, int sizex, int sizey, int color);
+void	rec(int pos[], int sizex, int sizey, int color);
 int		shadow(int color, double distance);
 int		key_pressed(int k_code, void *ptr);
 int		key_relased(int k_code, void *ptr);

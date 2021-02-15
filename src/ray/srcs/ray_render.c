@@ -48,6 +48,7 @@ void	render_wall_pic
 	int				y;
 	int				x;
 
+	text = NULL;
 	y = ((this->dir->y / g_game->hvalue) - 1) +
 		((this->kind == 2 || this->kind == 0) ? 1 : 0);
 	x = ((this->dir->x / g_game->hvalue) - 1) + (this->kind == 1 ? 1 : 0);
@@ -87,10 +88,10 @@ void	render_ray(t_ray *this)
 		wall_hei = (g_game->wvalue / correctdis) * dispro;
 		end = ((g_game->heigth / 2) - (wall_hei / 2));
 		if (g_game->floor == NULL)
-			rec(this->index, end + wall_hei + g_game->player.offset, 1,
-					g_game->heigth / 2 - g_game->player.offset,
+			rec((int[]){this->index, end + wall_hei + g_game->player.offset},
+				1, g_game->heigth / 2 - g_game->player.offset,
 					g_game->color[4]);
-		rec(this->index, 0, 1, g_game->heigth - end - wall_hei
+		rec((int[]){this->index, 0}, 1, g_game->heigth - end - wall_hei
 			+ g_game->player.offset, g_game->color[5]);
 		end += g_game->player.offset;
 		render_wall_pic(this, end, wall_hei, correctdis);
@@ -114,10 +115,10 @@ void	render_ray(t_ray *this)
 		wall_hei = (g_game->wvalue / correctdis) * dispro;
 		end = ((g_game->heigth / 2) - (wall_hei / 2));
 		if (g_game->floor == NULL)
-			rec(this->index, end + wall_hei + g_game->player.offset, 1,
+			rec((int[]){this->index, end + wall_hei + g_game->player.offset}, 1,
 					g_game->heigth / 2 - g_game->player.offset,
 					g_game->color[4]);
-		rec(this->index, 0, 1, g_game->heigth - end - wall_hei
+		rec(((int *){this->index, 0}), 1, g_game->heigth - end - wall_hei
 			+ g_game->player.offset, g_game->color[5]);
 		end += g_game->player.offset;
 		render_wall_normal(this, end, wall_hei, correctdis);

@@ -48,7 +48,8 @@ void		push_s_walls(t_parser *this, char *l, t_vector r_p)
 	g_game = this->g;
 	new_vector(&start, r_p.x, r_p.y);
 	if (l_u != NULL)
-		while ((int)r_p.x < ft_strlen(l) && (int)r_p.x < ft_strlen(l_u))
+		while ((int)r_p.x < (int)ft_strlen(l) &&
+			(int)r_p.x < (int)ft_strlen(l_u))
 		{
 			r_p.x = push_s_walls_c(arr, l, l_u, r_p);
 			push_s_wall(start, r_p);
@@ -71,7 +72,8 @@ void		push_s_walls(t_parser *this, char *l, t_vector r_p)
 	g_game = this->g;
 	new_vector(&start, r_p.x, r_p.y);
 	if (l_u != NULL)
-		while ((int)r_p.x < ft_strlen(l) && (int)r_p.x < ft_strlen(l_u))
+		while ((int)r_p.x < (int)ft_strlen(l) &&
+			(int)r_p.x < (int)ft_strlen(l_u))
 		{
 			r_p.x = push_s_walls_c(arr, l, l_u, r_p);
 			push_s_wall(start, r_p);

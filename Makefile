@@ -1,32 +1,134 @@
 FS=-fsanitize=address
-LIBFT=./src/libft/*.c
-LIBFTINC = ./src/libft/
-PARSER=./src/parser/srcs/*.c
+NAME= cub3D
+MLX= -lmlx -framework OpenGL -framework AppKit -g
+# includes
+
+LIBFTINC = ./src/libft/includes/
 PARSERINC=./src/parser/includes/
-GNL=./src/getnextline/*.c
 LINEINC=./src/line/includes/
-LINE=./src/line/srcs/*.c
-AL=./src/arraylist/srcs/*.c
 ALINC=./src/arraylist/includes/
-PLAYER=./src/player/srcs/*.c
 PLAYERINC=./src/player/includes/
-UTILS=./src/utils/srcs/*.c
 UTILSINC=./src/utils/includes/
-INC= ./src/headers/
-SRC = ./src/*.c
-KEYS= ./src/keys/
-RAY= ./src/ray/srcs/*.c
+INPUTINC= ./src/input/includes
 RAYINC= ./src/ray/includes/
-GAME= ./src/game/srcs/*.c
 GAMEINC=./src/game/includes/
+VECTORINC=./src/vector/includes/
 
 FLAGS = -Wall -Wextra -Werror
 
-# all : 
-# 	gcc  ./Tools/*.c ./Tools/GetNextLine/*.c ./Tools/libft/*.c -L/usr/X11/lib /usr/X11/lib/libmlx.a /lib/x86_64-linux-gnu/libbsd.so.0 -lXext -lX11  -lm  -I   ./Tools/Headers -I ./keys -g 
-# fs:
-# 	gcc $(FS) ./Tools/*.c ./Tools/GetNextLine/*.c ./Tools/libft/*.c -L/usr/X11/lib /usr/X11/lib/libmlx.a -lXext -lX11  -lm -I ./Tools/Headers -I ./keys -g 
-me:
-	gcc  $(FLAGS) -lmlx -framework OpenGL -framework AppKit $(SRC) $(LINE) $(GAME) $(RAY) $(LIBFT) $(PARSER) $(GNL) $(AL) $(PLAYER) $(UTILS)  -I $(GAMEINC) -I $(LIBFTINC) -I $(ALINC)  -I $(UTILSINC) -I $(PARSERINC)   -I $(INC)  -I $(LINEINC) -I $(PLAYERINC)  -I $(KEYS) -I $(RAYINC) -g -O3
+# sources
+ARRAYLIST=./src/arraylist/arraylist.a
+LIBFT=./src/libft/libft.a
+GAME = 		./src/game/srcs/game_exit.c \
+			./src/game/srcs/game_free.c \
+			./src/game/srcs/game_init.c \
+			./src/game/srcs/game_save.c 
+PLAYER =  	./src/player/srcs/floor_cast_render.c \
+			./src/player/srcs/line_distance.c \
+			./src/player/srcs/player_check_collision.c \
+			./src/player/srcs/player_free.c \
+			./src/player/srcs/player_init.c \
+			./src/player/srcs/player_render.c \
+			./src/player/srcs/player_update.c \
+			./src/player/srcs/render_sprite_texture.c \
+			./src/player/srcs/secret_door_update.c \
+			./src/player/srcs/sprite_render.c
+GNL = 		./src/getnextline/get_next_line.c \
+			./src/getnextline/get_next_line_utils.c
+GRAPHICS = 	./src/graphics/graphics.c \
+			./src/graphics/image.c    \
+			./src/graphics/texture.c  
+INPUT = 	./src/input/srcs/input.c \
+			./src/input/srcs/mouse_events.c
+LINE = 		./src/line/srcs/free_line.c
+
+PARSER = 	./src/parser/srcs/map_checker.c \
+			./src/parser/srcs/parse_ea_tex.c \
+			./src/parser/srcs/parse_floor.c \
+			./src/parser/srcs/parse_map.c \
+			./src/parser/srcs/parse_no_tex.c \
+			./src/parser/srcs/parse_so_tex.c \
+			./src/parser/srcs/parse_sprite_bonus.c \
+			./src/parser/srcs/parse_sprites.c \
+			./src/parser/srcs/parse_sprites_tex.c \
+			./src/parser/srcs/parse_we_tex.c \
+			./src/parser/srcs/parser.c \
+			./src/parser/srcs/parser_ceilling.c \
+			./src/parser/srcs/parser_init.c \
+			./src/parser/srcs/parser_parse_file.c \
+			./src/parser/srcs/parser_parse_file_c.c \
+			./src/parser/srcs/parser_read.c \
+			./src/parser/srcs/parser_res.c \
+			./src/parser/srcs/parser_verify.c \
+			./src/parser/srcs/parser_verify_c.c \
+			./src/parser/srcs/parser_verify_cc.c \
+			./src/parser/srcs/parser_walls_e.c \
+			./src/parser/srcs/parser_walls_n.c \
+			./src/parser/srcs/parser_walls_s.c \
+			./src/parser/srcs/parser_walls_w.c \
+			./src/parser/srcs/sprite_tex_parser.c \
+			./src/parser/srcs/token.c \
+			./src/parser/srcs/token_free.c \
+			./src/parser/srcs/token_put_token.c
+
+RAY = 		./src/ray/srcs/ray_cast.c \
+			./src/ray/srcs/ray_free.c \
+			./src/ray/srcs/ray_init.c \
+			./src/ray/srcs/ray_intersection.c \
+			./src/ray/srcs/ray_intersection_calculation.c \
+			./src/ray/srcs/ray_len.c \
+			./src/ray/srcs/ray_render.c \
+			./src/ray/srcs/ray_render_wall.c \
+			./src/ray/srcs/ray_tex_col.c \
+			./src/ray/srcs/ray_update.c \
+			./src/ray/srcs/sprites.c \
+			./src/ray/srcs/wall_init.c 
+UTILS = 	./src/utils/srcs/ft_check_file.c \
+			./src/utils/srcs/ft_put_error.c \
+			./src/utils/srcs/ft_split_property.c \
+			./src/utils/srcs/get_current_time.c
+VECTOR =	./src/vector/srcs/vector_calculation.c \
+			./src/vector/srcs/vector_init.c
+
+
+INC= ./src/headers/  \
+	-I $(LIBFTINC)		 \
+	-I $(VECTORINC)		 \
+	-I $(PARSERINC)	 \
+	-I $(LINEINC)		 \
+	-I $(ALINC)		 \
+	-I $(PLAYERINC)	 \
+	-I $(UTILSINC)		 \
+	-I $(INPUTINC)		 \
+	-I $(RAYINC)		 \
+	-I $(GAMEINC)		
+
+SRC= ./src/main.c  \
+	$(ARRAYLIST)  \
+	$(LIBFT)  	 \
+	$(GAME)		 \
+	$(PLAYER)		 \
+	$(GNL)		 \
+	$(GRAPHICS)		 \
+	$(INPUT)		 \
+	$(LINE)		 \
+	$(PARSER)		 \
+	$(RAY)		 \
+	$(UTILS)		 \
+	$(VECTOR)
+
+
+all: $(NAME)
+
+libft:
+		$(MAKE) -C ./src/libft/
+arraylist:
+		$(MAKE) -C ./src/arraylist/
+
+$(NAME): arraylist libft $(SRC)
+	gcc -D BONUS=1  $(MLX) $(SRC) -I $(INC)  -O3 -o $(NAME)
+
+# me:
+# 	gcc  $(FLAGS)  $(SRC) $(LINE) $(GAME) $(RAY) $(LIBFT) $(PARSER) $(GNL) $(AL) $(PLAYER) $(UTILS)  -I $(GAMEINC) -I $(LIBFTINC) -I $(ALINC)  -I $(UTILSINC) -I $(PARSERINC)   -I $(INC)  -I $(LINEINC) -I $(PLAYERINC)  -I $(KEYS) -I $(RAYINC) -g -O3
 bonus:
 	gcc  -D BONUS=1  -lmlx -framework OpenGL -framework AppKit $(SRC) $(LINE) $(GAME) $(RAY) $(LIBFT) $(PARSER) $(GNL) $(AL) $(PLAYER) $(UTILS) -I $(GAMEINC)  -I $(LIBFTINC) -I $(ALINC)  -I $(UTILSINC) -I $(PARSERINC)   -I $(INC)  -I $(LINEINC) -I $(PLAYERINC)  -I $(KEYS) -I $(RAYINC)   -g -O3

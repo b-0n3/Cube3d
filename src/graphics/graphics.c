@@ -12,45 +12,32 @@
 
 #include "cub3d.h"
 
-
 extern t_game *g_game;
 
-void	rec(int  x ,int  y, int  sizex ,int sizey, int color)
+void	rec(int pos[], int sizex, int sizey, int color)
 {
 	int x2;
 	int y2;
 	int vx;
 
-	y2 = y + sizey;
-	x2 = x + sizex;
-	while (y < y2)
+	y2 = pos[1] + sizey;
+	x2 = pos[0] + sizex;
+	while (pos[1] < y2)
 	{
-		vx = x;
+		vx = pos[0];
 		while (vx < x2)
 		{
-			g_game->window.img->put_pixel(g_game->window,  vx, y, color);
+			g_game->window.img->put_pixel(g_game->window, vx, pos[1], color);
 			vx++;
 		}
-		y += 1;
-	}
-
-}
-
-void    init_image(t_image *this,t_window win)
-{
-	if(this != NULL)
-	{
-		this->img_ptr = mlx_new_image(win.mlx, g_game->width, g_game->heigth);
-		this->img_data = mlx_get_data_addr(this->img_ptr, &this->bpp, &this->size_line, &this->endian);
-		this->put_pixel = &image_put_pixel;
-		this->clear = &clear_screen;
-		this->show = &show_image;
+		pos[1] += 1;
 	}
 }
 
-int rgb_to_int(int r, int g, int b)
+int		rgb_to_int(int r, int g, int b)
 {
 	int c;
+
 	c = r;
 	c = (c << 8) | g;
 	c = (c << 8) | b;
@@ -86,28 +73,4 @@ void	image_put_pixel(t_window v, int x, int y, int color)
 	v.img->img_data[i] = color & 0xFF;
 	v.img->img_data[i + 1] = (color & 0xFF00) >> 8;
 	v.img->img_data[i + 2] = (color & 0xFF0000) >> 16;
-}
-
-void	clear_screen(t_window v)
-{
-	int x;
-	int y;
-
-	y = 0;
-	while (y < g_game->heigth)
-	{
-		x = 0;
-		while (x < g_game->width)
-		{
-			v.img->put_pixel(v, x, y, 0);
-			x++;
-		}
-		y++;
-	}
-	v.img->show(v);
-}
-
-void	show_image(t_window v)
-{
-	mlx_put_image_to_window(v.mlx, v.win, v.img->img_ptr, 0, 0);
 }

@@ -101,4 +101,13 @@ void				parse_map(t_parser *this);
 void				free_token(void *item);
 void				parse_token(void *item);
 void				push_bonus_sprites_properties(t_array_list *words);
+t_bool				check_border_e(t_array_list lines);
+t_bool				check_border_s(t_array_list lines);
+t_bool				check_inside(t_array_list lines, int x, int y);
+t_bool				check_border_i(t_array_list lines, size_t index);
+t_bool				is_wall_character(char ch);
+t_bool				is_map_s_or_end(char ch);
+t_bool				check_map_chars(char ch);
+t_bool				check_map_char(char ch);
+t_bool				map_ended(char *line, t_bool *var);
 #endif

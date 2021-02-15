@@ -10,29 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3d.h"
-# include "key_macos.h"
+#include "cub3d.h"
+#include "key_macos.h"
 
 extern	t_game	*g_game;
 
-int key_pressed_c(int k_code)
+int		key_pressed_c(int k_code)
 {
 	if (k_code == K_W)
 		g_game->player.w_dir = 1;
 	if (k_code == K_S)
 		g_game->player.w_dir = -1;
-	if (k_code ==K_D)
+	if (k_code == K_D)
 	{
-		g_game->player.w_dir =g_game->player.w_dir == 0? 1 : g_game->player.w_dir;
-		g_game->player.side_angle = 90 * M_PI /180;
+		g_game->player.w_dir = 1;
+		g_game->player.side_angle = 90 * M_PI / 180;
 	}
 	else if (k_code == K_A)
 	{
-		g_game->player.w_dir =g_game->player.w_dir == 0? 1 : g_game->player.w_dir;
-		g_game->player.side_angle = -90 * M_PI /180;
+		g_game->player.w_dir = 1;
+		g_game->player.side_angle = -90 * M_PI / 180;
 	}
 	return (0);
 }
+
 int		key_pressed(int k_code, void *ptr)
 {
 	ptr = NULL;
@@ -46,30 +47,10 @@ int		key_pressed(int k_code, void *ptr)
 		g_game->player.t_dir = 1;
 	if (k_code == K_ESC)
 		g_game->exit(g_game, NULL);
-
-	return key_pressed_c(k_code);
+	return (key_pressed_c(k_code));
 }
 
-int mouse_relased(int button, int x, int y, void *param)
-{
-	g_game->player.t_dir = 0;
-	return 0;
-}
-
-int mouse_pressed(int button, int x, int y, void *param)
-{
-
-
-	if ((x >= g_game->width /2))
-		g_game->player.t_dir = 1;
-	else if ((x <= g_game->width / 2) && x > 0)
-		g_game->player.t_dir = -1;
-	else
-		g_game->player.t_dir = 0;
-	return (1);
-}
-
-int key_released_c(int k_code )
+int		key_released_c(int k_code)
 {
 	if (k_code == K_D)
 	{
@@ -105,5 +86,5 @@ int		key_relased(int k_code, void *ptr)
 		g_game->player.w_dir = 0;
 	if (k_code == K_S)
 		g_game->player.w_dir = 0;
-	return key_released_c(k_code);
+	return (key_released_c(k_code));
 }
