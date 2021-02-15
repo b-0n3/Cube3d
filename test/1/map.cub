@@ -3,10 +3,9 @@ NO north_small.xpm
 SO south_small.xpm
 WE west_small.xpm
 EA east_small.xpm
-F    north_small.xpm
-1 | 2 north_small.xpm
+S  barrel.xpm
 C 0,191,255
-#F 255,255,255
+F 255,255,255
 
 11111111111111111111111111111
 100000200011000000000000000011111111111111

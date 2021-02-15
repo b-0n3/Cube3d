@@ -75,10 +75,11 @@ void	render_wall_pic
 
 void	render_ray(t_ray *this)
 {
-	double dispro;
-	double wall_hei;
-	double correctdis;
-	double end;
+	double	dispro;
+	double	wall_hei;
+	double	correctdis;
+	double	end;
+	int		rect[2];
 
 	if (this->kind >= 0)
 	{
@@ -87,11 +88,9 @@ void	render_ray(t_ray *this)
 		dispro = (g_game->width / 4) * tan(g_game->player.fov);
 		wall_hei = (g_game->wvalue / correctdis) * dispro;
 		end = ((g_game->heigth / 2) - (wall_hei / 2));
-		if (g_game->floor == NULL)
-			rec((int[]){this->index, end + wall_hei + g_game->player.offset},
-				1, g_game->heigth / 2 - g_game->player.offset,
-					g_game->color[4]);
-		rec((int[]){this->index, 0}, 1, g_game->heigth - end - wall_hei
+		rect[0] = this->index;
+		rect[1] = 0;
+		rec(rect, 1, g_game->heigth - end - wall_hei
 			+ g_game->player.offset, g_game->color[5]);
 		end += g_game->player.offset;
 		render_wall_pic(this, end, wall_hei, correctdis);
@@ -102,10 +101,11 @@ void	render_ray(t_ray *this)
 
 void	render_ray(t_ray *this)
 {
-	double dispro;
-	double wall_hei;
-	double correctdis;
-	double end;
+	double	dispro;
+	double	wall_hei;
+	double	correctdis;
+	double	end;
+	int		rect[2];
 
 	if (this->kind >= 0)
 	{
@@ -114,11 +114,12 @@ void	render_ray(t_ray *this)
 		dispro = (g_game->width / 4) * tan(g_game->player.fov);
 		wall_hei = (g_game->wvalue / correctdis) * dispro;
 		end = ((g_game->heigth / 2) - (wall_hei / 2));
-		if (g_game->floor == NULL)
-			rec((int[]){this->index, end + wall_hei + g_game->player.offset}, 1,
-					g_game->heigth / 2 - g_game->player.offset,
+		rect[0] = this->index;
+		rect[1] = end + wall_hei + g_game->player.offset;
+		rec(rect, 1, g_game->heigth / 2 - g_game->player.offset,
 					g_game->color[4]);
-		rec(((int *){this->index, 0}), 1, g_game->heigth - end - wall_hei
+		rect[1] = 0;
+		rec(rect, 1, g_game->heigth - end - wall_hei
 			+ g_game->player.offset, g_game->color[5]);
 		end += g_game->player.offset;
 		render_wall_normal(this, end, wall_hei, correctdis);

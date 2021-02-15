@@ -1,4 +1,4 @@
-NAME = libft.a	
+NAME = libft.a
  
 SRC = ./srcs/ft_atoi.c ./srcs/ft_atoi_p.c \
 	./srcs/ft_bzero.c ./srcs/ft_calloc.c \
@@ -19,26 +19,27 @@ SRC = ./srcs/ft_atoi.c ./srcs/ft_atoi_p.c \
 	./srcs/ft_skip.c ./srcs/ft_split.c ./srcs/ft_strchr.c ./srcs/ft_strdup.c \
 	./srcs/ft_strjoin.c ./srcs/ft_strlcat.c ./srcs/ft_strlcpy.c ./srcs/ft_strlen.c \
 	./srcs/ft_strmapi.c ./srcs/ft_strncmp.c ./srcs/ft_strnstr.c ./srcs/ft_strrchr.c  \
-	./srcs/ft_strtrim.c ./srcs/ft_substr.c ./srcs/ft_tolower.c ./srcs/ft_toupper.c ./srcs/split.c \
-	../arraylist/arraylist.a
+	./srcs/ft_strtrim.c ./srcs/ft_substr.c ./srcs/ft_tolower.c ./srcs/ft_toupper.c ./srcs/split.c 
 
 INC = ./includes/	-I  ../arraylist/includes
 
-OBJ= $(SRC:.c=.o)
+
 CC = gcc	
 FLAGS= -Wall -Werror -Wextra 	
 PARA  = -c	
 
-%.o: %.c
-	$(CC) $(PARA) -I $(INC) $(FLAGS)  $<
 
-all: $(NAME)	
 
-$(NAME): $(OBJ)		
-	ar rc $(NAME) *.o	
+all:  $(NAME)	
 
+$(NAME):   
+	$(CC) $(PARA) $(SRC) -I $(INC) $(FLAGS) 
+	ar rc $(NAME) *.o
+	
+relinc: 
+	touch relinc
 clean:	
-	rm -f *.o	
+	rm -f *.o relinc
 
 fclean: clean	
 	rm -f $(NAME)	

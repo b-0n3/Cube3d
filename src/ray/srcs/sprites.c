@@ -49,6 +49,7 @@ void		cast_sprite
 	t_vector	sub;
 	double		splen;
 	t_vector	*dir;
+	t_vector	*pp[2];
 
 	dir = new_vector_pointer(pos->x + ray->length(ray) *
 		cos(ray->angle), pos->y + ray->length(ray) * sin(ray->angle));
@@ -61,8 +62,11 @@ void		cast_sprite
 		if (splen < ray->length(ray))
 		{
 			if (*ray_sp == NULL)
-				*ray_sp = new_sp_ray((t_vector **){pos, in},
-					ray->angle, ray->index, sp);
+			{
+				pp[0] = pos;
+				pp[1] = in;
+				*ray_sp = new_sp_ray(pp, ray->angle, ray->index, sp);
+			}
 			else if (splen < (*ray_sp)->length(*ray_sp))
 				(*ray_sp)->update(*ray_sp, in, sp);
 		}

@@ -51,7 +51,7 @@ t_bool		is_map_character(char ch)
 {
 	char *arr;
 
-	arr = "012 SNWE";
+	arr = "0123456789 SNWEs";
 	if (ch == '\0')
 		return (FALSE);
 	if (ft_strchr(arr, ch) != NULL)
@@ -65,7 +65,7 @@ t_bool		is_map_character(char ch)
 {
 	char *arr;
 
-	arr = "0123456789 SNWEs";
+	arr = "012 SNWE";
 	if (ch == '\0')
 		return (FALSE);
 	if (ft_strchr(arr, ch) != NULL)

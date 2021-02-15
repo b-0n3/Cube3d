@@ -17,7 +17,7 @@ VECTORINC=./src/vector/includes/
 FLAGS = -Wall -Wextra -Werror
 
 # sources
-ARRAYLIST=./src/arraylist/arraylist.a
+ARRAYLIST=./src/arraylist/libarraylist.a
 LIBFT=./src/libft/libft.a
 GAME = 		./src/game/srcs/game_exit.c \
 			./src/game/srcs/game_free.c \
@@ -117,18 +117,36 @@ SRC= ./src/main.c  \
 	$(UTILS)		 \
 	$(VECTOR)
 
+RELINK = relink
 
-all: $(NAME)
+all: arraylist libft $(NAME)
 
 libft:
 		$(MAKE) -C ./src/libft/
 arraylist:
 		$(MAKE) -C ./src/arraylist/
 
-$(NAME): arraylist libft $(SRC)
-	gcc -D BONUS=1  $(MLX) $(SRC) -I $(INC)  -O3 -o $(NAME)
+$(NAME): 
+	gcc  $(FLAGS)  $(MLX) $(SRC) -I $(INC) -o $(NAME) -O3
 
-# me:
-# 	gcc  $(FLAGS)  $(SRC) $(LINE) $(GAME) $(RAY) $(LIBFT) $(PARSER) $(GNL) $(AL) $(PLAYER) $(UTILS)  -I $(GAMEINC) -I $(LIBFTINC) -I $(ALINC)  -I $(UTILSINC) -I $(PARSERINC)   -I $(INC)  -I $(LINEINC) -I $(PLAYERINC)  -I $(KEYS) -I $(RAYINC) -g -O3
-bonus:
-	gcc  -D BONUS=1  -lmlx -framework OpenGL -framework AppKit $(SRC) $(LINE) $(GAME) $(RAY) $(LIBFT) $(PARSER) $(GNL) $(AL) $(PLAYER) $(UTILS) -I $(GAMEINC)  -I $(LIBFTINC) -I $(ALINC)  -I $(UTILSINC) -I $(PARSERINC)   -I $(INC)  -I $(LINEINC) -I $(PLAYERINC)  -I $(KEYS) -I $(RAYINC)   -g -O3
+
+clean: libftclean arraylistclean
+	rm -f *.o
+
+fclean: clean	libftfclean arraylistfclean
+	rm -f $(NAME)	
+	rm -f includes/*.*.gch	
+
+re: fclean all
+
+libftclean:
+	$(MAKE) clean  -C ./src/libft/ 
+libftfclean:
+	$(MAKE) fclean  -C ./src/libft/ 
+arraylistclean:
+	$(MAKE) clean -C ./src/arraylist/
+arraylistfclean:
+	$(MAKE) fclean -C ./src/arraylist/
+
+bonus: arraylist libft 	
+	gcc -D BONUS=1  $(FLAGS) $(MLX) $(SRC) -I $(INC) -o $(NAME)

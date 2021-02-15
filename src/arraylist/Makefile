@@ -1,4 +1,4 @@
-NAME = arraylist.a	
+NAME = libarraylist.a	
 SRC = 	./srcs/array_list.c \
 		./srcs/array_list_crud.c \
 		./srcs/array_list_delete_if.c \
@@ -6,20 +6,23 @@ SRC = 	./srcs/array_list.c \
 		./srcs/array_list_foreach.c \
 		./srcs/array_list_operation.c \
 		./srcs/array_list_pull.c \
-		./srcs/array_list_sort.c 
-INC = ./includes/	
-OBJ= $(SRC:.c=.o)
+		./srcs/array_list_sort.c
+
+INC = ./includes/
+
+
 CC = gcc	
 FLAGS= -Wall -Werror -Wextra 	
 PARA  = -c	
 
-%.o: %.c
-	$(CC) $(PARA) -I $(INC) $(FLAGS)  $<
+
 
 all: $(NAME)	
 
-$(NAME): $(OBJ)	
-	ar rc $(NAME) *.o	
+$(NAME): $(OBJ)
+	$(CC) $(PARA) $(SRC) -I $(INC) $(FLAGS)
+	ar rc $(NAME) *.o
+
 
 clean:	
 	rm -f *.o	

@@ -28,9 +28,10 @@ void	free_game(void *t)
 	if (this->walls.free != NULL)
 		this->walls.free(&this->walls, &free_wall);
 	if (this->window.img != NULL)
+		mlx_destroy_image(this->window.mlx, this->window.img->img_ptr);
+	if (this->window.mlx != NULL && this->window.win != NULL)
 	{
 		mlx_clear_window(this->window.mlx, this->window.win);
-		mlx_destroy_image(this->window.mlx, this->window.img->img_ptr);
 		mlx_destroy_window(this->window.mlx, this->window.win);
 	}
 }

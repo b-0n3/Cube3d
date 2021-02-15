@@ -48,6 +48,16 @@ t_bool		is_map_s_or_end(char ch)
 	return (FALSE);
 }
 
+t_bool		is_wall_character(char ch)
+{
+	char *arr;
+
+	arr = " 1";
+	if (ft_strchr(arr, ch) != NULL)
+		return (TRUE);
+	return (FALSE);
+}
+
 #endif
 
 t_bool		check_borders(t_array_list lines)
